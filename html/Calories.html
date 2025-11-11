@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calories - VHealth</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/Calories.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <img src="../assets/images/Home/logo.png" alt="VHealth Logo" class="logo-icon">
+                <div class="logo-text">
+                    <h1>VHealth</h1>
+                    <p>Sống khỏe chủ động</p>
+                </div>
+            </div>
+
+            <nav class="menu">
+                <ul>
+                    <li class="menu-item">
+                        <a href="./Mainpage.html" class="active">
+                            <img src="../assets/images/Home/Home.png" alt="Home" class="menu-icon">
+                            <span>Trang Chủ</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="./news-detail.html">
+                            <img src="../assets/images/Home/New.png" alt="News" class="menu-icon">
+                            <span>Tin Tức</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="./Calories.html">
+                            <img src="../assets/images/Home/Calories.png" alt="Calories" class="menu-icon">
+                            <span>Calories</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="./Health.html">
+                            <img src="../assets/images/Home/Health.png" alt="Health" class="menu-icon">
+                            <span>Sức Khỏe</span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="./CongDong.html">
+                            <img src="../assets/images/Home/Community.png" alt="Community" class="menu-icon">
+                            <span>Cộng Đồng</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="login-section">
+                <button class="login-btn">Đăng Nhập</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <div class="search-section">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Tìm kiếm...">
+                    </div>
+                    <div class="header-controls">
+                        <button class="theme-toggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="notifications">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="calories-content">
+                <!-- Thông tin người dùng -->
+                <div class="user-info-container">
+                <h2>Thông tin người dùng</h2>
+                <div class="user-info-content">
+                    <div class="user-avatar">
+                    <img src="image/calories/avartar.png" alt="Avatar người dùng">
+                    </div>
+
+                    <div class="user-details">
+                    <div class="info-left">
+                        <p>Tuổi: <span>18</span></p>
+                        <p>Chiều cao: <span>158cm</span></p>
+                    </div>
+
+                    <div class="info-center">
+                        <p>Cân nặng: <span>50kg</span></p>
+                        <p>
+                        Cường độ luyện tập:
+                        <span id="intensityText" style="color:#2f8f46; cursor:pointer;">mức 1 ▼</span>
+                        </p>
+
+                        <!-- Khung thay đổi cường độ (ẩn sẵn) -->
+                        <div id="intensityBox" class="intensity-box" style="display:none;">
+                        <h4>Thay đổi cường độ luyện tập <i class="fas fa-dumbbell"></i></h4>
+                        <select id="activityLevel">
+                            <option value="1">Ít vận động</option>
+                            <option value="2">Vận động nhẹ</option>
+                            <option value="3">Vận động trung bình</option>
+                            <option value="4">Vận động cao</option>
+                        </select>
+                        <p class="description" id="activityDesc">
+                            • Nếu bạn ngồi nhiều, ít hoạt động chân tay, không tập thể dục
+                        </p>
+                        <div class="buttons">
+                            <button id="closeBox">Đóng</button>
+                            <button id="saveBox">Lưu lại</button>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="info-right">
+                        <p>Mục tiêu: <span>Tăng 5 cân</span></p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Phần Tổng quan hôm nay -->
+                <div class="overview-container" id="overviewSection">
+                    <h2>Tổng quan hôm nay</h2>
+
+                    <div class="overview-content">
+                        <!-- Biểu đồ calo -->
+                        <div class="calo-chart">
+                        <div class="circle">
+                            <div class="inner-text">
+                            <p>1200<br><span>/1800 calo</span></p>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- Dinh dưỡng -->
+                        <div class="nutrients">
+                        <div class="nutrient">
+                            <div class="label">
+                            <span>Tinh bột 🌾</span>
+                            </div>
+                            <div class="progress">
+                            <div class="bar carbs" style="width: 80%;"></div>
+                            </div>
+                            <p>180 / 235 g</p>
+                        </div>
+
+                        <div class="nutrient">
+                            <div class="label">
+                            <span>Đạm 🥩</span>
+                            </div>
+                            <div class="progress">
+                            <div class="bar protein" style="width: 20%;"></div>
+                            </div>
+                            <p>20 / 235 g</p>
+                        </div>
+
+                        <div class="nutrient">
+                            <div class="label">
+                            <span>Béo 🥜</span>
+                            </div>
+                            <div class="progress">
+                            <div class="bar fat" style="width: 20%;"></div>
+                            </div>
+                            <p>20 / 235 g</p>
+                        </div>
+
+                        <div class="nutrient">
+                            <div class="label">
+                            <span>Xơ 🍎</span>
+                            </div>
+                            <div class="progress">
+                            <div class="bar fiber" style="width: 20%;"></div>
+                            </div>
+                            <p>20 / 235 g</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Danh sách thực phẩm -->
+                <div class="food-section" id="foodSection">
+                <div class="food-header">
+                    <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
+                    <div class="search-bar">
+                    <i class="fas fa-microphone"></i>
+                    <input type="text" placeholder="Tìm kiếm món ăn...">
+                    <i class="fas fa-search"></i>
+                    </div>
+                    <div class="food-tools">
+                    <i class="fas fa-question-circle"></i>
+                    <i class="fas fa-filter"></i>
+                    </div>
+                </div>
+
+                <div class="food-columns">
+                    <!-- Cột Gần đây -->
+                    <div class="food-column">
+                    <h3>Gần đây</h3>
+                    <ul>
+                        <li>
+                        <img src="image/broccoli.png" alt="">
+                        <div class="food-info">
+                            <p>Súp lơ (bông cải) xanh tươi</p>
+                            <span>100g, 32kcal</span>
+                        </div>
+                        <i class="fas fa-heart favorite"></i>
+                        <button class="add-btn">+</button>
+                        </li>
+                        <li>
+                        <img src="image/egg.png" alt="">
+                        <div class="food-info">
+                            <p>Trứng gà ta sống</p>
+                            <span>100g, 32kcal</span>
+                        </div>
+                        <i class="fas fa-heart favorite"></i>
+                        <button class="add-btn">+</button>
+                        </li>
+                        <li>
+                        <img src="image/salad.png" alt="">
+                        <div class="food-info">
+                            <p>Salad trứng</p>
+                            <span>100g, 32kcal</span>
+                        </div>
+                        <i class="far fa-heart"></i>
+                        <button class="add-btn">+</button>
+                        </li>
+                    </ul>
+                    </div>
+
+                    <!-- Cột Yêu thích -->
+                    <div class="food-column">
+                    <h3>Yêu thích</h3>
+                    <ul>
+                        <li>
+                        <img src="image/broccoli.png" alt="">
+                        <div class="food-info">
+                            <p>Súp lơ (bông cải) xanh tươi</p>
+                            <span>100g, 32kcal</span>
+                        </div>
+                        <i class="fas fa-heart favorite"></i>
+                        <button class="add-btn">+</button>
+                        </li>
+                        <li>
+                        <img src="image/egg.png" alt="">
+                        <div class="food-info">
+                            <p>Trứng gà ta sống</p>
+                            <span>100g, 32kcal</span>
+                        </div>
+                        <i class="fas fa-heart favorite"></i>
+                        <button class="add-btn">+</button>
+                        </li>
+                    </ul>
+                    </div>
+
+                    <!-- Cột Của tôi -->
+                    <div class="food-column">
+                    <h3>Của tôi</h3>
+                    <ul>
+                        <li>
+                        <img src="image/meat.png" alt="">
+                        <div class="food-info">
+                            <p>Thịt chó nướng ớt chuông</p>
+                            <span>100g, 1000kcal</span>
+                        </div>
+                        <button class="add-btn">+</button>
+                        </li>
+                    </ul>
+                    <button class="add-food">+ Thêm thực phẩm của bạn</button>
+                    </div>
+                </div>
+                </div>
+
+
+                <!-- HƯỚNG DẪN SỬ DỤNG THỰC PHẨM -->
+                <div class="food-guide" id="guideSection">
+                    <div class="food-header">
+                    <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
+                    <div class="search-bar">
+                        <i class="fas fa-microphone"></i>
+                        <input type="text" placeholder="Tìm kiếm món ăn...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="food-tools">
+                        <i class="fas fa-question-circle"></i>
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    </div>
+                    <h2>Hướng dẫn sử dụng thực phẩm</h2>
+                    <div class="guide-content">
+                        <div class="guide-section">
+                            <h3>Lưu ý quan trọng khi tính toán thực phẩm</h3>
+                            <p>Tất cả các thực phẩm trên app đều chỉ tính trên phần ăn được thôi nên khi cân đo đồ ăn bạn nhớ:</p>
+                            <ul>
+                                <li>Bỏ xương của thịt, cá</li>
+                                <li>Bỏ vỏ và hạt của trái cây nếu không ăn được</li>
+                                <li>Bỏ vỏ của tôm, cua, động vật có vỏ</li>
+                            </ul>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3>Ý nghĩa của các ghi chú trong ngoặc</h3>
+                            <p>Thực phẩm có ghi chú trong ngoặc như:</p>
+                            <ul>
+                                <li><strong>Bún bò (chỉ tính cái):</strong> Tức là bạn sẽ chỉ cân phần cái để tính calo thôi, còn phần nước dùng bạn sẽ tính riêng. Nước dùng trong các món nước trên app rất nhiều. Bạn có thể sử dụng số liệu của nước dùng gà trên app nhé.</li>
+                                <li><strong>Canh bì tôm tươi (cái 60 nước 40):</strong> Tức là trong 100g canh đó sẽ bao gồm 60g cái gồm bì và tôm, 40g nước canh.</li>
+                            </ul>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3>Hệ thống tính năng lượng</h3>
+                            <p>Web đang sử dụng hệ thống yếu tố chuyển đổi năng lượng riêng: Atwater cho từng loại thực phẩm, vì vậy không phải thực phẩm nào năng lượng cũng được tính theo hệ số (Carbs x 4 + Chất đạm x 4 + Chất béo x 9).</p>
+                        </div>
+
+                        <div class="note">
+                            <p><strong>Lưu ý:</strong> Để có kết quả tính toán chính xác nhất, hãy đảm bảo bạn chỉ tính phần thực phẩm thực sự ăn được và tuân thủ các hướng dẫn trên.</p>
+                        </div>
+                    </div>
+                </div>
+                    
+                <!-- Các buổi ăn -->
+                <div class="meal-container">
+
+                <div class="meal-section">
+                    <div class="meal">
+                    <div class="plus">+</div>
+                    <p>Buổi sáng</p>
+                    </div>
+                    <div class="meal">
+                    <div class="plus">+</div>
+                    <p>Buổi trưa</p>
+                    </div>
+                    <div class="meal">
+                    <div class="plus">+</div>
+                    <p>Buổi tối</p>
+                    </div>
+                    <div class="meal">
+                    <div class="plus">+</div>
+                    <p>Buổi phụ</p>
+                    </div>
+                </div>
+
+                <!-- Chế độ ăn -->
+                <div class="diet-mode">
+                    <p>Bạn đang ăn theo chế độ:
+                    <select>
+                        <option>Cân bằng</option>
+                        <option>High Protein</option>
+                        <option>Ketogenic</option>
+                        <option>Low Card</option>
+                        <option>Atkins</option>
+                        <option>Paleo</option>
+                        <option>Dash</option>
+                    </select>
+                    <span class="help">?</span>
+                    </p>
+                </div>
+                </div>
+
+                <!-- DASHBOARD CALO -->
+                <div class="dashboard" id="dashboardSection">
+                <!-- Ô chọn tuần -->
+                <div class="week-box">
+                    <div class="week-left">
+                    <p class="month">Tháng 5</p>
+                    <p class="week">Tuần này</p>
+                    </div>
+                    <div class="week-days">
+                    <span>T2<br>26</span>
+                    <span>T3<br>27</span>
+                    <span>T4<br>28</span>
+                    <span class="active">T5<br>29</span>
+                    <span>T6<br>30</span>
+                    <span>T7<br>31</span>
+                    <span>CN<br>1</span>
+                    </div>
+                    <div class="week-arrows">
+                    <span>&lt;</span>
+                    <span>&gt;</span>
+                    </div>
+                </div>
+
+                <!-- Ô icon lịch -->
+                <div class="calendar-box">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+
+                <div class="calo-box">
+                <h3>Lượng calo cần nạp</h3>
+
+                <div class="calo-circle">
+                    <div class="calo-inner">
+                    <p>1200<br><span>/1800 calo</span></p>
+                    </div>
+                </div>
+
+                <div class="calo-bars">
+                    <div class="bar">
+                    <div class="fill" style="height: 60%;"></div>
+                    <span>T2</span>
+                    </div>
+                    <div class="bar">
+                    <div class="fill" style="height: 85%;"></div>
+                    <span>T3</span>
+                    </div>
+                    <div class="bar">
+                    <div class="fill" style="height: 35%;"></div>
+                    <span>T4</span>
+                    </div>
+                    <div class="bar">
+                    <div class="fill" style="height: 90%;"></div>
+                    <span>T5</span>
+                    </div>
+                    <div class="bar">
+                    <div class="fill" style="height: 65%;"></div>
+                    <span>T6</span>
+                    </div>
+                    <div class="bar">
+                    <div class="fill" style="height: 40%;"></div>
+                    <span>T7</span>
+                    </div>
+                    <div class="bar">
+                    <div class="fill" style="height: 55%;"></div>
+                    <span>CN</span>
+                    </div>
+                </div>
+                </div>
+
+
+
+                <!-- Ô dinh dưỡng -->
+                <div class="nutrition-box">
+                    <h3>Dinh dưỡng</h3>
+                    
+                    <div class="nutrition-content">
+                        <div class="nutrient">
+                            <div class="label">
+                                <span>Tinh bột 🌾</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar carbs" style="width: 50%;"></div>
+                            </div>
+                            <p>120 / 235 g</p>
+                        </div>
+
+                        <div class="nutrient">
+                            <div class="label">
+                                <span>Đạm 🥩</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar protein" style="width: 30%;"></div>
+                            </div>
+                            <p>20 / 235 g</p>
+                        </div>
+
+                        <div class="nutrient">
+                            <div class="label">
+                                <span>Béo 🥜</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar fat" style="width: 40%;"></div>
+                            </div>
+                            <p>20 / 235 g</p>
+                        </div>
+
+                        <div class="nutrient">
+                            <div class="label">
+                                <span>Xơ 🍎</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar fiber" style="width: 25%;"></div>
+                            </div>
+                            <p>20 / 235 g</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+
+                <!-- THEO DÕI -->
+                <div class="follow-container" id="followSection">
+                <div class="follow-header">
+                    <i class="fas fa-arrow-left back"></i>
+                    <div class="follow-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h2>Theo dõi</h2>
+                    </div>
+                </div>
+
+                <div class="follow-content">
+                    <!-- Cột lịch -->
+                    <div class="follow-calendar">
+                    <div class="calendar-top">
+                        <span>Tháng 4 2025</span>
+                        <div class="calendar-arrow">
+                        <i class="fas fa-chevron-left"></i>
+                        <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+
+                    <table class="calendar-table">
+                        <thead>
+                            <tr>
+                                <th>CN</th><th>T2</th><th>T3</th><th>T4</th><th>T5</th><th>T6</th><th>T7</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- JavaScript sẽ tự động tạo rows ở đây -->
+                        </tbody>
+                    </table>
+
+                    </div>
+
+                    <!-- Cột thông tin bên phải -->
+                    <div class="follow-info">
+                    <!-- Ô 1: Thông tin calo -->
+                    <div class="info-box calo-summary">
+                        <p>Tổng calo đã nạp: <span class="highlight">1650 kcal</span></p>
+                        <p>Tổng calo cần nạp: <span class="highlight">825 kcal</span></p>
+                        <p>Lượng calo cần thâm hụt: <span class="highlight">3822 kcal</span></p>
+                        <p>Lượng calo đã thâm hụt: <span class="highlight">2673 kcal</span></p>
+                    </div>
+
+                    <!-- Ô 2: Thống kê ngày -->
+                    <div class="info-box day-stats">
+                        <p><span class="dot green"></span> Số ngày ăn đạt khuyến nghị: <span class="green">1 ngày (Ngày: 10)</span></p>
+                        <p><span class="dot yellow"></span> Số ngày ăn dưới BMR: <span class="yellow">1 ngày (Ngày: 19)</span></p>
+                        <p><span class="dot red"></span> Số ngày ăn quá lượng cần nạp: <span class="red">1 ngày (Ngày: 20)</span></p>
+                    </div>
+                    </div>
+
+                </div>
+
+                <!-- 3 ô bên dưới -->
+                <div class="follow-bottom">
+                    <div class="card suggest">
+                    <h3>Gợi ý bữa ăn</h3>
+                    <p>Bạn đang có xu hướng ăn quá nhiều đạm. Hãy bổ sung thêm rau xanh nhé.</p>
+                    </div>
+                    <div class="card goal">
+                    <h3>Mục tiêu</h3>
+                    <p>Duy trì dưới 1800 calo / ngày</p>
+                    </div>
+                    <div class="card warning">
+                    <h3>Cảnh báo</h3>
+                    <p>
+                        Tác động nếu không vận động đủ:<br>
+                        - Tăng nguy cơ béo phì, tiểu đường, bệnh tim mạch.<br>
+                        - Gây mỏi mắt, đau lưng, căng cơ cổ vai gáy.<br>
+                        - Làm giảm hiệu suất làm việc và tâm trạng tiêu cực.
+                    </p>
+                    </div>
+                </div>
+                </div>
+
+
+
+                <!-- Modal Thêm Thực Phẩm -->
+                <div class="food-modal-overlay" id="foodModal">
+                    <div class="food-modal">
+                        <div class="modal-header">
+                            <h3>Thêm thực phẩm mới</h3>
+                            <button class="close-modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="foodName">Tên thực phẩm hoặc món ăn</label>
+                                <input type="text" id="foodName" placeholder="Nhập tên thực phẩm...">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="foodImage">Hình ảnh </label>
+                                <input type="text" id="foodImage" placeholder="image.jpg">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Giá trị dinh dưỡng </label>
+                                <div class="nutrition-grid">
+                                    <div class="nutrition-item">
+                                        <label>Năng lượng (kcal)</label>
+                                        <input type="number" id="foodCalories" placeholder="0">
+                                    </div>
+                                    <div class="nutrition-item">
+                                        <label>Trọng lượng (g)</label>
+                                        <input type="number" id="foodWeight" value="0" readonly>
+                                    </div>
+                                    <div class="nutrition-item">
+                                        <label>Tinh bột (g)</label>
+                                        <input type="number" id="foodCarbs" placeholder="0">
+                                    </div>
+                                    <div class="nutrition-item">
+                                        <label>Đạm (g)</label>
+                                        <input type="number" id="foodProtein" placeholder="0">
+                                    </div>
+                                    <div class="nutrition-item">
+                                        <label>Béo (g)</label>
+                                        <input type="number" id="foodFat" placeholder="0">
+                                    </div>
+                                    <div class="nutrition-item">
+                                        <label>Xơ (g)</label>
+                                        <input type="number" id="foodFiber" placeholder="0">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="foodCategory">Danh mục</label>
+                                <select id="foodCategory">
+                                    <option value="recent">Gần đây</option>
+                                    <option value="favorite">Yêu thích</option>
+                                    <option value="myfoods">Của tôi</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-buttons">
+                            <button class="btn-cancel">Đóng</button>
+                            <button class="btn-save">Lưu lại</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <footer class="footer">
+                    <div class="footer-container">
+                        <div class="footer-section">
+                            <h3>Về VHEALTH</h3>
+                            <p>Nền tảng theo dõi sức khỏe, calories và chia sẻ kiến thức sống khỏe mỗi ngày.</p>
+                        </div>
+
+                        <div class="footer-section">
+                            <h3>Quan tâm</h3>
+                            <ul>
+                                <li><a href="#">Giới thiệu nền tảng</a></li>
+                                <li><a href="#">Tuyển Dụng</a></li>
+                                <li><a href="#">Quảng Cáo</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-section">
+                            <h3>Cộng Đồng</h3>
+                            <ul>
+                                <li><a href="#">Câu Chuyện Người Dùng</a></li>
+                                <li><a href="#">Thử Thách Sống Khỏe 7 Ngày</a></li>
+                                <li><a href="#">Nhóm Facebook Hỗ Trợ</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-section">
+                            <h3>Trợ Giúp</h3>
+                            <ul>
+                                <li><a href="#">Hỏi & Đáp</a></li>
+                                <li><a href="#">Hướng Dẫn Sử Dụng</a></li>
+                                <li><a href="#">Điều Khoản Sử Dụng</a></li>
+                                <li><a href="#">Chính Sách Bảo Mật</a></li>
+                                <li><a href="#">Liên Hệ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Phần icon mạng xã hội -->
+                    <div class="social-media">
+                        <h4>Kết nối với chúng tôi</h4>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon youtube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="social-icon tiktok">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="#" class="social-icon linkedin">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="footer-bottom">
+                        <p>© 2025 VHEALTH. Tất cả quyền được bảo lưu. | Email: tiegdnduit@gmail.com</p>
+                    </div>
+                </footer>
+
+
+
+                <!-- Modal chú thích chế độ ăn - GIỐNG ẢNH -->
+                <div class="diet-modal-overlay" id="dietModal">
+                    <div class="diet-modal">
+                        <div class="diet-modal-header">
+                            <h3>Chế độ ăn</h3>
+                            <button class="close-diet-modal">&times;</button>
+                        </div>
+                        
+                        <div class="diet-guide-content">
+                            <div class="diet-guide-section">
+                                <h4>Cân Bằng</h4>
+                                <p>Ăn uống đầy đủ các nhóm chất (đạm, béo, tinh bột, vitamin, khoáng chất) theo tỷ lệ hợp lý.</p>
+                            </div>
+
+                            <div class="diet-guide-section">
+                                <h4>High Protein</h4>
+                                <p>Tăng cường lượng protein (thịt, cá, trứng...) để hỗ trợ xây cơ và giảm cân.</p>
+                            </div>
+
+                            <div class="diet-guide-section">
+                                <h4>Keto</h4>
+                                <p>Cắt giảm tối đa tinh bột, tăng chất béo và protein để chuyển sang trạng thái "đốt mỡ tạo năng lượng" (ketosis).</p>
+                            </div>
+
+                            <div class="diet-guide-section">
+                                <h4>Low Carb</h4>
+                                <p>Giảm lượng tinh bột nhưng không cắt hoàn toàn; tập trung ăn đạm và rau củ.</p>
+                            </div>
+
+                            <div class="diet-guide-section">
+                                <h4>Atkins</h4>
+                                <p>Là một kiểu Low Carb nghiêm ngặt hơn, được chia theo giai đoạn giảm tinh bột dần.</p>
+                            </div>
+
+                            <div class="diet-guide-section">
+                                <h4>Paleo</h4>
+                                <p>Ăn như người thời tiền sử chỉ dùng thực phẩm tự nhiên (thịt, cá, rau, trái cây); tránh đồ chế biến sẵn, ngũ cốc, đường, sữa.</p>
+                            </div>
+
+                            <div class="diet-guide-section">
+                                <h4>Dash</h4>
+                                <p>Thiết kế để hạ huyết áp: ăn nhiều rau, trái cây, ngũ cốc nguyên hạt; hạn chế muối, chất béo bão hòa và đường.</p>
+                            </div>
+                        </div>
+
+                        <!-- <div class="diet-modal-footer">
+                            <button class="btn-close-diet">Đóng</button>
+                        </div> -->
+                    </div>
+                </div>
+
+
+
+<!-- Modal bộ lọc món ăn -->
+<div class="filter-modal-overlay" id="filterModal">
+    <div class="filter-modal">
+        <div class="filter-modal-header">
+            <h3>Bộ lọc món ăn</h3>
+            <button class="close-filter-modal">&times;</button>
+        </div>
+        
+        <div class="filter-content">
+            <!-- Calories -->
+            <div class="filter-section">
+                <h4>Calories</h4>
+                <div class="range-slider">
+                    <div class="range-values">
+                        <span>0 kcal</span>
+                        <span>800 kcal</span>
+                    </div>
+                    <input type="range" class="range-input" min="0" max="2000" value="800">
+                </div>
+            </div>
+
+            <!-- Nutrition -->
+            <div class="filter-section">
+                <h4>Dinh dưỡng</h4>
+                <div class="nutrition-inputs">
+                    <div class="nutrition-input">
+                        <label>Tinh bột</label>
+                        <input type="number" value="100" min="0" max="500">
+                        <span class="unit">g</span>
+                    </div>
+                    <div class="nutrition-input">
+                        <label>Đạm</label>
+                        <input type="number" value="20" min="0" max="200">
+                        <span class="unit">g</span>
+                    </div>
+                    <div class="nutrition-input">
+                        <label>Béo</label>
+                        <input type="number" value="20" min="0" max="200">
+                        <span class="unit">g</span>
+                    </div>
+                    <div class="nutrition-input">
+                        <label>Xơ</label>
+                        <input type="number" value="0" min="0" max="100">
+                        <span class="unit">g</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="filter-section">
+                <h4>Danh mục</h4>
+                <div class="filter-options">
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-breakfast" checked>
+                        <label for="cat-breakfast">Bữa sáng</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-lunch" checked>
+                        <label for="cat-lunch">Bữa trưa</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-dinner" checked>
+                        <label for="cat-dinner">Bữa tối</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-snack" checked>
+                        <label for="cat-snack">Bữa phụ</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-modal-footer">
+            <button class="btn-reset">Đặt lại</button>
+            <button class="btn-apply">Áp dụng</button>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </main>
+    </div>
+
+
+
+
+    <!-- Chat Bot (giống mainpage) -->
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            Trợ lý ảo
+            <span style="cursor:pointer" id="closeChat">✖</span>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="message-row bot">
+                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712104.png" class="avatar">
+                <div class="message">Xin chào! Tôi có thể giúp gì cho kế hoạch dinh dưỡng của bạn?</div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Nhập tin nhắn ở đây..." />
+            <button>➤</button>
+        </div>
+    </div>
+
+    <div class="chat-button" id="chatToggle">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <script src="../assets/javascript/script.js"></script>
+    <script src="../assets/javascript/Calories.js"></script>
+</body>
+</html>

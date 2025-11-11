@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập - VHealth</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
+</head>
+<body>
+    <!-- Nút Đăng Nhập trên trang chính -->
+    <button class="login-btn">Đăng Nhập</button>
+
+    <!-- Modal Đăng Nhập -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 class="underline">Đăng Nhập</h2>
+            </div>
+            <div class="modal-body">
+                <form class="login-form">
+                    <div class="form-group">
+                        <label for="loginUsername">Tên Đăng Nhập</label>
+                        <input type="text" id="loginUsername" placeholder="Nhập tên đăng nhập">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">Mật Khẩu</label>
+                        <input type="password" id="loginPassword" placeholder="Nhập mật khẩu">
+                    </div>
+
+                    <div class="form-options">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="rememberMe">
+                            <label for="rememberMe">Ghi nhớ</label>
+                        </div>
+                        <a href="#" class="forgot-password" id="showForgotPassword">Quên Mật Khẩu?</a>
+                    </div>
+
+                    <div class="submit-btn-container">
+                        <button type="submit" class="submit-btn">Đăng nhập</button>
+                    </div>
+
+                    <div class="divider">
+                        <span>Lựa Chọn Khác</span>
+                    </div>
+
+                    <div class="social-login">
+                        <button type="button" class="social-btn google-btn">
+                            <i class="fab fa-google"></i>
+                            Tiếp tục với Google
+                        </button>
+                        <button type="button" class="social-btn facebook-btn">
+                            <i class="fab fa-facebook"></i>
+                            Tiếp tục với Facebook
+                        </button>
+                    </div>
+
+                    <div class="switch-form">
+                        <span>Chưa có tài khoản?</span>
+                        <a href="#" id="showRegister">Đăng ký ngay!</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Đăng Ký Cũ -->
+    <div class="modal" id="registerModalOld">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Đăng Ký</h2>
+            </div>
+            <div class="modal-body">
+                <form class="register-form-old">
+                    <div class="form-group">
+                        <label for="usernameOld">Tên Đăng Nhập</label>
+                        <input type="text" id="usernameOld" placeholder="Nhập tên đăng nhập">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordOld">Mật Khẩu</label>
+                        <input type="password" id="passwordOld" placeholder="Nhập mật khẩu">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPasswordOld">Xác Nhận Mật Khẩu</label>
+                        <input type="password" id="confirmPasswordOld" placeholder="Nhập lại mật khẩu">
+                    </div>
+
+                    <div class="submit-btn-container">
+                        <button type="submit" class="submit-btn">Đăng ký</button>
+                    </div>
+
+                    <div class="divider">
+                        <span>Lựa Chọn Khác</span>
+                    </div>
+
+                    <div class="social-login">
+                        <button type="button" class="social-btn google-btn">
+                            <i class="fab fa-google"></i>
+                            Tiếp tục với Google
+                        </button>
+                        <button type="button" class="social-btn facebook-btn">
+                            <i class="fab fa-facebook"></i>
+                            Tiếp tục với Facebook
+                        </button>
+                    </div>
+
+                    <div class="switch-form">
+                        <span>Đã có tài khoản?</span>
+                        <a href="#" id="showLogin">Đăng nhập</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal Quên Mật Khẩu (ẩn ban đầu) -->
+    <div class="modal" id="forgotPasswordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Đổi Mật Khẩu</h2>
+            </div>
+            <div class="modal-body">
+                <form class="forgot-password-form">
+                    <div class="form-group">
+                        <label for="phoneNumber">Số điện thoại</label>
+                        <input type="text" id="phoneNumber" placeholder="Nhập số điện thoại">
+                        <button type="button" class="send-code-btn">Gửi mã</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newPassword">Mật khẩu mới</label>
+                        <input type="password" id="newPassword" placeholder="Nhập mật khẩu mới">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmNewPassword">Xác nhận mật khẩu mới</label>
+                        <input type="password" id="confirmNewPassword" placeholder="Nhập lại mật khẩu mới">
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="cancel-btn" id="cancelForgotPassword">Hủy</button>
+                        <button type="submit" class="save-btn">Lưu</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+<!-- Modal Chọn Tài Khoản Google (ẩn ban đầu) -->
+<div class="modal" id="googleAccountModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Đăng nhập bằng Google</h2>
+        </div>
+        <div class="modal-body">
+            <div class="google-account-container">
+                <div class="app-brand">
+                    <h3>HEALTH</h3>
+                    <p>Chọn tài khoản để tiếp tục tới VHEALTH</p>
+                </div>
+                
+                <div class="account-list">
+                    <div class="account-item">
+                        <div class="account-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="account-info">
+                            <div class="account-name">Thiết Kế Giao Diện</div>
+                            <div class="account-email">tkgdnduit@gmail.com</div>
+                        </div>
+                    </div>
+                    
+                    <div class="account-item">
+                        <div class="account-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="account-info">
+                            <div class="account-name">Phúc Lê</div>
+                            <div class="account-email">23521199@gmail.edu.vn</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="other-account">
+                    <button type="button" class="other-account-btn">
+                        <i class="fas fa-user-plus"></i>
+                        Sử dụng một tài khoản khác
+                    </button>
+                </div>
+                
+                <div class="policy-notice">
+                    <p>Trước khi sử dụng VHEALTH, bạn có thể xem <a href="#">chính sách quyền riêng tư</a> và <a href="#">điều khoản dịch vụ</a> của ứng dụng này.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Modal Đăng Ký Mới (Theo Bước) -->
+<div class="modal" id="registerModalNew">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Đăng Ký <span class="step-indicator">1/3</span></h2>
+        </div>
+        <div class="modal-body">
+            <!-- Thanh tiến trình -->
+            <div class="progress-bar">
+                <div class="progress-line"></div>
+                <div class="progress-line-fill" id="progressFill"></div>
+                
+                <div class="progress-step active" data-step="1">
+                    <span>1</span>
+                    <div class="step-label">Tài khoản</div>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <span>2</span>
+                    <div class="step-label">Cá nhân</div>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <span>3</span>
+                    <div class="step-label">Sức khỏe</div>
+                </div>
+            </div>
+
+            <!-- Bước 1: Thông tin tài khoản -->
+            <form class="register-form-new step-1 active">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    <h3>Thông tin tài khoản</h3>
+                </div>
+
+                <div class="avatar-section">
+                    <div class="avatar-upload">
+                        <div class="avatar-preview">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <label class="avatar-label">Avatar</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Tên đăng nhập</label>
+                    <input type="text" id="username" placeholder="Nhập tên đăng nhập">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email đăng ký</label>
+                    <input type="email" id="email" placeholder="Nhập email">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Số điện thoại</label>
+                    <div class="phone-input-group">
+                        <input type="tel" id="phone" placeholder="Nhập số điện thoại">
+                        <button type="button" class="send-otp-btn">Gửi mã</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="otp">Mã OTP</label>
+                    <input type="text" id="otp" placeholder="Nhập mã OTP">
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="cancel-btn back-to-simple-btn">Quay lại</button>
+                    <button type="button" class="next-btn">Tiếp tục</button>
+                </div>
+            </form>
+
+            <!-- Bước 2: Thông tin cá nhân -->
+            <form class="register-form-new step-2">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    <h3>Thông tin cá nhân</h3>
+                </div>
+
+                <div class="form-group">
+                    <label for="fullname">Họ và tên</label>
+                    <input type="text" id="fullname" placeholder="Nhập họ và tên">
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Giới tính</label>
+                    <select id="gender">
+                        <option value="">Chọn giới tính</option>
+                        <option value="male">Nam</option>
+                        <option value="female">Nữ</option>
+                        <option value="other">Khác</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Vị trí</label>
+                    <input type="text" id="location" placeholder="Nhập vị trí">
+                </div>
+
+                <div class="form-group">
+                    <label for="bloodType">Nhóm máu</label>
+                    <select id="bloodType">
+                        <option value="">Chọn nhóm máu</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="AB">AB</option>
+                        <option value="O">O</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="height">Chiều cao (cm)</label>
+                    <input type="number" id="height" placeholder="Nhập chiều cao">
+                </div>
+
+                <div class="form-group">
+                    <label for="weight">Cân nặng (kg)</label>
+                    <input type="number" id="weight" placeholder="Nhập cân nặng">
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="prev-btn">Quay lại</button>
+                    <button type="button" class="next-btn">Tiếp tục</button>
+                </div>
+            </form>
+
+            <!-- Bước 3: Thông tin sức khỏe -->
+            <form class="register-form-new step-3">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    <h3>Thông tin sức khỏe</h3>
+                </div>
+
+                <div class="form-group">
+                    <label for="healthInstructions">Hướng dẫn</label>
+                    <textarea id="healthInstructions" placeholder="Nhập hướng dẫn sức khỏe" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="bloodTypeConfirm">Nhóm máu</label>
+                    <select id="bloodTypeConfirm">
+                        <option value="">Chọn nhóm máu</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="AB">AB</option>
+                        <option value="O">O</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="chronicDiseases">Bệnh nền</label>
+                    <textarea id="chronicDiseases" placeholder="Nhập các bệnh nền" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="allergyMedicines">Thuốc dị ứng</label>
+                    <textarea id="allergyMedicines" placeholder="Nhập thuốc dị ứng" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="allergyFoods">Thực phẩm dị ứng</label>
+                    <textarea id="allergyFoods" placeholder="Nhập thực phẩm dị ứng" rows="3"></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="prev-btn">Quay lại</button>
+                    <button type="submit" class="submit-btn">Hoàn thành</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <!-- Liên kết file JavaScript -->
+    <script src="../assets/javascript/login.js"></script>
+</body>
+</html>
