@@ -1,43 +1,65 @@
-// Tải dữ liệu từ file JSON
-fetch("../data/news.json")
-  .then(res => {
-    if (!res.ok) throw new Error("Không thể tải dữ liệu JSON");
-    return res.json();
-  })
-  .then(data => {
-    if (!Array.isArray(data)) throw new Error("Dữ liệu JSON không phải là mảng");
+// Hiển thị danh sách tin tổng hợp từ file news.json
 
-    const grid = document.getElementById("news-grid");
-    grid.innerHTML = ""; // Xóa nội dung cũ
+document.addEventListener("DOMContentLoaded", function () {
+  var grid = document.getElementById("news-grid");
+  if (!grid) return;
 
-    // Sắp xếp tin tức theo ngày giảm dần
-    const sortedNews = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+  // Lấy dữ liệu từ file JSON
+  fetch("../data/news.json")
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      // Sắp xếp tin theo ngày giảm dần (mới nhất lên đầu)
+      data.sort(function (a, b) {
+        return new Date(b.date) - new Date(a.date);
+      });
 
-    sortedNews.forEach((news, index) => {
-      const item = document.createElement("a");
-      item.href = `news-detail.html?id=${news.id}`;
-      item.classList.add("news-item");
+      // Xóa nội dung cũ
+      grid.innerHTML = "";
 
-      // Tin đầu tiên sẽ lớn hơn
-      if (index === 0) item.classList.add("big");
+      // Duyệt từng tin trong danh sách
+      for (var i = 0; i < data.length; i++) {
+        var news = data[i];
 
-      // Sử dụng loading="lazy" cho hình ảnh để tối ưu hiệu năng
-      item.innerHTML = `
-        <div class="news-image">
-          <img src="${news.image}" alt="${news.title}" loading="lazy">
-        </div>
-        <h3>${news.title}</h3>
-        <div class="news-meta">
-          <span class="date">${news.date}</span>
-          <span class="category">${news.category}</span>
-        </div>
-      `;
+        // Tạo thẻ <a> cho mỗi tin
+        var item = document.createElement("a");
+        item.href = "news-detail.html?id=" + news.id;
 
-      grid.appendChild(item);
+        // Tin đầu tiên to hơn
+        if (i === 0) {
+          item.className = "main-news";
+        } else {
+          item.className = "small-news";
+        }
+
+        // Tạo nội dung HTML cho tin
+        item.innerHTML =
+          '<div class="news-img">' +
+          '<img src="' +
+          news.image +
+          '" alt="' +
+          news.title +
+          '" loading="lazy">' +
+          "</div>" +
+          (i === 0
+            ? "<h3>" + news.title + "</h3>"
+            : "<h4>" + news.title + "</h4>") +
+          '<div class="news-meta">' +
+          "<span class='date'>" +
+          news.date +
+          "</span>" +
+          "<span class='category'>" +
+          news.category +
+          "</span>" +
+          "</div>";
+
+        // Thêm tin vào grid
+        grid.appendChild(item);
+      }
+    })
+    .catch(function (err) {
+      console.error("Lỗi:", err);
+      grid.innerHTML = "<p class='error-message'>Không thể tải tin tức.</p>";
     });
-  })
-  .catch(err => {
-    console.error("Lỗi khi tải tin tức:", err);
-    document.getElementById("news-grid").innerHTML =
-      "<p class='error-message'>Không thể tải danh sách tin tức. Vui lòng thử lại sau.</p>";
-  });
+});
