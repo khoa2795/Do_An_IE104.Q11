@@ -25,7 +25,7 @@
             <nav class="menu">
                 <ul>
                     <li class="menu-item">
-                        <a href="./Mainpage.html" class="active">
+                        <a href="./Mainpage.html">
                             <img src="../assets/images/Home/Home.png" alt="Home" class="menu-icon">
                             <span>Trang Chủ</span>
                         </a>
@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="./Calories.html">
+                        <a href="./Calories.html" class="active">
                             <img src="../assets/images/Home/Calories.png" alt="Calories" class="menu-icon">
                             <span>Calories</span>
                         </a>
@@ -87,7 +87,7 @@
                 <h2>Thông tin người dùng</h2>
                 <div class="user-info-content">
                     <div class="user-avatar">
-                    <img src="image/calories/avartar.png" alt="Avatar người dùng">
+                    <img src="../assets/images/Calories/avartar.png" alt="Avatar người dùng">
                     </div>
 
                     <div class="user-details">
@@ -209,7 +209,7 @@
                     <h3>Gần đây</h3>
                     <ul>
                         <li>
-                        <img src="image/broccoli.png" alt="">
+                        <img src="../assets/images/Calories/unsplash_m1t-RJ1iCIU.png" alt="">
                         <div class="food-info">
                             <p>Súp lơ (bông cải) xanh tươi</p>
                             <span>100g, 32kcal</span>
@@ -218,7 +218,7 @@
                         <button class="add-btn">+</button>
                         </li>
                         <li>
-                        <img src="image/egg.png" alt="">
+                        <img src="../assets/images/Calories/Hình trứng gà.png" alt="">
                         <div class="food-info">
                             <p>Trứng gà ta sống</p>
                             <span>100g, 32kcal</span>
@@ -227,9 +227,27 @@
                         <button class="add-btn">+</button>
                         </li>
                         <li>
-                        <img src="image/salad.png" alt="">
+                        <img src="../assets/images/Calories/salad trứng.png" alt="">
                         <div class="food-info">
                             <p>Salad trứng</p>
+                            <span>100g, 32kcal</span>
+                        </div>
+                        <i class="far fa-heart"></i>
+                        <button class="add-btn">+</button>
+                        </li>
+                        <li>
+                        <img src="../assets/images/Calories/redbull.png" alt="">
+                        <div class="food-info">
+                            <p>Hai bò húc cụng nhau</p>
+                            <span>100g, 32kcal</span>
+                        </div>
+                        <i class="far fa-heart"></i>
+                        <button class="add-btn">+</button>
+                        </li>
+                        <li>
+                        <img src="../assets/images/Calories/nước cam.png" alt="">
+                        <div class="food-info">
+                            <p>Nước cam vắt</p>
                             <span>100g, 32kcal</span>
                         </div>
                         <i class="far fa-heart"></i>
@@ -243,7 +261,7 @@
                     <h3>Yêu thích</h3>
                     <ul>
                         <li>
-                        <img src="image/broccoli.png" alt="">
+                        <img src="../assets/images/Calories/unsplash_m1t-RJ1iCIU.png" alt="">
                         <div class="food-info">
                             <p>Súp lơ (bông cải) xanh tươi</p>
                             <span>100g, 32kcal</span>
@@ -252,7 +270,7 @@
                         <button class="add-btn">+</button>
                         </li>
                         <li>
-                        <img src="image/egg.png" alt="">
+                        <img src="../assets/images/Calories/Hình trứng gà.png" alt="">
                         <div class="food-info">
                             <p>Trứng gà ta sống</p>
                             <span>100g, 32kcal</span>
@@ -268,7 +286,7 @@
                     <h3>Của tôi</h3>
                     <ul>
                         <li>
-                        <img src="image/meat.png" alt="">
+                        <img src="../assets/images/Calories/thịt chó nướng.png" alt="">
                         <div class="food-info">
                             <p>Thịt chó nướng ớt chuông</p>
                             <span>100g, 1000kcal</span>
@@ -698,7 +716,7 @@
 
 
 
-                <!-- Modal chú thích chế độ ăn - GIỐNG ẢNH -->
+                <!-- Modal chú thích chế độ ăn-->
                 <div class="diet-modal-overlay" id="dietModal">
                     <div class="diet-modal">
                         <div class="diet-modal-header">
@@ -742,12 +760,9 @@
                                 <p>Thiết kế để hạ huyết áp: ăn nhiều rau, trái cây, ngũ cốc nguyên hạt; hạn chế muối, chất béo bão hòa và đường.</p>
                             </div>
                         </div>
-
-                        <!-- <div class="diet-modal-footer">
-                            <button class="btn-close-diet">Đóng</button>
-                        </div> -->
                     </div>
                 </div>
+
 
 
 
@@ -762,62 +777,53 @@
         <div class="filter-content">
             <!-- Calories -->
             <div class="filter-section">
-                <h4>Calories</h4>
-                <div class="range-slider">
-                    <div class="range-values">
-                        <span>0 kcal</span>
-                        <span>800 kcal</span>
-                    </div>
-                    <input type="range" class="range-input" min="0" max="2000" value="800">
-                </div>
-            </div>
-
-            <!-- Nutrition -->
-            <div class="filter-section">
-                <h4>Dinh dưỡng</h4>
-                <div class="nutrition-inputs">
-                    <div class="nutrition-input">
-                        <label>Tinh bột</label>
-                        <input type="number" value="100" min="0" max="500">
-                        <span class="unit">g</span>
-                    </div>
-                    <div class="nutrition-input">
-                        <label>Đạm</label>
-                        <input type="number" value="20" min="0" max="200">
-                        <span class="unit">g</span>
-                    </div>
-                    <div class="nutrition-input">
-                        <label>Béo</label>
-                        <input type="number" value="20" min="0" max="200">
-                        <span class="unit">g</span>
-                    </div>
-                    <div class="nutrition-input">
-                        <label>Xơ</label>
-                        <input type="number" value="0" min="0" max="100">
-                        <span class="unit">g</span>
+                <div class="filter-item">
+                    <label>Calories</label>
+                    <div class="range-slider" data-max="600" data-unit="kcal">
+                        <input type="range" min="0" max="600" value="100">
+                        <input type="range" min="0" max="600" value="500">
+                        <div class="range-track"></div>
+                        <div class="range-values"></div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Categories -->
-            <div class="filter-section">
-                <h4>Danh mục</h4>
-                <div class="filter-options">
-                    <div class="filter-option">
-                        <input type="checkbox" id="cat-breakfast" checked>
-                        <label for="cat-breakfast">Bữa sáng</label>
+                <div class="filter-item">
+                    <label>Tinh bột</label>
+                    <div class="range-slider" data-max="100" data-unit="g">
+                        <input type="range" min="0" max="100" value="20">
+                        <input type="range" min="0" max="100" value="80">
+                        <div class="range-track"></div>
+                        <div class="range-values"></div>
                     </div>
-                    <div class="filter-option">
-                        <input type="checkbox" id="cat-lunch" checked>
-                        <label for="cat-lunch">Bữa trưa</label>
+                </div>
+
+                <div class="filter-item">
+                    <label>Đạm</label>
+                    <div class="range-slider" data-max="60" data-unit="g">
+                        <input type="range" min="0" max="60" value="20">
+                        <input type="range" min="0" max="60" value="50">
+                        <div class="range-track"></div>
+                        <div class="range-values"></div>
                     </div>
-                    <div class="filter-option">
-                        <input type="checkbox" id="cat-dinner" checked>
-                        <label for="cat-dinner">Bữa tối</label>
+                </div>
+
+                <div class="filter-item">
+                    <label>Béo</label>
+                    <div class="range-slider" data-max="60" data-unit="g">
+                        <input type="range" min="0" max="60" value="10">
+                        <input type="range" min="0" max="60" value="40">
+                        <div class="range-track"></div>
+                        <div class="range-values"></div>
                     </div>
-                    <div class="filter-option">
-                        <input type="checkbox" id="cat-snack" checked>
-                        <label for="cat-snack">Bữa phụ</label>
+                </div>
+
+                <div class="filter-item">
+                    <label>Xơ</label>
+                    <div class="range-slider" data-max="100" data-unit="g">
+                        <input type="range" min="0" max="100" value="30">
+                        <input type="range" min="0" max="100" value="90">
+                        <div class="range-track"></div>
+                        <div class="range-values"></div>
                     </div>
                 </div>
             </div>

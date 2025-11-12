@@ -70,13 +70,6 @@ menuItems.forEach(item => {
     }
 });
 
-// Chat button click handler
-// const chatButton = document.querySelector('.chat-button');
-// chatButton.addEventListener('click', () => {
-//     // Add chat functionality here
-//     console.log('Chat button clicked');
-// });
-
 const chatToggle = document.getElementById('chatToggle');
 const chatBox = document.getElementById('chatBox');
 const closeChat = document.getElementById('closeChat');
@@ -147,40 +140,51 @@ function sendMessage() {
 
 
 
-// ===== Slide-box thứ 2 (auto chạy 3 ảnh/lần giống hero slideshow) =====
-const slideContainer2 = document.querySelector('.slide-container');
-const slides2 = document.querySelectorAll('.slide-item');
+// ===== Slide-box thứ 2 =====
+const slideGroups = document.querySelectorAll('.slide-group');
 const dots2 = document.querySelectorAll('.slide-dots .dot');
 const prev2 = document.querySelector('.prev');
 const next2 = document.querySelector('.next');
 
 let currentGroup = 0;
-const itemsPerGroup = 3;
-const totalGroups = Math.ceil(slides2.length / itemsPerGroup);
+const totalGroups = slideGroups.length;
 let autoSlideTimer2;
 
 function showGroup(index) {
-    // Tính offset theo phần trăm chiều rộng container
-    const offset = -(index * 100);
-    slideContainer2.style.transform = `translateX(${offset}%)`;
-
+    // Ẩn tất cả các nhóm
+    slideGroups.forEach(group => {
+        group.classList.remove('active');
+    });
+    
+    // Hiển thị nhóm hiện tại
+    slideGroups[index].classList.add('active');
+    
+    // Cập nhật dots
     dots2.forEach(dot => dot.classList.remove('active'));
-    if (dots2[index]) dots2[index].classList.add('active');
+    if (dots2[index]) dots2[index].classList.add('actives');
+    
+    // Cập nhật nút điều hướng
+    if (prev2 && next2) {
+        prev2.disabled = index === 0;
+        next2.disabled = index === totalGroups - 1;
+    }
 }
 
-// Chuyển sang nhóm kế tiếp
 function nextGroup() {
-    currentGroup = (currentGroup + 1) % totalGroups;
-    showGroup(currentGroup);
+    if (currentGroup < totalGroups - 1) {
+        currentGroup++;
+        showGroup(currentGroup);
+    }
 }
 
-// Quay lại nhóm trước
 function prevGroup() {
-    currentGroup = (currentGroup - 1 + totalGroups) % totalGroups;
-    showGroup(currentGroup);
+    if (currentGroup > 0) {
+        currentGroup--;
+        showGroup(currentGroup);
+    }
 }
 
-// Gắn sự kiện cho nút
+// Gắn sự kiện
 if (next2 && prev2) {
     next2.addEventListener('click', () => {
         nextGroup();
@@ -192,7 +196,6 @@ if (next2 && prev2) {
     });
 }
 
-// Gắn sự kiện cho chấm điều hướng
 if (dots2.length > 0) {
     dots2.forEach((dot, i) => {
         dot.addEventListener('click', () => {
@@ -203,16 +206,23 @@ if (dots2.length > 0) {
     });
 }
 
-// Tự động chạy slide 5s/lần
 function startAutoSlide2() {
-    autoSlideTimer2 = setInterval(nextGroup, 5000);
+    autoSlideTimer2 = setInterval(() => {
+        if (currentGroup < totalGroups - 1) {
+            nextGroup();
+        } else {
+            currentGroup = 0;
+            showGroup(currentGroup);
+        }
+    }, 5000);
 }
+
 function resetAutoSlide2() {
     clearInterval(autoSlideTimer2);
     startAutoSlide2();
 }
 
-// Khởi tạo slide ban đầu
+// Khởi tạo
 showGroup(0);
 startAutoSlide2();
 
