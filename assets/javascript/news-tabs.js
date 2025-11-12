@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Hàm hiển thị tin theo danh mục
   function showNewsByCategory(category) {
-    fetch("../data/news-tabs.json")
+    fetch("/data/news-tabs.json")
       .then(function (res) {
         return res.json();
       })
@@ -71,7 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
       showNewsByCategory(category);
     });
   }
-
   // Khi vừa load trang → hiển thị tab đầu tiên
   if (tabs.length > 0) {
     tabs[0].classList.add("active");
