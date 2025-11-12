@@ -30,7 +30,7 @@ fetch("../data/news.json")
     document.getElementById("news-content").innerHTML = article.content;
 
     // Hiển thị phần "Tin khác" - giới hạn số lượng tin liên quan
-    const MAX_RELATED = 3;
+    const MAX_RELATED = 4;
     const relatedDiv = document.getElementById("related-grid");
 
     // Lọc và sắp xếp tin liên quan
