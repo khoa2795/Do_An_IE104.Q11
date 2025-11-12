@@ -1,71 +1,80 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Khởi tạo hiển thị tab đầu tiên
-  const firstTab = document.querySelector('.category-tabs .tab');
-  if (firstTab) {
-    firstTab.classList.add('active');
-    showNewsByCategory(firstTab.dataset.category);
-  }
+// Hiển thị tin tức theo từng danh mục (category)
 
-  // Xử lý sự kiện click tab
-  document.querySelectorAll('.category-tabs .tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Xóa active class từ tất cả tabs
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      
-      // Thêm active class cho tab được click
-      tab.classList.add('active');
-      
-      // Hiển thị tin tức theo category
-      const category = tab.dataset.category;
-      showNewsByCategory(category);
-    });
-  });
-});
+document.addEventListener("DOMContentLoaded", function () {
+  var tabs = document.querySelectorAll(".category-tabs .tab");
+  var newsGrid = document.getElementById("news-grid");
+  if (!tabs.length || !newsGrid) return;
 
-function showNewsByCategory(category) {
-  fetch("../data/news.json")
-    .then(res => res.json())
-    .then(data => {
-      const newsGrid = document.getElementById('news-grid');
-      newsGrid.innerHTML = '';
-
-      // Chỉ lấy tin tức có category khác "Y tế" và trùng với category được chọn
-      const filteredNews = data.filter(news => 
-        news.category === category && 
-        news.category !== "Y tế"
-      );
-
-      if (filteredNews.length === 0) {
-        newsGrid.innerHTML = '<p class="no-news">Không có tin tức trong mục này</p>';
-        return;
-      }
-
-      // Sắp xếp tin tức theo ngày giảm dần nếu có ngày
-      const sortedNews = filteredNews
-        .sort((a, b) => {
-          if (a.date && b.date) {
-            return new Date(b.date) - new Date(a.date);
-          }
-          return 0;
+  // Hàm hiển thị tin theo danh mục
+  function showNewsByCategory(category) {
+    fetch("../data/news-tabs.json")
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        // Lọc tin theo category
+        var filtered = data.filter(function (item) {
+          return item.category === category;
         });
 
-      // Hiển thị tin tức đã lọc
-      sortedNews.forEach(news => {
-        const newsCard = document.createElement('div');
-        newsCard.className = 'news-card';
-        newsCard.innerHTML = `
-          <a href="news-detail.html?id=${news.id}">
-            <img src="${news.image}" alt="${news.title}" class="news-thumb" loading="lazy">
-            <h3 class="news-title">${news.title}</h3>
-            ${news.date ? `<div class="news-meta">${news.date}</div>` : ''}
-          </a>
-        `;
-        newsGrid.appendChild(newsCard);
+        // Xóa nội dung cũ
+        newsGrid.innerHTML = "";
+
+        // Nếu không có tin
+        if (filtered.length === 0) {
+          newsGrid.innerHTML =
+            "<p class='no-news'>Không có tin trong mục này</p>";
+          return;
+        }
+
+        // Hiển thị tin theo danh mục
+        for (var i = 0; i < filtered.length; i++) {
+          var news = filtered[i];
+          var card = document.createElement("div");
+          card.className = "news-card";
+          card.innerHTML =
+            '<a href="news-detail.html?id=' +
+            news.id +
+            '">' +
+            '<img src="' +
+            news.image +
+            '" alt="' +
+            news.title +
+            '" class="news-thumb" loading="lazy">' +
+            "<h3 class='news-title'>" +
+            news.title +
+            "</h3>" +
+            "</a>";
+          newsGrid.appendChild(card);
+        }
+      })
+      .catch(function (err) {
+        console.error("Lỗi:", err);
+        newsGrid.innerHTML =
+          "<p class='error-message'>Không thể tải dữ liệu.</p>";
       });
-    })
-    .catch(err => {
-      console.error('Lỗi:', err);
-      document.getElementById('news-grid').innerHTML = 
-        '<p class="error-message">Không thể tải tin tức. Vui lòng thử lại sau.</p>';
+  }
+
+  // Khi click vào tab
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener("click", function () {
+      // Xóa class active ở tất cả tab
+      for (var j = 0; j < tabs.length; j++) {
+        tabs[j].classList.remove("active");
+      }
+
+      // Thêm class active cho tab hiện tại
+      this.classList.add("active");
+
+      // Hiển thị tin của category tương ứng
+      var category = this.getAttribute("data-category");
+      showNewsByCategory(category);
     });
-}
+  }
+
+  // Khi vừa load trang → hiển thị tab đầu tiên
+  if (tabs.length > 0) {
+    tabs[0].classList.add("active");
+    showNewsByCategory(tabs[0].getAttribute("data-category"));
+  }
+});

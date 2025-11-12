@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Những thực phẩm cần lưu ý với trẻ lứa tuổi học đường",
+    "category": "Thực phẩm",
+    "image": "/assets/images/category/Thucpham/Thucpham1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "4 loại thực phẩm giàu hợp chất chống oxy hóa bảo vệ mạch máu",
+    "category": "Thực phẩm",
+    "image": "/assets/images/category/Thucpham/Thucpham2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "7 nguồn thực phẩm giàu protein hàng đầu giúp giảm cân và tốt cho tim",
+    "category": "Thực phẩm",
+    "image": "/assets/images/category/Thucpham/Thucpham3.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Những thực phẩm cần lưu ý với trẻ lứa tuổi học đường",
+    "category": "Thực phẩm",
+    "image": "/assets/images/category/Thucpham/Thucpham1.jpg"
+  },
+  {
+    "id": 5,
+    "title": "4 loại thực phẩm giàu hợp chất chống oxy hóa bảo vệ mạch máu",
+    "category": "Thực phẩm",
+    "image": "/assets/images/category/Thucpham/Thucpham2.jpg"
+  },
+  {
+    "id": 6,
+    "title": "7 nguồn thực phẩm giàu protein hàng đầu giúp giảm cân và tốt cho tim",
+    "category": "Thực phẩm",
+    "image": "/assets/images/category/Thucpham/Thucpham3.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Dược phẩm An Khang cùng loạt cơ sở dược, mỹ phẩm tại TPHCM bị phạt",
+    "category": "Dược phẩm",
+    "image": "/assets/images/category/Duocpham/Duocpham1.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Cổ phiếu VMD của Dược phẩm Vimedimex bị đình chỉ giao dịch",
+    "category": "Dược phẩm",
+    "image": "/assets/images/category/Duocpham/Duocpham2.jpg"
+  },
+  {
+    "id": 9,
+    "title": "8 phương pháp biến hạt tiêu thành dược phẩm tốt cho sức khỏe",
+    "category": "Dược phẩm",
+    "image": "/assets/images/category/Duocpham/Duocpham3.jpg"
+  },
+  {
+    "id": 10,
+    "title": "Dược phẩm An Khang cùng loạt cơ sở dược, mỹ phẩm tại TPHCM bị phạt",
+    "category": "Dược phẩm",
+    "image": "/assets/images/category/Duocpham/Duocpham1.jpg"
+  },
+  {
+    "id": 11,
+    "title": "Cổ phiếu VMD của Dược phẩm Vimedimex bị đình chỉ giao dịch",
+    "category": "Dược phẩm",
+    "image": "/assets/images/category/Duocpham/Duocpham2.jpg"
+  },
+  {
+    "id": 12,
+    "title": "8 phương pháp biến hạt tiêu thành dược phẩm tốt cho sức khỏe",
+    "category": "Dược phẩm",
+    "image": "/assets/images/category/Duocpham/Duocpham3.jpg"
+  }
+]
