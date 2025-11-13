@@ -19,21 +19,21 @@
   },
   {
     "id": 4,
-    "title": "Những thực phẩm cần lưu ý với trẻ lứa tuổi học đường",
+    "title": "Cảnh giác với thực phẩm nhiễm vi khuẩn Salmonella tại cơ sở kinh doanh vỉa hè",
     "category": "Thực phẩm",
-    "image": "/assets/images/category/Thucpham/Thucpham1.jpg"
+    "image": "/assets/images/category/Thucpham/Thucpham4.jpg"
   },
   {
     "id": 5,
-    "title": "4 loại thực phẩm giàu hợp chất chống oxy hóa bảo vệ mạch máu",
+    "title": "Bộ Y tế vào cuộc vụ công nhân nhập viện nghi do ngộ độc thực phẩm tại Huế",
     "category": "Thực phẩm",
-    "image": "/assets/images/category/Thucpham/Thucpham2.jpg"
+    "image": "/assets/images/category/Thucpham/Thucpham5.jpg"
   },
   {
     "id": 6,
-    "title": "7 nguồn thực phẩm giàu protein hàng đầu giúp giảm cân và tốt cho tim",
+    "title": "10 thực phẩm giúp tăng cường trí nhớ và duy trì sự minh mẫn cho não bộ",
     "category": "Thực phẩm",
-    "image": "/assets/images/category/Thucpham/Thucpham3.jpg"
+    "image": "/assets/images/category/Thucpham/Thucpham6.jpg"
   },
   {
     "id": 7,
@@ -55,20 +55,92 @@
   },
   {
     "id": 10,
-    "title": "Dược phẩm An Khang cùng loạt cơ sở dược, mỹ phẩm tại TPHCM bị phạt",
+    "title": "Dược phẩm Thái Minh và hành trình 7 năm 'miễn nhiễm' với hàng giả",
     "category": "Dược phẩm",
-    "image": "/assets/images/category/Duocpham/Duocpham1.jpg"
+    "image": "/assets/images/category/Duocpham/Duocpham4.jpg"
   },
   {
     "id": 11,
-    "title": "Cổ phiếu VMD của Dược phẩm Vimedimex bị đình chỉ giao dịch",
+    "title": "Bộ Y tế: Xử lý vi phạm của Ngân 98, Ngân Collagen, Dược phẩm Hoàng Hường",
     "category": "Dược phẩm",
-    "image": "/assets/images/category/Duocpham/Duocpham2.jpg"
+    "image": "/assets/images/category/Duocpham/Duocpham5.jpg"
   },
   {
     "id": 12,
-    "title": "8 phương pháp biến hạt tiêu thành dược phẩm tốt cho sức khỏe",
+    "title": "Doanh nghiệp ngoại mua gần 65% vốn Công ty CP Dược phẩm Imexpharm",
     "category": "Dược phẩm",
-    "image": "/assets/images/category/Duocpham/Duocpham3.jpg"
+    "image": "/assets/images/category/Duocpham/Duocpham6.jpg"
+  },
+  {
+    "id": 13,
+    "title": "Dứa và Tre trong y học cổ truyền và tiềm năng ứng dụng trong y học hiện đại",
+    "category": "Y học cổ truyền",
+    "image": "/assets/images/category/YhocCT/Yhoc1.jpg"
+  },
+  {
+    "id": 14,
+    "title": "Bệnh viện y học cổ truyền đầu tiên của Việt Nam đạt chứng nhận ISO 15189:2022",
+    "category": "Y học cổ truyền",
+    "image": "/assets/images/category/YhocCT/Yhoc2.jpg"
+  },
+  {
+    "id": 15,
+    "title": "Hoàn thiện cơ chế, chính sách đào tạo nguồn nhân lực y học cổ truyền chuyên sâu, chất lượng cao",
+    "category": "Y học cổ truyền",
+    "image": "/assets/images/category/YhocCT/Yhoc3.jpg"
+  },
+  {
+    "id": 16,
+    "title": "Y học cổ truyền ngày càng chứng minh được vị trí: Làm gì để tiếp tục bảo tồn và phát huy?",
+    "category": "Y học cổ truyền",
+    "image": "/assets/images/category/YhocCT/Yhoc4.jpg"
+  },
+  {
+    "id": 17,
+    "title": "Kết nối Y học cổ truyền với du lịch sức khỏe: Mảnh ghép còn thiếu trong phát triển vùng và chính sách quốc gia",
+    "category": "Y học cổ truyền",
+    "image": "/assets/images/category/YhocCT/Yhoc5.jpg"
+  },
+  {
+    "id": 18,
+    "title": "Y học cổ truyền hồi sinh từ núi rừng Tây Bắc",
+    "category": "Y học cổ truyền",
+    "image": "/assets/images/category/YhocCT/Yhoc6.jpg"
+  },
+  {
+    "id": 19,
+    "title": "Cập nhật những tiến bộ, ứng dụng AI và công nghệ sinh học trong Nam học và Y học Giới tính",
+    "category": "Giới tính",
+    "image": "/assets/images/category/Gender/GT1.jpg"
+  },
+  {
+    "id": 20,
+    "title": "Ngành y tế TP Huế: Nỗ lực giữ vững tỷ suất sinh, kiểm soát tốt mất cân bằng giới tính khi sinh",
+    "category": "Giới tính",
+    "image": "/assets/images/category/Gender/GT2.jpg"
+  },
+  {
+    "id": 21,
+    "title": "Xem phim 'Sex education', tôi đã biết giáo dục giới tính đúng đắn là bệ đỡ cần thiết để con tôi thực hiện điều đó thật an toàn",
+    "category": "Giới tính",
+    "image": "/assets/images/category/Gender/GT3.jpg"
+  },
+  {
+    "id": 22,
+    "title": "Bộ Y tế đề xuất có thể phạt 100 triệu đồng nếu chọn giới tính thai nhi",
+    "category": "Giới tính",
+    "image": "/assets/images/category/Gender/GT4.jpg"
+  },
+  {
+    "id": 23,
+    "title": "Chi tiết tỷ số giới tính khi sinh ở các tỉnh, thành nước ta và nỗ lực đưa về mức cân bằng tự nhiên",
+    "category": "Giới tính",
+    "image": "/assets/images/category/Gender/GT5.jpg"
+  },
+  {
+    "id": 24,
+    "title": "Mất cân bằng giới tính khi sinh tại Việt Nam đang ở mức nào?",
+    "category": "Giới tính",
+    "image": "/assets/images/category/Gender/GT6.jpg"
   }
 ]
