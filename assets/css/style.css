@@ -44,7 +44,7 @@ body {
 }
 
 .logo-icon {
-    width: 40px;
+    width: 60px;
     height: 40px;
 }
 
@@ -97,12 +97,26 @@ body {
     height: 24px;
 }
 
+.menu-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.menu-logo img {
+    width: 100px;
+    height: auto;
+}
+
 /* Main Content Styles */
 .main-content {
     flex: 1;
     margin-left: var(--sidebar-width);
     position: relative;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .content-header {
@@ -164,11 +178,12 @@ body {
 
 /* Hero Section */
 .hero-section {
-    padding: calc(var(--header-height) + 20px) 20px 20px;
+    padding-top: calc(var(--header-height) + 20px);
     position: relative;
     height: 100vh;
     color: white;
     overflow: hidden;
+    flex-shrink: 0; /* Không cho co lại */
 }
 
 .slideshow {
@@ -260,27 +275,55 @@ body {
     margin: 0 auto;
 }
 
-.slide-indicators {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
+/* Content Section - Phần nội dung chính sau slideshow */
+.content-section {
+    padding: 60px 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    flex: 1; /* Chiếm không gian còn lại */
 }
 
-.slide-indicators span {
-    width: 8px;
-    height: 8px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.slide-indicators span.active {
-    background-color: white;
-    width: 24px;
-    border-radius: 4px;
+.content-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.content-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.content-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.content-card p {
+    color: #666;
+    line-height: 1.6;
 }
 
 .chat-button {
@@ -298,6 +341,7 @@ body {
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     transition: transform 0.3s;
+    z-index: 9999;
 }
 
 .chat-button:hover {
@@ -323,4 +367,549 @@ body {
 
 .login-btn:hover {
     opacity: 0.9;
+}
+
+/* CHAT BOX */
+.chat-box {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 360px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9998;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* HEADER */
+.chat-header {
+    background: #dff3e6;
+    color: black;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+/* BODY */
+.chat-body {
+    padding: 12px;
+    height: 280px;
+    overflow-y: auto;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* --- Message Rows --- */
+.message-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 8px;
+    max-width: 85%;
+}
+
+/* BOT: avatar trái, bong bóng phải */
+.message-row.bot {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: flex-start;
+}
+
+/* USER: avatar phải, bong bóng trái */
+.message-row.user {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-self: flex-end;
+}
+
+/* --- Avatar --- */
+.message-row .avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* --- Bubble --- */
+.message {
+    padding: 10px 14px;
+    border-radius: 16px;
+    line-height: 1.4;
+    font-size: 14px;
+    color: #222;
+    background: #e8f5e9;
+    position: relative;
+    max-width: 240px;
+}
+
+/* BOT bubble: bên trái, đuôi lệch phải */
+.bot .message {
+    background-color: #e8f5e9;
+    border-top-left-radius: 4px;
+}
+
+.bot .message::after {
+    content: "";
+    position: absolute;
+    left: -6px;
+    bottom: 0;
+    width: 12px;
+    height: 12px;
+    background: #e8f5e9;
+    border-bottom-right-radius: 12px;
+}
+
+/* USER bubble: bên phải, đuôi lệch trái */
+.user .message {
+    background-color: #d2f2ff;
+    border-top-right-radius: 4px;
+}
+
+.user .message::after {
+    content: "";
+    position: absolute;
+    right: -6px;
+    bottom: 0;
+    width: 12px;
+    height: 12px;
+    background: #d2f2ff;
+    border-bottom-left-radius: 12px;
+}
+
+/* INPUT */
+.chat-input {
+    border-top: 1px solid #eee;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    background: #fff;
+}
+.chat-input input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: #f5f5f5;
+}
+.chat-input button {
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-left: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.chat-input button:hover { opacity: 0.9; }
+
+/* ===== PHẦN FOOTER ===== */
+.footer {
+    background: linear-gradient(135deg, #2f8f46 0%, #4f9b50 100%);
+    color: white;
+    padding: 40px 0 20px;
+    margin-top: auto; /* Đẩy footer xuống dưới cùng */
+    width: 100%;
+    flex-shrink: 0; /* Không cho co lại */
+}
+
+.footer-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.footer-section p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #e8f5e9;
+}
+
+/* Phần mạng xã hội - THỤT VÀO */
+.social-media {
+    margin-top: 20px;
+    padding-left: 40px;
+    max-width: 100%; 
+}
+
+.social-media h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #fff;
+    font-weight: 500;
+    text-align: left;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Màu sắc cụ thể cho từng mạng xã hội */
+.social-icon.facebook:hover {
+    background: #1877f2;
+    border-color: #1877f2;
+}
+
+.social-icon.instagram:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    border-color: transparent;
+}
+
+.social-icon.twitter:hover {
+    background: #1da1f2;
+    border-color: #1da1f2;
+}
+
+.social-icon.youtube:hover {
+    background: #ff0000;
+    border-color: #ff0000;
+}
+
+.social-icon.tiktok:hover {
+    background: #000000;
+    border-color: #000000;
+}
+
+.social-icon.linkedin:hover {
+    background: #0077b5;
+    border-color: #0077b5;
+}
+
+.social-icon i {
+    font-size: 16px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #e8f5e9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 30px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #e8f5e9;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 20px;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .social-media {
+        text-align: center;
+        padding-left: 0;
+    }
+    
+    .social-media h4 {
+        text-align: center;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+    
+    .social-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .social-icon i {
+        font-size: 14px;
+    }
+    
+    .content-section {
+        padding: 40px 15px;
+    }
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 0 15px;
+    }
+    
+    .social-icons {
+        gap: 8px;
+    }
+    
+    .social-icon {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .content-section {
+        padding: 30px 10px;
+    }
+    
+    .content-card {
+        padding: 20px;
+    }
+}
+
+/* ===== Slide-box thứ 2 (phía dưới hero-section) - ĐÃ SỬA ===== */
+.slide-box {
+    background-color: #fefefe;
+    padding: 40px 20px;
+    margin: 20px;
+    color: rgb(19, 18, 18);
+    text-align: center;
+    border: 1px solid #ddd;
+    position: relative;
+    overflow: hidden; /* Ẩn các item vượt ra ngoài */
+}
+
+/* ===== Slide-box thứ 2 ===== */
+.slide-box {
+    background-color: #fefefe;
+    padding: 40px 20px;
+    margin: 20px;
+    color: rgb(19, 18, 18);
+    text-align: center;
+    border: 1px solid #ddd;
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+}
+
+/* Container chứa các nhóm slide */
+.slide-container {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1200px; /* Tăng max-width để chứa 4 ảnh */
+    height: 220px;
+}
+
+/* Mỗi nhóm 4 ảnh - ĐÃ SỬA */
+.slide-group {
+    display: flex;
+    gap: 12px; /* Giảm gap một chút để vừa 4 ảnh */
+    justify-content: center;
+    align-items: stretch;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+    padding: 0 10px; /* Thêm padding hai bên */
+}
+
+.slide-group.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mỗi item ảnh */
+.slide-item {
+    background: linear-gradient(135deg, #2f8f46 0%, #4f9b50 100%);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    flex: 0 0 calc(25% - 9px); /* 4 ảnh: 100% / 4 = 25% */
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.slide-item:hover {
+    transform: translateY(-4px);
+}
+
+.slide-item img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.slide-item p {
+    font-size: 14px;
+    padding: 10px 6px; /* Giảm padding để vừa chữ */
+    text-align: center;
+    color: #000000;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.3; /* Giảm line-height một chút */
+    min-height: 40px; /* Đảm bảo chiều cao tối thiểu */
+}
+
+/* Phần điều hướng */
+.slide-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+    padding: 15px;
+}
+
+.slide-nav button {
+    background: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-nav button:hover:not(:disabled) {
+    background: #3d8b40;
+    transform: scale(1.1);
+}
+
+.slide-nav button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.5;
+}
+
+.slide-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.slide-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.slide-dots .dot.active {
+    background: #4CAF50;
+    width: 24px;
+    border-radius: 6px;
+}
+
+.slide-dots .dot:hover:not(.active) {
+    background: #bbb;
+    transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .slide-container {
+        max-width: 900px;
+    }
+    .slide-item {
+        flex: 0 0 calc(25% - 9px); /* Vẫn giữ 4 ảnh trên tablet lớn */
+    }
+}
+
+@media (max-width: 768px) {
+    .slide-container {
+        max-width: 100%;
+        height: 400px;
+    }
+    .slide-item {
+        flex: 0 0 calc(50% - 6px); /* 2 ảnh/lần trên tablet */
+    }
+    .slide-group {
+        gap: 8px;
+        padding: 0 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-container {
+        height: 600px;
+    }
+    .slide-item {
+        flex: 0 0 100%; /* 1 ảnh/lần trên mobile nhỏ */
+    }
+    .slide-item p {
+        font-size: 13px;
+        padding: 8px 4px;
+    }
 }

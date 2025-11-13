@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VHealth - Sống khỏe chủ động</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo-section">
-                <img src="https://via.placeholder.com/40x40" alt="VHealth Logo" class="logo-icon">
+                <img src="../assets/images/Home/logo.png" alt="VHealth Logo" class="logo-icon">
                 <div class="logo-text">
                     <h1>VHealth</h1>
                     <p>Sống khỏe chủ động</p>
@@ -22,32 +22,32 @@
             <nav class="menu">
                 <ul>
                     <li class="menu-item">
-                        <a href="#" class="active">
-                            <img src="https://via.placeholder.com/24x24" alt="Home" class="menu-icon">
+                        <a href="Mainpage.html" class="active">
+                            <img src="../assets/images/Home/Home.png" alt="Home" class="menu-icon">
                             <span>Trang Chủ</span>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#">
-                            <img src="https://via.placeholder.com/24x24" alt="News" class="menu-icon">
+                        <a href="news-detail.html">
+                            <img src="../assets/images/Home/New.png" alt="News" class="menu-icon">
                             <span>Tin Tức</span>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#">
-                            <img src="https://via.placeholder.com/24x24" alt="Calories" class="menu-icon">
+                        <a href="Calories.html">
+                            <img src="../assets/images/Home/Calories.png" alt="Calories" class="menu-icon">
                             <span>Calories</span>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#">
-                            <img src="https://via.placeholder.com/24x24" alt="Health" class="menu-icon">
+                        <a href="Health.html">
+                            <img src="../assets/images/Home/Health.png" alt="Health" class="menu-icon">
                             <span>Sức Khỏe</span>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#">
-                            <img src="https://via.placeholder.com/24x24" alt="Community" class="menu-icon">
+                        <a href="CongDong.html">
+                            <img src="../assets/images/Home/Community.png" alt="Community" class="menu-icon">
                             <span>Cộng Đồng</span>
                         </a>
                     </li>
@@ -81,28 +81,28 @@
             <div class="hero-section">
                 <div class="slideshow">
                     <div class="slide active">
-                        <img src="https://images.unsplash.com/photo-1584308878768-57d3162cebe7?auto=format&fit=crop&q=80" alt="Sống khỏe mỗi ngày">
+                        <img src="../assets/images/Home/Variant1.png" alt="Sống khỏe mỗi ngày">
                         <div class="slide-content">
                             <h2>Sống khỏe mỗi ngày</h2>
                             <p>Khám phá bí quyết sống khỏe cùng VHealth</p>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80" alt="Tập luyện thể thao">
+                        <img src="../assets/images/Home/Variant2.png" alt="Tập luyện thể thao">
                         <div class="slide-content">
                             <h2>Tập luyện thể thao</h2>
                             <p>Giữ gìn sức khỏe qua vận động mỗi ngày</p>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?auto=format&fit=crop&q=80" alt="Dinh dưỡng hợp lý">
+                        <img src="../assets/images/Home/Variant3.png" alt="Dinh dưỡng hợp lý">
                         <div class="slide-content">
                             <h2>Dinh dưỡng hợp lý</h2>
                             <p>Chế độ ăn uống khoa học và cân bằng</p>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80" alt="Tư vấn sức khỏe">
+                        <img src="../assets/images/Home/Variant4.png" alt="Tư vấn sức khỏe">
                         <div class="slide-content">
                             <h2>Tư vấn sức khỏe</h2>
                             <p>Đội ngũ chuyên gia luôn sẵn sàng hỗ trợ</p>
@@ -117,12 +117,154 @@
                     </div>
                 </div>
 
-                <div class="chat-button">
+
+
+                <!-- Chat Bot -->
+                <div class="chat-box" id="chatBox">
+                <div class="chat-header">
+                    <img src="image/logo-health.png" alt="VHealth Logo" class="logo-icon">
+                    Trợ lý ảo
+                    <span style="cursor:pointer" id="closeChat">✖</span>
+                </div>
+                <div class="chat-body" id="chatBody">
+                <div class="message-row bot">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712104.png" class="avatar">
+                    <div class="message">Hello. Tôi có thể giúp gì bạn</div>
+                </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="Nhập tin nhắn ở đây..." />
+                    <button>➤</button>
+                </div>
+                </div>
+
+                <div class="chat-button" id="chatToggle">
                     <i class="fas fa-comment-dots"></i>
                 </div>
             </div>
+
+            <section class="slide-box">
+                <div class="slide-container">
+                    <!-- Nhóm 1 -->
+                    <div class="slide-group active">
+                        <div class="slide-item">
+                            <img src="../assets/images/Home/Anh3.png" alt="Chế độ dinh dưỡng cho bệnh sỏi">
+                            <p>10 lưu ý về chế độ dinh dưỡng cho bệnh sỏi</p>
+                        </div>
+                        <div class="slide-item">
+                            <img src="../assets/images/Home/Anh4.png" alt="Protein cho người hoạt động thể lực">
+                            <p>Nhu cầu protein đối với người hoạt động thể lực</p>
+                        </div>
+                        <div class="slide-item">
+                            <img src="../assets/images/Home/Anh2.png" alt="Trẻ nhỏ ăn gì để phòng ngừa táo bón">
+                            <p>Những loại củ quả trẻ nên ăn để phòng ngừa táo bón</p>
+                        </div>
+                        <div class="slide-item">
+                            <img src="../assets/images/Home/Anh7.png" alt="Dinh dưỡng cho người cao tuổi">
+                            <p>Dinh dưỡng hợp lý cho người cao tuổi</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Nhóm 2 -->
+                    <div class="slide-group">
+                        <div class="slide-item">
+                            <img src="../assets/images/Home/Anh5.png" alt="Chế độ dinh dưỡng cho người tập thể lực">
+                            <p>Chế độ dinh dưỡng cho người tập thể lực</p>
+                        </div>
+                        <div class="slide-item">
+                            <img src="../assets/images/Home/Anh1.png" alt="Muối và sức khỏe người lao động nặng">
+                            <p>Muối và sức khỏe người lao động nặng</p>
+                        </div>
+                        <div class="slide-item">
+                            <img src="../assets/images/Home/Anh6.png" alt="Thư giãn sau buổi tập">
+                            <p>Thư giãn sau buổi tập</p>
+                        </div>
+                        <div class="slide-item">
+                            <img src="../assets/images/Home/Anh8.png" alt="Uống nước đúng cách">
+                            <p>Uống nước đúng cách cho sức khỏe</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-nav">
+                    <button class="prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slide-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-container">
+                    <div class="footer-section">
+                        <h3>Về VHEALTH</h3>
+                        <p>Nền tảng theo dõi sức khỏe, calories và chia sẻ kiến thức sống khỏe mỗi ngày.</p>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3>Quan tâm</h3>
+                        <ul>
+                            <li><a href="#">Giới thiệu nền tảng</a></li>
+                            <li><a href="#">Tuyển Dụng</a></li>
+                            <li><a href="#">Quảng Cáo</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3>Cộng Đồng</h3>
+                        <ul>
+                            <li><a href="#">Câu Chuyện Người Dùng</a></li>
+                            <li><a href="#">Thử Thách Sống Khỏe 7 Ngày</a></li>
+                            <li><a href="#">Nhóm Facebook Hỗ Trợ</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3>Trợ Giúp</h3>
+                        <ul>
+                            <li><a href="#">Hỏi & Đáp</a></li>
+                            <li><a href="#">Hướng Dẫn Sử Dụng</a></li>
+                            <li><a href="#">Điều Khoản Sử Dụng</a></li>
+                            <li><a href="#">Chính Sách Bảo Mật</a></li>
+                            <li><a href="#">Liên Hệ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Phần icon mạng xã hội -->
+                <div class="social-media">
+                    <h4>Kết nối với chúng tôi</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-icon tiktok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="#" class="social-icon linkedin">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>© 2025 VHEALTH. Tất cả quyền được bảo lưu. | Email: tiegdnduit@gmail.com</p>
+                </div>
+            </footer>
+            </div>
         </main>
     </div>
-    <script src="script.js"></script>
+    <script src="../assets/javascript/script.js"></script>
 </body>
 </html>
