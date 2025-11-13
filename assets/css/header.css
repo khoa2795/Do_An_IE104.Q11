@@ -1,78 +1,132 @@
-.header{
-  background-color: #d9f2df;
-  height: 80px;
+:root {
+  --header-height: 100px; /* chỉnh chiều cao header tại đây */
+}
+
+.search-wrapper{
+  position: relative;
+  width: 700px;
+  max-width: 70%;
   display: flex;
   align-items: center;
+}
 
+.header{
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  z-index: 1000; /* đảm bảo nằm trên nội dung */
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  padding: 0 20px;
+  background: #d9f2df;
+  box-sizing: border-box;
 }
 
+/* Logo: giới hạn bằng chiều cao header, giữ tỉ lệ */
 .logoheath{
-  height: 70px;
+  max-height: calc(var(--header-height) - 20px);
+  height: auto;
+  width: auto;
   margin-left: 12px;
   margin-right: 10px;
+  display: block;
 }
 
+/* ĐẢM BẢO LOGO NHẤT QUÁN TRÊN MỌI TRANG */
+.header .logoheath,
+.header .logoheath img,
+.header .menu-logo img {
+  /* chiều cao tối đa dựa trên header, giữ tỉ lệ */
+  height: calc(var(--header-height, 100px) - 20px);
+  max-height: calc(var(--header-height, 100px) - 12px);
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* nhỏ hơn trên màn nhỏ */
+@media (max-width: 900px) {
+  .header .logoheath,
+  .header .menu-logo img {
+    height: calc(var(--header-height, 80px) - 28px);
+    max-height: calc(var(--header-height, 80px) - 18px);
+  }
+}
+
+/* nếu có rule khác chồng lên (ghi đè cuối file), dùng !important khi cần */
+/* .header .menu-logo img { height: calc(var(--header-height) - 20px) !important; } */
+
 .left-section{
-  height: 65px;
+  height: calc(var(--header-height) - 20px);
   display: flex;
   align-items: center;
   background-color: white;
   border-radius: 40px;
   margin-left: 10px;
-
-  padding-right: 10px;
+  padding: 6px 10px;
 }
+
 
 .center-section{
   flex: 1;
   display: flex;
   align-items: center;
-  margin-left: 18px;
+  margin-left: 30px;
+  gap: 16px;
 }
 
 .page-title{
-  width: 580px;
-  font-family: Arial;
+  max-width: 46%;
+  font-family: Arial, sans-serif;
   color: darkgreen;
-  font-size: 39px;
+  font-size: 35px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.search-icon{
-  height: 32px;
-  cursor: pointer;
-  padding-top: 3px;
+/* Tinh chỉnh kích thước các control để phù hợp header cao hơn */
+.search-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
 }
 
 .search-button{
-  background-color: white;
-  width: 50px;
-  height: 40px;
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   border: none;
-  border-radius: 25px;
-  margin-left: -50px;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  padding: 0;
 }
 .search-bar{
   flex: 1;
-  height: 40px;
-  border: none;
-  border-radius: 25px;
-  margin-left: 10px;
-  padding-left: 20px;
-}
-
-.search-bar::placeholder{
+  height: 54px;
+  padding: 8px 44px 8px 18px; /* chừa chỗ bên phải cho nút */
+  border-radius: 24px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: #fff;
   font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
 }
 
+/* Right controls giữ khoảng cách hợp lý */
 .right-section{
-  width: 90px;
-  margin-left: 18px;
+  width: 110px;
+  margin-left: 8px;
   margin-right: 18px;
   display: flex;
   align-items: center;
@@ -80,29 +134,30 @@
   flex-shrink: 0;
 }
 
-.darkmode-icon{
-  height: 26px;
-}
-
-.darkmode-button{
-  width: 40px;
-  height: 40px;
-  background-color: white;
-  border: none;
-  border-radius: 20px;
+.darkmode-button,
+.bell-button {
+  width: 44px;
+  height: 44px;
+  padding: 6px;
+  border-radius: 50%;                /* hình tròn */
+  border: 1px solid rgba(0,0,0,0.12);/* giữ viền nhẹ */
+  background: #ffffff;               /* nền trắng */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
-.bell-icon{
-  height: 26px;
+.darkmode-icon, .bell-icon{
+  outline: none;
+  box-shadow: none;
+  height: 30px;
 }
 
-.bell-button{
-  width: 40px;
-  height: 40px;
-  background-color: white;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
+.search-bar::-webkit-search-decoration,
+.search-bar::-webkit-search-cancel-button,
+.search-bar::-webkit-search-results-button,
+.search-bar::-webkit-search-results-decoration {
+  -webkit-appearance: none;
 }
-

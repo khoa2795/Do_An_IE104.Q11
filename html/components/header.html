@@ -18,10 +18,19 @@
       </div>
       <div class="center-section">
         <h1 class="page-title">VHealth - Sống khỏe chủ động</h1>
-        <input type="text" class="search-bar" placeholder="Tìm kiếm" />
-        <button class="search-button">
-          <img src="/assets/images/icons/search.svg" class="search-icon" />
-        </button>
+
+        <!-- Thay input thuần bằng wrapper chứa input + button (kính lúp) -->
+        <div class="search-wrapper">
+          <input
+            type="search"
+            class="search-bar"
+            placeholder="Tìm kiếm"
+            aria-label="Tìm kiếm"
+          />
+          <button class="search-button" aria-label="Thực hiện tìm kiếm">
+            <img src="/assets/images/icons/search.svg" class="search-icon" alt="Tìm kiếm" />
+          </button>
+        </div>
       </div>
       <div class="right-section">
         <button class="darkmode-button">

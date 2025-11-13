@@ -4,45 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chi tiết tin tức</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/header.css">
+  <link rel="stylesheet" href="../assets/css/leftnav.css">
+  <link rel="stylesheet" href="../assets/css/footer.css">
   <link rel="stylesheet" href="/assets/css/news-detail.css" />
 </head>
 <body>
-  <!-- Phần nội dung chính -->
-  <section class="news-detail">
-    <div class="news-container">
+  <!-- Header placeholder -->
+  <div id="header-placeholder"></div>
 
-      <!-- Tiêu đề & thông tin -->
-      <h1 id="news-title" class="news-title"></h1>
-      <p id="news-meta" class="news-meta"></p>
+  <div class="container">
+    <!-- Sidebar placeholder -->
+    <div id="sidebar-placeholder"></div>
 
-      <!-- Nội dung bài viết (đổ từ JSON) -->
-      <div id="news-content" class="news-content"></div>
+    <!-- Phần nội dung chính -->
+    <main class="main-content">
+      <section class="news-detail">
+        <div class="news-container">
 
-      <!-- Khu vực bình luận -->
-      <div class="comment-section">
-        <h2>Bình luận</h2>
-        <form id="comment-form">
-          <input type="text" id="comment-name" placeholder="Tên của bạn" required />
-          <textarea id="comment-text" rows="3" placeholder="Nội dung bình luận..." required></textarea>
-          <button type="submit">Gửi bình luận</button>
-        </form>
-        <div id="comment-list" class="comment-list">
-          <!-- Các bình luận sẽ được thêm bằng JS -->
+          <!-- Tiêu đề & thông tin -->
+          <h1 id="news-title" class="news-title"></h1>
+          <p id="news-meta" class="news-meta"></p>
+
+          <!-- Nội dung bài viết (đổ từ JSON) -->
+          <div id="news-content" class="news-content"></div>
+
+          <!-- Khu vực bình luận -->
+          <div class="comment-section">
+            <h2>Bình luận</h2>
+            <form id="comment-form">
+              <input type="text" id="comment-name" placeholder="Tên của bạn" required />
+              <textarea id="comment-text" rows="3" placeholder="Nội dung bình luận..." required></textarea>
+              <button type="submit">Gửi bình luận</button>
+            </form>
+            <div id="comment-list" class="comment-list">
+              <!-- Các bình luận sẽ được thêm bằng JS -->
+            </div>
+          </div>
+
+          <!-- Tin khác (đổ từ JSON) -->
+          <div class="related-news">
+            <h2>Các tin khác</h2>
+            <div id="related-grid" class="related-grid"></div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <!-- Tin khác (đổ từ JSON) -->
-      <div class="related-news">
-        <h2>Các tin khác</h2>
-        <div id="related-grid" class="related-grid"></div>
-      </div>
-    </div>
-  </section>
+      <!-- Chừa không gian cho footer -->
+      <div class="footer-space"></div>
+    </main>
+  </div>
+      <div id="footer-placeholder"></div>
 
-  <!-- Chừa không gian cho footer -->
-  <div class="footer-space"></div>
-
-  <!-- JS để load JSON -->
+  <!-- Scripts -->
+  <script src="/assets/javascript/header.js"></script>
+  <script src="/assets/javascript/footer.js"></script>
+  <script src="/assets/javascript/leftnav.js"></script>
   <script src="/assets/javascript/news-detail.js"></script>
 </body>
 </html>

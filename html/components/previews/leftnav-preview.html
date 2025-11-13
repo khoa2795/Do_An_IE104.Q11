@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LeftNav preview</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <div id="sidebar-placeholder"></div>
+
+  <script>
+    fetch('/html/components/LeftNavBar.html')
+      .then(r => r.text())
+      .then(html => { document.getElementById('sidebar-placeholder').innerHTML = html; })
+      .catch(err => console.error('Load leftnav failed:', err));
+  </script>
+</body>
+</html>
