@@ -37,25 +37,6 @@ function resetInterval() {
     slideTimer = setInterval(nextSlide, slideInterval);
 }
 
-// Theme toggle functionality
-const themeToggle = document.querySelector('.theme-toggle');
-const body = document.body;
-let isDarkMode = false;
-
-themeToggle.addEventListener('click', () => {
-    isDarkMode = !isDarkMode;
-    body.style.backgroundColor = isDarkMode ? '#1a1a1a' : '#ffffff';
-    body.style.color = isDarkMode ? '#ffffff' : '#333333';
-    
-    // Update icon
-    const icon = themeToggle.querySelector('i');
-    if (isDarkMode) {
-        icon.classList.replace('fa-moon', 'fa-sun');
-    } else {
-        icon.classList.replace('fa-sun', 'fa-moon');
-    }
-});
-
 // Menu item click handler
 const menuItems = document.querySelectorAll('.menu-item a');
 menuItems.forEach(item => {

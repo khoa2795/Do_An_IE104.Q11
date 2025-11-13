@@ -1,0 +1,199 @@
+/* ===== FOOTER ===== */
+.footer {
+    background: linear-gradient(135deg, #2f8f46 0%, #4f9b50 100%);
+    color: white;
+    padding: 40px 0 20px;
+    margin-top: 50px;
+    width: 100%;
+    margin-left: var(--sidebar-width, 250px); 
+    width: calc(100% - var(--sidebar-width, 250px)); 
+    position: relative;
+    left: 0;
+    z-index: 50; 
+}
+
+.footer-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.footer-section p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #e8f5e9;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #e8f5e9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Phần mạng xã hội */
+.social-media {
+    margin-top: 20px;
+    padding-left: 40px;
+    max-width: 100%;
+}
+
+.social-media h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #fff;
+    font-weight: 500;
+    text-align: left;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.social-icon.facebook:hover {
+    background: #1877f2;
+    border-color: #1877f2;
+}
+
+.social-icon.instagram:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    border-color: transparent;
+}
+
+.social-icon.twitter:hover {
+    background: #1da1f2;
+    border-color: #1da1f2;
+}
+
+.social-icon.youtube:hover {
+    background: #ff0000;
+    border-color: #ff0000;
+}
+
+.social-icon.tiktok:hover {
+    background: #000000;
+    border-color: #000000;
+}
+
+.social-icon.linkedin:hover {
+    background: #0077b5;
+    border-color: #0077b5;
+}
+
+.social-icon i {
+    font-size: 16px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 30px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #e8f5e9;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer {
+        margin-left: 0; /* trên mobile không có sidebar */
+        width: 100%;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 20px;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .social-media {
+        text-align: center;
+        padding-left: 0;
+    }
+    
+    .social-media h4 {
+        text-align: center;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+    
+    .social-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .social-icon i {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 0 15px;
+    }
+    
+    .social-icons {
+        gap: 8px;
+    }
+    
+    .social-icon {
+        width: 32px;
+        height: 32px;
+    }
+}
