@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cộng đồng - Tạo bài</title>
+  <link rel="stylesheet" href="../assets/css/CongDong2.css" />
+</head>
+<body>
+  <!-- Thanh trên demo 1920 x 120 -->
+  <div class="demo-topbar">
+    Thanh trên (demo)
+  </div>
+
+  <!-- Spacer để đẩy nội dung xuống dưới topbar -->
+  <div class="topbar-spacer"></div>
+
+  <!-- KHU CHÍNH: sidebar 220 x 960 + page 1700 x 960 -->
+  <div class="app-main">
+    <aside class="demo-sidebar">
+      Thanh cạnh (demo)
+    </aside>
+
+    <!-- Khu nội dung 1700x960 -->
+    <div class="page-1700x960">
+      <!-- HEADER CỘNG ĐỒNG (đồng bộ với CongDong1) -->
+      <header class="community-header">
+        <h1 class="ch-title">Tạo bài đăng mới</h1>
+      </header>
+
+      <!-- NỘI DUNG TAB TẠO BÀI -->
+      <main class="ch-content ch-content--create">
+        <section class="create-area">
+          <div class="field">
+            <label class="field-label" for="post-title">Tiêu đề</label>
+            <input
+              id="post-title"
+              type="text"
+              class="field-input"
+              placeholder="Nhập tiêu đề ở đây"
+            />
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="post-content">Nội dung</label>
+            <textarea
+              id="post-content"
+              class="field-textarea"
+              placeholder="Nhập nội dung ở đây"
+            ></textarea>
+          </div>
+
+          <!-- Footer: nút Hủy / Tạo bài -->
+          <footer class="create-card-footer">
+            <button class="btn btn-cancel" type="button">Hủy</button>
+            <button class="btn btn-submit" type="button">Tạo bài</button>
+          </footer>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
