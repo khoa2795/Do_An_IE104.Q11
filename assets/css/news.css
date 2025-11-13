@@ -9,7 +9,7 @@ body {
   margin-left: var(--sidebar-width, 250px);
   width: calc(100% - var(--sidebar-width, 250px));
   box-sizing: border-box;
-  padding-top: 0; 
+  padding-top: 0;
 }
 
 /* Phần tin tức */
@@ -106,7 +106,7 @@ body {
 }
 
 .footer-space {
-  height: 100px;
+  height: 10px;
 }
 
 /* Responsive */
@@ -180,7 +180,7 @@ body {
   padding: 12px 24px; /* padding ngang để border/trục thẳng */
   box-sizing: border-box;
   background: transparent; /* nền của .news-container đã là màu xanh */
-  border-bottom: 2px solid rgba(255,255,255,0.15);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
   margin: 0;
 }
 

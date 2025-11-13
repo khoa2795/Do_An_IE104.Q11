@@ -301,66 +301,6 @@ html, body {
     line-height: 1.6;
 }
 
-.chat-button {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background-color: var(--primary-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: transform 0.3s;
-    z-index: 9999;
-}
-
-.chat-button:hover {
-    transform: scale(1.1);
-}
-
-/* CHAT BOX */
-.chat-box {
-    position: fixed;
-    bottom: 100px;
-    right: 30px;
-    width: 360px;
-    background: white;
-    border-radius: 14px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 9998;
-    font-family: "Segoe UI", sans-serif;
-}
-
-/* HEADER */
-.chat-header {
-    background: #dff3e6;
-    color: black;
-    padding: 10px 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-}
-
-/* BODY */
-.chat-body {
-    padding: 12px;
-    height: 280px;
-    overflow-y: auto;
-    background: #fafafa;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
 /* --- Message Rows --- */
 .message-row {
     display: flex;
@@ -438,36 +378,6 @@ html, body {
     background: #d2f2ff;
     border-bottom-left-radius: 12px;
 }
-
-/* INPUT */
-.chat-input {
-    border-top: 1px solid #eee;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    background: #fff;
-}
-.chat-input input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 8px 10px;
-    border-radius: 8px;
-    background: #f5f5f5;
-}
-.chat-input button {
-    background: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 10px;
-    margin-left: 6px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.chat-input button:hover { opacity: 0.9; }
-
 
 /* ===== Slide-box thứ 2 (phía dưới hero-section) - ĐÃ SỬA ===== */
 .slide-box {
