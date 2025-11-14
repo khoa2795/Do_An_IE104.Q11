@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khung Nhập Chiều Cao</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .height-container {
+            background-color: #f8fcf8; /* Màu nền nhạt */
+            border: 1px solid #d4eadc; /* Viền xanh lá nhạt */
+            border-radius: 8px; /* Bo góc */
+            padding: 16px;
+            width: 300px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .height-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .height-title {
+            color: #285a2c; /* Màu chữ tiêu đề */
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .height-icon {
+            width: 20px; /* Kích thước icon */
+            height: 20px;
+            opacity: 0.7; /* Icon hơi mờ như trong hình */
+        }
+
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .height-input {
+            flex-grow: 1; /* Input chiếm phần lớn không gian */
+            padding: 10px 12px;
+            border: 1px solid #c3e6cb; /* Viền input */
+            border-radius: 6px;
+            font-size: 1em;
+            background-color: #fff; /* Nền trắng cho input */
+        }
+
+        /* Tùy chỉnh màu chữ placeholder */
+        .height-input::placeholder {
+            color: #b0c0b3; /* Màu placeholder nhạt */
+            font-style: italic;
+        }
+
+        .unit {
+            margin-left: 10px;
+            font-size: 1em;
+            color: #555; /* Màu chữ "cm" */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="height-container">
+        <div class="height-header">
+            <span class="height-title">Chiều cao</span>
+            <img src="link-toi-icon.png" alt="Icon" class="height-icon">
+        </div>
+        <div class="input-wrapper">
+            <input type="number" class="height-input" placeholder="Nhập chiều cao (cm)">
+            <span class="unit">cm</span>
+        </div>
+    </div>
+
+</body>
+</html>

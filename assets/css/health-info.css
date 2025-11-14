@@ -1,0 +1,613 @@
+.row {
+    display: flex;
+    /* Cho 2 khối nằm cùng hàng */
+    justify-content: space-between;
+    /* Đẩy 2 khối ra hai phía */
+    align-items: flex-start;
+    /* Canh lên đầu dòng */
+}
+
+.left-box {
+    background: #fff;
+    padding: 10px;
+}
+
+.right-box {
+    background: #fff;
+    padding: 10px;
+}
+
+
+
+
+
+
+
+
+/* === Định dạng cho Khung Lưu ý === */
+.notes-column {
+    background-color: #ffffff;
+    /* Màu nền giống các thẻ */
+    border: 1px solid #d4eadc;
+    /* Viền xanh nhạt giống các thẻ */
+    border-radius: 12px;
+    /* Bo góc */
+    padding: 16px;
+    /* Khoảng đệm bên trong */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    /* Thêm bóng mờ */
+
+    /* Thuộc tính này ngăn cột "Lưu ý" bị kéo dãn
+      quá cao nếu 2 cột kia quá dài.
+    */
+    align-self: start;
+}
+
+/* Điều chỉnh lại tiêu đề "Lưu ý" bên trong khung 
+  cho đẹp hơn một chút 
+*/
+.notes-column .col-title {
+    margin-top: 0;
+    /* Bỏ khoảng cách thừa bên trên */
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    /* Tăng khoảng cách dưới tiêu đề */
+    border-bottom: 1px solid #c3e6cb;
+    /* Thêm đường kẻ chân */
+    font-size: 1.1em;
+    /* Cho tiêu đề to hơn một chút */
+    color: #285a2c;
+    /* Đổi màu tiêu đề cho đậm */
+    text-align: center;
+}
+
+/* (Không cần chỉnh sửa .info-card vì chúng đã là 
+  các thẻ con nằm đẹp bên trong khung rồi) 
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Khối header thông tin sức khỏe */
+.health-header {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin: 40px 40px 20px 40px;
+}
+
+.health-header .header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.health-header .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.health-header .title h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #222;
+}
+
+.health-header .header-right {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    color: #444;
+    line-height: 1.6;
+}
+
+.health-header .highlight {
+    color: #2dbf6d;
+    /* xanh nhạt như hình */
+    font-weight: 600;
+}
+
+/* Tab menu */
+.tab-menu {
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid #e2e2e2;
+    margin-top: 10px;
+}
+
+.tab-menu .tab {
+    flex: 1;
+    text-align: center;
+    background: none;
+    border: none;
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: 500;
+    color: #333;
+    position: relative;
+}
+
+.tab-menu .tab.active {
+    color: #2dbf6d;
+    font-weight: bold;
+}
+
+.tab-menu .tab.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    height: 3px;
+    background-color: #2dbf6d;
+    border-radius: 10px;
+    transform: translateX(50%);
+}
+
+/* Ẩn hiện nội dung tab */
+.tab-content {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+    margin: 10px 40px 0 40px;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Hiệu ứng mượt khi chuyển tab */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* thong tin suc khoe */
+
+/* ========================================= */
+/* === CSS CHO NỘI DUNG TAB SỨC KHỎE === */
+/* ========================================= */
+
+/* Lưới 3 cột chính */
+.health-grid-container {
+    display: grid;
+    /* 3 cột, cột 3 (Lưu ý) hẹp hơn 2 cột đầu */
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 20px;
+}
+
+/* Từng cột */
+.health-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Khoảng cách giữa các card trong 1 cột */
+}
+
+/* Thẻ nhập liệu (Cột 1 & 2) */
+.stat-card {
+    background-color: #f8fcf8;
+    /* Màu nền xanh lá rất nhạt */
+    border: 1px solid #d4eadc;
+    /* Viền xanh lá nhạt */
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+}
+
+
+
+.stat-card:hover {
+    transform: scale(1.03);
+    /* phóng to 3% */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /* đổ bóng đẹp hơn */
+}
+
+
+
+
+.stat-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.stat-card .card-title {
+    color: #285a2c;
+    /* Màu chữ tiêu đề xanh đậm */
+    font-weight: bold;
+    font-size: 0.95em;
+}
+
+.stat-card .card-icon {
+    width: 28px;
+    height: 28px;
+    opacity: 0.8;
+}
+
+.stat-card .edit-view {
+    display: flex;
+    align-items: center;
+}
+
+.stat-card .edit-view input {
+    flex-grow: 1;
+    /* Input chiếm hết phần còn lại */
+    padding: 10px 12px;
+    border: 1px solid #c3e6cb;
+    /* Viền xanh nhạt */
+    border-radius: 6px;
+    font-size: 0.9em;
+    background-color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.stat-card .edit-view input::placeholder {
+    color: #b0c0b3;
+    font-style: italic;
+}
+
+.stat-card .unit {
+    margin-left: 10px;
+    font-size: 0.9em;
+    color: #555;
+    white-space: nowrap;
+    /* Không cho chữ "mmHg" xuống hàng */
+}
+
+/* Khối Chú thích (Cột 2) */
+.note-box {
+    background-color: #fffaf0;
+    /* Màu vàng nhạt */
+    border: 1px solid #fde6a8;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 0.9em;
+}
+
+.note-box h3 {
+    margin-top: 0;
+    color: #d9534f;
+    /* Màu cam/đỏ */
+    font-size: 1em;
+}
+
+.note-box p {
+    margin: 0;
+    color: #555;
+}
+
+/* Thẻ Thông tin (Cột 3) */
+.health-col .col-title {
+    font-size: 1.1em;
+    color: #333;
+    margin: 0 0 5px 0;
+    padding-left: 5px;
+    font-weight: 600;
+}
+
+.info-card {
+    background: #f8fcf8;
+    border: 1px solid #d4eadc;
+    border-radius: 8px;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.info-card .info-card-title {
+    color: #555;
+}
+
+.info-card .info-card-content {
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 10px;
+}
+
+/* Nút thêm (Cột 3) */
+.info-card-add {
+    justify-content: center;
+    background: #f0f8f0;
+    border: 2px dashed #a5d6a7;
+    color: #4CAF50;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    min-height: 48px;
+    /* Đặt chiều cao tối thiểu */
+}
+
+.info-card-add:hover {
+    background: #e8f5e9;
+}
+
+/* Nút Lưu */
+.btn-save-container {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.btn-save {
+    background-color: #4CAF50;
+    /* Màu xanh lá */
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-save:hover {
+    background-color: #45a049;
+}
+
+/* Nút Chỉnh */
+.btn-change-container {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.btn-change {
+    background-color: #4CAF50;
+    /* Màu xanh lá */
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-change:hover {
+    background-color: #45a049;
+}
+
+/* Gợi ý bài viết */
+.recommend-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.recommend-section h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 cột như trong hình */
+    gap: 20px;
+}
+
+.article-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.article-card img {
+    width: 100%;
+    height: 120px;
+    /* Đặt chiều cao cố định cho ảnh */
+    object-fit: cover;
+    /* Đảm bảo ảnh vừa vặn, không bị méo */
+    display: block;
+}
+
+.article-card p {
+    padding: 10px;
+    margin: 0;
+    font-size: 0.9em;
+    color: #444;
+    height: 60px;
+    /* Chiều cao cố định cho text (2-3 dòng) */
+    overflow: hidden;
+}
+
+.article-card a {
+    display: block;
+    padding: 0 10px 10px 10px;
+    font-size: 0.9em;
+    color: #2dbf6d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ========================================= */
+/* === Responsive cho điện thoại, tablet === */
+/* ========================================= */
+
+@media (max-width: 1024px) {
+
+    /* Tablet: 2 cột grid chính, 2 cột bài viết */
+    .health-grid-container {
+        grid-template-columns: 1fr 1fr;
+        /* 2 cột */
+    }
+
+    .article-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 cột */
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Mobile: 1 cột grid chính, 1 cột bài viết */
+    .health-grid-container {
+        grid-template-columns: 1fr;
+        /* 1 cột */
+    }
+
+    .article-grid {
+        grid-template-columns: 1fr;
+        /* 1 cột */
+    }
+
+    /* Giảm lề trên mobile để đỡ trống */
+    .tab-content {
+        margin: 10px 15px 0 15px;
+        padding: 15px;
+    }
+
+    .health-header {
+        margin: 20px 15px;
+    }
+}
+
+
+
+
+
+
+
+/* ========================================= */
+/* === CSS CHO NỘI DUNG TAB LƯU === */
+/* ========================================= */
+
+
+.stat-card-display {
+    background-color: #f8fcf8;
+    border: 1px solid #d4eadc;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    /* Đặt chiều cao tối thiểu để các thẻ đồng đều */
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.stat-card-display:hover {
+    transform: scale(1.03); /* phóng to 3% */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* đổ bóng đẹp hơn */
+}
+
+.stat-card-display .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.stat-card-display .card-title {
+    color: #285a2c;
+    font-weight: bold;
+    font-size: 0.95em;
+}
+
+.stat-card-display .card-icon {
+    width: 28px;
+    height: 28px;
+    opacity: 0.8;
+}
+
+.stat-card-display .card-content {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.stat-card-display .card-value {
+    font-size: 2.2em;
+    /* Số to, rõ ràng */
+    font-weight: 600;
+    color: #222;
+    line-height: 1;
+    display: inline-block;
+}
+
+/* Dùng cho giá trị dài như "120/80" */
+.stat-card-display .card-value-small {
+    font-size: 1.9em;
+    font-weight: 600;
+    color: #222;
+    line-height: 1;
+    display: inline-block;
+}
+
+.stat-card-display .unit {
+    font-size: 1em;
+    /* Đơn vị nhỏ hơn */
+    color: #555;
+    margin-left: 8px;
+    font-weight: 500;
+}
