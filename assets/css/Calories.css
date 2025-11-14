@@ -1,565 +1,433 @@
-/* Đảm bảo .main-content được offset đúng và không tràn */
-.main-content {
+    /* Đảm bảo .main-content được offset đúng và không tràn */
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f8fafb;
+    margin: 0;
+    padding: 0;
+    }
+
+    .main-content {
     margin-left: var(--sidebar-width, 250px);
     width: calc(100% - var(--sidebar-width, 250px));
     padding-top: calc(var(--header-height, 100px) - 80px); 
     box-sizing: border-box;
-}
+    }
 
-/* Container chính chứa tất cả nội dung calories */
-.calories-content {
-    max-width: 100%; 
-    margin: 0 auto;
-    padding: 0 50px; /* tăng từ 40px lên 50px */
-}
+    /* Container chính chứa tất cả nội dung calories */
+    .calories-content {
+        max-width: 100%; 
+        margin: 0 auto;
+        padding: 0 50px; /* tăng từ 40px lên 50px */
+    }
 
-/* Thông tin người dùng */
-.user-info-container {
+    /* Thông tin người dùng */
+    .user-info-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 20px 0 30px 0;
+        padding: 35px 60px; /* tăng từ 30px 50px lên 35px 60px */
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .user-info-container h2 {
+        font-size: 26px; /* tăng từ 24px lên 26px */
+        font-weight: 600;
+        margin-bottom: 25px; /* tăng từ 20px lên 25px */
+    }
+
+    .user-info-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 30px; /* thêm gap để tạo khoảng cách */
+    }
+
+    .user-avatar img {
+        width: 140px; /* tăng từ 120px lên 140px */
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .user-details {
+        display: flex;
+        justify-content: space-between;
+        flex: 1;
+        max-width: 1200px; /* tăng từ 1000px lên 1200px */
+        margin-left: 50px; /* tăng từ 40px lên 50px */
+        gap: 40px; /* thêm gap giữa các cột */
+    }
+
+    .user-details div {
+        text-align: left;
+        flex: 1;
+    }
+
+    .user-details p {
+        margin: 10px 0; /* tăng từ 8px lên 10px */
+        font-size: 17px; /* tăng từ 16px lên 17px */
+    }
+
+    /* Tổng quan hôm nay */
+    .overview-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 30px 0;
+        padding: 45px 60px; /* tăng từ 40px 50px lên 45px 60px */
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .overview-container h2 {
+        font-size: 26px; /* tăng từ 24px lên 26px */
+        font-weight: 600;
+        margin-bottom: 30px; /* tăng từ 25px lên 30px */
+        color: #333;
+    }
+
+    /* Vùng tổng quan chính */
+    .overview-content {
+        justify-content: space-around;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 40px;
+        align-items: center;
+    }
+
+    /* Biểu đồ calo */
+    .calo-chart {
+        position: relative;
+        width: 220px; 
+        height: 220px;
+        margin: 0 auto;
+    }
+
+    .circle {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: conic-gradient(#2f8f46 67%, #e5e5e5 0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inner-text {
+        background: #fff;
+        width: 165px; /* tăng từ 150px lên 165px */
+        height: 165px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inner-text p {
+        font-size: 24px; /* tăng từ 22px lên 24px */
+        font-weight: bold;
+        color: #333;
+        line-height: 1.3;
+    }
+
+    .inner-text span {
+        color: #666;
+        font-size: 15px; /* tăng từ 14px lên 15px */
+    }
+
+    /* Thanh dinh dưỡng */
+    .nutrients {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px 90px; /* tăng từ 30px 80px lên 35px 90px */
+        text-align: left;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .nutrient {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .nutrient .label {
+        font-size: 17px; /* tăng từ 16px lên 17px */
+        font-weight: 500;
+        margin-bottom: 10px; /* tăng từ 8px lên 10px */
+        color: #333;
+    }
+
+    .progress {
+        width: 100%;
+        background-color: #eee;
+        border-radius: 10px;
+        height: 20px; /* tăng từ 18px lên 20px */
+        margin: 12px 0; /* tăng từ 10px lên 12px */
+        overflow: hidden;
+        position: relative;
+    }
+
+    .nutrient p {
+        font-size: 14px; /* tăng từ 13px lên 14px */
+        text-align: center;
+        width: 100%;
+        color: #666;
+        margin-top: 6px; /* tăng từ 5px lên 6px */
+    }
+
+    /* Màu sắc cho các thanh dinh dưỡng */
+    .bar.carbs {
+        background: linear-gradient(to right, #4CAF50, #8BC34A);
+        height: 100%;
+    }
+
+    .bar.protein {
+        background: linear-gradient(to right, #2196F3, #03A9F4);
+        height: 100%;
+    }
+
+    .bar.fat {
+        background: linear-gradient(to right, #FF9800, #FFC107);
+        height: 100%;
+    }
+
+    .bar.fiber {
+        background: linear-gradient(to right, #9C27B0, #E91E63);
+        height: 100%;
+    }
+
+    /* Đảm bảo thanh progress có màu nền xám nhạt */
+    .progress {
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        height: 20px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Hiệu ứng cho thanh progress */
+    .bar {
+        transition: width 0.5s ease-in-out;
+        border-radius: 10px;
+    }
+
+    /***** Các buổi ăn */
+    .meal-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 30px 0;
+        padding: 35px 60px; /* tăng từ 30px 50px lên 35px 60px */
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        box-sizing: border-box;
+    }
+
+    .meal-title {
+        display: none;
+        margin-bottom: 20px;
+        position: relative;
+        text-align: center;
+    }
+
+    .meal-title h2 {
+        font-size: 22px;
+        font-weight: 600;
+        color: #2f8f46;
+        margin: 0;
+    }
+
+    .food-section {
+        display: none;
+        margin: 0 0 30px 0;
+        position: relative;
+    }
+
+    /* Style cho nút bữa ăn khi active */
+    .meal-btn.active {
+        background-color: #2f8f46;
+        color: white;
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(47, 143, 70, 0.3);
+    }
+
+    /* Đảm bảo meal-container không bị dịch chuyển */
+    .meal-container {
+        transition: none;
+    }
+
+    /* Phần các buổi ăn */
+    .meal-section {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 40px;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .meal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .plus {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: #dff5e0;
+        color: #2f8f46;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .plus:hover {
+        background-color: #c6ecc8;
+    }
+
+    /* Chế độ ăn */
+    .diet-mode {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .diet-select {
+        margin-left: 10px;
+        padding: 2px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    .help {
+        margin-left: 8px;
+        color: #2f8f46;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+
+    /* Phần danh sách thực phẩm và hướng dẫn */
+    .food-section,
+    .food-guide {
+        width: 100%;
+        max-width: 100%;
+        margin: 30px 0;
+        padding: 30px 50px; /* tăng từ 25px 40px lên 30px 50px */
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        box-sizing: border-box;
+    }
+
+    /* Modal chú thích chế độ ăn */
+    .diet-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 100%;
-    margin: 20px 0 30px 0;
-    padding: 35px 60px; /* tăng từ 30px 50px lên 35px 60px */
-    background-color: #fff;
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.user-info-container h2 {
-    font-size: 26px; /* tăng từ 24px lên 26px */
-    font-weight: 600;
-    margin-bottom: 25px; /* tăng từ 20px lên 25px */
-}
-
-.user-info-content {
-    display: flex;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
     align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 30px; /* thêm gap để tạo khoảng cách */
-}
+    z-index: 1000;
+    }
 
-.user-avatar img {
-    width: 140px; /* tăng từ 120px lên 140px */
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.user-details {
-    display: flex;
-    justify-content: space-between;
-    flex: 1;
-    max-width: 1200px; /* tăng từ 1000px lên 1200px */
-    margin-left: 50px; /* tăng từ 40px lên 50px */
-    gap: 40px; /* thêm gap giữa các cột */
-}
-
-.user-details div {
-    text-align: left;
-    flex: 1;
-}
-
-.user-details p {
-    margin: 10px 0; /* tăng từ 8px lên 10px */
-    font-size: 17px; /* tăng từ 16px lên 17px */
-}
-
-/* Tổng quan hôm nay */
-.overview-container {
-    width: 100%;
-    max-width: 100%;
-    margin: 30px 0;
-    padding: 45px 60px; /* tăng từ 40px 50px lên 45px 60px */
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.overview-container h2 {
-    font-size: 26px; /* tăng từ 24px lên 26px */
-    font-weight: 600;
-    margin-bottom: 30px; /* tăng từ 25px lên 30px */
-}
-
-/* Vùng tổng quan chính */
-.overview-content {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 40px; /* tăng từ không có lên 40px */
-}
-
-/* Biểu đồ calo */
-.calo-chart {
+    .diet-modal {
+    background: white;
+    border-radius: 12px;
+    padding: 0;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     position: relative;
-    width: 220px; /* tăng từ 200px lên 220px */
-    height: 220px;
-}
-
-.circle {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    background: conic-gradient(#2f8f46 67%, #e5e5e5 0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.inner-text {
-    background: #fff;
-    width: 165px; /* tăng từ 150px lên 165px */
-    height: 165px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.inner-text p {
-    font-size: 24px; /* tăng từ 22px lên 24px */
-    font-weight: bold;
-    color: #333;
-    line-height: 1.3;
-}
-
-.inner-text span {
-    color: #666;
-    font-size: 15px; /* tăng từ 14px lên 15px */
-}
-
-/* Thanh dinh dưỡng */
-.nutrients {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 35px 90px; /* tăng từ 30px 80px lên 35px 90px */
-    text-align: left;
-    max-width: 100%;
-    width: 100%;
-}
-
-.nutrient {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-}
-
-.nutrient .label {
-    font-size: 17px; /* tăng từ 16px lên 17px */
-    font-weight: 500;
-    margin-bottom: 10px; /* tăng từ 8px lên 10px */
-    color: #333;
-}
-
-.progress {
-    width: 100%;
-    background-color: #eee;
-    border-radius: 10px;
-    height: 20px; /* tăng từ 18px lên 20px */
-    margin: 12px 0; /* tăng từ 10px lên 12px */
     overflow: hidden;
+    }
+
+    .diet-modal-header {
+    background: #2f8f46;
+    color: white;
+    padding: 20px;
+    text-align: center;
     position: relative;
-}
+    }
 
-.nutrient p {
-    font-size: 14px; /* tăng từ 13px lên 14px */
-    text-align: center;
-    width: 100%;
-    color: #666;
-    margin-top: 6px; /* tăng từ 5px lên 6px */
-}
-
-/* Khung bo viền cho phần Các buổi ăn */
-.meal-container {
-    width: 100%;
-    max-width: 100%;
-    margin: 30px 0;
-    padding: 35px 60px; /* tăng từ 30px 50px lên 35px 60px */
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    box-sizing: border-box;
-}
-
-/* Các buổi ăn */
-.meal-section {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 40px;
-    flex-wrap: wrap;
-    gap: 30px; /* thêm gap */
-}
-
-.meal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px; /* tăng từ 5px lên 8px */
-}
-
-.plus {
-    width: 70px; /* tăng từ 60px lên 70px */
-    height: 70px;
-    border-radius: 50%;
-    background-color: #dff5e0;
-    color: #2f8f46;
-    font-size: 40px; /* tăng từ 36px lên 40px */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-/* Dashboard calo */
-.dashboard {
-    width: 100%;
-    max-width: 100%;
-    margin: 30px 0;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 35px; /* tăng từ 30px lên 35px */
-    font-family: "Inter", sans-serif;
-    box-sizing: border-box;
-}
-
-/* Ô chọn tuần */
-.week-box {
-    grid-column: 1 / 2;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #d6ead6;
-    border-radius: 15px;
-    padding: 15px 30px; /* tăng từ 10px 25px lên 15px 30px */
-    background: #fff;
-}
-
-.week-left {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.week-left p {
+    .diet-modal-header h3 {
     margin: 0;
+    font-size: 20px;
     font-weight: 600;
-    color: #2f8f46;
-}
+    }
 
-.week-days {
-    display: flex;
-    gap: 22px; /* tăng từ 18px lên 22px */
-    flex: 1;
-    justify-content: center;
-    font-size: 15px; /* tăng từ 14px lên 15px */
-    color: #333;
-}
-
-.week-days span {
-    text-align: center;
-    line-height: 1.4;
-}
-
-.week-days .active {
-    font-weight: 700;
-    color: #2f8f46;
-}
-
-.week-arrows span {
-    font-weight: bold;
-    color: #2f8f46;
+    .close-diet-modal {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 20px;
     cursor: pointer;
-    font-size: 18px;
-    margin: 0 4px;
-}
-
-/* --- Ô icon lịch --- */
-.calendar-box {
-    grid-column: 2 / 3;
-    border: 1px solid #d6ead6;
-    border-radius: 15px;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: #fff;
-}
+    justify-content: center;
+    transition: all 0.3s ease;
+    }
 
-.calendar-box i {
-    font-size: 60px;
+    .close-diet-modal:hover {
+    background: rgba(255, 255, 255, 0.2);
+    }
+
+    .diet-guide-content {
+    padding: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+    }
+
+    .diet-guide-section {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    }
+
+    .diet-guide-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    }
+
+    .diet-guide-section h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 6px 0;
     color: #2f8f46;
-}
+    line-height: 1.3;
+    }
 
-/* ===== Ô LƯỢNG CALO CẦN NẠP ===== */
-.calo-box {
-    border: 1px solid #d6ead6;
-    border-radius: 15px;
-    background: #fff;
-    padding: 35px 30px 40px; /* tăng từ 30px 25px 35px lên 35px 30px 40px */
-    text-align: center;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
-}
-
-.calo-box h3 {
-    font-size: 22px; /* tăng từ 20px lên 22px */
-    font-weight: 700;
-    margin-bottom: 25px; /* tăng từ 20px lên 25px */
-}
-
-.calo-circle {
-    width: 200px; /* tăng từ 180px lên 200px */
-    height: 200px;
-    border-radius: 50%;
-    margin: 0 auto 35px; /* tăng margin-bottom từ 30px lên 35px */
-    background: conic-gradient(#2f8f46 65%, #f2f2f2 0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 4px solid #f9faf9;
-}
-
-.calo-inner {
-    width: 135px; /* tăng từ 120px lên 135px */
-    height: 135px;
-    border-radius: 50%;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.calo-inner p {
-    font-weight: 700;
-    font-size: 18px; /* tăng từ 16px lên 18px */
-    margin: 0;
+    .diet-guide-section p {
+    font-size: 14px;
     line-height: 1.4;
-}
+    margin: 0;
+    color: #555;
+    text-align: left;
+    }
 
-/* Biểu đồ cột calo */
-.calo-bars {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    height: 200px; /* tăng từ 180px lên 200px */
-    padding: 0 20px; /* tăng từ 15px lên 20px */
-}
-
-.bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end; /* Đảm bảo phần chữ nằm ngay dưới cùng */
-    height: 100%;              /* Cột + chữ cùng chia sẻ chiều cao container */
-}
-
-.bar .fill {
-    width: 28px; /* tăng từ 25px lên 28px */
-    background: linear-gradient(to top, #2f8f46, #a8d3a9);
-    border-radius: 8px 8px 0 0;
-    transition: height 0.3s ease;
-}
-
-.bar span {
-    font-size: 14px; /* tăng từ 13px lên 14px */
-    margin-top: 6px;
-    color: #333;
-    line-height: 1;
-}
-
-/* Ô dinh dưỡng */
-.nutrition-box {
-    grid-column: 2 / 3;
-    border: 1px solid #d6ead6;
-    border-radius: 15px;
-    background: #fff;
-    padding: 30px; /* tăng từ 25px lên 30px */
-}
-
-.nutrition-box h3 {
-    text-align: center;
-    font-size: 22px; /* tăng từ 20px lên 22px */
-    font-weight: 700;
-    margin-bottom: 30px; /* tăng từ 25px lên 30px */
-}
-
-.nutrition-content {
-    display: flex;
-    flex-direction: column;
-    gap: 25px; /* tăng từ 20px lên 25px */
-}
-
-/* Phần theo dõi */
-.follow-container {
-    width: 100%;
-    max-width: 100%;
-    margin: 30px 0;
-    background: #fff;
-    border: 1px solid #d6ead6;
-    border-radius: 20px;
-    padding: 35px 50px; /* tăng từ 30px 40px lên 35px 50px */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    font-family: "Inter", sans-serif;
-    box-sizing: border-box;
-}
-
-/* Phần danh sách thực phẩm và hướng dẫn */
-.food-section,
-.food-guide {
-    width: 100%;
-    max-width: 100%;
-    margin: 30px 0;
-    padding: 30px 50px; /* tăng từ 25px 40px lên 30px 50px */
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    box-sizing: border-box;
-}
-
-/* Modal chú thích chế độ ăn */
-.diet-modal-overlay {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: rgba(0, 0, 0, 0.5);
-display: none;
-justify-content: center;
-align-items: center;
-z-index: 1000;
-}
-
-.diet-modal {
-background: white;
-border-radius: 12px;
-padding: 0;
-width: 90%;
-max-width: 500px;
-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-position: relative;
-overflow: hidden;
-}
-
-.diet-modal-header {
-background: #2f8f46;
-color: white;
-padding: 20px;
-text-align: center;
-position: relative;
-}
-
-.diet-modal-header h3 {
-margin: 0;
-font-size: 20px;
-font-weight: 600;
-}
-
-.close-diet-modal {
-position: absolute;
-right: 15px;
-top: 50%;
-transform: translateY(-50%);
-background: none;
-border: none;
-font-size: 20px;
-cursor: pointer;
-color: white;
-width: 30px;
-height: 30px;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-transition: all 0.3s ease;
-}
-
-.close-diet-modal:hover {
-background: rgba(255, 255, 255, 0.2);
-}
-
-.diet-guide-content {
-padding: 20px;
-max-height: 60vh;
-overflow-y: auto;
-}
-
-.diet-guide-section {
-margin-bottom: 5px;
-padding-bottom: 5px;
-}
-
-.diet-guide-section:last-child {
-border-bottom: none;
-margin-bottom: 0;
-padding-bottom: 0;
-}
-
-.diet-guide-section h4 {
-font-size: 15px;
-font-weight: 600;
-margin: 0 0 6px 0;
-color: #2f8f46;
-line-height: 1.3;
-}
-
-.diet-guide-section p {
-font-size: 14px;
-line-height: 1.4;
-margin: 0;
-color: #555;
-text-align: left;
-}
-
-/* Nút đóng ở footer */
-/* .diet-modal-footer {
-padding: 15px 20px;
-background: #f8f9fa;
-border-top: 1px solid #e9ecef;
-text-align: center;
-}
-
-.btn-close-diet {
-background: #6c757d;
-color: white;
-border: none;
-padding: 8px 20px;
-border-radius: 6px;
-cursor: pointer;
-font-size: 14px;
-font-weight: 500;
-transition: background 0.3s ease;
-}
-
-.btn-close-diet:hover {
-background: #5a6268;
-} */
-
-/* Scrollbar tùy chỉnh */
-/* .diet-guide-content::-webkit-scrollbar {
-width: 6px;
-}
-
-.diet-guide-content::-webkit-scrollbar-track {
-background: #f1f1f1;
-border-radius: 3px;
-}
-
-.diet-guide-content::-webkit-scrollbar-thumb {
-background: #c1c1c1;
-border-radius: 3px;
-}
-
-.diet-guide-content::-webkit-scrollbar-thumb:hover {
-background: #a8a8a8;
-} */
 
     /* PHẦN DANH SÁCH THỰC PHẨM */
     .food-section {
@@ -810,7 +678,7 @@ background: #a8a8a8;
     color: #2f8f46;
     }
 
-    /* ===== Ô LƯỢNG CALO CẦN NẠP ===== */
+    /*  Ô LƯỢNG CALO CẦN NẠP  */
     .calo-box {
     border: 1px solid #d6ead6;
     border-radius: 15px;
@@ -862,7 +730,6 @@ background: #a8a8a8;
     color: #666;
     }
 
-    /* Biểu đồ cột calo */
     /* Biểu đồ cột calo */
     .calo-bars {
     display: flex;
@@ -1190,199 +1057,6 @@ background: #a8a8a8;
     opacity: 0;
     pointer-events: none;
     }
-
-
-
-    /* ===== PHẦN FOOTER ===== */
-    /* .footer {
-        background: linear-gradient(135deg, #2f8f46 0%, #4f9b50 100%);
-        color: white;
-        padding: 40px 0 20px;
-        margin-top: 50px;
-    }
-
-    .footer-container {
-        max-width: 1600px;
-        margin: 0 auto;
-        padding: 0 40px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-    }
-
-    .footer-section h3 {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 15px;
-        color: #fff;
-    }
-
-    .footer-section p {
-        line-height: 1.6;
-        margin-bottom: 15px;
-        color: #e8f5e9;
-    }
-
-    /* Phần mạng xã hội */
-    .social-media {
-        margin-top: 20px;
-        padding-left: 40px; /* Thụt vào bên phải để căn chỉnh với tiêu đề Về VHEALTH */
-        max-width: 100%; 
-    }
-
-    .social-media h4 {
-        font-size: 16px;
-        margin-bottom: 12px;
-        color: #fff;
-        font-weight: 500;
-        text-align: left; /* Căn trái giống tiêu đề Về VHEALTH */
-    }
-
-    .social-icons {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: flex-start; /* Căn trái các icon */
-    }
-
-    .social-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-    }
-
-    .social-icon:hover {
-        transform: translateY(-3px);
-        background: rgba(255, 255, 255, 0.2);
-        border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    /* Màu sắc cụ thể cho từng mạng xã hội */
-    .social-icon.facebook:hover {
-        background: #1877f2;
-        border-color: #1877f2;
-    }
-
-    .social-icon.instagram:hover {
-        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-        border-color: transparent;
-    }
-
-    .social-icon.twitter:hover {
-        background: #1da1f2;
-        border-color: #1da1f2;
-    }
-
-    .social-icon.youtube:hover {
-        background: #ff0000;
-        border-color: #ff0000;
-    }
-
-    .social-icon.tiktok:hover {
-        background: #000000;
-        border-color: #000000;
-    }
-
-    .social-icon.linkedin:hover {
-        background: #0077b5;
-        border-color: #0077b5;
-    }
-
-    .social-icon i {
-        font-size: 16px;
-    }
-
-    .footer-section ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .footer-section ul li {
-        margin-bottom: 8px;
-    }
-
-    .footer-section ul li a {
-        color: #e8f5e9;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .footer-section ul li a:hover {
-        color: #fff;
-        text-decoration: underline;
-    }
-
-    .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        margin-top: 30px;
-        padding-top: 20px;
-        text-align: center;
-    }
-
-    .footer-bottom p {
-        color: #e8f5e9;
-        font-size: 14px;
-        margin: 0;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .footer-container {
-            grid-template-columns: 1fr;
-            gap: 20px;
-            padding: 0 20px;
-        }
-        
-        .footer-section {
-            text-align: center;
-        }
-        
-        .social-media {
-            text-align: center; /* Trên mobile căn giữa */
-            padding-left: 0;
-        }
-        
-        .social-media h4 {
-            text-align: center; /* Trên mobile căn giữa tiêu đề */
-        }
-        
-        .social-icons {
-            justify-content: center; /* Trên mobile căn giữa các icon */
-        }
-        
-        .social-icon {
-            width: 35px;
-            height: 35px;
-        }
-        
-        .social-icon i {
-            font-size: 14px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .footer-container {
-            padding: 0 15px;
-        }
-        
-        .social-icons {
-            gap: 8px;
-        }
-        
-        .social-icon {
-            width: 32px;
-            height: 32px;
-        }
-    }
-
 
     /* ===== PHẦN HƯỚNG DẪN SỬ DỤNG THỰC PHẨM ===== */
     .food-guide {
@@ -1839,29 +1513,145 @@ background: #a8a8a8;
     }
 
     /* Responsive */
-@media (max-width: 900px) {
-    .main-content {
-        margin-left: 0;
-        width: 100%;
-        padding-top: calc(var(--header-height, 100px) + 10px);
+    @media (max-width: 900px) {
+        .main-content {
+            margin-left: 0;
+            width: 100%;
+            padding-top: calc(var(--header-height, 100px) + 10px);
+        }
+        
+        .calories-content {
+            padding: 0 20px;
+        }
+        
+        .user-info-container,
+        .overview-container,
+        .food-section,
+        .food-guide,
+        .meal-container,
+        .follow-container {
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .dashboard {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
     }
-    
-    .calories-content {
-        padding: 0 20px;
-    }
-    
-    .user-info-container,
-    .overview-container,
-    .food-section,
-    .food-guide,
-    .meal-container,
-    .follow-container {
-        padding: 25px;
-        margin: 20px 0;
-    }
-    
-    .dashboard {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+
+
+
+
+
+
+
+
+
+
+
+/* Container cho danh sách món ăn trong thực đơn */
+.meal-foods-container {
+    width: 100%;
+    margin: 20px 0;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
+    min-height: 100px;
+}
+
+/* Thông báo khi chưa có món ăn */
+.empty-meal-message {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 30px;
+    font-size: 14px;
+}
+
+/* Mỗi món ăn trong thực đơn */
+.meal-food-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.meal-food-item:hover {
+    background: #e9f7ec;
+    border-color: #2f8f46;
+}
+
+.meal-food-item:last-child {
+    margin-bottom: 0;
+}
+
+.meal-food-item img {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.meal-food-info {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.meal-food-name {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: #333;
+}
+
+.meal-food-details {
+    font-size: 13px;
+    color: #666;
+}
+
+.meal-food-calories {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2f8f46;
+    margin: 0 15px;
+    min-width: 60px;
+    text-align: right;
+}
+
+.remove-food-btn {
+    background: #e55b4d;
+    color: white;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.remove-food-btn:hover {
+    background: #d44c3d;
+    transform: scale(1.1);
+}
+
+/* Style cho nút bữa ăn khi active */
+.meal-btn.active {
+    background-color: #2f8f46;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(47, 143, 70, 0.3);
 }

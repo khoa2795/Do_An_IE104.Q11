@@ -36,33 +36,84 @@
     });
 
 
-    // Chuyển đổi giữa phần Tổng quan và phần Thực phẩm
-    document.addEventListener("DOMContentLoaded", () => {
-    const caloCircle = document.querySelector(".overview-container .circle");
-    const overviewSection = document.getElementById("overviewSection");
+// Quản lý hiển thị danh sách món ăn khi nhấn vào bữa ăn - FIXED SCROLL
+document.addEventListener("DOMContentLoaded", () => {
+    const mealButtons = document.querySelectorAll(".meal-btn");
     const foodSection = document.getElementById("foodSection");
     const backBtn = document.querySelector(".food-header .back-btn");
+    const mealTitle = document.getElementById("mealTitle");
+    const currentMealName = document.getElementById("currentMealName");
+    const mealContainer = document.querySelector(".meal-container");
+    
+    // Đóng danh sách món ăn khi khởi tạo
+    foodSection.style.display = "none";
+    mealTitle.style.display = "none";
 
-    // Khi nhấn vào hình tròn calo → ẩn tổng quan, hiện món ăn
-        caloCircle.addEventListener("click", () => {
-        overviewSection.classList.add("hide");
-        setTimeout(() => {
-            overviewSection.style.display = "none";
+    // Khi nhấn vào một bữa ăn
+    mealButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const mealType = button.getAttribute("data-meal");
+            const mealNames = {
+                'breakfast': 'Buổi sáng',
+                'lunch': 'Buổi trưa', 
+                'dinner': 'Buổi tối',
+                'snack': 'Buổi phụ'
+            };
+            
+            // Hiển thị tiêu đề bữa ăn và danh sách món ăn
+            currentMealName.textContent = mealNames[mealType];
+            mealTitle.style.display = "block";
             foodSection.style.display = "block";
-            foodSection.classList.remove("hide");
-        }, 300);
-        });
+            
+            // HIỂN THỊ LẠI phần thực đơn nếu có
+            const mealFoodsContainer = document.getElementById('mealFoodsContainer');
+            if (mealFoodsContainer) {
+                mealFoodsContainer.style.display = 'block';
+                // Hiển thị danh sách món ăn của buổi được chọn
+                showMealFoods(mealType);
+            }
 
-    // Khi nhấn nút quay lại → ẩn món ăn, hiện lại tổng quan
-        backBtn.addEventListener("click", () => {
-        foodSection.classList.add("hide");
-        setTimeout(() => {
-            foodSection.style.display = "none";
-            overviewSection.style.display = "block";
-            overviewSection.classList.remove("hide");
-        }, 300);
+            // Thêm class active cho nút được nhấn
+            mealButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // KHÔNG CUỘN - chỉ hiển thị tại chỗ
+            // Tính vị trí hiển thị để không bị cuộn lên
+            const mealRect = mealContainer.getBoundingClientRect();
+            const scrollY = window.pageYOffset;
+            
+            // Đặt vị trí hiển thị ngay sau phần meal-container
+            foodSection.style.position = 'relative';
+            foodSection.style.top = '0';
+            foodSection.style.zIndex = '10';
+            
+            // Đảm bảo phần meal-container vẫn ở vị trí cũ
+            mealContainer.style.marginBottom = '0';
         });
     });
+
+    // Khi nhấn nút quay lại
+    backBtn.addEventListener("click", () => {
+        // Ẩn danh sách món ăn
+        foodSection.style.display = "none";
+        mealTitle.style.display = "none";
+        
+        // Xóa class active khỏi tất cả nút
+        mealButtons.forEach(btn => btn.classList.remove('active'));
+
+        // Ẩn phần thực đơn cho các buổi
+        const mealFoodsContainer = document.getElementById('mealFoodsContainer');
+        if (mealFoodsContainer) {
+            mealFoodsContainer.style.display = 'none';
+        }
+
+        // Reset styles
+        foodSection.style.position = '';
+        foodSection.style.top = '';
+        foodSection.style.zIndex = '';
+        mealContainer.style.marginBottom = '';
+    });
+});
 
 
     // Chuyển đổi giữa phần Dashboard và phần Theo dõi
@@ -868,3 +919,243 @@
             }, 3000);
         }
     });
+
+
+
+
+// Quản lý thêm món ăn vào thực đơn theo buổi
+document.addEventListener("DOMContentLoaded", () => {
+    let currentMealType = null;
+    const mealTitle = document.getElementById("mealTitle");
+    const currentMealName = document.getElementById("currentMealName");
+    
+    // Object lưu trữ món ăn theo từng buổi
+    const mealFoods = {
+        'breakfast': [],
+        'lunch': [],
+        'dinner': [],
+        'snack': []
+    };
+
+    // Khi nhấn vào nút bữa ăn
+    const mealButtons = document.querySelectorAll(".meal-btn");
+    mealButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const newMealType = button.getAttribute("data-meal");
+            
+            // Cập nhật trạng thái active
+            mealButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Hiển thị danh sách món ăn của buổi được chọn
+            showMealFoods(newMealType);
+        });
+    });
+
+    // Hiển thị danh sách món ăn của buổi được chọn
+    function showMealFoods(mealType) {
+        currentMealType = mealType;
+        
+        // Cập nhật tiêu đề
+        const mealNames = {
+            'breakfast': 'Buổi sáng',
+            'lunch': 'Buổi trưa', 
+            'dinner': 'Buổi tối',
+            'snack': 'Buổi phụ'
+        };
+        currentMealName.textContent = mealNames[mealType];
+        mealTitle.style.display = "block";
+
+        // Hiển thị danh sách món ăn của buổi này
+        displayMealFoods(mealType);
+    }
+
+    // Hiển thị danh sách món ăn lên giao diện
+    function displayMealFoods(mealType) {
+        const mealFoodsContainer = getOrCreateMealFoodsContainer();
+        mealFoodsContainer.innerHTML = '';
+
+        const foods = mealFoods[mealType];
+        
+        if (foods.length === 0) {
+            // Hiển thị thông báo khi chưa có món ăn
+            const emptyMessage = document.createElement('div');
+            emptyMessage.className = 'empty-meal-message';
+            emptyMessage.textContent = 'Chưa có món ăn nào. Hãy thêm món từ danh sách bên dưới!';
+            mealFoodsContainer.appendChild(emptyMessage);
+        } else {
+            // Hiển thị tất cả món ăn của buổi này
+            foods.forEach((foodData, index) => {
+                const foodElement = createMealFoodElement(foodData, index);
+                mealFoodsContainer.appendChild(foodElement);
+            });
+        }
+
+        updateNutritionSummary();
+    }
+
+    // Xử lý thêm món ăn vào thực đơn
+    function setupAddFoodButtons() {
+        const addButtons = document.querySelectorAll(".add-btn");
+        
+        addButtons.forEach(button => {
+            button.addEventListener("click", function(e) {
+                e.stopPropagation();
+                
+                if (!currentMealType) {
+                    showErrorMessage("Vui lòng chọn bữa ăn trước khi thêm món!");
+                    return;
+                }
+
+                const foodItem = this.closest('li');
+                const foodData = getFoodDataFromItem(foodItem);
+                
+                // Thêm món ăn vào danh sách của buổi hiện tại
+                addFoodToMeal(currentMealType, foodData);
+                
+                // Hiển thị lại danh sách
+                displayMealFoods(currentMealType);
+                
+                showSuccessMessage(`Đã thêm "${foodData.name}" vào ${getMealName(currentMealType)}!`);
+            });
+        });
+    }
+
+    // Lấy thông tin món ăn từ item
+    function getFoodDataFromItem(foodItem) {
+        return {
+            name: foodItem.querySelector('.food-info p').textContent,
+            info: foodItem.querySelector('.food-info span').textContent,
+            image: foodItem.querySelector('img').src,
+            calories: extractCalories(foodItem.querySelector('.food-info span').textContent)
+        };
+    }
+
+    // Thêm món ăn vào danh sách của buổi
+    function addFoodToMeal(mealType, foodData) {
+        mealFoods[mealType].push(foodData);
+    }
+
+    // Xóa món ăn khỏi danh sách
+    function removeFoodFromMeal(mealType, index) {
+        const removedFood = mealFoods[mealType][index];
+        mealFoods[mealType].splice(index, 1);
+        return removedFood;
+    }
+
+    // Tạo hoặc lấy container cho danh sách món ăn
+    function getOrCreateMealFoodsContainer() {
+        let container = document.getElementById('mealFoodsContainer');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'mealFoodsContainer';
+            container.className = 'meal-foods-container';
+            mealTitle.parentNode.insertBefore(container, mealTitle.nextSibling);
+        }
+        return container;
+    }
+
+    // Tạo phần tử HTML cho món ăn trong thực đơn
+    function createMealFoodElement(foodData, index) {
+        const div = document.createElement('div');
+        div.className = 'meal-food-item';
+        div.innerHTML = `
+            <img src="${foodData.image}" alt="${foodData.name}" onerror="this.src='../assets/images/Calories/placeholder-food.png'">
+            <div class="meal-food-info">
+                <p class="meal-food-name">${foodData.name}</p>
+                <span class="meal-food-details">${foodData.info}</span>
+            </div>
+            <div class="meal-food-calories">${foodData.calories} cal</div>
+            <button class="remove-food-btn">×</button>
+        `;
+
+        // Thêm sự kiện xóa món ăn
+        const removeBtn = div.querySelector('.remove-food-btn');
+        removeBtn.addEventListener('click', function() {
+            const removedFood = removeFoodFromMeal(currentMealType, index);
+            displayMealFoods(currentMealType);
+            showSuccessMessage(`Đã xóa "${removedFood.name}" khỏi ${getMealName(currentMealType)}!`);
+        });
+
+        return div;
+    }
+
+    // Trích xuất calories từ thông tin món ăn
+    function extractCalories(foodInfo) {
+        const match = foodInfo.match(/(\d+)kcal/);
+        return match ? match[1] : '0';
+    }
+
+    // Cập nhật tổng quan dinh dưỡng
+    function updateNutritionSummary() {
+        // TODO: Tính toán tổng calories và cập nhật biểu đồ
+        if (currentMealType) {
+            const totalCalories = mealFoods[currentMealType].reduce((sum, food) => {
+                return sum + parseInt(food.calories);
+            }, 0);
+            console.log(`Tổng calories ${currentMealType}: ${totalCalories}`);
+        }
+    }
+
+    // Lấy tên bữa ăn
+    function getMealName(mealType) {
+        const mealNames = {
+            'breakfast': 'buổi sáng',
+            'lunch': 'buổi trưa', 
+            'dinner': 'buổi tối',
+            'snack': 'buổi phụ'
+        };
+        return mealNames[mealType] || 'bữa ăn';
+    }
+
+    // Hiển thị thông báo lỗi
+    function showErrorMessage(message) {
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #e55b4d;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            z-index: 1001;
+            animation: slideIn 0.3s ease;
+            font-weight: 500;
+        `;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    // Hiển thị thông báo thành công
+    function showSuccessMessage(message) {
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2f8f46;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            z-index: 1001;
+            animation: slideIn 0.3s ease;
+            font-weight: 500;
+        `;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    // Khởi tạo
+    setupAddFoodButtons();
+});
