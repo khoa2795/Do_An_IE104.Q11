@@ -1,251 +1,176 @@
+/* ========== TOÀN TRANG ========== */
 :root {
-  --demo-w: 1920px;
-  --demo-topbar-h: 120px;
-  --demo-sidebar-w: 220px;
-  --page-w: 1700px;
-  --page-h: 960px;
+  --sidebar-width: 250px;
+  --header-height: 100px;
+  --primary-color: #4CAF50;
+  --text-color: #333333;
 }
 
-/* --------- FONT CHUNG --------- */
 body {
-  font-family:
-    "Inter",
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Helvetica,
-    Arial,
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol";
-}
-
-/* --------- TOPBAR CỐ ĐỊNH (FULL WIDTH, ĐỒNG BỘ) --------- */
-.demo-topbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: none;
-  width: 100%;
-  max-width: none;
-  height: var(--demo-topbar-h);
-  background: #c8d7f0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-/* Spacer cho topbar */
-.topbar-spacer {
-  height: var(--demo-topbar-h);
-  width: 100%;
-}
-
-/* --------- LAYOUT CHÍNH: SIDEBAR + PAGE --------- */
-
-html,
-body {
-  height: 100vh;
-  overflow: hidden; /* không cho body scroll, chỉ content scroll */
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   margin: 0;
+  padding: 0;
+  background-color: #f9fafb;
 }
 
-.app-main {
-  height: calc(100vh - var(--demo-topbar-h));
-  display: grid;
-  grid-template-columns: var(--demo-sidebar-w) 1fr; /* sidebar fixed, page flexible */
-  overflow: hidden;
-  width: 100%;           /* full width */
-  max-width: none;       /* không canh giữa bằng max-width 1920 */
-  margin: 0;             /* bỏ margin auto */
-}
-
-.demo-sidebar {
-  background: #eef0f3;
-  height: 100%;
-  overflow: hidden;
+/* Container chính */
+.container {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 100vh;
+  padding-top: var(--header-height);
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 20px 40px;
 }
 
 /* ===== PAGE CHÍNH ===== */
 .page-1700x960 {
   background: #fff;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
   width: 100%;
-  max-width: var(--page-w);
-  padding: 16px 0 24px;   /* chừa khoảng trắng trên + dưới */
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
   box-sizing: border-box;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* Header: title trái, search & button phải */
+/* Header */
 .community-header {
-  display: grid;
-  grid-template-columns: 1fr minmax(200px, 40%) max-content;
-  align-items: center;
-  gap: 32px;
-  padding: 12px 24px;
-  width: 100%;
-  box-sizing: border-box;
-  max-width: calc(var(--page-w) - 48px);
-  margin: 0 auto;
+  padding: 20px 30px;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .ch-title {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   margin: 0;
+  color: var(--text-color);
 }
 
-/* --------- NỘI DUNG TẠO BÀI (SCROLL + ẨN SCROLLBAR) --------- */
+/* NỘI DUNG TẠO BÀI */
 .ch-content {
-  flex: 1 1 auto;
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-
-  scrollbar-width: none; /* Firefox ẩn thanh cuộn */
-}
-.ch-content::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  padding: 30px;
 }
 
-/* nền hồng + khung trắng */
 .create-area {
-  /* BỎ width: 100%; để nó tự fit trong container */
-  /* width: 100%; */
-
-  min-height: 500px;
-  background: #f1f1f1;
-  border-radius: 16px;
-  padding: 24px 32px;
-  border: 1px solid #e4d7d7;
-  margin: 0 30px;        /* cách hai bên 30px nhưng không tràn nữa */
-  box-sizing: border-box;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-
-.create-card {
-  width: 100%;
-  max-width: 100%;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 0 0 1px #efe3e3;
-  display: flex;
-  flex-direction: column;
-  padding: 0 24px 24px;
-  box-sizing: border-box;
-}
-
-/* Header khung trắng */
-.create-card-header {
-  display: flex;
-  justify-content: flex-start; /* title sát trái */
-  align-items: center;
-  margin: 0 -24px 16px;
-  padding: 16px 18px;
-  border-radius: 16px 16px 0 0;
-  border-bottom: 1px solid #e4d7d7;
-  background: #f3ebeb;
-}
-
-.create-card-heading {
-  font-size: 20px;
-  font-weight: 600;
-}
-
-/* Body form */
-.create-card-body {
-  padding-top: 4px;
-}
-
+/* Field */
 .field {
-  margin-bottom: 20px;
-  margin-right: 30px;
+  margin-bottom: 24px;
 }
 
 .field-label {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 6px;
-  color: #333333;
+  margin-bottom: 8px;
+  color: #333;
 }
 
 .field-input,
 .field-textarea {
   width: 100%;
-  border-radius: 8px;
-  border: none;
-  outline: none;
   padding: 12px 16px;
-  background: #ffffff;
-  font-size: 14px;
-  color: #333333;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
 }
 
-.field-input::placeholder,
-.field-textarea::placeholder {
-  color: #c2b7b7;
+.field-input:focus,
+.field-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
 }
 
 .field-textarea {
-  height: 260px;        /* giảm bớt để tổng chiều cao fit vào 960px */
-  max-height: 260px;
-  resize: none;
+  min-height: 200px;
+  resize: vertical;
 }
 
-/* Footer nút */
+/* Footer buttons */
 .create-card-footer {
-  margin-top: 24px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 5px;   /* tạo khoảng cách với mép dưới của khung */
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e6e6e6;
 }
 
 .btn {
-  min-width: 130px;
-  padding: 10px 28px;
-  border-radius: 999px;
+  padding: 10px 24px;
+  border-radius: 8px;
   border: none;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.1s ease;
+  transition: all 0.3s;
 }
 
 .btn-cancel {
-  background: #f1efef;
-  color: #333333;
-  box-shadow: 0 0 0 1px #d4d0d0;
+  background: #f5f5f5;
+  color: #666;
+}
+
+.btn-cancel:hover {
+  background: #e0e0e0;
 }
 
 .btn-submit {
-  background: #c3e3c1;
-  color: #08340f;
-  margin-right: 30px;
-  box-shadow: 0 0 0 1px #9bc79c;
+  background: var(--primary-color);
+  color: white;
 }
 
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+.btn-submit:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.btn:active {
-  transform: translateY(0);
-  box-shadow: none;
-  opacity: 0.9;
+/* Responsive */
+@media (max-width: 900px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px 15px;
+  }
+  
+  .ch-content {
+    padding: 20px 15px;
+  }
+  
+  .create-area {
+    max-width: 100%;
+  }
+  
+  .ch-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .create-card-footer {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+  }
 }

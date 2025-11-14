@@ -6,30 +6,26 @@
   <title>Trang cộng đồng</title>
   <link rel="stylesheet" href="../assets/css/CongDong1.css" />
   <link rel="stylesheet" href="../assets/css/chatbot.css">
+  <link rel="stylesheet" href="../assets/css/header.css" />
+  <link rel="stylesheet" href="../assets/css/leftnav.css" />
+  <link rel="stylesheet" href="../assets/css/footer.css" />
 </head>
 <body>
+  <div id="header-placeholder"></div>
   <div class="app-shell">
 
     <!-- TOPBAR RIÊNG -->
-    <div class="app-topbar">
-      <div class="demo-topbar">Thanh trên (demo)</div>
-    </div>
-
     <!-- Spacer giữ khoảng cho topbar cố định -->
     <div class="topbar-spacer" aria-hidden="true"></div>
 
     <!-- KHỐI CHÍNH: SIDEBAR + PAGE -->
     <div class="app-main">
-      <aside class="demo-sidebar">Thanh cạnh (demo)</aside>
+    <div id="sidebar-placeholder"></div>
 
       <!-- KHU NỘI DUNG 1700x960 -->
       <div class="page-1700x960">
         <header class="community-header">
           <h1 class="ch-title">Cộng đồng</h1>
-          <div class="ch-search">
-            <span class="icon">🔍</span>
-            <input type="text" placeholder="Tìm kiếm"/>
-          </div>
           <button class="btn-create">Tạo bài</button>
         </header>
 
@@ -152,7 +148,13 @@
       </div>
     </div>
   </div>
+
+  <div id="footer-placeholder"></div>
+
   <!--script-->
+  <script src="../assets/javascript/leftnav.js"></script>
+  <script src="../assets/javascript/header.js"></script>
+  <script src="../assets/javascript/footer.js"></script>
   <script src="../assets/javascript/chatbot.js"></script>
 </body>
 </html>

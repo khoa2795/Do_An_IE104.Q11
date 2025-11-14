@@ -2,9 +2,11 @@
 :root {
   --demo-w: 1920px;
   --demo-topbar-h: 120px;
-  --demo-sidebar-w: 220px;
+  --demo-sidebar-w: 250px; /* tăng từ 220px lên 250px để khớp với leftnav */
   --page-w: 1700px;
   --page-h: 960px;
+  --sidebar-width: 250px; /* thêm biến này */
+  --header-height: 100px; /* thêm biến này */
 }
 
 body {
@@ -21,17 +23,19 @@ body {
     "Apple Color Emoji",
     "Segoe UI Emoji",
     "Segoe UI Symbol";
+  margin: 0;
+  padding: 0;
 }
 
-
-/* Topbar cố định */
+/* XÓA HOẶC COMMENT PHẦN TOPBAR CŨ */
+/*
 .demo-topbar {
   position: fixed;
   top: 0;
-  left: 0;               /* full màn hình, không canh giữa nữa */
-  transform: none;       /* bỏ translateX(-50%) */
-  width: 100%;           /* full width */
-  max-width: none;       /* không giới hạn 1920 để khỏi hở hai bên */
+  left: 0;
+  transform: none;
+  width: 100%;
+  max-width: none;
   height: var(--demo-topbar-h);
   background: #c8d7f0;
   z-index: 1000;
@@ -41,23 +45,26 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-/* Spacer cho topbar */
 .topbar-spacer {
   height: var(--demo-topbar-h);
   width: 100%;
 }
+*/
 
 /* ===== BỐ CỤC CHÍNH: SIDEBAR + PAGE ===== */
 .app-main {
-  height: calc(100vh - var(--demo-topbar-h));
-  display: grid;
-  grid-template-columns: var(--demo-sidebar-w) 1fr; /* sidebar fixed, page flexible */
+  margin-top: var(--header-height, 100px); /* offset cho header component */
+  margin-left: var(--sidebar-width, 250px); /* offset cho sidebar component */
+  height: calc(100vh - var(--header-height, 100px));
+  display: flex; /* đổi từ grid sang flex */
+  flex-direction: column;
   overflow: hidden;
-  width: 100%;           /* full width */
-  max-width: none;       /* không canh giữa bằng max-width 1920 */
-  margin: 0;             /* bỏ margin auto */
+  width: calc(100% - var(--sidebar-width, 250px));
+  box-sizing: border-box;
 }
 
+/* XÓA .demo-sidebar vì đã dùng component leftnav */
+/*
 .demo-sidebar {
   background: #eef0f3;
   height: 100%;
@@ -66,6 +73,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+*/
 
 /* ===== PAGE CHÍNH ===== */
 .page-1700x960 {
@@ -75,20 +83,21 @@ body {
   flex-direction: column;
   overflow: hidden;
   width: 100%;
-  max-width: var(--page-w);
+  max-width: 100%; /* đổi từ var(--page-w) sang 100% */
+  margin: 0;
+  padding: 0 20px; /* thêm padding cho đẹp */
+  box-sizing: border-box;
 }
 
 /* Header: title trái, search & button phải */
 .community-header {
   display: grid;
-  grid-template-columns: 1fr minmax(200px, 40%) max-content;
+  grid-template-columns: 1fr max-content;
   align-items: center;
   gap: 32px;
   padding: 12px 24px;
   width: 100%;
   box-sizing: border-box;
-  max-width: calc(var(--page-w) - 48px);
-  margin: 0 auto;
 }
 
 .ch-title {
@@ -226,7 +235,6 @@ body {
 /* Pagination */
 .pager {
   width: 100%;
-  max-width: var(--page-w);
   margin: 12px auto 0;
   padding: 8px 0 16px;
   display: flex;
@@ -249,4 +257,21 @@ body {
   color: #fff;
   border-color: #1f883d;
   cursor: default;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    padding-left: var(--sidebar-width, 250px); /* Offset for sidebar */
+    box-sizing: border-box;
+}
+
+/* Make sure sidebar is fixed and main content does not overlap */
+.sidebar {
+    position: fixed;
+    top: var(--header-height, 100px);
+    left: 0;
+    width: var(--sidebar-width, 250px);
+    height: calc(100vh - var(--header-height, 100px));
+    z-index: 100;
 }
