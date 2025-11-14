@@ -130,7 +130,7 @@
                 </div>
 
                 <!-- Danh sách thực phẩm -->
-                <div class="food-section" id="foodSection">
+                <div class="food-section" id="foodSection" style="display: none;">
                 <div class="food-header">
                     <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
                     <div class="search-bar">
@@ -290,40 +290,45 @@
                 <!-- Các buổi ăn -->
                 <div class="meal-container">
 
-                <div class="meal-section">
-                    <div class="meal">
-                    <div class="plus">+</div>
-                    <p>Buổi sáng</p>
+                    <!-- Thêm phần hiển thị bữa ăn đang chọn -->
+                    <div class="meal-title" id="mealTitle" style="display: none;">
+                        <h2>Thực đơn cho <span id="currentMealName"></span></h2>
                     </div>
-                    <div class="meal">
-                    <div class="plus">+</div>
-                    <p>Buổi trưa</p>
-                    </div>
-                    <div class="meal">
-                    <div class="plus">+</div>
-                    <p>Buổi tối</p>
-                    </div>
-                    <div class="meal">
-                    <div class="plus">+</div>
-                    <p>Buổi phụ</p>
-                    </div>
-                </div>
 
-                <!-- Chế độ ăn -->
-                <div class="diet-mode">
-                    <p>Bạn đang ăn theo chế độ:
-                    <select>
-                        <option>Cân bằng</option>
-                        <option>High Protein</option>
-                        <option>Ketogenic</option>
-                        <option>Low Card</option>
-                        <option>Atkins</option>
-                        <option>Paleo</option>
-                        <option>Dash</option>
-                    </select>
-                    <span class="help">?</span>
-                    </p>
-                </div>
+                    <div class="meal-section">
+                        <div class="meal">
+                            <div class="plus meal-btn" data-meal="breakfast">+</div>
+                            <p>Buổi sáng</p>
+                        </div>
+                        <div class="meal">
+                            <div class="plus meal-btn" data-meal="lunch">+</div>
+                            <p>Buổi trưa</p>
+                        </div>
+                        <div class="meal">
+                            <div class="plus meal-btn" data-meal="dinner">+</div>
+                            <p>Buổi tối</p>
+                        </div>
+                        <div class="meal">
+                            <div class="plus meal-btn" data-meal="snack">+</div>
+                            <p>Buổi phụ</p>
+                        </div>
+                    </div>
+
+                    <!-- Chế độ ăn -->
+                    <div class="diet-mode">
+                        <p>Bạn đang ăn theo chế độ:
+                        <select class="diet-select">
+                            <option>Cân bằng</option>
+                            <option>High Protein</option>
+                            <option>Ketogenic</option>
+                            <option>Low Card</option>
+                            <option>Atkins</option>
+                            <option>Paleo</option>
+                            <option>Dash</option>
+                        </select>
+                        <span class="help">?</span>
+                        </p>
+                    </div>
                 </div>
 
                 <!-- DASHBOARD CALO -->
@@ -636,77 +641,75 @@
                 </div>
 
 
+                <!-- Modal bộ lọc món ăn -->
+                <div class="filter-modal-overlay" id="filterModal">
+                    <div class="filter-modal">
+                        <div class="filter-modal-header">
+                            <h3>Bộ lọc món ăn</h3>
+                            <button class="close-filter-modal">&times;</button>
+                        </div>
+                        
+                        <div class="filter-content">
+                            <!-- Calories -->
+                            <div class="filter-section">
+                                <div class="filter-item">
+                                    <label>Calories</label>
+                                    <div class="range-slider" data-max="600" data-unit="kcal">
+                                        <input type="range" min="0" max="600" value="100">
+                                        <input type="range" min="0" max="600" value="500">
+                                        <div class="range-track"></div>
+                                        <div class="range-values"></div>
+                                    </div>
+                                </div>
 
+                                <div class="filter-item">
+                                    <label>Tinh bột</label>
+                                    <div class="range-slider" data-max="100" data-unit="g">
+                                        <input type="range" min="0" max="100" value="20">
+                                        <input type="range" min="0" max="100" value="80">
+                                        <div class="range-track"></div>
+                                        <div class="range-values"></div>
+                                    </div>
+                                </div>
 
-<!-- Modal bộ lọc món ăn -->
-<div class="filter-modal-overlay" id="filterModal">
-    <div class="filter-modal">
-        <div class="filter-modal-header">
-            <h3>Bộ lọc món ăn</h3>
-            <button class="close-filter-modal">&times;</button>
-        </div>
-        
-        <div class="filter-content">
-            <!-- Calories -->
-            <div class="filter-section">
-                <div class="filter-item">
-                    <label>Calories</label>
-                    <div class="range-slider" data-max="600" data-unit="kcal">
-                        <input type="range" min="0" max="600" value="100">
-                        <input type="range" min="0" max="600" value="500">
-                        <div class="range-track"></div>
-                        <div class="range-values"></div>
+                                <div class="filter-item">
+                                    <label>Đạm</label>
+                                    <div class="range-slider" data-max="60" data-unit="g">
+                                        <input type="range" min="0" max="60" value="20">
+                                        <input type="range" min="0" max="60" value="50">
+                                        <div class="range-track"></div>
+                                        <div class="range-values"></div>
+                                    </div>
+                                </div>
+
+                                <div class="filter-item">
+                                    <label>Béo</label>
+                                    <div class="range-slider" data-max="60" data-unit="g">
+                                        <input type="range" min="0" max="60" value="10">
+                                        <input type="range" min="0" max="60" value="40">
+                                        <div class="range-track"></div>
+                                        <div class="range-values"></div>
+                                    </div>
+                                </div>
+
+                                <div class="filter-item">
+                                    <label>Xơ</label>
+                                    <div class="range-slider" data-max="100" data-unit="g">
+                                        <input type="range" min="0" max="100" value="30">
+                                        <input type="range" min="0" max="100" value="90">
+                                        <div class="range-track"></div>
+                                        <div class="range-values"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-modal-footer">
+                            <button class="btn-reset">Đặt lại</button>
+                            <button class="btn-apply">Áp dụng</button>
+                        </div>
                     </div>
                 </div>
-
-                <div class="filter-item">
-                    <label>Tinh bột</label>
-                    <div class="range-slider" data-max="100" data-unit="g">
-                        <input type="range" min="0" max="100" value="20">
-                        <input type="range" min="0" max="100" value="80">
-                        <div class="range-track"></div>
-                        <div class="range-values"></div>
-                    </div>
-                </div>
-
-                <div class="filter-item">
-                    <label>Đạm</label>
-                    <div class="range-slider" data-max="60" data-unit="g">
-                        <input type="range" min="0" max="60" value="20">
-                        <input type="range" min="0" max="60" value="50">
-                        <div class="range-track"></div>
-                        <div class="range-values"></div>
-                    </div>
-                </div>
-
-                <div class="filter-item">
-                    <label>Béo</label>
-                    <div class="range-slider" data-max="60" data-unit="g">
-                        <input type="range" min="0" max="60" value="10">
-                        <input type="range" min="0" max="60" value="40">
-                        <div class="range-track"></div>
-                        <div class="range-values"></div>
-                    </div>
-                </div>
-
-                <div class="filter-item">
-                    <label>Xơ</label>
-                    <div class="range-slider" data-max="100" data-unit="g">
-                        <input type="range" min="0" max="100" value="30">
-                        <input type="range" min="0" max="100" value="90">
-                        <div class="range-track"></div>
-                        <div class="range-values"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="filter-modal-footer">
-            <button class="btn-reset">Đặt lại</button>
-            <button class="btn-apply">Áp dụng</button>
-        </div>
-    </div>
-</div>
 
             </div>
         </main>
