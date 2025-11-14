@@ -15,7 +15,7 @@ body {
 /* Phần tin tức */
 .news-section {
   margin-left: 0;
-  padding: calc(var(--header-height, 100px) - 80px) 40px 20px 40px; /* thêm padding trái phải 40px */
+  padding: calc(var(--header-height, 100px) - 80px) 40px 20px 40px;
   box-sizing: border-box;
   max-width: 100%;
   margin-right: auto;
@@ -25,14 +25,14 @@ body {
 .news-section h2 {
   padding-top: 0;
   margin-top: 0;
-  margin-bottom: 16px; /* giảm từ 20px xuống 16px */
+  margin-bottom: 16px; 
 }
 
 /* Layout chính */
 .news-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px; /* tăng gap từ 20px lên 24px */
+  gap: 24px; 
   align-items: start;
   width: 100%;
   box-sizing: border-box;
@@ -55,7 +55,7 @@ body {
 
 .main-news .news-img img {
   width: 100%;
-  height: 380px; /* tăng từ 320px lên 380px */
+  height: 380px; 
   object-fit: cover;
   display: block;
 }
@@ -63,8 +63,8 @@ body {
 .main-news h3 {
   background: #e8f5ec;
   margin: 0;
-  padding: 24px; /* giảm padding từ 28px xuống 24px để cân đối */
-  font-size: 18px; /* tăng từ 17px lên 18px */
+  padding: 24px; 
+  font-size: 18px; 
   text-align: center;
   color: #000;
 }
@@ -73,7 +73,7 @@ body {
 .side-news {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px; /* tăng gap từ 15px lên 18px */
+  gap: 18px; 
 }
 
 .small-news {
@@ -92,16 +92,16 @@ body {
 
 .small-news .news-img img {
   width: 100%;
-  height: 140px; /* tăng từ 120px lên 140px */
+  height: 140px;
   object-fit: cover;
 }
 
 .small-news h4 {
   margin: 0;
-  padding: 12px; /* tăng từ 10px lên 12px */
+  padding: 12px;
   background: #e8f5ec;
   color: #000;
-  font-size: 15px; /* tăng từ 14px lên 15px */
+  font-size: 15px;
   text-align: center;
 }
 
@@ -161,7 +161,7 @@ body {
 .news-container {
   margin: 20px 40px 0 40px; /* thêm margin trái phải 40px giống news-section */
   width: calc(100% - 80px); /* trừ tổng margin trái phải */
-  max-width: none; /* bỏ max-width cố định */
+  max-width: none; 
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
@@ -173,7 +173,7 @@ body {
 /*THANH DANH MỤC*/
 .category-tabs {
   display: flex;
-  justify-content: flex-start; /* căn trái, đổi thành center nếu muốn */
+  justify-content: center;
   gap: 12px;
   align-items: center;
   width: 100%;
@@ -208,7 +208,7 @@ body {
 /*LƯỚI BÀI VIẾT*/
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* ✅ 3 tin mỗi hàng */
+  grid-template-columns: repeat(3, 1fr); /* 3 tin mỗi hàng */
   gap: 25px;
   padding: 24px; /* single padding value keeps box-sizing predictable */
   box-sizing: border-box;
@@ -241,7 +241,7 @@ body {
 
 .news-thumb {
   width: 100%;
-  height: 180px;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   display: block;
 }
@@ -249,7 +249,7 @@ body {
 .news-title {
   padding: 12px 10px;
   text-align: center;
-  font-size: 15px;
+  font-size: 20px;
   color: #000;
   background-color: #e8f5ec;
   line-height: 1.4;
