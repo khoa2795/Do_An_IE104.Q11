@@ -90,6 +90,4 @@ function initChatbot() {
       chatBody.scrollTop = chatBody.scrollHeight;
     }, 700);
   }
-
-  console.log(" Chatbot loaded and initialized!");
 }

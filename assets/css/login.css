@@ -9,6 +9,8 @@
             height: 100%;
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.5);
+            /* ✅ THÊM FONT */
+            font-family: var(--font-family, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif);
         }
 
         .modal-content {
@@ -79,6 +81,8 @@
             flex-direction: column;
             gap: 12px;
             flex: 1;
+            /* ✅ ĐẢM BẢO KẾ THỪA FONT */
+            font-family: inherit;
         }
 
         .form-group {

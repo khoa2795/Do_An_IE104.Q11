@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (targetTab === "info") {
                 // Khi nhấn tab "Thông tin sức khỏe", luôn đi đến trang hiển thị
-                window.location.href = "suc-khoe.html";
+                window.location.href = "Health.html";
             } else if (targetTab === "disease") {
                 // Khi nhấn tab "Tiền sử bệnh", luôn đi đến trang bệnh án
                 window.location.href = "tien-su-benh.html";
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (glucose) localStorage.setItem("health_glucose", glucose);
 
             // Luôn chuyển hướng về trang SỨC KHỎE (hiển thị) sau khi lưu
-            window.location.href = "suc-khoe.html";
+            window.location.href = "Health.html";
         });
     }
 

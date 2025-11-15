@@ -1,21 +1,15 @@
 // auth-check.js - Kiểm tra đăng nhập cho các trang yêu cầu xác thực
 
 (function () {
-  // Kiểm tra xem user đã đăng nhập chưa
+  // ===== KIỂM TRA XÁC THỰC =====
   function checkAuthentication() {
-    const currentUser = localStorage.getItem("currentUser");
+    // ✅ ĐỌC TỪ sessionStorage THAY VÌ localStorage
+    const currentUser = sessionStorage.getItem("currentUser");
     return currentUser !== null;
   }
 
-  // Ẩn nội dung chính và hiển thị thông báo
+  // ===== HIỂN THỊ THÔNG BÁO YÊU CẦU ĐĂNG NHẬP =====
   function showLoginRequired() {
-    // Ẩn main-content
-    const mainContent = document.querySelector(".main-content");
-    if (mainContent) {
-      mainContent.style.display = "none";
-    }
-
-    // Tạo overlay thông báo yêu cầu đăng nhập
     const overlay = document.createElement("div");
     overlay.id = "auth-overlay";
     overlay.innerHTML = `
@@ -27,7 +21,6 @@
       </div>
     `;
 
-    // Thêm CSS
     const style = document.createElement("style");
     style.textContent = `
       #auth-overlay {
@@ -88,7 +81,6 @@
         box-shadow: 0 5px 15px rgba(47, 143, 70, 0.3);
       }
 
-      /* Responsive */
       @media (max-width: 900px) {
         #auth-overlay {
           left: 0;
@@ -98,63 +90,49 @@
     `;
     document.head.appendChild(style);
 
-    // Thêm overlay vào body
     document.body.appendChild(overlay);
 
-    // Chờ leftnav load xong rồi mới gắn sự kiện
     function attachLoginEvent() {
       const btnOpenLogin = document.querySelector(".btn-open-login");
-      const loginBtn = document.getElementById("loginBtn");
       const loginModal = document.getElementById("loginModal");
 
-      if (btnOpenLogin && loginBtn && loginModal) {
+      if (btnOpenLogin && loginModal) {
         btnOpenLogin.addEventListener("click", () => {
           loginModal.style.display = "block";
         });
-
-        console.log("✅ Đã gắn sự kiện mở modal đăng nhập");
       } else {
-        // Retry sau 100ms nếu chưa load xong
         setTimeout(attachLoginEvent, 100);
       }
     }
 
-    // Bắt đầu attach event
     attachLoginEvent();
   }
 
-  // Kiểm tra và xử lý
+  // ===== KHỞI TẠO KIỂM TRA =====
   function init() {
     const isLoggedIn = checkAuthentication();
 
     if (!isLoggedIn) {
-      console.log("❌ Chưa đăng nhập - Yêu cầu đăng nhập");
       showLoginRequired();
     } else {
-      console.log("✅ Đã đăng nhập - Cho phép truy cập");
     }
   }
 
-  // Chờ DOM và leftnav load xong
+  // ===== CHỜ DOM LOAD =====
   function waitForReady() {
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", () => {
-        // Chờ thêm một chút để leftnav load
-        setTimeout(init, 200);
-      });
+      document.addEventListener("DOMContentLoaded", init);
     } else {
-      setTimeout(init, 200);
+      init();
     }
   }
 
-  // Lắng nghe sự kiện đăng nhập thành công
+  // ===== LẮNG NGHE SỰ KIỆN ĐĂNG NHẬP =====
   window.addEventListener("storage", (e) => {
     if (e.key === "currentUser" && e.newValue) {
-      // Đã đăng nhập -> reload trang
       location.reload();
     }
   });
 
-  // Chạy kiểm tra
   waitForReady();
 })();

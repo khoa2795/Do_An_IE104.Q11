@@ -1,0 +1,348 @@
+[
+  {
+    "userId": 1,
+    "username": "admin",
+    "fullname": "Quản Trị Viên",
+    "userInfo": {
+      "age": 25,
+      "height": 170,
+      "weight": 65,
+      "activityLevel": 2,
+      "goal": "Duy trì cân nặng",
+      "diet": "Cân bằng"
+    },
+    "dailyTarget": {
+      "calories": 1800,
+      "carbs": 235,
+      "protein": 90,
+      "fat": 60,
+      "fiber": 30
+    },
+    "todayIntake": {
+      "calories": 0,
+      "carbs": 0,
+      "protein": 0,
+      "fat": 0,
+      "fiber": 0,
+      "lastUpdated": "2025-11-15T00:00:00"
+    },
+    "meals": {
+      "breakfast": [],
+      "lunch": [],
+      "dinner": [],
+      "snack": []
+    },
+    "weeklyData": [
+      {
+        "date": "2025-11-09",
+        "calories": 1650,
+        "target": 1800,
+        "status": "ok"
+      },
+      {
+        "date": "2025-11-10",
+        "calories": 1750,
+        "target": 1800,
+        "status": "ok"
+      },
+      {
+        "date": "2025-11-11",
+        "calories": 1600,
+        "target": 1800,
+        "status": "ok"
+      },
+      {
+        "date": "2025-11-12",
+        "calories": 1900,
+        "target": 1800,
+        "status": "over"
+      },
+      {
+        "date": "2025-11-13",
+        "calories": 1400,
+        "target": 1800,
+        "status": "under"
+      },
+      {
+        "date": "2025-11-14",
+        "calories": 1550,
+        "target": 1800,
+        "status": "ok"
+      },
+      {
+        "date": "2025-11-15",
+        "calories": 0,
+        "target": 1800,
+        "status": "ongoing"
+      }
+    ],
+    "monthlyStats": {
+      "month": "2025-11",
+      "totalCalories": 16500,
+      "targetCalories": 18250,
+      "deficit": 1750,
+      "daysOnTrack": 15,
+      "daysUnder": 8,
+      "daysOver": 7
+    },
+    "recentFoods": [
+      {
+        "id": 101,
+        "name": "Súp lơ (bông cải) xanh tươi",
+        "image": "../assets/images/Calories/unsplash_m1t-RJ1iCIU.png",
+        "weight": 100,
+        "calories": 32,
+        "carbs": 6,
+        "protein": 3,
+        "fat": 0,
+        "fiber": 3,
+        "isFavorite": true
+      },
+      {
+        "id": 102,
+        "name": "Trứng gà ta sống",
+        "image": "../assets/images/Calories/Hình trứng gà.png",
+        "weight": 100,
+        "calories": 143,
+        "carbs": 1,
+        "protein": 13,
+        "fat": 10,
+        "fiber": 0,
+        "isFavorite": true
+      },
+      {
+        "id": 103,
+        "name": "Salad trứng",
+        "image": "../assets/images/Calories/salad trứng.png",
+        "weight": 100,
+        "calories": 145,
+        "carbs": 8,
+        "protein": 7,
+        "fat": 9,
+        "fiber": 2,
+        "isFavorite": false
+      }
+    ],
+    "favoriteFoods": [
+      {
+        "id": 101,
+        "name": "Súp lơ (bông cải) xanh tươi",
+        "image": "../assets/images/Calories/unsplash_m1t-RJ1iCIU.png",
+        "weight": 100,
+        "calories": 32,
+        "carbs": 6,
+        "protein": 3,
+        "fat": 0,
+        "fiber": 3,
+        "isFavorite": true
+      },
+      {
+        "id": 102,
+        "name": "Trứng gà ta sống",
+        "image": "../assets/images/Calories/Hình trứng gà.png",
+        "weight": 100,
+        "calories": 143,
+        "carbs": 1,
+        "protein": 13,
+        "fat": 10,
+        "fiber": 0,
+        "isFavorite": true
+      }
+    ],
+    "myFoods": [
+      {
+        "id": 201,
+        "name": "Thịt chó nướng ớt chuông",
+        "image": "../assets/images/Calories/thịt chó nướng.png",
+        "weight": 100,
+        "calories": 280,
+        "carbs": 5,
+        "protein": 25,
+        "fat": 18,
+        "fiber": 1,
+        "category": "myfoods",
+        "createdAt": "2025-11-10T14:30:00"
+      }
+    ]
+  },
+  {
+    "userId": 2,
+    "username": "user1",
+    "fullname": "Nguyễn Văn A",
+    "userInfo": {
+      "age": 28,
+      "height": 175,
+      "weight": 70,
+      "activityLevel": 3,
+      "goal": "Giảm 3 cân",
+      "diet": "High Protein"
+    },
+    "dailyTarget": {
+      "calories": 2000,
+      "carbs": 200,
+      "protein": 120,
+      "fat": 65,
+      "fiber": 35
+    },
+    "todayIntake": {
+      "calories": 0,
+      "carbs": 0,
+      "protein": 0,
+      "fat": 0,
+      "fiber": 0,
+      "lastUpdated": "2025-11-15T00:00:00"
+    },
+    "meals": {
+      "breakfast": [],
+      "lunch": [],
+      "dinner": [],
+      "snack": []
+    },
+    "weeklyData": [
+      {
+        "date": "2025-11-09",
+        "calories": 1800,
+        "target": 2000,
+        "status": "ok"
+      },
+      {
+        "date": "2025-11-10",
+        "calories": 1900,
+        "target": 2000,
+        "status": "ok"
+      },
+      {
+        "date": "2025-11-11",
+        "calories": 1700,
+        "target": 2000,
+        "status": "under"
+      },
+      {
+        "date": "2025-11-12",
+        "calories": 2100,
+        "target": 2000,
+        "status": "over"
+      },
+      {
+        "date": "2025-11-13",
+        "calories": 1850,
+        "target": 2000,
+        "status": "ok"
+      },
+      {
+        "date": "2025-11-14",
+        "calories": 1950,
+        "target": 2000,
+        "status": "ok"
+      },
+      {
+        "date": "2025-11-15",
+        "calories": 0,
+        "target": 2000,
+        "status": "ongoing"
+      }
+    ],
+    "monthlyStats": {
+      "month": "2025-11",
+      "totalCalories": 28000,
+      "targetCalories": 30000,
+      "deficit": 2000,
+      "daysOnTrack": 18,
+      "daysUnder": 5,
+      "daysOver": 2
+    },
+    "recentFoods": [],
+    "favoriteFoods": [],
+    "myFoods": []
+  },
+  {
+    "userId": 3,
+    "username": "test",
+    "fullname": "Người Dùng Test",
+    "userInfo": {
+      "age": 22,
+      "height": 158,
+      "weight": 50,
+      "activityLevel": 1,
+      "goal": "Tăng 5 cân",
+      "diet": "Cân bằng"
+    },
+    "dailyTarget": {
+      "calories": 2200,
+      "carbs": 280,
+      "protein": 100,
+      "fat": 70,
+      "fiber": 28
+    },
+    "todayIntake": {
+      "calories": 0,
+      "carbs": 0,
+      "protein": 0,
+      "fat": 0,
+      "fiber": 0,
+      "lastUpdated": "2025-11-15T00:00:00"
+    },
+    "meals": {
+      "breakfast": [],
+      "lunch": [],
+      "dinner": [],
+      "snack": []
+    },
+    "weeklyData": [
+      {
+        "date": "2025-11-09",
+        "calories": 2000,
+        "target": 2200,
+        "status": "under"
+      },
+      {
+        "date": "2025-11-10",
+        "calories": 2150,
+        "target": 2200,
+        "status": "ok"
+      },
+      {
+        "date": "2025-11-11",
+        "calories": 1900,
+        "target": 2200,
+        "status": "under"
+      },
+      {
+        "date": "2025-11-12",
+        "calories": 2300,
+        "target": 2200,
+        "status": "over"
+      },
+      {
+        "date": "2025-11-13",
+        "calories": 2100,
+        "target": 2200,
+        "status": "ok"
+      },
+      {
+        "date": "2025-11-14",
+        "calories": 2050,
+        "target": 2200,
+        "status": "under"
+      },
+      {
+        "date": "2025-11-15",
+        "calories": 0,
+        "target": 2200,
+        "status": "ongoing"
+      }
+    ],
+    "monthlyStats": {
+      "month": "2025-11",
+      "totalCalories": 31000,
+      "targetCalories": 33000,
+      "deficit": 2000,
+      "daysOnTrack": 12,
+      "daysUnder": 10,
+      "daysOver": 3
+    },
+    "recentFoods": [],
+    "favoriteFoods": [],
+    "myFoods": []
+  }
+]

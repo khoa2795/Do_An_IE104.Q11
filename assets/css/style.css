@@ -4,6 +4,8 @@
     --text-color: #333333;
     --sidebar-width: 250px;
     --header-height: 100px;
+    /* ✅ THÊM BIẾN FONT */
+    --font-family: 'Segoe UI', 'Inter', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 * {
@@ -13,7 +15,8 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* ✅ SỬ DỤNG FONT TỪ BIẾN */
+    font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--text-color);
 }

@@ -12,17 +12,14 @@ let currentUser = null;
 // ===== ĐỌC FILE JSON VÀ XÁC THỰC ĐĂNG NHẬP =====
 async function authenticateUser(username, password) {
   try {
-    // Đọc file JSON
     const response = await fetch("/data/users.json");
     const users = await response.json();
 
-    // Tìm user khớp với username và password
     const user = users.find(
       (u) => u.username === username && u.password === password
     );
 
     if (user) {
-      // Lưu thông tin user (không lưu password)
       const userSession = {
         id: user.id,
         username: user.username,
@@ -30,7 +27,8 @@ async function authenticateUser(username, password) {
         email: user.email,
       };
 
-      localStorage.setItem("currentUser", JSON.stringify(userSession));
+      // ✅ SỬ DỤNG sessionStorage THAY VÌ localStorage
+      sessionStorage.setItem("currentUser", JSON.stringify(userSession));
       return { success: true, user: userSession };
     } else {
       return {
@@ -46,12 +44,12 @@ async function authenticateUser(username, password) {
 
 // ===== KIỂM TRA SESSION KHI LOAD TRANG =====
 function checkUserSession() {
-  const userSession = localStorage.getItem("currentUser");
+  // ✅ ĐỌC TỪ sessionStorage
+  const userSession = sessionStorage.getItem("currentUser");
   if (userSession) {
     currentUser = JSON.parse(userSession);
     isLoggedIn = true;
     updateLoginButton();
-    console.log("✅ Đã đăng nhập:", currentUser.username);
   }
 }
 
@@ -72,14 +70,12 @@ loginBtn.addEventListener("click", (e) => {
   e.stopPropagation();
 
   if (isLoggedIn) {
-    // Nếu đã đăng nhập -> Toggle dropdown
     if (userDropdown.style.display === "block") {
       userDropdown.style.display = "none";
     } else {
       userDropdown.style.display = "block";
     }
   } else {
-    // Nếu chưa đăng nhập -> Hiển thị modal đăng nhập
     loginModal.style.display = "block";
   }
 });
@@ -88,17 +84,21 @@ loginBtn.addEventListener("click", (e) => {
 logoutDropdownBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  // Xóa session
-  localStorage.removeItem("currentUser");
+  // ✅ XÓA TỪ sessionStorage
+  sessionStorage.removeItem("currentUser");
 
   isLoggedIn = false;
   currentUser = null;
   updateLoginButton();
 
-  // Reset form đăng nhập
   document.querySelector(".login-form").reset();
 
-  console.log("🔓 Đã đăng xuất");
+  // ✅ KIỂM TRA XEM CÓ ĐANG Ở TRANG YÊU CẦU ĐĂNG NHẬP KHÔNG
+  const currentPage = window.location.pathname.split("/").pop();
+  if (currentPage === "Health.html" || currentPage === "Calories.html") {
+    // RELOAD TRANG để hiển thị overlay yêu cầu đăng nhập
+    location.reload();
+  }
 });
 
 // ===== ĐÓNG DROPDOWN KHI CLICK NGOÀI =====
@@ -148,12 +148,8 @@ document.querySelector(".login-form").addEventListener("submit", async (e) => {
 
     document.querySelector(".login-form").reset();
 
-    console.log("✅ Đăng nhập thành công:", currentUser);
-
-    // Kiểm tra xem có đang ở trang yêu cầu đăng nhập không
     const currentPage = window.location.pathname.split("/").pop();
     if (currentPage === "Health.html" || currentPage === "Calories.html") {
-      // Reload trang để hiển thị nội dung
       location.reload();
     } else {
       alert(`Chào mừng ${currentUser.fullname}!`);
@@ -173,5 +169,3 @@ window.addEventListener("click", (e) => {
 // ===== KHỞI TẠO =====
 checkUserSession();
 updateLoginButton();
-
-console.log('💡 Tài khoản test: username="admin", password="admin123"');
