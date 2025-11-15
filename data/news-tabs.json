@@ -1,146 +1,194 @@
 [
   {
-    "id": 1,
+    "id": 101,
     "title": "Những thực phẩm cần lưu ý với trẻ lứa tuổi học đường",
+    "date": "10-11-2025",
     "category": "Thực phẩm",
-    "image": "/assets/images/category/Thucpham/Thucpham1.jpg"
+    "image": "/assets/images/category/Thucpham/Thucpham1.jpg",
+    "content": "<p>ThS. Trịnh Hồng Sơn, Giám đốc Trung tâm Giáo dục truyền thông dinh dưỡng - Viện Dinh dưỡng cho biết, lứa tuổi học đường là giai đoạn quan trọng trong quá trình phát triển thể chất và trí tuệ. Chế độ dinh dưỡng phù hợp sẽ giúp trẻ phát triển tốt về thể chất, nâng cao sức đề kháng, phòng tránh các bệnh nhiễm trùng, bệnh mạn tính không lây liên quan đến dinh dưỡng. Tuy nhiên, một số thực phẩm nếu không được sử dụng đúng cách có thể gây hại cho sức khỏe.</p><p>Lứa tuổi học đường là giai đoạn quan trọng trong quá trình phát triển thể chất và trí tuệ. Chính vì vậy, chế độ dinh dưỡng phù hợp sẽ giúp trẻ phát triển tốt về thể chất, nâng cao sức đề kháng, phòng tránh các bệnh nhiễm trùng, bệnh mạn tính không lây liên quan đến dinh dưỡng. Tuy nhiên, một số thực phẩm nếu không được sử dụng đúng cách có thể gây hại cho sức khỏe.</p><img src='/assets/images/category/Thucpham/Thucpham1.jpg'><p>Chế độ ăn không lành mạnh là chế độ ăn không cân bằng về dinh dưỡng, nhiều chất đạm, chất béo so với nhu cầu, nhưng lại ít rau củ quả. Chế độ ăn có nhiều món ăn không có lợi cho sức khỏe như chiên rán nhiều dầu mỡ, thức ăn công nghiệp, thức ăn nhanh, thức ăn có nhiều đường và muối.</p><p>Thực phẩm không lành mạnh là những thực phẩm đã qua chế biến, đồ ăn nhanh như bánh mì kẹp thịt và đồ chiên rán, nước ngọt, xúc xích xông khói, khoai tây chiên, kẹo đường,... Những thực phẩm không lành mạnh này chứa rất ít chất dinh dưỡng và dư thừa các chất độc hại như dầu mỡ, muối và đường tinh luyện, chất béo chuyển hóa và hương vị tổng hợp. Nếu chúng ta tiêu thụ trong thời gian dài sẽ phải đối mặt với rất nhiều nguy cơ bệnh tật trong tương lai như béo phì, đái tháo đường, bệnh tim mạch,…</p><p>Một số loại thức ăn nhanh như pizza, gà rán, khoai tây chiên thường chứa nhiều chất béo bão hòa và calo rỗng, tăng nguy cơ béo phì nếu các em sử dụng quá nhiều.</p>"
   },
   {
-    "id": 2,
+    "id": 102,
     "title": "4 loại thực phẩm giàu hợp chất chống oxy hóa bảo vệ mạch máu",
+    "date": "09-11-2025",
     "category": "Thực phẩm",
-    "image": "/assets/images/category/Thucpham/Thucpham2.jpg"
+    "image": "/assets/images/category/Thucpham/Thucpham2.jpg",
+    "content": "<p>Theo các bác sĩ, để phòng bệnh tim mạch nói chung và các bệnh lý mạch máu nói riêng, chúng ta nên thực hiện lối sống lành mạnh: duy trì nhiều hoạt động thể chất như đi bộ, chạy bộ nhẹ nhàng; không hút thuốc lá; hạn chế bia, rượu... Đặc biệt, cần kiểm soát huyết áp cao, quản lý cholesterol trong máu cao và bệnh đái tháo đường.</p><p>Việc duy trì chế độ ăn uống lành mạnh là điều cần thiết để bảo vệ hệ thống mạch máu. Dinh dưỡng hợp lý không chỉ giúp ngăn ngừa mà còn kiểm soát các tác nhân gây hại chủ yếu như mỡ máu cao (cholesterol), tăng huyết áp, đái tháo đường và nguy cơ xơ vữa động mạch. Việc lựa chọn thực phẩm đúng là nền tảng giúp kiểm soát các nguy cơ này.</p><img src='/assets/images/category/Thucpham/Thucpham2.jpg'><p>Theo các nhà nghiên cứu tại Đại học Birmingham: Ngay cả khi không vận động cơ thể nhưng chúng ta vẫn đang gây áp lực lên hệ thống mạch máu. Việc tìm ra cách giảm thiểu tác động của việc ngồi liên tục lên hệ thống mạch máu có thể giúp giảm nguy cơ mắc các bệnh tim mạch.</p><p>Họ muốn tìm hiểu xem liệu chế độ ăn uống, đặc biệt là những thực phẩm giàu flavanol, có thể giúp bảo vệ hệ thống mạch máu khỏi nguy cơ mắc bệnh liên quan đến việc ngồi liên tục hay không.</p><p>Nghiên cứu này không được thực hiện trên phụ nữ vì những thay đổi về nồng độ estrogen trong chu kỳ kinh nguyệt được cho là có thể ảnh hưởng đến tác động của flavanol lên sức khỏe mạch máu khi ngồi.</p>"
   },
   {
-    "id": 3,
+    "id": 103,
     "title": "7 nguồn thực phẩm giàu protein hàng đầu giúp giảm cân và tốt cho tim",
+    "date": "08-11-2025",
     "category": "Thực phẩm",
-    "image": "/assets/images/category/Thucpham/Thucpham3.jpg"
+    "image": "/assets/images/category/Thucpham/Thucpham3.jpg",
+    "content": "<p>Protein là một trong ba chất dinh dưỡng đa lượng thiết yếu, cùng với carbohydrate và chất béo. Protein đóng vai trò quan trọng trong việc xây dựng và sửa chữa các mô cơ thể, sản xuất enzyme và hormone, và hỗ trợ hệ thống miễn dịch. Ngoài ra, protein còn giúp duy trì cảm giác no lâu hơn, hỗ trợ quá trình giảm cân và duy trì cân nặng hợp lý.</p><p>Để đảm bảo cung cấp đủ protein cho cơ thể, bạn có thể lựa chọn từ nhiều nguồn thực phẩm khác nhau, bao gồm cả nguồn động vật và thực vật. Dưới đây là một số nguồn thực phẩm giàu protein hàng đầu:</p><img src='/assets/images/category/Thucpham/Thucpham3.jpg'><p>1. Thịt gà: Thịt gà là một nguồn protein chất lượng cao, ít chất béo bão hòa và giàu vitamin B6, giúp tăng cường hệ miễn dịch và hỗ trợ chức năng não.</p><p>2. Cá hồi: Cá hồi không chỉ giàu protein mà còn chứa nhiều axit béo omega-3, có lợi cho tim mạch và não bộ.</p><p>3. Trứng: Trứng là một nguồn protein hoàn chỉnh, cung cấp tất cả các axit amin thiết yếu mà cơ thể cần.</p><p>4. Đậu hũ: Đậu hũ là một nguồn protein thực vật tuyệt vời, giàu canxi và sắt, phù hợp cho người ăn chay.</p><p>5. Quinoa: Quinoa là một loại ngũ cốc giàu protein và chất xơ, giúp duy trì cảm giác no lâu hơn và hỗ trợ tiêu hóa.</p><p>6. Sữa chua Hy Lạp: Sữa chua Hy Lạp chứa nhiều protein hơn so với sữa chua thông thường, đồng thời cung cấp probiotic tốt cho hệ tiêu hóa.</p><p>7. Hạt chia: Hạt chia không chỉ giàu protein mà còn chứa nhiều chất xơ và axit béo omega-3, giúp cải thiện sức khỏe tim mạch.</p>"
   },
   {
-    "id": 4,
+    "id": 104,
     "title": "Cảnh giác với thực phẩm nhiễm vi khuẩn Salmonella tại cơ sở kinh doanh vỉa hè",
+    "date": "07-11-2025",
     "category": "Thực phẩm",
-    "image": "/assets/images/category/Thucpham/Thucpham4.jpg"
+    "image": "/assets/images/category/Thucpham/Thucpham4.jpg",
+    "content": "<p>Salmonella thường có mặt trong ruột động vật (gia cầm, heo, bò) và được thải ra môi trường qua phân. Vi khuẩn lây nhiễm sang người chủ yếu qua việc tiêu thụ thực phẩm nhiễm bẩn (như thịt, trứng, sữa chưa được nấu chín kỹ hoặc rau củ bị nhiễm phân), hoặc do lây nhiễm chéo từ dụng cụ, tay người chế biến.</p><p>Người nhiễm Salmonella thường có các triệu chứng như tiêu chảy, sốt. </p><img src='/assets/images/category/Thucpham/Thucpham4.jpg'><p>Để phòng ngừa ngộ độc thực phẩm do Salmonella, cần tuân thủ các biện pháp an toàn thực phẩm như: rửa tay sạch sẽ trước khi chế biến và ăn uống; nấu chín kỹ thực phẩm, đặc biệt là thịt, trứng và sữa; tránh ăn thực phẩm sống hoặc chưa nấu chín; bảo quản thực phẩm đúng cách để tránh nhiễm khuẩn; sử dụng nước sạch trong chế biến thực phẩm.</p><p>Ngoài ra, cần chú ý vệ sinh dụng cụ nấu ăn và bề mặt chế biến thực phẩm để tránh lây nhiễm chéo. Đặc biệt, nên hạn chế tiêu thụ thực phẩm từ các cơ sở kinh doanh vỉa hè không đảm bảo vệ sinh an toàn thực phẩm.</p><p>Nếu có dấu hiệu nghi ngờ ngộ độc thực phẩm như tiêu chảy, sốt, đau... cần nhanh chóng đến cơ sở y tế để được khám và điều trị kịp thời.</p>"
   },
   {
-    "id": 5,
+    "id": 105,
     "title": "Bộ Y tế vào cuộc vụ công nhân nhập viện nghi do ngộ độc thực phẩm tại Huế",
+    "date": "09-11-2025",
     "category": "Thực phẩm",
-    "image": "/assets/images/category/Thucpham/Thucpham5.jpg"
+    "image": "/assets/images/category/Thucpham/Thucpham5.jpg",
+    "content": "<p>Sáng 8/11, Bộ Y tế đã có công văn hỏa tốc gửi Sở Y tế tỉnh Thừa Thiên Huế về việc điều tra, xử lý vụ ngộ độc thực phẩm xảy ra tại Công ty TNHH MTV TNHH Giày Rieker Việt Nam (Khu công nghiệp Phú Bài, thị xã Hương Thủy, tỉnh Thừa Thiên Huế).</p><p>Trước đó, ngày 7/11, tại Công ty TNHH MTV TNHH Giày Rieker Việt Nam đã xảy ra vụ ngộ độc thực phẩm khiến 75 công nhân phải nhập viện cấp cứu. Ngay sau khi nhận được thông tin, Sở Y tế tỉnh Thừa Thiên Huế đã chỉ đạo Trung tâm Kiểm soát bệnh tật tỉnh phối hợp với các đơn vị liên quan tiến hành điều tra, xử lý vụ việc.</p><img src='/assets/images/category/Thucpham/Thucpham5.jpg'><p>Bộ Y tế yêu cầu Sở Y tế tỉnh Thừa Thiên Huế khẩn trương chỉ đạo các đơn vị chức năng phối hợp với các cơ quan liên quan của tỉnh tiến hành điều tra, xác định nguyên nhân vụ ngộ độc thực phẩm; đồng thời triển khai các biện pháp phòng chống dịch bệnh theo quy định.</p><p>Bên cạnh đó, Sở Y tế tỉnh Thừa Thiên Huế cần tăng cường công tác truyền thông về an toàn thực phẩm, hướng dẫn người dân và công nhân trong các khu công nghiệp về cách phòng tránh ngộ độc thực phẩm; đảm bảo vệ sinh an toàn thực phẩm trong các bếp ăn tập thể và các cơ sở kinh doanh thực phẩm trên địa bàn.</p><p>Bộ Y tế cũng đề nghị Sở Y tế tỉnh Thừa Thiên Huế báo cáo kết quả điều tra, xử lý vụ việc về Bộ Y tế trước ngày 15/11/2025 để tổng hợp và chỉ đạo các biện pháp tiếp theo.</p>"
   },
   {
-    "id": 6,
+    "id": 106,
     "title": "10 thực phẩm giúp tăng cường trí nhớ và duy trì sự minh mẫn cho não bộ",
+    "date": "08-11-2025",
     "category": "Thực phẩm",
-    "image": "/assets/images/category/Thucpham/Thucpham6.jpg"
+    "image": "/assets/images/category/Thucpham/Thucpham6.jpg",
+    "content": "<p>Để duy trì sự minh mẫn và tăng cường trí nhớ, việc lựa chọn thực phẩm phù hợp là rất quan trọng. Dưới đây là 10 loại thực phẩm được cho là có lợi cho sức khỏe não bộ:</p><p>1. Cá hồi: Giàu axit béo omega-3, giúp cải thiện chức năng não và tăng cường trí nhớ.</p><img src='/assets/images/category/Thucpham/Thucpham6.jpg'><p>2. Quả óc chó: Chứa nhiều chất chống oxy hóa và axit béo không bão hòa, hỗ trợ sự phát triển của não bộ.</p><p>3. Trứng: Cung cấp choline, một chất quan trọng giúp cải thiện trí nhớ và chức năng não.</p><p>4. Quả việt quất: Giàu chất chống oxy hóa, giúp bảo vệ não khỏi các tổn thương do gốc tự do.</p><p>5. Hạt chia: Chứa nhiều omega-3 và chất xơ, hỗ trợ sức khỏe não bộ và cải thiện trí nhớ.</p><p>6. Rau xanh: Như cải bó xôi và bông cải xanh, giàu vitamin K và folate, giúp tăng cường chức năng não.</p><p>7. Hạt bí ngô: Chứa kẽm và magiê, hỗ trợ chức năng thần kinh và cải thiện trí nhớ.</p><p>8. Sô cô la đen: Chứa flavonoid, giúp tăng cường lưu thông máu đến não và cải thiện trí nhớ.</p><p>9. Trà xanh: Giàu catechin, giúp bảo vệ não khỏi các tổn thương và cải thiện chức năng nhận thức.</p><p>10. Bơ: Chứa chất béo không bão hòa đơn, giúp duy trì sự linh hoạt của màng tế bào não và hỗ trợ chức năng nhận thức.</p>"
   },
   {
-    "id": 7,
+    "id": 107,
     "title": "Dược phẩm An Khang cùng loạt cơ sở dược, mỹ phẩm tại TPHCM bị phạt",
+    "date": "07-11-2025",
     "category": "Dược phẩm",
-    "image": "/assets/images/category/Duocpham/Duocpham1.jpg"
+    "image": "/assets/images/category/Duocpham/Duocpham1.jpg",
+    "content": "<p>Sở Y tế TP.HCM vừa ban hành quyết định xử phạt vi phạm hành chính trong lĩnh vực y tế đối với Công ty TNHH Dược phẩm An Khang và một số cơ sở kinh doanh dược, mỹ phẩm trên địa bàn thành phố.</p><p>Cụ thể, Công ty TNHH Dược phẩm An Khang bị phạt 40 triệu đồng do quảng cáo sản phẩm thực phẩm bảo vệ sức khỏe An Khang Tâm Bình không đúng với nội dung đã được cơ quan có thẩm quyền xác nhận. Ngoài ra, công ty này còn bị đình chỉ hoạt động quảng cáo sản phẩm trong thời hạn 3 tháng.</p><img src='/assets/images/category/Duocpham/Duocpham1.jpg'><p>Bên cạnh đó, Sở Y tế TP.HCM cũng xử phạt một số cơ sở kinh doanh dược, mỹ phẩm khác như sau:</p><p>- Cửa hàng thuốc Tây Minh Châu (quận 3) bị phạt 25 triệu đồng do bán thuốc kê đơn khi không có đơn của người có thẩm quyền và không lưu giữ đơn thuốc theo quy định.</p><p>- Cửa hàng mỹ phẩm Hồng Ngọc (quận 10) bị phạt 20 triệu đồng do quảng cáo mỹ phẩm không đúng với nội dung đã được cơ quan có thẩm quyền xác nhận.</p><p>- Cửa hàng thuốc Tây An Phú (quận Bình Thạnh) bị phạt 15 triệu đồng do không bảo quản thuốc theo đúng quy định của pháp luật.</p><p>Sở Y tế TP.HCM yêu cầu các cơ sở vi phạm nghiêm chỉnh chấp hành quyết định xử phạt và khắc phục hậu quả trong thời hạn quy định. Đồng thời, tăng cường công tác quản lý, giám sát hoạt động kinh doanh dược, mỹ phẩm để đảm bảo an toàn cho người tiêu dùng.</p>"
   },
   {
-    "id": 8,
+    "id": 108,
     "title": "Cổ phiếu VMD của Dược phẩm Vimedimex bị đình chỉ giao dịch",
+    "date": "11-11-2025",
     "category": "Dược phẩm",
-    "image": "/assets/images/category/Duocpham/Duocpham2.jpg"
+    "image": "/assets/images/category/Duocpham/Duocpham2.jpg",
+    "content": "<p>Sở Giao dịch Chứng khoán Hà Nội (HNX) vừa ra thông báo về việc đình chỉ giao dịch cổ phiếu VMD của Công ty Cổ phần Dược phẩm Vimedimex từ ngày 15/11/2025 đến ngày 14/12/2025 do công ty này chưa công bố báo cáo tài chính quý III/2025.</p><p>Trước đó, Dược phẩm Vimedimex đã bị Sở Giao dịch Chứng khoán Hà Nội nhắc nhở về việc chậm công bố báo cáo tài chính quý III/2025. Việc chậm trễ này đã vi phạm quy định về công bố thông tin của các công ty đại chúng.</p><img src='/assets/images/category/Duocpham/Duocpham2.jpg'><p>Đình chỉ giao dịch cổ phiếu VMD sẽ ảnh hưởng đến quyền lợi của các nhà đầu tư nắm giữ cổ phiếu này. Trong thời gian bị đình chỉ, cổ phiếu VMD sẽ không được phép giao dịch trên thị trường chứng khoán, gây khó khăn cho các nhà đầu tư trong việc mua bán và thanh khoản cổ phiếu.</p><p>Dược phẩm Vimedimex là một trong những công ty dược phẩm lớn tại Việt Nam, chuyên sản xuất và phân phối các sản phẩm dược phẩm, thực phẩm chức năng và thiết bị y tế. Việc chậm công bố báo cáo tài chính có thể ảnh hưởng đến uy tín và hoạt động kinh doanh của công ty trong thời gian tới.</p><p>Sở Giao dịch Chứng khoán Hà Nội yêu cầu Dược phẩm Vimedimex nhanh chóng hoàn thiện và công bố báo cáo tài chính quý III/2025 để được phép giao dịch trở lại trên thị trường chứng khoán.</p>"
   },
   {
-    "id": 9,
+    "id": 109,
     "title": "8 phương pháp biến hạt tiêu thành dược phẩm tốt cho sức khỏe",
+    "date": "10-11-2025",
     "category": "Dược phẩm",
-    "image": "/assets/images/category/Duocpham/Duocpham3.jpg"
+    "image": "/assets/images/category/Duocpham/Duocpham3.jpg",
+    "content": "<p>Hạt tiêu không chỉ là một loại gia vị phổ biến trong ẩm thực mà còn có nhiều lợi ích cho sức khỏe. Dưới đây là 8 phương pháp biến hạt tiêu thành dược phẩm tốt cho sức khỏe:</p><p>1. Trà hạt tiêu: Pha trà từ hạt tiêu đen có thể giúp cải thiện tiêu hóa và giảm đau </p><img src='/assets/images/category/Duocpham/Duocpham3.jpg'><p>2. Dầu hạt tiêu: Dầu chiết xuất từ hạt tiêu có thể được sử dụng để massage giúp giảm đau cơ và khớp.</p><p>3. Viên nang hạt tiêu: Sử dụng viên nang chứa chiết xuất hạt tiêu để hỗ trợ tiêu hóa và tăng cường trao đổi chất.</p><p>4. Mặt nạ hạt tiêu: Kết hợp hạt tiêu với các thành phần khác để tạo mặt nạ giúp làm sạch da và giảm mụn.</p><p>5. Hỗn hợp tẩy tế bào chết: Sử dụng hạt tiêu nghiền nhỏ kết hợp với dầu dừa để tạo hỗn hợp tẩy tế bào chết cho da.</p><p>6. Thuốc xịt mũi: Chiết xuất hạt tiêu có thể được sử dụng trong thuốc xịt mũi để giảm nghẹt mũi và cải thiện hô hấp.</p><p>7. Bột hạt tiêu: Sử dụng bột hạt tiêu trong các món ăn để tăng cường sức khỏe tim mạch và hỗ trợ giảm cân.</p><p>8. Nước súc miệng: Pha nước súc miệng từ hạt tiêu để giúp kháng khuẩn và làm sạch khoang miệng.</p>"
   },
   {
-    "id": 10,
+    "id": 110,
     "title": "Dược phẩm Thái Minh và hành trình 7 năm 'miễn nhiễm' với hàng giả",
+    "date": "09-11-2025",
     "category": "Dược phẩm",
-    "image": "/assets/images/category/Duocpham/Duocpham4.jpg"
+    "image": "/assets/images/category/Duocpham/Duocpham4.jpg",
+    "content": "<p>Công ty Cổ phần Dược phẩm Thái Minh đã trải qua một hành trình dài 7 năm để xây dựng và duy trì uy tín trong ngành dược phẩm, đặc biệt là trong việc chống lại hàng giả. Với sự cam kết về chất lượng sản phẩm và dịch vụ, Dược phẩm Thái Minh đã trở thành một trong những thương hiệu được tin tưởng nhất tại Việt Nam.</p><p>Trong suốt 7 năm qua, Dược phẩm Thái Minh đã không ngừng nỗ lực để đảm bảo rằng tất cả các sản phẩm của họ đều đáp ứng các tiêu chuẩn chất lượng cao nhất. Công ty đã đầu tư mạnh mẽ vào công nghệ sản xuất hiện đại và quy trình kiểm soát chất lượng nghiêm ngặt để ngăn chặn sự xâm nhập của hàng giả vào thị trường.</p><img src='/assets/images/category/Duocpham/Duocpham4.jpg'><p>Bên cạnh đó, Dược phẩm Thái Minh cũng đã triển khai các chiến dịch truyền thông nhằm nâng cao nhận thức của người tiêu dùng về nguy cơ của hàng giả và cách nhận biết sản phẩm chính hãng. Công ty đã hợp tác chặt chẽ với các cơ quan chức năng để phát hiện và xử lý các trường hợp vi phạm liên quan đến hàng giả.</p><p>Nhờ những nỗ lực không ngừng nghỉ này, Dược phẩm Thái Minh đã xây dựng được lòng tin vững chắc từ phía khách hàng và đối tác kinh doanh. Hành trình 7 năm 'miễn nhiễm' với hàng giả không chỉ là minh chứng cho sự cam kết của công ty đối với chất lượng mà còn là nguồn cảm hứng cho toàn ngành dược phẩm trong cuộc chiến chống lại hàng giả.</p>"
   },
   {
-    "id": 11,
+    "id": 111,
     "title": "Bộ Y tế: Xử lý vi phạm của Ngân 98, Ngân Collagen, Dược phẩm Hoàng Hường",
+    "date": "08-11-2025",
     "category": "Dược phẩm",
-    "image": "/assets/images/category/Duocpham/Duocpham5.jpg"
+    "image": "/assets/images/category/Duocpham/Duocpham5.jpg",
+    "content": "<p>Bộ Y tế vừa có công văn yêu cầu Sở Y tế các tỉnh, thành phố trực thuộc Trung ương tăng cường kiểm tra, xử lý vi phạm đối với các sản phẩm thực phẩm bảo vệ sức khỏe Ngân 98, Ngân Collagen và các sản phẩm của Dược phẩm Hoàng Hường.</p><p>Trước đó, Bộ Y tế đã nhận được phản ánh về việc một số sản phẩm thực phẩm bảo vệ sức khỏe như Ngân 98, Ngân Collagen và các sản phẩm của Dược phẩm Hoàng Hường có dấu hiệu vi phạm quy định về quảng cáo và chất lượng sản phẩm. Các sản phẩm này được quảng cáo với những công dụng vượt quá thực tế, gây hiểu lầm cho người tiêu dùng.</p><img src='/assets/images/category/Duocpham/Duocpham5.jpg'><p>Bộ Y tế yêu cầu Sở Y tế các địa phương phối hợp với các cơ quan chức năng tiến hành kiểm tra, giám sát chặt chẽ hoạt động sản xuất, kinh doanh và quảng cáo của các sản phẩm này. Nếu phát hiện vi phạm, cần xử lý nghiêm theo quy định của pháp luật để bảo vệ quyền lợi của người tiêu dùng và đảm bảo an toàn thực phẩm trên thị trường.</p><p>Bên cạnh đó, Bộ Y tế cũng đề nghị các cơ quan truyền thông tăng cường công tác tuyên truyền, nâng cao nhận thức của người dân về việc lựa chọn và sử dụng thực phẩm bảo vệ sức khỏe một cách đúng đắn, tránh bị lừa đảo bởi những quảng cáo sai lệch.</p><p>Đây là một phần trong nỗ lực của Bộ Y tế nhằm đảm bảo an toàn thực phẩm và bảo vệ sức khỏe cộng đồng trước những nguy cơ tiềm ẩn từ các sản phẩm không đạt chất lượng trên thị trường.</p>"
   },
   {
-    "id": 12,
+    "id": 112,
     "title": "Doanh nghiệp ngoại mua gần 65% vốn Công ty CP Dược phẩm Imexpharm",
+    "date": "11-11-2025",
     "category": "Dược phẩm",
-    "image": "/assets/images/category/Duocpham/Duocpham6.jpg"
+    "image": "/assets/images/category/Duocpham/Duocpham6.jpg",
+    "content": "<p>Theo thông tin từ Sở Giao dịch Chứng khoán TP.HCM (HOSE), Công ty TNHH MTV Đầu tư Kỹ thuật Y tế Việt Nam (Vietmedtech) đã hoàn tất việc mua vào 14.522.000 cổ phiếu IMP của Công ty CP Dược phẩm Imexpharm, nâng tỷ lệ sở hữu từ 51,28% lên 64,99% vốn điều lệ của công ty này.</p><p>Giao dịch được thực hiện thông qua phương thức thỏa thuận và khớp lệnh từ ngày 1/11 đến 10/11/2025. Trước giao dịch, Vietmedtech đã sở hữu 11.447.000 cổ phiếu IMP, tương đương 51,28% vốn điều lệ của Imexpharm.</p><img src='/assets/images/category/Duocpham/Duocpham6.jpg'><p>Việc tăng tỷ lệ sở hữu tại Imexpharm cho thấy sự quan tâm mạnh mẽ của Vietmedtech đối với thị trường dược phẩm Việt Nam. Imexpharm là một trong những công ty dược phẩm hàng đầu tại Việt Nam, với danh mục sản phẩm đa dạng và mạng lưới phân phối rộng khắp.</p><p>Việc sở hữu gần 65% vốn điều lệ của Imexpharm sẽ giúp Vietmedtech có thêm quyền kiểm soát và định hướng chiến lược phát triển của công ty này trong tương lai. Đồng thời, đây cũng là cơ hội để Vietmedtech tận dụng các tiềm năng và lợi thế của Imexpharm để mở rộng hoạt động kinh doanh trong lĩnh vực dược phẩm.</p><p>Động thái này cũng phản ánh xu hướng tăng cường đầu tư của các doanh nghiệp ngoại vào thị trường dược phẩm Việt Nam, nhằm khai thác tiềm năng phát triển và đáp ứng nhu cầu ngày càng tăng về chăm sóc sức khỏe của người dân.</p>"
   },
   {
-    "id": 13,
+    "id": 113,
     "title": "Dứa và Tre trong y học cổ truyền và tiềm năng ứng dụng trong y học hiện đại",
+    "date": "10-11-2025",
     "category": "Y học cổ truyền",
-    "image": "/assets/images/category/YhocCT/Yhoc1.jpg"
+    "image": "/assets/images/category/YhocCT/Yhoc1.jpg",
+    "content": "<p>Dứa (Ananas comosus) và tre (Bambusoideae) là hai loại thực vật có vai trò quan trọng trong y học cổ truyền của nhiều nền văn hóa, đặc biệt là ở châu Á. Cả hai đều được sử dụng để điều trị nhiều loại bệnh khác nhau nhờ vào các thành phần dược tính tự nhiên mà chúng chứa đựng.</p><p>Dứa được biết đến với hàm lượng cao vitamin C, mangan và các hợp chất chống oxy hóa như bromelain. Bromelain là một enzyme có khả năng giảm viêm, hỗ trợ tiêu hóa và tăng cường hệ miễn dịch. Trong y học cổ truyền, dứa thường được sử dụng để điều trị các vấn đề về tiêu hóa, viêm khớp và các bệnh liên quan đến viêm nhiễm.</p><img src='/assets/images/category/YhocCT/Yhoc1.jpg'><p>Tre, đặc biệt là măng tre, cũng có nhiều ứng dụng trong y học cổ truyền. Măng tre chứa nhiều chất xơ, vitamin và khoáng chất như kali và magiê. Nó được sử dụng để cải thiện chức năng tiêu hóa, giảm cholesterol và hỗ trợ sức khỏe tim mạch. Ngoài ra, tre còn được sử dụng trong các bài thuốc truyền thống để điều trị các vấn đề về da và hô hấp.</p><p>Trong y học hiện đại, nghiên cứu về dứa và tre đang mở ra nhiều tiềm năng ứng dụng mới. Các hợp chất từ dứa như bromelain đang được nghiên cứu để phát triển các loại thuốc chống viêm và hỗ trợ tiêu hóa. Tương tự, các chiết xuất từ tre cũng đang được khám phá để tạo ra các sản phẩm chăm sóc sức khỏe tự nhiên.</p><p>Tổng kết lại, dứa và tre không chỉ có giá trị trong y học cổ truyền mà còn mang lại nhiều tiềm năng ứng dụng trong y học hiện đại. Việc nghiên cứu sâu hơn về các thành phần dược tính của chúng có thể giúp phát triển các phương pháp điều trị mới hiệu quả và an toàn hơn cho người bệnh.</p>"
   },
   {
-    "id": 14,
+    "id": 114,
     "title": "Bệnh viện y học cổ truyền đầu tiên của Việt Nam đạt chứng nhận ISO 15189:2022",
+    "date": "09-11-2025",
     "category": "Y học cổ truyền",
-    "image": "/assets/images/category/YhocCT/Yhoc2.jpg"
+    "image": "/assets/images/category/YhocCT/Yhoc2.jpg",
+    "content": "<p>Bệnh viện Y học cổ truyền Trung ương đã trở thành bệnh viện y học cổ truyền đầu tiên tại Việt Nam đạt chứng nhận ISO 15189:2022 cho phòng xét nghiệm y học. Đây là một bước tiến quan trọng trong việc nâng cao chất lượng dịch vụ y tế và đảm bảo an toàn cho bệnh nhân.</p><p>ISO 15189:2022 là tiêu chuẩn quốc tế dành cho các phòng xét nghiệm y học, bao gồm các yêu cầu về quản lý chất lượng và kỹ thuật. Việc đạt được chứng nhận này đồng nghĩa với việc Bệnh viện Y học cổ truyền Trung ương đã đáp ứng đầy đủ các tiêu chuẩn nghiêm ngặt về chất lượng và an toàn trong hoạt động xét nghiệm y học.</p><img src='/assets/images/category/YhocCT/Yhoc2.jpg'><p>Để đạt được chứng nhận ISO 15189:2022, Bệnh viện Y học cổ truyền Trung ương đã thực hiện nhiều cải tiến trong quy trình làm việc, đào tạo nhân viên và nâng cấp trang thiết bị xét nghiệm. Bệnh viện cũng đã xây dựng hệ thống quản lý chất lượng chặt chẽ để đảm bảo rằng tất cả các hoạt động xét nghiệm đều tuân thủ các tiêu chuẩn quốc tế.</p><p>Việc đạt được chứng nhận ISO 15189:2022 không chỉ nâng cao uy tín của Bệnh viện Y học cổ truyền Trung ương mà còn góp phần cải thiện chất lượng chăm sóc sức khỏe cho bệnh nhân. Đây là một minh chứng cho cam kết của bệnh viện trong việc cung cấp dịch vụ y tế chất lượng cao và an toàn cho cộng đồng.</p>"
   },
   {
-    "id": 15,
+    "id": 115,
     "title": "Hoàn thiện cơ chế, chính sách đào tạo nguồn nhân lực y học cổ truyền chuyên sâu, chất lượng cao",
+    "date": "08-11-2025",
     "category": "Y học cổ truyền",
-    "image": "/assets/images/category/YhocCT/Yhoc3.jpg"
+    "image": "/assets/images/category/YhocCT/Yhoc3.jpg",
+    "content": "<p>Y học cổ truyền (YHCT) là một phần quan trọng của hệ thống y tế Việt Nam, đóng vai trò không thể thiếu trong việc chăm sóc sức khỏe cộng đồng. Tuy nhiên, để đáp ứng nhu cầu ngày càng tăng về dịch vụ y tế chất lượng cao, việc đào tạo nguồn nhân lực YHCT chuyên sâu và chất lượng cao là điều cần thiết.</p><p>Hiện nay, nhiều cơ sở đào tạo YHCT tại Việt Nam đã nỗ lực nâng cao chất lượng giảng dạy và nghiên cứu. Tuy nhiên, vẫn còn nhiều thách thức trong việc hoàn thiện cơ chế và chính sách đào tạo nguồn nhân lực YHCT. Để giải quyết vấn đề này, cần có sự phối hợp chặt chẽ giữa các cơ quan quản lý nhà nước, các trường đại học và các tổ chức y tế.</p><img src='/assets/images/category/YhocCT/Yhoc3.jpg'><p>Một trong những giải pháp quan trọng là xây dựng chương trình đào tạo phù hợp với nhu cầu thực tế của ngành y tế. Chương trình này cần bao gồm cả kiến thức lý thuyết và kỹ năng thực hành, giúp sinh viên YHCT có thể áp dụng hiệu quả trong công việc sau khi tốt nghiệp.</p><p>Bên cạnh đó, cần tăng cường đầu tư vào cơ sở vật chất và trang thiết bị giảng dạy để tạo điều kiện thuận lợi cho quá trình học tập và nghiên cứu. Đồng thời, việc thúc đẩy hợp tác quốc tế trong lĩnh vực YHCT cũng sẽ giúp nâng cao chất lượng đào tạo và mở rộng kiến thức cho sinh viên.</p><p>Cuối cùng, cần xây dựng chính sách hỗ trợ nghề nghiệp cho các bác sĩ YHCT sau khi tốt nghiệp, bao gồm việc tạo cơ hội việc làm và phát triển nghề nghiệp. Điều này sẽ giúp thu hút nhiều sinh viên tài năng vào ngành YHCT và đảm bảo nguồn nhân lực chất lượng cao cho hệ thống y tế Việt Nam trong tương lai.</p>"
   },
   {
-    "id": 16,
+    "id": 116,
     "title": "Y học cổ truyền ngày càng chứng minh được vị trí: Làm gì để tiếp tục bảo tồn và phát huy?",
+    "date": "07-11-2025",
     "category": "Y học cổ truyền",
-    "image": "/assets/images/category/YhocCT/Yhoc4.jpg"
+    "image": "/assets/images/category/YhocCT/Yhoc4.jpg",
+    "content": "<p>Y học cổ truyền (YHCT) đã tồn tại hàng ngàn năm và đóng vai trò quan trọng trong việc chăm sóc sức khỏe cộng đồng. Trong những năm gần đây, YHCT ngày càng chứng minh được vị trí của mình trong hệ thống y tế hiện đại, nhờ vào sự kết hợp giữa kiến thức truyền thống và các nghiên cứu khoa học hiện đại.</p><p>Để tiếp tục bảo tồn và phát huy giá trị của YHCT, cần có những chiến lược cụ thể và hiệu quả. Một trong những yếu tố quan trọng là tăng cường nghiên cứu khoa học về YHCT để chứng minh hiệu quả và an toàn của các phương pháp điều trị truyền thống. Điều này sẽ giúp nâng cao uy tín của YHCT trong mắt cộng đồng y tế và người dân.</p><img src='/assets/images/category/YhocCT/Yhoc4.jpg'><p>Bên cạnh đó, cần đẩy mạnh công tác đào tạo và phát triển nguồn nhân lực YHCT chất lượng cao. Việc xây dựng các chương trình đào tạo chuyên sâu, kết hợp giữa lý thuyết và thực hành sẽ giúp sinh viên YHCT có thể áp dụng hiệu quả kiến thức vào thực tiễn.</p><p>Ngoài ra, việc tăng cường hợp tác quốc tế trong lĩnh vực YHCT cũng là một yếu tố quan trọng. Hợp tác với các tổ chức y tế quốc tế sẽ giúp mở rộng kiến thức, chia sẻ kinh nghiệm và nâng cao chất lượng dịch vụ YHCT.</p><p>Cuối cùng, cần xây dựng chính sách hỗ trợ nghề nghiệp cho các bác sĩ YHCT, bao gồm việc tạo cơ hội việc làm và phát triển nghề nghiệp. Điều này sẽ giúp thu hút nhiều sinh viên tài năng vào ngành YHCT và đảm bảo nguồn nhân lực chất lượng cao cho hệ thống y tế Việt Nam trong tương lai.</p>"
   },
   {
-    "id": 17,
+    "id": 117,
     "title": "Kết nối Y học cổ truyền với du lịch sức khỏe: Mảnh ghép còn thiếu trong phát triển vùng và chính sách quốc gia",
+    "date": "08-11-2025",
     "category": "Y học cổ truyền",
-    "image": "/assets/images/category/YhocCT/Yhoc5.jpg"
+    "image": "/assets/images/category/YhocCT/Yhoc5.jpg",
+    "content": "<p>Y học cổ truyền (YHCT) không chỉ là một phương pháp điều trị hiệu quả mà còn có tiềm năng lớn trong việc phát triển du lịch sức khỏe. Việc kết nối YHCT với du lịch sức khỏe có thể tạo ra những trải nghiệm độc đáo cho du khách, đồng thời góp phần thúc đẩy phát triển kinh tế vùng và nâng cao chất lượng dịch vụ y tế.</p><p>Để thực hiện điều này, cần xây dựng các chương trình du lịch kết hợp giữa khám chữa bệnh bằng YHCT và trải nghiệm văn hóa địa phương. Các khu nghỉ dưỡng, spa và trung tâm y tế có thể cung cấp các dịch vụ chăm sóc sức khỏe dựa trên YHCT, như châm cứu, bấm huyệt, xông hơi thảo dược và các liệu pháp massage truyền thống.</p><img src='/assets/images/category/YhocCT/Yhoc5.jpg'><p>Bên cạnh đó, việc quảng bá và giới thiệu các giá trị của YHCT thông qua các sự kiện văn hóa, hội thảo và triển lãm cũng sẽ giúp thu hút sự quan tâm của du khách. Đồng thời, cần xây dựng các chính sách hỗ trợ phát triển du lịch sức khỏe dựa trên YHCT, bao gồm việc đào tạo nguồn nhân lực chuyên nghiệp và nâng cao chất lượng dịch vụ.</p><p>Cuối cùng, việc hợp tác giữa các cơ quan quản lý nhà nước, doanh nghiệp du lịch và các tổ chức y tế sẽ đóng vai trò quan trọng trong việc phát triển du lịch sức khỏe dựa trên YHCT. Sự phối hợp chặt chẽ này sẽ giúp tạo ra những sản phẩm du lịch độc đáo, đáp ứng nhu cầu ngày càng tăng của du khách trong và ngoài nước.</p>"
   },
   {
-    "id": 18,
+    "id": 118,
     "title": "Y học cổ truyền hồi sinh từ núi rừng Tây Bắc",
+    "date": "07-11-2025",
     "category": "Y học cổ truyền",
-    "image": "/assets/images/category/YhocCT/Yhoc6.jpg"
+    "image": "/assets/images/category/YhocCT/Yhoc6.jpg",
+    "content": "<p>Tây Bắc Việt Nam, với hệ sinh thái đa dạng và phong phú, đã trở thành nguồn cung cấp dược liệu quý giá cho y học cổ truyền (YHCT). Trong những năm gần đây, YHCT tại vùng núi rừng này đang hồi sinh mạnh mẽ, nhờ vào sự kết hợp giữa kiến thức truyền thống và các nghiên cứu khoa học hiện đại.</p><p>Nhiều loại cây thuốc quý như đương quy, tam thất, hoàng kỳ và nhiều loại thảo dược khác được thu hái từ núi rừng Tây Bắc đã được sử dụng trong các bài thuốc YHCT để điều trị nhiều loại bệnh khác nhau. Các cộng đồng dân tộc thiểu số tại đây vẫn duy trì và truyền lại những kiến thức về sử dụng dược liệu trong y học cổ truyền qua nhiều thế hệ.</p><img src='/assets/images/category/YhocCT/Yhoc6.jpg'><p>Để thúc đẩy sự phát triển của YHCT tại Tây Bắc, nhiều dự án nghiên cứu và bảo tồn dược liệu đã được triển khai. Các nhà khoa học và chuyên gia y tế đang hợp tác với cộng đồng địa phương để nghiên cứu các phương pháp trồng trọt bền vững và khai thác dược liệu một cách hiệu quả.</p><p>Bên cạnh đó, việc xây dựng các trung tâm y tế và phòng khám YHCT tại vùng núi rừng Tây Bắc cũng góp phần nâng cao chất lượng dịch vụ chăm sóc sức khỏe cho người dân địa phương. Những nỗ lực này không chỉ giúp bảo tồn và phát huy giá trị của YHCT mà còn tạo ra cơ hội việc làm và phát triển kinh tế cho cộng đồng dân tộc thiểu số.</p><p>Tổng kết lại, YHCT tại Tây Bắc Việt Nam đang trải qua một quá trình hồi sinh đầy hứa hẹn, nhờ vào sự kết hợp giữa truyền thống và hiện đại. Việc tiếp tục đầu tư vào nghiên cứu, bảo tồn và phát triển YHCT sẽ giúp nâng cao chất lượng cuộc sống cho người dân địa phương và góp phần vào sự phát triển bền vững của ngành y tế Việt Nam.</p>"
   },
   {
-    "id": 19,
+    "id": 119,
     "title": "Cập nhật những tiến bộ, ứng dụng AI và công nghệ sinh học trong Nam học và Y học Giới tính",
+    "date": "10-11-2025",
     "category": "Giới tính",
-    "image": "/assets/images/category/Gender/GT1.jpg"
+    "image": "/assets/images/category/Gender/GT1.jpg",
+    "content": "<p>Trong những năm gần đây, lĩnh vực Nam học và Y học Giới tính đã chứng kiến những tiến bộ đáng kể nhờ vào sự phát triển của trí tuệ nhân tạo (AI) và công nghệ sinh học. Những ứng dụng này không chỉ giúp cải thiện chất lượng chăm sóc sức khỏe mà còn mở ra những cơ hội mới trong việc chẩn đoán và điều trị các vấn đề liên quan đến sức khỏe giới tính.</p><p>AI đã được sử dụng để phân tích dữ liệu y tế lớn, giúp các bác sĩ đưa ra các quyết định chẩn đoán chính xác hơn. Các thuật toán học máy có thể phát hiện các dấu hiệu sớm của các bệnh lý nam học như rối loạn cương dương, vô sinh và các vấn đề về hormone. Điều này giúp tăng khả năng điều trị thành công và cải thiện chất lượng cuộc sống cho bệnh nhân.</p><img src='/assets/images/category/Gender/GT1.jpg'><p>Công nghệ sinh học cũng đóng vai trò quan trọng trong việc phát triển các phương pháp điều trị mới. Ví dụ, liệu pháp gen và tế bào gốc đang được nghiên cứu để điều trị các vấn đề về vô sinh và rối loạn chức năng tình dục. Những tiến bộ này không chỉ mang lại hy vọng cho những người mắc các vấn đề về sức khỏe giới tính mà còn mở ra những hướng đi mới trong nghiên cứu y học.</p><p>Bên cạnh đó, các ứng dụng di động và thiết bị đeo thông minh cũng đã được phát triển để theo dõi sức khỏe giới tính. Những công nghệ này giúp người dùng dễ dàng theo dõi các chỉ số sức khỏe và nhận được các lời khuyên từ chuyên gia y tế một cách nhanh chóng và tiện lợi.</p><p>Tổng kết lại, sự kết hợp giữa AI và công nghệ sinh học đang mang lại những thay đổi tích cực trong lĩnh vực Nam học và Y học Giới tính. Việc tiếp tục đầu tư vào nghiên cứu và phát triển các công nghệ này sẽ giúp nâng cao chất lượng chăm sóc sức khỏe và cải thiện cuộc sống của người dân trên toàn thế giới.</p>"
   },
   {
-    "id": 20,
+    "id": 120,
     "title": "Ngành y tế TP Huế: Nỗ lực giữ vững tỷ suất sinh, kiểm soát tốt mất cân bằng giới tính khi sinh",
+    "date": "09-11-2025",
     "category": "Giới tính",
-    "image": "/assets/images/category/Gender/GT2.jpg"
+    "image": "/assets/images/category/Gender/GT2.jpg",
+    "content": "<p>Trong những năm gần đây, ngành y tế TP Huế đã nỗ lực không ngừng để giữ vững tỷ suất sinh và kiểm soát tốt tình trạng mất cân bằng giới tính khi sinh. Đây là một vấn đề quan trọng ảnh hưởng đến cấu trúc dân số và sự phát triển bền vững của cộng đồng.</p><p>Ngành y tế TP Huế đã triển khai nhiều chương trình tuyên truyền nhằm nâng cao nhận thức của người dân về tầm quan trọng của việc duy trì tỷ suất sinh hợp lý và tránh lựa chọn giới tính thai nhi. Các chiến dịch này đã giúp thay đổi quan niệm truyền thống và khuyến khích các cặp vợ chồng sinh con theo ý muốn tự nhiên.</p><img src='/assets/images/category/Gender/GT2.jpg'><p>Bên cạnh đó, ngành y tế cũng đã tăng cường công tác giám sát và kiểm tra các cơ sở y tế để ngăn chặn việc sử dụng các phương pháp chọn giới tính thai nhi trái phép. Các biện pháp này đã góp phần giảm thiểu tình trạng mất cân bằng giới tính khi sinh và đảm bảo quyền lợi cho cả nam và nữ trong cộng đồng.</p><p>Ngành y tế TP Huế cũng đã hợp tác với các tổ chức xã hội và cộng đồng để xây dựng các chương trình hỗ trợ cho các gia đình có con gái, nhằm giảm bớt áp lực xã hội và khuyến khích việc sinh con gái. Những nỗ lực này đã mang lại những kết quả tích cực, giúp duy trì sự cân bằng giới tính trong dân số của TP Huế.</p><p>Tổng kết lại, ngành y tế TP Huế đã đạt được những thành tựu đáng kể trong việc giữ vững tỷ suất sinh và kiểm soát tốt tình trạng mất cân bằng giới tính khi sinh. Việc tiếp tục duy trì và phát triển các chương trình này sẽ giúp đảm bảo sự phát triển bền vững của cộng đồng trong tương lai.</p>"
   },
   {
-    "id": 21,
+    "id": 121,
     "title": "Xem phim 'Sex education', tôi đã biết giáo dục giới tính đúng đắn là bệ đỡ cần thiết để con tôi thực hiện điều đó thật an toàn",
+    "date": "08-11-2025",
     "category": "Giới tính",
-    "image": "/assets/images/category/Gender/GT3.jpg"
+    "image": "/assets/images/category/Gender/GT3.jpg",
+    "content": "<p>Phim 'Sex Education' đã mang đến một góc nhìn mới mẻ và sâu sắc về giáo dục giới tính, giúp tôi nhận ra tầm quan trọng của việc trang bị kiến thức đúng đắn cho con trẻ trong việc hiểu và quản lý sức khỏe giới tính của mình.</p><p>Trong phim, các nhân vật trẻ tuổi đối mặt với nhiều thách thức liên quan đến giới tính, từ việc khám phá bản thân đến những áp lực xã hội và gia đình. Điều này phản ánh thực tế mà nhiều thanh thiếu niên đang trải qua, và qua đó, tôi nhận thấy rằng giáo dục giới tính không chỉ là việc cung cấp thông tin mà còn là việc xây dựng sự tự tin và khả năng đưa ra quyết định đúng đắn.</p><img src='/assets/images/category/Gender/GT3.jpg'><p>Phim cũng nhấn mạnh vai trò của cha mẹ và nhà trường trong việc tạo ra một môi trường an toàn và hỗ trợ cho trẻ em khi họ tìm hiểu về giới tính. Tôi nhận ra rằng, thay vì né tránh hoặc giấu giếm các chủ đề liên quan đến giới tính, chúng ta nên mở lòng và sẵn sàng lắng nghe, chia sẻ với con cái mình.</p><p>Qua việc xem 'Sex Education', tôi đã học được rằng giáo dục giới tính đúng đắn là một bệ đỡ cần thiết để con tôi có thể thực hiện các quyết định về sức khỏe giới tính một cách an toàn và tự tin. Tôi quyết định sẽ dành thời gian để thảo luận với con về những chủ đề này, đồng thời tìm kiếm các nguồn tài liệu uy tín để hỗ trợ quá trình giáo dục giới tính cho con mình.</p><p>Tổng kết lại, 'Sex Education' không chỉ là một bộ phim giải trí mà còn là một công cụ giáo dục quý giá, giúp tôi hiểu rõ hơn về tầm quan trọng của giáo dục giới tính và cách thức thực hiện nó một cách hiệu quả cho con trẻ.</p>"
   },
   {
-    "id": 22,
+    "id": 122,
     "title": "Bộ Y tế đề xuất có thể phạt 100 triệu đồng nếu chọn giới tính thai nhi",
+    "date": "07-11-2025",
     "category": "Giới tính",
-    "image": "/assets/images/category/Gender/GT4.jpg"
+    "image": "/assets/images/category/Gender/GT4.jpg",
+    "content": "<p>Bộ Y tế vừa đề xuất mức phạt lên đến 100 triệu đồng đối với các hành vi chọn giới tính thai nhi trái phép. Đây là một biện pháp nhằm kiểm soát tình trạng mất cân bằng giới tính khi sinh, đồng thời bảo vệ quyền lợi của trẻ em và đảm bảo sự phát triển bền vững của cộng đồng.</p><p>Chọn giới tính thai nhi là một vấn đề nhức nhối tại nhiều quốc gia, trong đó có Việt Nam. Việc lựa chọn giới tính thai nhi không chỉ vi phạm đạo đức mà còn gây ra những hậu quả nghiêm trọng về mặt xã hội, như mất cân bằng giới tính và các vấn đề liên quan đến quyền lợi của trẻ em.</p><img src='/assets/images/category/Gender/GT4.jpg'><p>Đề xuất của Bộ Y tế nhằm tăng cường công tác giám sát và xử lý các hành vi vi phạm liên quan đến chọn giới tính thai nhi. Mức phạt cao sẽ tạo ra sức răn đe mạnh mẽ, giúp ngăn chặn các hành vi này và khuyến khích người dân tuân thủ các quy định về chăm sóc sức khỏe sinh sản.</p><p>Bên cạnh đó, Bộ Y tế cũng đề xuất tăng cường công tác tuyên truyền, nâng cao nhận thức của người dân về tầm quan trọng của việc duy trì tỷ suất sinh hợp lý và tránh lựa chọn giới tính thai nhi. Các chiến dịch này sẽ giúp thay đổi quan niệm truyền thống và khuyến khích các cặp vợ chồng sinh con theo ý muốn tự nhiên.</p><p>Tổng kết lại, đề xuất của Bộ Y tế về mức phạt 100 triệu đồng đối với hành vi chọn giới tính thai nhi là một bước tiến quan trọng trong việc kiểm soát tình trạng mất cân bằng giới tính khi sinh. Việc thực hiện nghiêm túc các biện pháp này sẽ góp phần bảo vệ quyền lợi của trẻ em và đảm bảo sự phát triển bền vững của cộng đồng trong tương lai.</p>"
   },
   {
-    "id": 23,
+    "id": 123,
     "title": "Chi tiết tỷ số giới tính khi sinh ở các tỉnh, thành nước ta và nỗ lực đưa về mức cân bằng tự nhiên",
+    "date": "11-11-2025",
     "category": "Giới tính",
-    "image": "/assets/images/category/Gender/GT5.jpg"
+    "image": "/assets/images/category/Gender/GT5.jpg",
+    "content": "<p>Tỷ số giới tính khi sinh (TSGTKS) là một chỉ số quan trọng phản ánh sự cân bằng giữa số lượng trẻ em trai và trẻ em gái được sinh ra trong một cộng đồng. Ở Việt Nam, tình trạng mất cân bằng giới tính khi sinh đã trở thành một vấn đề đáng lo ngại, với tỷ số giới tính khi sinh cao hơn mức tự nhiên (khoảng 105 bé trai trên 100 bé gái).</p><p>Theo số liệu thống kê gần đây, nhiều tỉnh, thành phố tại Việt Nam đang ghi nhận tỷ số giới tính khi sinh vượt mức tự nhiên. Ví dụ, tại Hà Nội, tỷ số này đã lên tới 112 bé trai trên 100 bé gái, trong khi tại TP.HCM là khoảng 110 bé trai trên 100 bé gái. Các tỉnh miền Bắc như Bắc Ninh, Thái Nguyên cũng ghi nhận tỷ số giới tính khi sinh cao tương tự.</p><img src='/assets/images/category/Gender/GT5.jpg'><p>Nguyên nhân chính dẫn đến tình trạng mất cân bằng giới tính khi sinh bao gồm việc lựa chọn giới tính thai nhi thông qua các phương pháp y học hiện đại, cũng như những quan niệm truyền thống về giá trị của con trai trong xã hội. Điều này đã tạo ra áp lực lớn đối với các cặp vợ chồng trong việc sinh con trai.</p><p>Để đưa tỷ số giới tính khi sinh về mức cân bằng tự nhiên, các cơ quan chức năng đã triển khai nhiều biện pháp. Bộ Y tế đã đề xuất mức phạt lên đến 100 triệu đồng đối với các hành vi chọn giới tính thai nhi trái phép. Bên cạnh đó, các chiến dịch tuyên truyền nâng cao nhận thức của người dân về tầm quan trọng của việc duy trì tỷ suất sinh hợp lý cũng được đẩy mạnh.</p><p>Tổng kết lại, việc kiểm soát và đưa tỷ số giới tính khi sinh về mức cân bằng tự nhiên là một nhiệm vụ quan trọng đối với sự phát triển bền vững của cộng đồng. Việc thực hiện nghiêm túc các biện pháp đã đề ra sẽ giúp bảo vệ quyền lợi của trẻ em và đảm bảo sự phát triển hài hòa của xã hội trong tương lai.</p>"
   },
   {
-    "id": 24,
+    "id": 124,
     "title": "Mất cân bằng giới tính khi sinh tại Việt Nam đang ở mức nào?",
+    "date": "10-11-2025",
     "category": "Giới tính",
-    "image": "/assets/images/category/Gender/GT6.jpg"
+    "image": "/assets/images/category/Gender/GT6.jpg",
+    "content": "<p>Mất cân bằng giới tính khi sinh (MCBGTKS) là một vấn đề nghiêm trọng tại Việt Nam, với tỷ số giới tính khi sinh (TSGTKS) vượt mức tự nhiên. Theo các số liệu thống kê gần đây, TSGTKS ở Việt Nam đang ở mức khoảng 111 bé trai trên 100 bé gái, cao hơn nhiều so với mức tự nhiên là 105 bé trai trên 100 bé gái.</p><p>MCBGTKS chủ yếu do việc lựa chọn giới tính thai nhi thông qua các phương pháp y học hiện đại và những quan niệm truyền thống về giá trị của con trai trong xã hội. Điều này đã tạo ra áp lực lớn đối với các cặp vợ chồng trong việc sinh con trai, dẫn đến tình trạng mất cân bằng giới tính khi sinh ngày càng nghiêm trọng.</p><img src='/assets/images/category/Gender/GT6.jpg'><p>Để giải quyết vấn đề này, các cơ quan chức năng đã triển khai nhiều biện pháp, bao gồm việc đề xuất mức phạt cao đối với các hành vi chọn giới tính thai nhi trái phép và tăng cường công tác tuyên truyền nâng cao nhận thức của người dân về tầm quan trọng của việc duy trì tỷ suất sinh hợp lý.</p><p>Tổng kết lại, MCBGTKS tại Việt Nam đang ở mức đáng lo ngại và cần có những nỗ lực mạnh mẽ từ cả phía chính phủ và cộng đồng để đưa tỷ số giới tính khi sinh về mức cân bằng tự nhiên, đảm bảo sự phát triển bền vững của xã hội trong tương lai.</p>"
   }
 ]
