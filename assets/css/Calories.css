@@ -73,6 +73,56 @@
         font-size: 17px; /* tăng từ 16px lên 17px */
     }
 
+    /* Hộp chọn mức độ hoạt động */
+    .intensity-box {
+    margin-top: 10px;
+    background-color: #dff5e0;
+    border: 1px solid #2f8f46;
+    border-radius: 12px;
+    padding: 15px 20px;
+    max-width: 450px;
+    text-align: left;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .intensity-box h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2f8f46;
+    }
+
+    .intensity-box select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+    margin-bottom: 10px;
+    }
+
+    .intensity-box .buttons {
+    display: flex;
+    justify-content: space-between;
+    }
+
+    .intensity-box button {
+    border: none;
+    border-radius: 10px;
+    padding: 6px 16px;
+    cursor: pointer;
+    font-weight: 500;
+    }
+
+    #closeBox {
+    background: #ccc;
+    }
+
+    #saveBox {
+    background: #2f8f46;
+    color: white;
+    }
+
+
     /* Tổng quan hôm nay */
     .overview-container {
         width: 100%;
@@ -597,6 +647,23 @@
     pointer-events: none;
     }
 
+    /* Style cho icon tim yêu thích */
+    .fa-heart.favorite {
+        color: #e55b4d !important;
+    }
+
+    .fa-heart {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .fa-heart:hover {
+        transform: scale(1.2);
+    }
+
+    .food-column:nth-child(2) ul {
+        min-height: 50px;
+    }
 
     /* ===== DASHBOARD CALO ===== */
     .dashboard {
@@ -1546,112 +1613,166 @@
 
 
 
+    /* Container cho danh sách món ăn trong thực đơn */
+    .meal-foods-container {
+        width: 100%;
+        margin: 20px 0;
+        padding: 20px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border: 1px solid #e0e0e0;
+        min-height: 100px;
+    }
+
+    /* Thông báo khi chưa có món ăn */
+    .empty-meal-message {
+        text-align: center;
+        color: #999;
+        font-style: italic;
+        padding: 30px;
+        font-size: 14px;
+    }
+
+    /* Mỗi món ăn trong thực đơn */
+    .meal-food-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 15px;
+        margin-bottom: 10px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border: 1px solid #e9ecef;
+        transition: all 0.3s ease;
+    }
+
+    .meal-food-item:hover {
+        background: #e9f7ec;
+        border-color: #2f8f46;
+    }
+
+    .meal-food-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .meal-food-item img {
+        width: 45px;
+        height: 45px;
+        border-radius: 8px;
+        object-fit: cover;
+        border: 2px solid #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .meal-food-info {
+        flex: 1;
+        margin-left: 15px;
+    }
+
+    .meal-food-name {
+        font-size: 15px;
+        font-weight: 600;
+        margin: 0 0 4px 0;
+        color: #333;
+    }
+
+    .meal-food-details {
+        font-size: 13px;
+        color: #666;
+    }
+
+    .meal-food-calories {
+        font-size: 14px;
+        font-weight: 600;
+        color: #2f8f46;
+        margin: 0 15px;
+        min-width: 60px;
+        text-align: right;
+    }
+
+    .remove-food-btn {
+        background: #e55b4d;
+        color: white;
+        border: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .remove-food-btn:hover {
+        background: #d44c3d;
+        transform: scale(1.1);
+    }
+
+    /* Style cho nút bữa ăn khi active */
+    .meal-btn.active {
+        background-color: #2f8f46;
+        color: white;
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(47, 143, 70, 0.3);
+    }
 
 
 
 
-/* Container cho danh sách món ăn trong thực đơn */
-.meal-foods-container {
-    width: 100%;
-    margin: 20px 0;
-    padding: 20px;
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    border: 1px solid #e0e0e0;
-    min-height: 100px;
-}
+    /*  */
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
 
-/* Thông báo khi chưa có món ăn */
-.empty-meal-message {
-    text-align: center;
-    color: #999;
-    font-style: italic;
-    padding: 30px;
-    font-size: 14px;
-}
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
 
-/* Mỗi món ăn trong thực đơn */
-.meal-food-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 15px;
-    margin-bottom: 10px;
-    background: #f8f9fa;
-    border-radius: 10px;
-    border: 1px solid #e9ecef;
-    transition: all 0.3s ease;
-}
+    .toast-success {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #2f8f46;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        z-index: 1001;
+        animation: slideIn 0.3s ease;
+        font-weight: 500;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        max-width: 300px;
+        word-wrap: break-word;
+    }
 
-.meal-food-item:hover {
-    background: #e9f7ec;
-    border-color: #2f8f46;
-}
-
-.meal-food-item:last-child {
-    margin-bottom: 0;
-}
-
-.meal-food-item img {
-    width: 45px;
-    height: 45px;
-    border-radius: 8px;
-    object-fit: cover;
-    border: 2px solid #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.meal-food-info {
-    flex: 1;
-    margin-left: 15px;
-}
-
-.meal-food-name {
-    font-size: 15px;
-    font-weight: 600;
-    margin: 0 0 4px 0;
-    color: #333;
-}
-
-.meal-food-details {
-    font-size: 13px;
-    color: #666;
-}
-
-.meal-food-calories {
-    font-size: 14px;
-    font-weight: 600;
-    color: #2f8f46;
-    margin: 0 15px;
-    min-width: 60px;
-    text-align: right;
-}
-
-.remove-food-btn {
-    background: #e55b4d;
-    color: white;
-    border: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.remove-food-btn:hover {
-    background: #d44c3d;
-    transform: scale(1.1);
-}
-
-/* Style cho nút bữa ăn khi active */
-.meal-btn.active {
-    background-color: #2f8f46;
-    color: white;
-    transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(47, 143, 70, 0.3);
-}
+    .toast-error {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #e55b4d;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        z-index: 1001;
+        animation: slideIn 0.3s ease;
+        font-weight: 500;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        max-width: 300px;
+        word-wrap: break-word;
+    }
