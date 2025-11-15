@@ -251,9 +251,85 @@
       "daysUnder": 5,
       "daysOver": 2
     },
-    "recentFoods": [],
-    "favoriteFoods": [],
-    "myFoods": []
+    "recentFoods": [
+      {
+        "id": 101,
+        "name": "Súp lơ (bông cải) xanh tươi",
+        "image": "../assets/images/Calories/unsplash_m1t-RJ1iCIU.png",
+        "weight": 100,
+        "calories": 32,
+        "carbs": 6,
+        "protein": 3,
+        "fat": 0,
+        "fiber": 3,
+        "isFavorite": true
+      },
+      {
+        "id": 102,
+        "name": "Trứng gà ta sống",
+        "image": "../assets/images/Calories/Hình trứng gà.png",
+        "weight": 100,
+        "calories": 143,
+        "carbs": 1,
+        "protein": 13,
+        "fat": 10,
+        "fiber": 0,
+        "isFavorite": true
+      },
+      {
+        "id": 103,
+        "name": "Salad trứng",
+        "image": "../assets/images/Calories/salad trứng.png",
+        "weight": 100,
+        "calories": 145,
+        "carbs": 8,
+        "protein": 7,
+        "fat": 9,
+        "fiber": 2,
+        "isFavorite": false
+      }
+    ],
+    "favoriteFoods": [
+      {
+        "id": 101,
+        "name": "Súp lơ (bông cải) xanh tươi",
+        "image": "../assets/images/Calories/unsplash_m1t-RJ1iCIU.png",
+        "weight": 100,
+        "calories": 32,
+        "carbs": 6,
+        "protein": 3,
+        "fat": 0,
+        "fiber": 3,
+        "isFavorite": true
+      },
+      {
+        "id": 102,
+        "name": "Trứng gà ta sống",
+        "image": "../assets/images/Calories/Hình trứng gà.png",
+        "weight": 100,
+        "calories": 143,
+        "carbs": 1,
+        "protein": 13,
+        "fat": 10,
+        "fiber": 0,
+        "isFavorite": true
+      }
+    ],
+    "myFoods": [
+      {
+        "id": 201,
+        "name": "Thịt chó nướng ớt chuông",
+        "image": "../assets/images/Calories/thịt chó nướng.png",
+        "weight": 100,
+        "calories": 280,
+        "carbs": 5,
+        "protein": 25,
+        "fat": 18,
+        "fiber": 1,
+        "category": "myfoods",
+        "createdAt": "2025-11-10T14:30:00"
+      }
+    ]
   },
   {
     "userId": 3,
@@ -341,8 +417,84 @@
       "daysUnder": 10,
       "daysOver": 3
     },
-    "recentFoods": [],
-    "favoriteFoods": [],
-    "myFoods": []
+    "recentFoods": [
+      {
+        "id": 101,
+        "name": "Súp lơ (bông cải) xanh tươi",
+        "image": "../assets/images/Calories/unsplash_m1t-RJ1iCIU.png",
+        "weight": 100,
+        "calories": 32,
+        "carbs": 6,
+        "protein": 3,
+        "fat": 0,
+        "fiber": 3,
+        "isFavorite": true
+      },
+      {
+        "id": 102,
+        "name": "Trứng gà ta sống",
+        "image": "../assets/images/Calories/Hình trứng gà.png",
+        "weight": 100,
+        "calories": 143,
+        "carbs": 1,
+        "protein": 13,
+        "fat": 10,
+        "fiber": 0,
+        "isFavorite": true
+      },
+      {
+        "id": 103,
+        "name": "Salad trứng",
+        "image": "../assets/images/Calories/salad trứng.png",
+        "weight": 100,
+        "calories": 145,
+        "carbs": 8,
+        "protein": 7,
+        "fat": 9,
+        "fiber": 2,
+        "isFavorite": false
+      }
+    ],
+    "favoriteFoods": [
+      {
+        "id": 101,
+        "name": "Súp lơ (bông cải) xanh tươi",
+        "image": "../assets/images/Calories/unsplash_m1t-RJ1iCIU.png",
+        "weight": 100,
+        "calories": 32,
+        "carbs": 6,
+        "protein": 3,
+        "fat": 0,
+        "fiber": 3,
+        "isFavorite": true
+      },
+      {
+        "id": 102,
+        "name": "Trứng gà ta sống",
+        "image": "../assets/images/Calories/Hình trứng gà.png",
+        "weight": 100,
+        "calories": 143,
+        "carbs": 1,
+        "protein": 13,
+        "fat": 10,
+        "fiber": 0,
+        "isFavorite": true
+      }
+    ],
+    "myFoods": [
+      {
+        "id": 201,
+        "name": "Thịt chó nướng ớt chuông",
+        "image": "../assets/images/Calories/thịt chó nướng.png",
+        "weight": 100,
+        "calories": 280,
+        "carbs": 5,
+        "protein": 25,
+        "fat": 18,
+        "fiber": 1,
+        "category": "myfoods",
+        "createdAt": "2025-11-10T14:30:00"
+      }
+    ]
   }
 ]
