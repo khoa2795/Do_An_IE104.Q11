@@ -4,296 +4,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VHealth - Sống khỏe chủ động</title>
+    <title>VHealth - Thông tin sức khỏe</title>
+
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/leftnav.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/health-info.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .main-content {
+            display: none;
+        }
+
+        .main-content.auth-verified {
+            display: block;
+        }
+
+        .loading-placeholder {
+            color: #999;
+            font-style: italic;
+        }
+    </style>
+
 </head>
-<!-- Thêm placeholder cho header (header sẽ được load bởi /assets/javascript/header.js) -->
-<div id="header-placeholder"></div>
 
-<div class="container">
-    <!-- Sidebar placeholder (component will be injected here) -->
-    <div id="sidebar-placeholder"></div>
+<body>
+    <script>
+        (function () {
+            const currentUser = sessionStorage.getItem('currentUser');
+            if (currentUser) {
+                document.addEventListener('DOMContentLoaded', function () {
+                    const mainContent = document.querySelector('.main-content');
+                    if (mainContent) {
+                        mainContent.classList.add('auth-verified');
+                    }
+                });
+            }
+        })();
+    </script>
 
-    <!-- Main Content -->
-    <main class="main-content">
+    <div id="header-placeholder"></div>
 
+    <div class="container">
+        <div id="sidebar-placeholder"></div>
 
+        <main class="main-content">
 
+            <section class="health-header">
+                <div class="row">
+                    <div class="left-box">
+                        <div class="header-left">
+                            <img src="/assets/images/Health/avatar.png" alt="Avatar" class="avatar">
+                            <div class="title">
+                                <h2 class="loading-placeholder">Đang tải...</h2>
+                            </div>
+                        </div>
+                    </div>
 
-
-
-
-
-
-
-        <!-- Khối header thông tin sức khỏe -->
-        <section class="health-header">
-            <div class="row">
-                <div class="left-box">
-                    <div class="header-left">
-                        <img src="/assets/images/Health/avatar.png" alt="Avatar" class="avatar">
-                        <div class="title">
-                            <h2>Thiết kế giao diện</h2>
+                    <div class="right-box">
+                        <div class="header-right">
+                            <p class="loading-placeholder">Đang tải thông tin...</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="right-box">
-                    <div class="header-right">
-                        <p>Tuổi: <b>18</b> &nbsp; Giới tính: <b class="highlight">Nữ</b></p>
-                        <p>Chế độ ăn uống: <b class="highlight">Cân bằng</b> &nbsp; Nhóm máu: <b class="highlight">O</b>
-                        </p>
-                    </div>
+                <div class="tab-menu">
+                    <button class="tab active" data-tab="info">Thông tin sức khỏe cá nhân</button>
+                    <button class="tab" data-tab="disease">Thông tin tiền sử bệnh tật</button>
                 </div>
-            </div>
-            <div class="tab-menu">
-                <button class="tab active" data-tab="info">Thông tin sức khỏe cá nhân</button>
-                <button class="tab" data-tab="disease">Thông tin tiền sử bệnh tật</button>
-            </div>
-        </section>
+            </section>
 
-        <!-- Nội dung từng tab -->
-        <div class="tab-content">
+            <div class="tab-content">
 
+                <div class="tab-pane active" id="info">
 
-
-
-
-
-
-
-
-
-
-
-            <div class="tab-pane active" id="info">
-
-                <div class="health-grid-container">
-
-
-
-
-
-
-
-
-
-
-
-                    <div class="health-col">
-                        <div class="stat-card">
-                            <div class="card-content">
+                    <div class="health-grid-container">
+                        <div class="health-col">
+                            <div class="stat-card-display">
                                 <div class="card-header">
                                     <span class="card-title">Chiều cao</span>
                                     <img src="/assets/images/Health/ruler.png" alt="Icon" class="card-icon">
                                 </div>
-                                <div class="edit-view">
-                                    <input type="number" id="input-height" placeholder="Nhập chiều cao (cm)">
+                                <div class="card-content">
+                                    <span class="card-value" id="display-height">--</span>
                                     <span class="unit">cm</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="card-content">
+                            <div class="stat-card-display">
                                 <div class="card-header">
                                     <span class="card-title">Huyết áp</span>
                                     <img src="/assets/images/Health/heart-rate.png" alt="Icon" class="card-icon">
                                 </div>
-                                <div class="edit-view">
-                                    <input type="text" id="input-bp" placeholder="Nhập huyết áp (mmHg)">
+                                <div class="card-content">
+                                    <span class="card-value-small" id="display-bp">--/--</span>
                                     <span class="unit">mmHg</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="card-content">
+                            <div class="stat-card-display">
                                 <div class="card-header">
                                     <span class="card-title">Đường huyết (GI)</span>
                                     <img src="/assets/images/Health/red-blood-cells.png" alt="Icon" class="card-icon">
                                 </div>
-                                <div class="edit-view">
-                                    <input type="number" id="input-glucose" placeholder="Nhập đường huyết (mg/dl)">
+                                <div class="card-content">
+                                    <span class="card-value" id="display-glucose">--</span>
                                     <span class="unit">mg/dl</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="health-col">
-                        <div class="stat-card">
-                            <div class="card-content">
+                        <div class="health-col">
+                            <div class="stat-card-display">
                                 <div class="card-header">
                                     <span class="card-title">Cân nặng</span>
                                     <img src="/assets/images/Health/weigh.png" alt="Icon" class="card-icon">
                                 </div>
-                                <div class="edit-view">
-                                    <input type="number" id="input-weight" placeholder="Nhập cân nặng (kg)">
+                                <div class="card-content">
+                                    <span class="card-value" id="display-weight">--</span>
                                     <span class="unit">kg</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="card-content">
+                            <div class="stat-card-display">
                                 <div class="card-header">
                                     <span class="card-title">Nhịp tim</span>
                                     <img src="/assets/images/Health/heartbeat.png" alt="Icon" class="card-icon">
                                 </div>
-                                <div class="edit-view">
-                                    <input type="number" id="input-heart" placeholder="Nhập nhịp tim (bpm)">
+                                <div class="card-content">
+                                    <span class="card-value" id="display-heart">--</span>
                                     <span class="unit">bpm</span>
+                                </div>
+                            </div>
+
+                            <div class="stat-card-display">
+                                <div class="card-header">
+                                    <span class="card-title">Chỉ số BMI</span>
+                                    <img src="/assets/images/Health/BMI.png" alt="Icon" class="card-icon">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-value" id="display-bmi-card">--</span>
+                                    <span class="unit"></span>
                                 </div>
                             </div>
                         </div>
 
-
-
-
-
-
-                        <div class="note-box">
-                            <h3>Chú thích:</h3>
-                            <p>Các ô thông tin chỉ cho phép nhập số</p>
-                            <p>VD: 192</p>
+                        <div class="health-col notes-column">
+                            <h3 class="col-title">Lưu ý</h3>
+                            <div class="info-card">
+                                <span class="info-card-title">Dị ứng thuốc</span>
+                                <span class="info-card-content loading-placeholder">--</span>
+                            </div>
+                            <div class="info-card">
+                                <span class="info-card-title">Thói quen sống</span>
+                                <span class="info-card-content loading-placeholder">--</span>
+                            </div>
+                            <div class="info-card">
+                                <span class="info-card-title">Mục tiêu</span>
+                                <span class="info-card-content loading-placeholder">--</span>
+                            </div>
+                            <div class="info-card">
+                                <span class="info-card-title">Chế độ dinh dưỡng</span>
+                                <span class="info-card-content loading-placeholder">--</span>
+                            </div>
+                            <div class="info-card">
+                                <span class="info-card-title">Tình trạng tâm lý</span>
+                                <span class="info-card-content loading-placeholder">--</span>
+                            </div>
+                            <div class="info-card">
+                                <span class="info-card-title">Bệnh di truyền</span>
+                                <span class="info-card-content loading-placeholder">--</span>
+                            </div>
+                            <div class="info-card">
+                                <span class="info-card-title">Đang điều trị bệnh lý</span>
+                                <span class="info-card-content loading-placeholder">--</span>
+                            </div>
+                            <div class="info-card info-card-add">
+                                <span>+</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="health-col notes-column">
-                        <h3 class="col-title">Lưu ý</h3>
-                        <div class="info-card">
-                            <span class="info-card-title">Dị ứng thuốc</span>
-                            <span class="info-card-content">Không</span>
-                        </div>
-                        <div class="info-card">
-                            <span class="info-card-title">Thói quen sống</span>
-                            <span class="info-card-content">Giấc ngủ: 7.5h</span>
-                        </div>
-                        <div class="info-card">
-                            <span class="info-card-title">Mục tiêu</span>
-                            <span class="info-card-content">Tăng 5 cân</span>
-                        </div>
-                        <div class="info-card">
-                            <span class="info-card-title">Chế độ dinh dưỡng</span>
-                            <span class="info-card-content">Dành cho người...</span>
-                        </div>
-                        <div class="info-card">
-                            <span class="info-card-title">Tình trạng tâm lý</span>
-                            <span class="info-card-content">Stress, trầm cảm</span>
-                        </div>
-                        <div class="info-card">
-                            <span class="info-card-title">Bệnh di truyền</span>
-                            <span class="info-card-content">Không</span>
-                        </div>
-                        <div class="info-card">
-                            <span class="info-card-title">Đang điều trị bệnh lý</span>
-                            <span class="info-card-content">Không</span>
-                        </div>
-                        <div class="info-card info-card-add">
-                            <span>+</span>
-                        </div>
+                    <div class="btn-change-container">
+                        <a href="Health.html" class="btn-change">Chỉnh sửa</a>
                     </div>
+
+                    <section class="recommend-section">
+                        <h3>Gợi ý bài viết</h3>
+                        <div class="article-grid">
+                            <div class="article-card">
+                                <img src="/assets/images/Health/vidu1.webp" alt="Bài viết 1">
+                                <p>5 mẹo giữ gìn sức khỏe trong mùa đông</p>
+                                <a href="#">Xem thêm</a>
+                            </div>
+                            <div class="article-card">
+                                <img src="/assets/images/Health/vidu2.webp" alt="Bài viết 2">
+                                <p>7 thực phẩm dễ kiếm giúp giảm cân và tăng cường sức khỏe mùa đông</p>
+                                <a href="#">Xem thêm</a>
+                            </div>
+                            <div class="article-card">
+                                <img src="/assets/images/Health/vidu3.webp" alt="Bài viết 3">
+                                <p>8 loại trái cây giúp giảm cân và tăng cường sức khỏe trong mùa đông</p>
+                                <a href="#">Xem thêm</a>
+                            </div>
+                            <div class="article-card">
+                                <img src="/assets/images/Health/vidu4.webp" alt="Bài viết 4">
+                                <p>Uống nước ép trái cây hằng ngày có gây tăng cân không?</p>
+                                <a href="#">Xem thêm</a>
+                            </div>
+                        </div>
+                    </section>
+
                 </div>
 
-                <div class="btn-save-container">
-                    <button class="btn-save">Lưu</button>
+                <div class="tab-pane" id="disease">
+                    <p>Đây là phần <b>Thông tin tiền sử bệnh tật</b>. Ghi chú các bệnh đã từng mắc hoặc đang điều trị.
+                    </p>
                 </div>
-
-                <section class="recommend-section">
-                    <h3>Gợi ý bài viết</h3>
-                    <div class="article-grid">
-                        <div class="article-card">
-                            <img src="/assets/images/Health/vidu1.webp" alt="Bài viết 1">
-                            <p>5 mẹo giữ gìn sức khỏe trong mùa đông</p>
-                            <a href="#">Xem thêm</a>
-                        </div>
-                        <div class="article-card">
-                            <img src="/assets/images/Health/vidu2.webp" alt="Bài viết 2">
-                            <p>7 thực phẩm dễ kiếm giúp giảm cân và tăng cường sức khỏe mùa đông</p>
-                            <a href="#">Xem thêm</a>
-                        </div>
-                        <div class="article-card">
-                            <img src="/assets/images/Health/vidu3.webp" alt="Bài viết 3">
-                            <p>8 loại trái cây giúp giảm cân và tăng cường sức khỏe trong mùa đông</p>
-                            <a href="#">Xem thêm</a>
-                        </div>
-                        <div class="article-card">
-                            <img src="/assets/images/Health/vidu4.webp" alt="Bài viết 4">
-                            <p>Uống nước ép trái cây hằng ngày có gây tăng cân không?</p>
-                            <a href="#">Xem thêm</a>
-                        </div>
-                    </div>
-                </section>
 
             </div>
 
+            <div class="chat-box" id="chatBox">
+                <div class="chat-header">
+                    <img src="image/logo-health.png" alt="VHealth Logo" class="logo-icon">
+                    Trợ lý ảo
+                    <span style="cursor:pointer" id="closeChat">✖</span>
+                </div>
+                <div class="chat-body" id="chatBody">
+                    <div class="message-row bot">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712104.png" class="avatar">
+                        <div class="message">Hello. Tôi có thể giúp gì bạn</div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="Nhập tin nhắn ở đây..." />
+                    <button>➤</button>
+                </div>
+            </div>
 
+            <div class="chat-button" id="chatToggle">
+                <i class="fas fa-comment-dots"></i>
+            </div>
 
-
-
-
-
-
-
-        </div>
-        <div class="tab-pane" id="disease">
-            <p>Đây là phần <b>Thông tin tiền sử bệnh tật</b>. Ghi chú các bệnh đã từng mắc hoặc đang điều trị.</p>
-        </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Chat Bot -->
-<div class="chat-box" id="chatBox">
-    <div class="chat-header">
-        <img src="image/logo-health.png" alt="VHealth Logo" class="logo-icon">
-        Trợ lý ảo
-        <span style="cursor:pointer" id="closeChat">✖</span>
+        </main>
     </div>
-    <div class="chat-body" id="chatBody">
-        <div class="message-row bot">
-            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712104.png" class="avatar">
-            <div class="message">Hello. Tôi có thể giúp gì bạn</div>
-        </div>
-    </div>
-    <div class="chat-input">
-        <input type="text" placeholder="Nhập tin nhắn ở đây..." />
-        <button>➤</button>
-    </div>
-</div>
 
-<div class="chat-button" id="chatToggle">
-    <i class="fas fa-comment-dots"></i>
-</div>
+    <div id="footer-placeholder"></div>
 
-</main>
-</div>
-<div id="footer-placeholder"></div>
-
-<script src="/assets/javascript/header.js"></script>
-<script src="/assets/javascript/leftnav.js"></script>
-<script src="/assets/javascript/footer.js"></script>
-<script src="/assets/javascript/script.js"></script>
-<script src="/assets/javascript/Health.js"></script>
-
+    <script src="/assets/javascript/auth-check.js"></script>
+    <script src="/assets/javascript/health-data-loader.js"></script>
+    <script src="/assets/javascript/header.js"></script>
+    <script src="/assets/javascript/leftnav.js"></script>
+    <script src="/assets/javascript/footer.js"></script>
+    <script src="/assets/javascript/Health.js"></script>
+    <script src="/assets/javascript/chatbot.js"></script>
 </body>
 
 </html>

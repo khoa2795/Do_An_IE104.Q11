@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "admin123",
+    "fullname": "Quản Trị Viên",
+    "email": "admin@vhealth.com"
+  },
+  {
+    "id": 2,
+    "username": "user1",
+    "password": "password123",
+    "fullname": "Nguyễn Văn A",
+    "email": "user1@example.com"
+  },
+  {
+    "id": 3,
+    "username": "test",
+    "password": "test123",
+    "fullname": "Người Dùng Test",
+    "email": "test@example.com"
+  }
+]

@@ -11,12 +11,47 @@
     <link rel="stylesheet" href="../assets/css/leftnav.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/health-info.css">
-
     <link rel="stylesheet" href="../assets/css/medical-history.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+    <style>
+        .main-content {
+            display: none;
+        }
+
+        .main-content.auth-verified {
+            display: block;
+        }
+
+        .no-data {
+            padding: 20px;
+            text-align: center;
+            color: #999;
+            font-style: italic;
+        }
+
+        .loading-placeholder {
+            color: #999;
+            font-style: italic;
+        }
+    </style>
 </head>
 
 <body>
+    <script>
+        (function () {
+            const currentUser = sessionStorage.getItem('currentUser');
+            if (currentUser) {
+                document.addEventListener('DOMContentLoaded', function () {
+                    const mainContent = document.querySelector('.main-content');
+                    if (mainContent) {
+                        mainContent.classList.add('auth-verified');
+                    }
+                });
+            }
+        })();
+    </script>
+
     <div id="header-placeholder"></div>
 
     <div class="container">
@@ -30,16 +65,16 @@
                         <div class="header-left">
                             <img src="/assets/images/Health/avatar.png" alt="Avatar" class="avatar">
                             <div class="title">
-                                <h2>Thiết kế giao diện</h2>
+                                <!-- ✅ ĐỂ TRỐNG -->
+                                <h2 class="loading-placeholder">Đang tải...</h2>
                             </div>
                         </div>
                     </div>
 
                     <div class="right-box">
                         <div class="header-right">
-                            <p>Tuổi: <b>18</b> &nbsp; Giới tính: <b class="highlight">Nữ</b></p>
-                            <p>Chế độ ăn uống: <b class="highlight">Cân bằng</b> &nbsp; Nhóm máu: <b
-                                    class="highlight">O</b></p>
+                            <!-- ✅ ĐỂ TRỐNG -->
+                            <p class="loading-placeholder">Đang tải thông tin...</p>
                         </div>
                     </div>
                 </div>
@@ -67,20 +102,8 @@
                                     <button class="btn-add">+</button>
                                 </div>
                                 <div class="history-card-content">
-                                    <div class="history-item">
-                                        <div class="item-header">
-                                            <strong>Viêm xoang mãn tính</strong>
-                                            <div class="item-actions">
-                                                <span>✏️</span> <span>🗑️</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-field"><span>Mức độ:</span> <strong>Nhẹ</strong></div>
-                                        <div class="item-field"><span>Thời gian mắc:</span> <strong>2018 - Hiện
-                                                tại</strong></div>
-                                        <div class="item-field"><span>Biến chứng:</span> <strong>Không có</strong></div>
-                                        <div class="item-field"><span>Tình trạng điều trị:</span> <strong>Đang điều
-                                                trị</strong></div>
-                                    </div>
+                                    <!-- ✅ ĐỂ TRỐNG - SẼ ĐƯỢC LOAD TỪ JSON -->
+                                    <p class="no-data">Đang tải...</p>
                                 </div>
                             </div>
 
@@ -90,20 +113,8 @@
                                     <button class="btn-add">+</button>
                                 </div>
                                 <div class="history-card-content">
-                                    <div class="history-item">
-                                        <div class="item-header">
-                                            <strong>Augmentin 625mg</strong>
-                                            <div class="item-actions">
-                                                <span>✏️</span> <span>🗑️</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-field"><span>Thời gian sử dụng:</span> <strong>01/2023 - Hiện
-                                                tại</strong></div>
-                                        <div class="item-field"><span>Liều lượng:</span> <strong>1 viên/ngày, sau bữa
-                                                sáng</strong></div>
-                                        <div class="item-field"><span>BS. Kê đơn:</span> <strong>BS. Nguyễn Văn
-                                                An</strong></div>
-                                    </div>
+                                    <!-- ✅ ĐỂ TRỐNG -->
+                                    <p class="no-data">Đang tải...</p>
                                 </div>
                             </div>
 
@@ -117,21 +128,7 @@
                                     <button class="btn-add">+</button>
                                 </div>
                                 <div class="history-card-content">
-                                    <div class="history-item">
-                                        <div class="item-header">
-                                            <strong>Phẫu thuật ruột VA</strong>
-                                            <div class="item-actions">
-                                                <span>✏️</span> <span>🗑️</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-field"><span>Thời gian:</span> <strong>23/05/2020</strong>
-                                        </div>
-                                        <div class="item-field"><span>Bệnh viện:</span> <strong>BV Đại học Y Dược
-                                                TPHCM</strong></div>
-                                        <div class="item-field"><span>Biến chứng:</span> <strong>Không có</strong></div>
-                                        <div class="item-field"><span>Kết quả:</span> <strong>Thành công</strong></div>
-                                        <div class="item-field"><span>BS. Phẫu thuật:</span> <strong>BS. Trần Bình</strong></div>
-                                    </div>
+                                    <p class="no-data">Đang tải...</p>
                                 </div>
                             </div>
 
@@ -141,20 +138,7 @@
                                     <button class="btn-add">+</button>
                                 </div>
                                 <div class="history-card-content">
-                                    <div class="history-item">
-                                        <div class="item-header">
-                                            <strong>COVID-19 (Pfizer)</strong>
-                                            <div class="item-actions">
-                                                <span>✏️</span> <span>🗑️</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-field"><span>Ngày tiêm:</span> <strong>12/06/2021</strong>
-                                        </div>
-                                        <div class="item-field"><span>Phản ứng:</span> <strong>Sốt nhẹ, đau đầu, đau
-                                                cơ</strong></div>
-                                        <div class="item-field"><span>Biến chứng:</span> <strong>Không có</strong></div>
-                                        <div class="item-field"><span>Kết quả:</span> <strong>Thành công</strong></div>
-                                    </div>
+                                    <p class="no-data">Đang tải...</p>
                                 </div>
                             </div>
 
@@ -164,35 +148,34 @@
                             <h3 class="col-title">Lưu ý</h3>
                             <div class="info-card">
                                 <span class="info-card-title">Dị ứng thuốc</span>
-                                <span class="info-card-content">Không</span>
+                                <span class="info-card-content loading-placeholder">--</span>
                             </div>
                             <div class="info-card">
                                 <span class="info-card-title">Thói quen sống</span>
-                                <span class="info-card-content">Giấc ngủ: 7.5h</span>
+                                <span class="info-card-content loading-placeholder">--</span>
                             </div>
                             <div class="info-card">
                                 <span class="info-card-title">Mục tiêu</span>
-                                <span class="info-card-content">Tăng 5 cân</span>
+                                <span class="info-card-content loading-placeholder">--</span>
                             </div>
                             <div class="info-card">
                                 <span class="info-card-title">Chế độ dinh dưỡng</span>
-                                <span class="info-card-content">Dành cho người...</span>
+                                <span class="info-card-content loading-placeholder">--</span>
                             </div>
                             <div class="info-card">
                                 <span class="info-card-title">Tình trạng tâm lý</span>
-                                <span class="info-card-content">Stress, trầm cảm</span>
+                                <span class="info-card-content loading-placeholder">--</span>
                             </div>
                             <div class="info-card">
                                 <span class="info-card-title">Bệnh di truyền</span>
-                                <span class="info-card-content">Không</span>
+                                <span class="info-card-content loading-placeholder">--</span>
                             </div>
                             <div class="info-card">
                                 <span class="info-card-title">Đang điều trị bệnh lý</span>
-                                <span class="info-card-content">Không</span>
+                                <span class="info-card-content loading-placeholder">--</span>
                             </div>
                             <div class="info-card info-card-add">
                                 <span>+</span>
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -235,11 +218,14 @@
 
     <div id="footer-placeholder"></div>
 
+    <script src="/assets/javascript/auth-check.js"></script>
+    <script src="/assets/javascript/health-data-loader.js"></script>
     <script src="/assets/javascript/header.js"></script>
     <script src="/assets/javascript/leftnav.js"></script>
     <script src="/assets/javascript/footer.js"></script>
     <script src="/assets/javascript/script.js"></script>
     <script src="/assets/javascript/Health.js"></script>
+    <script src="/assets/javascript/chatbot.js"></script>
 
 </body>
 

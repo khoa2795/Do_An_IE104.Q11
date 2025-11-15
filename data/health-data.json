@@ -1,0 +1,138 @@
+[
+  {
+    "userId": 1,
+    "username": "admin",
+    "fullname": "Quản Trị Viên",
+    "personalInfo": {
+      "age": 30,
+      "gender": "Nam",
+      "bloodGroup": "A",
+      "diet": "Cân bằng",
+      "height": 170,
+      "weight": 65,
+      "bloodPressure": "120/80",
+      "heartRate": 75,
+      "glucose": 100,
+      "bmi": 22.5
+    },
+    "medicalHistory": {
+      "currentDiseases": [],
+      "medications": [],
+      "surgeries": [],
+      "vaccinations": []
+    },
+    "notes": {
+      "drugAllergy": "Không",
+      "sleepHours": "8h",
+      "goal": "Duy trì sức khỏe",
+      "nutrition": "Cân bằng dinh dưỡng",
+      "mentalHealth": "Tốt",
+      "geneticDiseases": "Không",
+      "currentTreatment": "Không"
+    }
+  },
+  {
+    "userId": 2,
+    "username": "user1",
+    "fullname": "Nguyễn Văn A",
+    "personalInfo": {
+      "age": 25,
+      "gender": "Nam",
+      "bloodGroup": "B",
+      "diet": "Giảm cân",
+      "height": 175,
+      "weight": 70,
+      "bloodPressure": "118/78",
+      "heartRate": 70,
+      "glucose": 95,
+      "bmi": 22.9
+    },
+    "medicalHistory": {
+      "currentDiseases": [],
+      "medications": [],
+      "surgeries": [],
+      "vaccinations": [
+        {
+          "name": "COVID-19 (AstraZeneca)",
+          "date": "15/08/2021",
+          "reaction": "Đau nhẹ tại chỗ tiêm",
+          "complications": "Không có",
+          "result": "Thành công"
+        }
+      ]
+    },
+    "notes": {
+      "drugAllergy": "Không",
+      "sleepHours": "7h",
+      "goal": "Giảm 3 cân",
+      "nutrition": "Ít carb",
+      "mentalHealth": "Bình thường",
+      "geneticDiseases": "Không",
+      "currentTreatment": "Không"
+    }
+  },
+  {
+    "userId": 3,
+    "username": "test",
+    "fullname": "Người Dùng Test",
+    "personalInfo": {
+      "age": 18,
+      "gender": "Nữ",
+      "bloodGroup": "O",
+      "diet": "Cân bằng",
+      "height": 158,
+      "weight": 50,
+      "bloodPressure": "120/80",
+      "heartRate": 72,
+      "glucose": 135,
+      "bmi": 20.0
+    },
+    "medicalHistory": {
+      "currentDiseases": [
+        {
+          "name": "Viêm xoang mãn tính",
+          "severity": "Nhẹ",
+          "duration": "2018 - Hiện tại",
+          "complications": "Không có",
+          "treatmentStatus": "Đang điều trị"
+        }
+      ],
+      "medications": [
+        {
+          "name": "Augmentin 625mg",
+          "duration": "01/2023 - Hiện tại",
+          "dosage": "1 viên/ngày, sau bữa sáng",
+          "prescribedBy": "BS. Nguyễn Văn An"
+        }
+      ],
+      "surgeries": [
+        {
+          "name": "Phẫu thuật ruột VA",
+          "date": "23/05/2020",
+          "hospital": "BV Đại học Y Dược TPHCM",
+          "complications": "Không có",
+          "result": "Thành công",
+          "surgeon": "BS. Trần Bình"
+        }
+      ],
+      "vaccinations": [
+        {
+          "name": "COVID-19 (Pfizer)",
+          "date": "12/06/2021",
+          "reaction": "Sốt nhẹ, đau đầu, đau cơ",
+          "complications": "Không có",
+          "result": "Thành công"
+        }
+      ]
+    },
+    "notes": {
+      "drugAllergy": "Không",
+      "sleepHours": "7.5h",
+      "goal": "Tăng 5 cân",
+      "nutrition": "Dành cho người gầy",
+      "mentalHealth": "Stress, trầm cảm",
+      "geneticDiseases": "Không",
+      "currentTreatment": "Không"
+    }
+  }
+]
