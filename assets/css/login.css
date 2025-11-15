@@ -1,13 +1,16 @@
-        /* Modal Styles */
+/* Modal Styles */
         .modal {
             display: none;
             position: fixed;
-            z-index: 10000;
+            z-index: 9999; /* Cao hơn sidebar (z-index: 100) */
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
+            overflow: auto;
             background-color: rgba(0, 0, 0, 0.5);
+            /* ✅ THÊM FONT */
+            font-family: var(--font-family, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif);
         }
 
         .modal-content {
@@ -78,6 +81,8 @@
             flex-direction: column;
             gap: 12px;
             flex: 1;
+            /* ✅ ĐẢM BẢO KẾ THỪA FONT */
+            font-family: inherit;
         }
 
         .form-group {
@@ -263,7 +268,7 @@
             text-decoration: underline;
         }
 
-        /* Nút Đăng Nhập trên trang chính */
+        /* Nút Đăng Nhập trên trang chính - CĂN GIỮA */
         .login-btn {
             background: linear-gradient(135deg, #2f8f46, #4f9b50);
             color: white;
@@ -274,12 +279,23 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            margin: 20px;
+            width: 100%; 
+            max-width: 200px; 
+            margin: 20px auto; 
+            display: block; 
         }
 
         .login-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(47, 143, 70, 0.3);
+        }
+
+        /* Căn giữa login-section trong leftnav */
+        .login-section {
+            margin-top: auto;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center; /* Căn giữa nút */
         }
 
         /* Nút Gửi mã */
@@ -734,4 +750,64 @@ textarea:focus {
 /* Đảm bảo không có scroll ngang */
 #registerModalNew .modal-body {
     overflow-x: hidden;
+}
+
+/* Dropdown đăng xuất - Dropup */
+.login-container {
+    position: relative;
+}
+
+.user-dropdown {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    margin-bottom: 10px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    animation: dropupSlideIn 0.3s ease;
+}
+
+@keyframes dropupSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logout-dropdown-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: white;
+    color: #ff6b6b;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.logout-dropdown-btn:hover {
+    background: #fff5f5;
+}
+
+.logout-dropdown-btn i {
+    font-size: 16px;
+}
+
+/* Trạng thái đã đăng nhập */
+.login-btn.logged-in {
+    background: linear-gradient(135deg, #4f9b50, #2f8f46);
 }
