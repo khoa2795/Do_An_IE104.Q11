@@ -10,9 +10,36 @@
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/Calories.css">
     <link rel="stylesheet" href="../assets/css/chatbot.css">
+    
+    <!-- ẨN MAIN-CONTENT NGAY TỪ ĐẦU -->
+    <style>
+        .main-content {
+            display: none;
+        }
+        .main-content.auth-verified {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- ĐẶT AUTH-CHECK.JS NGAY ĐẦU - TRƯỚC KHI RENDER BODY -->
+    <script>
+        // Kiểm tra ngay lập tức
+        (function() {
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                // Đã đăng nhập -> Cho phép hiển thị
+                document.addEventListener('DOMContentLoaded', function() {
+                    const mainContent = document.querySelector('.main-content');
+                    if (mainContent) {
+                        mainContent.classList.add('auth-verified');
+                    }
+                });
+            }
+        })();
+    </script>
+
     <!-- Header placeholder -->
     <div id="header-placeholder"></div>
 
@@ -724,5 +751,6 @@
     <script src="../assets/javascript/leftnav.js"></script>
     <script src="../assets/javascript/footer.js"></script>
     <script src="../assets/javascript/Calories.js"></script>
+    <script src="../assets/javascript/auth-check.js"></script>
 </body>
 </html>
