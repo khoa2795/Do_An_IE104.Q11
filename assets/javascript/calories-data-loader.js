@@ -1,4 +1,3 @@
-// calories-data-loader.js - Load dữ liệu calories theo user
 
 (function () {
   // ===== HÀM LẤY THÔNG TIN USER HIỆN TẠI =====
@@ -86,12 +85,12 @@
       circleText.classList.remove("loading-placeholder");
     }
 
-    // ✅ CẬP NHẬT CÁC CHỈ SỐ DINH DƯỠNG
+    // CẬP NHẬT CÁC CHỈ SỐ DINH DƯỠNG
     updateNutrientBars(data.dailyTarget, calculateCurrentIntake());
     updateDashboardNutrition(data.dailyTarget, calculateCurrentIntake());
   }
 
-  // ✅ HÀM TÍNH TOÁN INTAKE HIỆN TẠI
+  //  HÀM TÍNH TOÁN INTAKE HIỆN TẠI
   function calculateCurrentIntake() {
     const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
     if (!currentUser)
@@ -129,7 +128,7 @@
     }
   }
 
-  // ✅ CẬP NHẬT THANH TIẾN ĐỘ DINH DƯỠNG (OVERVIEW)
+  //  CẬP NHẬT THANH TIẾN ĐỘ DINH DƯỠNG (OVERVIEW)
   function updateNutrientBars(target, current) {
     const nutrients = [
       {
@@ -183,7 +182,7 @@
     });
   }
 
-  // ✅ CẬP NHẬT DASHBOARD NUTRITION (Phần dashboard bên dưới)
+  //  CẬP NHẬT DASHBOARD NUTRITION (Phần dashboard bên dưới)
   function updateDashboardNutrition(target, current) {
     const dashboardNutrients = document.querySelectorAll(
       ".nutrition-box .nutrient"
@@ -218,7 +217,7 @@
     });
   }
 
-  // ✅ CẬP NHẬT CIRCLE PROGRESS
+  //  CẬP NHẬT CIRCLE PROGRESS
   function updateCircleProgress(current, target) {
     const circle = document.querySelector(".overview-content .circle");
     if (!circle) return;
@@ -385,7 +384,7 @@
     init();
   }
 
-  // ✅ EXPORT FUNCTIONS
+  // EXPORT FUNCTIONS
   window.CaloriesDataLoader = {
     displayUserInfo,
     displayMealFoods,

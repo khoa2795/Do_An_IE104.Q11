@@ -20,7 +20,6 @@
             display: block;
         }
         
-        /* ✅ LOADING PLACEHOLDER */
         .loading-placeholder {
             color: #999;
             font-style: italic;
@@ -60,7 +59,6 @@
 
                         <div class="user-details">
                             <div class="info-left">
-                                <!-- ✅ ĐỂ TRỐNG - LOAD TỪ JSON -->
                                 <p>Tuổi: <span class="loading-placeholder">--</span></p>
                                 <p>Chiều cao: <span class="loading-placeholder">--</span></p>
                             </div>
@@ -72,7 +70,6 @@
                                     <span id="intensityText" style="color:#2f8f46; cursor:pointer;">mức -- ▼</span>
                                 </p>
 
-                                <!-- Khung thay đổi cường độ -->
                                 <div id="intensityBox" class="intensity-box" style="display:none;">
                                     <h4>Thay đổi cường độ luyện tập <i class="fas fa-dumbbell"></i></h4>
                                     <select id="activityLevel">
@@ -178,7 +175,6 @@
                         <div class="food-column">
                             <h3>Gần đây</h3>
                             <ul>
-                                <!-- ✅ ĐỂ TRỐNG - LOAD TỪ JSON -->
                                 <li class="loading-placeholder" style="text-align: center; padding: 20px;">Đang tải...</li>
                             </ul>
                         </div>
@@ -204,7 +200,6 @@
 
                 <!-- ===== HƯỚNG DẪN SỬ DỤNG THỰC PHẨM ===== -->
                 <div class="food-guide" id="guideSection">
-                    <!-- ... giữ nguyên phần này ... -->
                 </div>
 
                 <!-- ===== CÁC BUỔI ĂN ===== -->
@@ -282,7 +277,6 @@
 
                         <div class="calo-circle">
                             <div class="calo-inner">
-                                <!-- ✅ ĐỂ TRỐNG -->
                                 <p class="loading-placeholder">--<br><span>/-- calo</span></p>
                             </div>
                         </div>
@@ -367,7 +361,6 @@
                     </div>
                 </div>
 
-                <!-- ===== THEO DÕI ===== -->
                 <div class="follow-container" id="followSection">
                     <div class="follow-header">
                         <i class="fas fa-arrow-left back"></i>
@@ -395,16 +388,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- JavaScript sẽ tự động tạo rows -->
                                 </tbody>
                             </table>
                         </div>
 
-                        <!-- Cột thông tin bên phải -->
                         <div class="follow-info">
                             <!-- Ô 1: Thông tin calo -->
                             <div class="info-box calo-summary">
-                                <!-- ✅ ĐỂ TRỐNG - LOAD TỪ JSON -->
                                 <p class="loading-placeholder">Tổng calo đã nạp: <span class="highlight">-- kcal</span></p>
                                 <p class="loading-placeholder">Tổng calo cần nạp: <span class="highlight">-- kcal</span></p>
                                 <p class="loading-placeholder">Lượng calo cần thâm hụt: <span class="highlight">-- kcal</span></p>
@@ -442,20 +432,16 @@
                     </div>
                 </div>
 
-                <!-- ===== MODALS ===== -->
                 <!-- Modal Thêm Thực Phẩm -->
                 <div class="food-modal-overlay" id="foodModal">
-                    <!-- ... giữ nguyên ... -->
                 </div>
 
                 <!-- Modal chú thích chế độ ăn -->
                 <div class="diet-modal-overlay" id="dietModal">
-                    <!-- ... giữ nguyên ... -->
                 </div>
 
                 <!-- Modal bộ lọc món ăn -->
                 <div class="filter-modal-overlay" id="filterModal">
-                    <!-- ... giữ nguyên ... -->
                 </div>
 
             </div>
@@ -464,7 +450,6 @@
 
     <div id="footer-placeholder"></div>
 
-    <!-- Scripts -->
     <script src="../assets/javascript/auth-check.js"></script>
     <script src="../assets/javascript/calories-data-loader.js"></script>
     <script src="../assets/javascript/chatbot.js"></script>

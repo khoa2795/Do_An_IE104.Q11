@@ -1,9 +1,5 @@
-// auth-check.js - Kiểm tra đăng nhập cho các trang yêu cầu xác thực
-
 (function () {
-  // ===== KIỂM TRA XÁC THỰC =====
   function checkAuthentication() {
-    // ✅ ĐỌC TỪ sessionStorage THAY VÌ localStorage
     const currentUser = sessionStorage.getItem("currentUser");
     return currentUser !== null;
   }
@@ -108,7 +104,7 @@
     attachLoginEvent();
   }
 
-  // ===== KHỞI TẠO KIỂM TRA =====
+  // Khoi Tao kiem tra 
   function init() {
     const isLoggedIn = checkAuthentication();
 
@@ -118,7 +114,7 @@
     }
   }
 
-  // ===== CHỜ DOM LOAD =====
+  // Cho DOM load xong
   function waitForReady() {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", init);
@@ -127,7 +123,7 @@
     }
   }
 
-  // ===== LẮNG NGHE SỰ KIỆN ĐĂNG NHẬP =====
+  // Lắng nghe sự kiện đăng nhập
   window.addEventListener("storage", (e) => {
     if (e.key === "currentUser" && e.newValue) {
       location.reload();
