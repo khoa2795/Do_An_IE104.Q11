@@ -200,6 +200,48 @@
 
                 <!-- ===== HƯỚNG DẪN SỬ DỤNG THỰC PHẨM ===== -->
                 <div class="food-guide" id="guideSection">
+                    <div class="food-header">
+                    <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
+                    <div class="search-bar">
+                        <i class="fas fa-microphone"></i>
+                        <input type="text" placeholder="Tìm kiếm món ăn...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="food-tools">
+                        <i class="fas fa-question-circle"></i>
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    </div>
+                    <h2>Hướng dẫn sử dụng thực phẩm</h2>
+                    <div class="guide-content">
+                        <div class="guide-section">
+                            <h3>Lưu ý quan trọng khi tính toán thực phẩm</h3>
+                            <p>Tất cả các thực phẩm trên app đều chỉ tính trên phần ăn được thôi nên khi cân đo đồ ăn bạn nhớ:</p>
+                            <ul>
+                                <li>Bỏ xương của thịt, cá</li>
+                                <li>Bỏ vỏ và hạt của trái cây nếu không ăn được</li>
+                                <li>Bỏ vỏ của tôm, cua, động vật có vỏ</li>
+                            </ul>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3>Ý nghĩa của các ghi chú trong ngoặc</h3>
+                            <p>Thực phẩm có ghi chú trong ngoặc như:</p>
+                            <ul>
+                                <li><strong>Bún bò (chỉ tính cái):</strong> Tức là bạn sẽ chỉ cân phần cái để tính calo thôi, còn phần nước dùng bạn sẽ tính riêng. Nước dùng trong các món nước trên app rất nhiều. Bạn có thể sử dụng số liệu của nước dùng gà trên app nhé.</li>
+                                <li><strong>Canh bì tôm tươi (cái 60 nước 40):</strong> Tức là trong 100g canh đó sẽ bao gồm 60g cái gồm bì và tôm, 40g nước canh.</li>
+                            </ul>
+                        </div>
+
+                        <div class="guide-section">
+                            <h3>Hệ thống tính năng lượng</h3>
+                            <p>Web đang sử dụng hệ thống yếu tố chuyển đổi năng lượng riêng: Atwater cho từng loại thực phẩm, vì vậy không phải thực phẩm nào năng lượng cũng được tính theo hệ số (Carbs x 4 + Chất đạm x 4 + Chất béo x 9).</p>
+                        </div>
+
+                        <div class="note">
+                            <p><strong>Lưu ý:</strong> Để có kết quả tính toán chính xác nhất, hãy đảm bảo bạn chỉ tính phần thực phẩm thực sự ăn được và tuân thủ các hướng dẫn trên.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- ===== CÁC BUỔI ĂN ===== -->
@@ -432,16 +474,186 @@
                     </div>
                 </div>
 
-                <!-- Modal Thêm Thực Phẩm -->
+               <!-- Modal Thêm Thực Phẩm -->
                 <div class="food-modal-overlay" id="foodModal">
+                    <div class="food-modal">
+                        <div class="modal-header">
+                            <h3>Thêm thực phẩm mới</h3>
+                            <button class="close-modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="foodName">Tên thực phẩm hoặc món ăn</label>
+                                <input type="text" id="foodName" placeholder="Nhập tên thực phẩm...">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="foodImage">Hình ảnh </label>
+                                <input type="text" id="foodImage" placeholder="image.jpg">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Giá trị dinh dưỡng </label>
+                                <div class="nutrition-grid">
+                                    <div class="nutrition-item">
+                                        <label>Năng lượng (kcal)</label>
+                                        <input type="number" id="foodCalories" placeholder="0">
+                                    </div>
+                                    <div class="nutrition-item">
+                                        <label>Trọng lượng (g)</label>
+                                        <input type="number" id="foodWeight" value="0" readonly>
+                                    </div>
+                                    <div class="nutrition-item">
+                                        <label>Tinh bột (g)</label>
+                                        <input type="number" id="foodCarbs" placeholder="0">
+                                    </div>
+                                    <div class="nutrition-item">
+                                        <label>Đạm (g)</label>
+                                        <input type="number" id="foodProtein" placeholder="0">
+                                    </div>
+                                    <div class="nutrition-item">
+                                        <label>Béo (g)</label>
+                                        <input type="number" id="foodFat" placeholder="0">
+                                    </div>
+                                    <div class="nutrition-item">
+                                        <label>Xơ (g)</label>
+                                        <input type="number" id="foodFiber" placeholder="0">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="foodCategory">Danh mục</label>
+                                <select id="foodCategory">
+                                    <option value="recent">Gần đây</option>
+                                    <option value="favorite">Yêu thích</option>
+                                    <option value="myfoods">Của tôi</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-buttons">
+                            <button class="btn-cancel">Đóng</button>
+                            <button class="btn-save">Lưu lại</button>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Modal chú thích chế độ ăn -->
+                <!-- Modal chú thích chế độ ăn-->
                 <div class="diet-modal-overlay" id="dietModal">
+                    <div class="diet-modal">
+                        <div class="diet-modal-header">
+                            <h3>Chế độ ăn</h3>
+                            <button class="close-diet-modal">&times;</button>
+                        </div>
+                        
+                        <div class="diet-guide-content">
+                            <div class="diet-guide-section">
+                                <h4>Cân Bằng</h4>
+                                <p>Ăn uống đầy đủ các nhóm chất (đạm, béo, tinh bột, vitamin, khoáng chất) theo tỷ lệ hợp lý.</p>
+                            </div>
+
+                            <div class="diet-guide-section">
+                                <h4>High Protein</h4>
+                                <p>Tăng cường lượng protein (thịt, cá, trứng...) để hỗ trợ xây cơ và giảm cân.</p>
+                            </div>
+
+                            <div class="diet-guide-section">
+                                <h4>Keto</h4>
+                                <p>Cắt giảm tối đa tinh bột, tăng chất béo và protein để chuyển sang trạng thái "đốt mỡ tạo năng lượng" (ketosis).</p>
+                            </div>
+
+                            <div class="diet-guide-section">
+                                <h4>Low Carb</h4>
+                                <p>Giảm lượng tinh bột nhưng không cắt hoàn toàn; tập trung ăn đạm và rau củ.</p>
+                            </div>
+
+                            <div class="diet-guide-section">
+                                <h4>Atkins</h4>
+                                <p>Là một kiểu Low Carb nghiêm ngặt hơn, được chia theo giai đoạn giảm tinh bột dần.</p>
+                            </div>
+
+                            <div class="diet-guide-section">
+                                <h4>Paleo</h4>
+                                <p>Ăn như người thời tiền sử chỉ dùng thực phẩm tự nhiên (thịt, cá, rau, trái cây); tránh đồ chế biến sẵn, ngũ cốc, đường, sữa.</p>
+                            </div>
+
+                            <div class="diet-guide-section">
+                                <h4>Dash</h4>
+                                <p>Thiết kế để hạ huyết áp: ăn nhiều rau, trái cây, ngũ cốc nguyên hạt; hạn chế muối, chất béo bão hòa và đường.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
 
                 <!-- Modal bộ lọc món ăn -->
                 <div class="filter-modal-overlay" id="filterModal">
+                    <div class="filter-modal">
+                        <div class="filter-modal-header">
+                            <h3>Bộ lọc món ăn</h3>
+                            <button class="close-filter-modal">&times;</button>
+                        </div>
+                        
+                        <div class="filter-content">
+                            <!-- Calories -->
+                            <div class="filter-section">
+                                <div class="filter-item">
+                                    <label>Calories</label>
+                                    <div class="range-slider" data-max="600" data-unit="kcal">
+                                        <input type="range" min="0" max="600" value="100">
+                                        <input type="range" min="0" max="600" value="500">
+                                        <div class="range-track"></div>
+                                        <div class="range-values"></div>
+                                    </div>
+                                </div>
+
+                                <div class="filter-item">
+                                    <label>Tinh bột</label>
+                                    <div class="range-slider" data-max="100" data-unit="g">
+                                        <input type="range" min="0" max="100" value="20">
+                                        <input type="range" min="0" max="100" value="80">
+                                        <div class="range-track"></div>
+                                        <div class="range-values"></div>
+                                    </div>
+                                </div>
+
+                                <div class="filter-item">
+                                    <label>Đạm</label>
+                                    <div class="range-slider" data-max="60" data-unit="g">
+                                        <input type="range" min="0" max="60" value="20">
+                                        <input type="range" min="0" max="60" value="50">
+                                        <div class="range-track"></div>
+                                        <div class="range-values"></div>
+                                    </div>
+                                </div>
+
+                                <div class="filter-item">
+                                    <label>Béo</label>
+                                    <div class="range-slider" data-max="60" data-unit="g">
+                                        <input type="range" min="0" max="60" value="10">
+                                        <input type="range" min="0" max="60" value="40">
+                                        <div class="range-track"></div>
+                                        <div class="range-values"></div>
+                                    </div>
+                                </div>
+
+                                <div class="filter-item">
+                                    <label>Xơ</label>
+                                    <div class="range-slider" data-max="100" data-unit="g">
+                                        <input type="range" min="0" max="100" value="30">
+                                        <input type="range" min="0" max="100" value="90">
+                                        <div class="range-track"></div>
+                                        <div class="range-values"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-modal-footer">
+                            <button class="btn-reset">Đặt lại</button>
+                            <button class="btn-apply">Áp dụng</button>
+                        </div>
+                    </div>
                 </div>
 
             </div>
