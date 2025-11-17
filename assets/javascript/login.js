@@ -44,7 +44,6 @@ async function authenticateUser(username, password) {
 
 // ===== KIỂM TRA SESSION KHI LOAD TRANG =====
 function checkUserSession() {
-  // ✅ ĐỌC TỪ sessionStorage
   const userSession = sessionStorage.getItem("currentUser");
   if (userSession) {
     currentUser = JSON.parse(userSession);
@@ -155,7 +154,6 @@ document.querySelector(".login-form").addEventListener("submit", async (e) => {
   }
 });
 
-// ===== ĐÓNG MODAL KHI CLICK OUTSIDE =====
 window.addEventListener("click", (e) => {
   if (e.target === loginModal) {
     loginModal.style.display = "none";
