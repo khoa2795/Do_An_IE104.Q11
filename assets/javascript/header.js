@@ -1,9 +1,17 @@
 (function () {
+  var HEADER_CACHE_KEY = "header-component-v2";
   var placeholder = document.getElementById("header-placeholder");
   if (!placeholder) return;
 
+  // Remove legacy cache to avoid stale markup
+  try {
+    sessionStorage.removeItem("header-component");
+  } catch (err) {
+    console.warn("Không thể xoá cache cũ của header", err);
+  }
+
   // Check if already loaded from cache
-  var cached = sessionStorage.getItem("header-component");
+  var cached = sessionStorage.getItem(HEADER_CACHE_KEY);
 
   if (cached) {
     placeholder.innerHTML = cached;
@@ -18,7 +26,7 @@
     })
     .then(function (html) {
       placeholder.innerHTML = html;
-      sessionStorage.setItem("header-component", html);
+      sessionStorage.setItem(HEADER_CACHE_KEY, html);
 
       // Fade in after content is ready
       requestAnimationFrame(function () {
@@ -34,11 +42,13 @@
 
   function initHeaderInteractions() {
     var searchBtn = document.querySelector(
-      "#header-placeholder .search-button"
+      "#header-placeholder .search__button"
     );
-    var searchInput = document.querySelector("#header-placeholder .search-bar");
+    var searchInput = document.querySelector(
+      "#header-placeholder .search__input"
+    );
     var searchResults = document.querySelector(
-      "#header-placeholder .search-results"
+      "#header-placeholder .search__results"
     );
 
     if (searchBtn) searchBtn.type = "button";
@@ -223,7 +233,7 @@
     function displaySearchResults(results, query) {
       if (results.length === 0) {
         searchResults.innerHTML =
-          '<div class="search-no-results">Không tìm thấy kết quả cho "' +
+          '<div class="search__no-results">Không tìm thấy kết quả cho "' +
           escapeHtml(query) +
           '"</div>';
         searchResults.style.display = "block";
@@ -231,7 +241,7 @@
       }
 
       var html =
-        '<div class="search-results-header">Kết quả tìm kiếm (' +
+        '<div class="search__results-header">Kết quả tìm kiếm (' +
         results.length +
         ")</div>";
 
@@ -243,22 +253,24 @@
         html +=
           '<a href="/html/news-detail.html?id=' +
           article.id +
-          '" class="search-result-item">' +
+          '" class="search__result-item">' +
           '<img src="' +
           imageUrl +
           '" alt="' +
           escapeHtml(article.title) +
-          '" class="search-result-image">' +
-          '<div class="search-result-content">' +
-          '<div class="search-result-title">' +
+          '" class="search__result-image">' +
+          '<div class="search__result-content">' +
+          '<div class="search__result-title">' +
           highlightMatch(article.title, query) +
           "</div>" +
-          '<div class="search-result-meta">' +
-          '<span class="search-result-category">' +
+          '<div class="search__result-meta">' +
+          '<span class="search__result-category">' +
           escapeHtml(category) +
           "</span>" +
           (date
-            ? '<span class="search-result-date">' + escapeHtml(date) + "</span>"
+            ? '<span class="search__result-date">' +
+              escapeHtml(date) +
+              "</span>"
             : "") +
           "</div>" +
           "</div>" +
