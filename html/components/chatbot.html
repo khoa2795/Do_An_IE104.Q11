@@ -7,29 +7,29 @@
 
   </head>
   <body>
-    <div class="chat-box" id="chatBox">
-      <div class="chat-header">
+    <div class="chatbot" id="chatBox">
+      <div class="chatbot__header">
         Trợ lý ảo
-        <span style="cursor: pointer" id="closeChat">✖</span>
+        <span class="chatbot__close" style="cursor: pointer" id="closeChat">✖</span>
       </div>
-      <div class="chat-body" id="chatBody">
-        <div class="message-row bot">
+      <div class="chatbot__body" id="chatBody">
+        <div class="chatbot__message chatbot__message--bot">
           <img
             src="https://cdn-icons-png.flaticon.com/512/4712/4712104.png"
-            class="avatar"
+            class="chatbot__avatar"
           />
-          <div class="message">
+          <div class="chatbot__bubble">
             Xin chào! Tôi có thể giúp gì cho kế hoạch dinh dưỡng của bạn?
           </div>
         </div>
       </div>
-      <div class="chat-input">
-        <input type="text" placeholder="Nhập tin nhắn ở đây..." />
-        <button>➤</button>
+      <div class="chatbot__input">
+        <input class="chatbot__input-field" type="text" placeholder="Nhập tin nhắn ở đây..." />
+        <button class="chatbot__send-btn">➤</button>
       </div>
     </div>
 
-    <div class="chat-button" id="chatToggle">
+    <div class="chatbot__toggle" id="chatToggle">
       <i class="fas fa-comment-dots"></i>
     </div>
     

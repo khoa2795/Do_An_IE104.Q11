@@ -3,13 +3,6 @@
   var placeholder = document.getElementById("header-placeholder");
   if (!placeholder) return;
 
-  // Remove legacy cache to avoid stale markup
-  try {
-    sessionStorage.removeItem("header-component");
-  } catch (err) {
-    console.warn("Không thể xoá cache cũ của header", err);
-  }
-
   // Check if already loaded from cache
   var cached = sessionStorage.getItem(HEADER_CACHE_KEY);
 

@@ -1,51 +1,51 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link rel="stylesheet" href="/assets/css/login.css">
 
-<aside class="sidebar">
-    <nav class="menu">
-        <ul>
-            <li class="menu-item">
-                <a href="Mainpage.html" class="active">
-                    <img src="../assets/images/Home/Home.png" alt="Home" class="menu-icon">
+<aside class="leftnav">
+    <nav class="leftnav__menu">
+        <ul class="leftnav__list">
+            <li class="leftnav__item">
+                <a href="Mainpage.html" class="leftnav__link leftnav__link--active">
+                    <img src="../assets/images/Home/Home.png" alt="Home" class="leftnav__icon">
                     <span>Trang Chủ</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="news.html">
-                    <img src="../assets/images/Home/New.png" alt="News" class="menu-icon">
+            <li class="leftnav__item">
+                <a href="news.html" class="leftnav__link">
+                    <img src="../assets/images/Home/New.png" alt="News" class="leftnav__icon">
                     <span>Tin Tức</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="Calories.html">
-                    <img src="../assets/images/Home/Calories.png" alt="Calories" class="menu-icon">
+            <li class="leftnav__item">
+                <a href="Calories.html" class="leftnav__link">
+                    <img src="../assets/images/Home/Calories.png" alt="Calories" class="leftnav__icon">
                     <span>Calories</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="Health.html">
-                    <img src="../assets/images/Home/Health.png" alt="Health" class="menu-icon">
+            <li class="leftnav__item">
+                <a href="Health.html" class="leftnav__link">
+                    <img src="../assets/images/Home/Health.png" alt="Health" class="leftnav__icon">
                     <span>Sức Khỏe</span>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="CongDong1.html">
-                    <img src="../assets/images/Home/Community.png" alt="Community" class="menu-icon">
+            <li class="leftnav__item">
+                <a href="CongDong1.html" class="leftnav__link">
+                    <img src="../assets/images/Home/Community.png" alt="Community" class="leftnav__icon">
                     <span>Cộng Đồng</span>
                 </a>
             </li>
         </ul>
     </nav>
 
-    <div class="login-section">
-        <div class="login-container">
+    <div class="leftnav__login">
+        <div class="leftnav__login-container">
             <!-- Dropdown hiển thị khi đã đăng nhập -->
-            <div class="user-dropdown" id="userDropdown" style="display: none;">
-                <button class="logout-dropdown-btn" id="logoutDropdownBtn">
+            <div class="leftnav__user-dropdown" id="userDropdown" style="display: none;">
+                <button class="leftnav__logout-btn" id="logoutDropdownBtn">
                     <i class="fas fa-sign-out-alt"></i> Đăng Xuất
                 </button>
             </div>
-            <button class="login-btn" id="loginBtn">Đăng Nhập</button>
+            <button class="leftnav__login-btn" id="loginBtn">Đăng Nhập</button>
         </div>
     </div>
 </aside>
