@@ -1,11 +1,13 @@
 // Load footer component into pages
 (function () {
+  var FOOTER_CACHE_KEY = "footer-component-v2";
+
   function insertFooter() {
     var placeholder = document.getElementById("footer-placeholder");
     if (!placeholder) return;
 
     // Check cache first
-    var cached = sessionStorage.getItem("footer-component");
+    var cached = sessionStorage.getItem(FOOTER_CACHE_KEY);
 
     if (cached) {
       placeholder.innerHTML = cached;
@@ -22,7 +24,7 @@
       })
       .then(function (html) {
         placeholder.innerHTML = html;
-        sessionStorage.setItem("footer-component", html);
+        sessionStorage.setItem(FOOTER_CACHE_KEY, html);
 
         // Fade in after content is ready
         requestAnimationFrame(function () {

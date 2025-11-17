@@ -3,7 +3,7 @@ const params = new URLSearchParams(window.location.search);
 const newsId = parseInt(params.get("id"), 10);
 
 if (!newsId) {
-  document.querySelector(".news-container").innerHTML =
+  document.querySelector(".article__container").innerHTML =
     "<h2>Không tìm thấy bài viết</h2>";
   throw new Error("ID bài viết không hợp lệ");
 }
@@ -31,7 +31,7 @@ Promise.all([fetch("../data/news.json"), fetch("../data/news-tabs.json")])
     const article = allArticles.find((item) => item.id === newsId);
 
     if (!article) {
-      document.querySelector(".news-container").innerHTML =
+      document.querySelector(".article__container").innerHTML =
         "<h2>Không tìm thấy bài viết</h2>";
       return;
     }
@@ -67,7 +67,7 @@ Promise.all([fetch("../data/news.json"), fetch("../data/news-tabs.json")])
     // Nếu không có bài liên quan
     if (relatedArticles.length === 0) {
       relatedDiv.innerHTML =
-        "<p class='no-related'>Chưa có bài viết nào khác trong chuyên mục này.</p>";
+        "<p class='article__no-related'>Chưa có bài viết nào khác trong chuyên mục này.</p>";
       return;
     }
 
@@ -75,19 +75,17 @@ Promise.all([fetch("../data/news.json"), fetch("../data/news-tabs.json")])
     relatedArticles.forEach((r) => {
       const link = document.createElement("a");
       link.href = `news-detail.html?id=${r.id}`;
-      link.classList.add("related-item");
+      link.classList.add("article__related-card");
       link.innerHTML = `
-        <div class="related-card">
-          <img src="${r.image}" alt="${r.title}" class="related-thumb" loading="lazy">
-          <p class="related-title">${r.title}</p>
-          <span class="related-meta">${r.date}</span>
-        </div>
+        <img src="${r.image}" alt="${r.title}" class="article__related-image" loading="lazy">
+        <p class="article__related-card-title">${r.title}</p>
+        <span class="article__related-meta">${r.date}</span>
       `;
       relatedDiv.appendChild(link);
     });
   })
   .catch((err) => {
     console.error("Lỗi:", err);
-    document.querySelector(".news-container").innerHTML =
+    document.querySelector(".article__container").innerHTML =
       "<h2>Có lỗi xảy ra khi tải bài viết</h2>";
   });

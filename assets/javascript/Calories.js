@@ -71,13 +71,13 @@ function saveMealFoodsToStorage() {
   localStorage.setItem(storageKey, JSON.stringify(mealFoods));
 }
 
-//TRÍCH XUẤT CALORIES 
+//TRÍCH XUẤT CALORIES
 function extractCalories(text) {
   const match = text.match(/(\d+)kcal/);
   return match ? match[1] : "0";
 }
 
-//LẤY TÊN BUỔI ĂN 
+//LẤY TÊN BUỔI ĂN
 function getMealName(mealType) {
   const names = {
     breakfast: "buổi sáng",
@@ -90,10 +90,13 @@ function getMealName(mealType) {
 
 //CẬP NHẬT BIỂU ĐỒ TRÒN
 function updateCircleProgress(current, target) {
-  const circle = document.querySelector(".overview-content .circle");
+  const circle = document.querySelector(
+    ".calories__overview-content .calories__circle"
+  );
   if (!circle) return;
 
-  const percentage = Math.min((current / target) * 100, 100);
+  const safeTarget = target > 0 ? target : 1;
+  const percentage = Math.min((current / safeTarget) * 100, 100);
 
   let gradientColor;
   if (current === 0) {
@@ -111,26 +114,27 @@ function updateCircleProgress(current, target) {
 
 //CẬP NHẬT BIỂU ĐỒ TRÒN TRONG DASHBOARD
 function updateDashboardCircleProgress(current, target) {
-    const circle = document.querySelector(".calo-circle");
-    if (!circle) return;
+  const circle = document.querySelector(".calories__stats-circle");
+  if (!circle) return;
 
-    const percentage = Math.min((current / target) * 100, 100);
+  const safeTarget = target > 0 ? target : 1;
+  const percentage = Math.min((current / safeTarget) * 100, 100);
 
-    let gradientColor;
-    if (current === 0) {
-        gradientColor = "#e0e0e0";
-    } else if (percentage >= 100) {
-        gradientColor = "#4CAF50";
-    } else if (percentage >= 80) {
-        gradientColor = "#FFA500";
-    } else {
-        gradientColor = "#FF6B6B";
-    }
+  let gradientColor;
+  if (current === 0) {
+    gradientColor = "#e0e0e0";
+  } else if (percentage >= 100) {
+    gradientColor = "#4CAF50";
+  } else if (percentage >= 80) {
+    gradientColor = "#FFA500";
+  } else {
+    gradientColor = "#FF6B6B";
+  }
 
-    circle.style.background = `conic-gradient(${gradientColor} ${percentage}%, #e0e0e0 ${percentage}%)`;
+  circle.style.background = `conic-gradient(${gradientColor} ${percentage}%, #e0e0e0 ${percentage}%)`;
 }
 
-//CẬP NHẬT DỮ LIỆU CALORIES 
+//CẬP NHẬT DỮ LIỆU CALORIES
 function updateCaloriesData() {
   let totalIntake = {
     calories: 0,
@@ -151,7 +155,7 @@ function updateCaloriesData() {
   });
 
   const mainCaloriesText = document.querySelector(
-    ".overview-content .circle .inner-text p"
+    ".calories__overview-content .calories__circle .calories__circle-inner p"
   );
   if (mainCaloriesText && window.currentCaloriesData) {
     const target = window.currentCaloriesData.dailyTarget;
@@ -161,7 +165,7 @@ function updateCaloriesData() {
 
     updateCircleProgress(totalIntake.calories, target.calories);
 
-    updateDashboardCircleProgress(totalIntake.calories, target);
+    updateDashboardCircleProgress(totalIntake.calories, target.calories);
 
     if (window.CaloriesDataLoader) {
       window.CaloriesDataLoader.updateNutrientBars(target, totalIntake);
@@ -170,7 +174,7 @@ function updateCaloriesData() {
   }
 
   const dashboardCaloriesText = document.querySelector(
-    ".calo-box .calo-inner p"
+    ".calories__stats .calories__stats-circle-inner p"
   );
   if (dashboardCaloriesText && window.currentCaloriesData) {
     const target = window.currentCaloriesData.dailyTarget.calories;
@@ -217,10 +221,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const mealTitle = document.getElementById("mealTitle");
   const currentMealName = document.getElementById("currentMealName");
   const foodSection = document.getElementById("foodSection");
-  const backBtn = document.querySelector(".food-header .back-btn");
+  const backBtn = document.querySelector(
+    ".calories__food-header .calories__back-btn"
+  );
   const overviewSection = document.getElementById("overviewSection");
   const guideSection = document.getElementById("guideSection");
-  const mealButtons = document.querySelectorAll(".meal-btn");
+  const mealButtons = document.querySelectorAll(".calories__meal-btn");
 
   if (!mealTitle || !currentMealName || !foodSection) {
     console.warn("⚠️ Một số meal elements không tồn tại");
@@ -258,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!container) {
       container = document.createElement("div");
       container.id = "mealFoodsContainer";
-      container.className = "meal-foods-container";
+      container.className = "calories__meal-foods";
 
       const insertPoint = mealTitle.nextElementSibling;
       if (insertPoint) {
@@ -275,7 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (foods.length === 0) {
       container.innerHTML = `
-        <div class="empty-meal-message">
+        <div class="calories__meal-empty">
           <p>Chưa có món ăn nào. Hãy thêm món từ danh sách bên dưới!</p>
         </div>
       `;
@@ -290,7 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
         0
       );
       const totalDiv = document.createElement("div");
-      totalDiv.className = "meal-total-calories";
+      totalDiv.className = "calories__meal-total";
       totalDiv.innerHTML = `<strong>Tổng: ${totalCalories} kcal</strong>`;
       container.appendChild(totalDiv);
     }
@@ -298,18 +304,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createMealFoodElement(foodData, index, mealType) {
     const div = document.createElement("div");
-    div.className = "meal-food-item";
+    div.className = "calories__meal-food-item";
     div.innerHTML = `
       <img src="${foodData.image}" alt="${foodData.name}" onerror="this.src='../assets/images/Calories/placeholder-food.png'">
-      <div class="meal-food-info">
-        <p class="meal-food-name">${foodData.name}</p>
-        <span class="meal-food-details">${foodData.info}</span>
+      <div class="calories__meal-food-info">
+        <p class="calories__meal-food-name">${foodData.name}</p>
+        <span class="calories__meal-food-details">${foodData.info}</span>
       </div>
-      <div class="meal-food-calories">${foodData.calories} cal</div>
-      <button class="remove-food-btn" data-index="${index}">×</button>
+      <div class="calories__meal-food-calories">${foodData.calories} cal</div>
+      <button class="calories__remove-food-btn" data-index="${index}">×</button>
     `;
 
-    const removeBtn = div.querySelector(".remove-food-btn");
+    const removeBtn = div.querySelector(".calories__remove-food-btn");
     removeBtn.addEventListener("click", function () {
       const removedFood = mealFoods[mealType][index];
       mealFoods[mealType].splice(index, 1);
@@ -327,8 +333,10 @@ document.addEventListener("DOMContentLoaded", () => {
   mealButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const mealType = button.getAttribute("data-meal");
-      mealButtons.forEach((btn) => btn.classList.remove("active"));
-      button.classList.add("active");
+      mealButtons.forEach((btn) =>
+        btn.classList.remove("calories__meal-btn--active")
+      );
+      button.classList.add("calories__meal-btn--active");
       showMealFoods(mealType);
     });
   });
@@ -341,7 +349,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (overviewSection) overviewSection.style.display = "block";
       if (guideSection) guideSection.style.display = "none";
 
-      mealButtons.forEach((btn) => btn.classList.remove("active"));
+      mealButtons.forEach((btn) =>
+        btn.classList.remove("calories__meal-btn--active")
+      );
 
       const container = document.getElementById("mealFoodsContainer");
       if (container) container.style.display = "none";
@@ -349,82 +359,94 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.addEventListener("click", function (e) {
-      if (
-          e.target.classList.contains("add-btn") &&
-          e.target.closest(".food-column")
-      ) {
-          e.preventDefault();
-          e.stopPropagation();
+    if (
+      e.target.classList.contains("calories__add-btn") &&
+      e.target.closest(".calories__food-column")
+    ) {
+      e.preventDefault();
+      e.stopPropagation();
 
-          if (!currentMealType) {
-              showErrorMessage("Vui lòng chọn bữa ăn trước khi thêm món!");
-              return;
-          }
-
-          const foodItem = e.target.closest("li");
-          if (!foodItem) return;
-
-          const foodData = {
-              id: foodItem.dataset.id || Date.now(),
-              name: foodItem.querySelector(".food-info p")?.textContent || "Món ăn",
-              info: foodItem.querySelector(".food-info span")?.textContent || "100g, 0kcal",
-              image: foodItem.querySelector("img")?.src || "../assets/images/Calories/placeholder-food.png",
-              calories: parseInt(
-                  foodItem.dataset.calories ||
-                  extractCalories(
-                      foodItem.querySelector(".food-info span")?.textContent || "0kcal"
-                  )
-              ),
-              carbs: parseInt(foodItem.dataset.carbs || 0),
-              protein: parseInt(foodItem.dataset.protein || 0),
-              fat: parseInt(foodItem.dataset.fat || 0),
-              fiber: parseInt(foodItem.dataset.fiber || 0),
-          };
-
-          if (isFoodAlreadyInMeal(currentMealType, foodData.id)) {
-              showErrorMessage(`"${foodData.name}" đã có trong ${getMealName(currentMealType)}!`);
-              return;
-          }
-
-          mealFoods[currentMealType].push(foodData);
-          saveMealFoodsToStorage();
-
-          const container = document.getElementById("mealFoodsContainer");
-          if (container) container.style.display = "block";
-          mealTitle.style.display = "block";
-
-          displayMealFoodsInContainer(currentMealType);
-          updateCaloriesData();
-
-          showSuccessMessage(
-              `Đã thêm "${foodData.name}" vào ${getMealName(currentMealType)}!`
-          );
+      if (!currentMealType) {
+        showErrorMessage("Vui lòng chọn bữa ăn trước khi thêm món!");
+        return;
       }
+
+      const foodItem = e.target.closest("li");
+      if (!foodItem) return;
+
+      const foodData = {
+        id: foodItem.dataset.id || Date.now(),
+        name:
+          foodItem.querySelector(".calories__food-info p")?.textContent ||
+          "Món ăn",
+        info:
+          foodItem.querySelector(".calories__food-info span")?.textContent ||
+          "100g, 0kcal",
+        image:
+          foodItem.querySelector("img")?.src ||
+          "../assets/images/Calories/placeholder-food.png",
+        calories: parseInt(
+          foodItem.dataset.calories ||
+            extractCalories(
+              foodItem.querySelector(".calories__food-info span")
+                ?.textContent || "0kcal"
+            )
+        ),
+        carbs: parseInt(foodItem.dataset.carbs || 0),
+        protein: parseInt(foodItem.dataset.protein || 0),
+        fat: parseInt(foodItem.dataset.fat || 0),
+        fiber: parseInt(foodItem.dataset.fiber || 0),
+      };
+
+      if (isFoodAlreadyInMeal(currentMealType, foodData.id)) {
+        showErrorMessage(
+          `"${foodData.name}" đã có trong ${getMealName(currentMealType)}!`
+        );
+        return;
+      }
+
+      mealFoods[currentMealType].push(foodData);
+      saveMealFoodsToStorage();
+
+      const container = document.getElementById("mealFoodsContainer");
+      if (container) container.style.display = "block";
+      mealTitle.style.display = "block";
+
+      displayMealFoodsInContainer(currentMealType);
+      updateCaloriesData();
+
+      showSuccessMessage(
+        `Đã thêm "${foodData.name}" vào ${getMealName(currentMealType)}!`
+      );
+    }
   });
 
-  //KIỂM TRA MÓN ĂN ĐÃ TỒN TẠI TRONG BUỔI ĂN 
+  //KIỂM TRA MÓN ĂN ĐÃ TỒN TẠI TRONG BUỔI ĂN
   function isFoodAlreadyInMeal(mealType, foodId) {
-      if (!mealFoods[mealType]) return false;
-      
-      return mealFoods[mealType].some(food => 
-          food.id == foodId || 
-          (food.name && food.name === getFoodNameById(foodId))
-      );
+    if (!mealFoods[mealType]) return false;
+
+    return mealFoods[mealType].some(
+      (food) =>
+        food.id == foodId ||
+        (food.name && food.name === getFoodNameById(foodId))
+    );
   }
 
   // LẤY TÊN MÓN ĂN THEO ID
   function getFoodNameById(foodId) {
-      // Tìm trong tất cả các cột
-      const allFoodItems = document.querySelectorAll('.food-column li');
-      for (let item of allFoodItems) {
-          if (item.dataset.id == foodId) {
-              return item.querySelector('.food-info p')?.textContent;
-          }
+    // Tìm trong tất cả các cột
+    const allFoodItems = document.querySelectorAll(".calories__food-column li");
+    for (let item of allFoodItems) {
+      if (item.dataset.id == foodId) {
+        return item.querySelector(".calories__food-info p")?.textContent;
       }
-      return null;
+    }
+    return null;
   }
 
-  const activeButton = document.querySelector(".meal-btn.active");
+  const activeButton = document.querySelector(
+    ".calories__meal-btn.calories__meal-btn--active"
+  );
   if (activeButton) {
     const mealType = activeButton.getAttribute("data-meal");
     showMealFoods(mealType);
@@ -433,196 +455,190 @@ document.addEventListener("DOMContentLoaded", () => {
   window.showMealFoods = showMealFoods;
 });
 
-
 // ===== QUẢN LÝ MÓN ĂN YÊU THÍCH  =====
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("🔥 Calories.js loaded - Favorite System");
-    
-    initializeFavoriteFoods();
-    
-    // Xử lý click vào icon tim 
-    document.addEventListener("click", function (e) {
-        const heartIcon = e.target.closest(".fa-heart");
-        if (heartIcon) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const foodItem = heartIcon.closest("li");
-            if (!foodItem) return;
-            
-            // Lấy thông tin món ăn từ data attributes
-            const foodData = {
-                id: foodItem.dataset.id,
-                name: foodItem.querySelector(".food-info p")?.textContent || "Món ăn",
-                image: foodItem.querySelector("img")?.src || "../assets/images/Calories/placeholder-food.png",
-                weight: parseInt(foodItem.dataset.weight || 100),
-                calories: parseInt(foodItem.dataset.calories || 0),
-                carbs: parseInt(foodItem.dataset.carbs || 0),
-                protein: parseInt(foodItem.dataset.protein || 0),
-                fat: parseInt(foodItem.dataset.fat || 0),
-                fiber: parseInt(foodItem.dataset.fiber || 0),
-                isFavorite: heartIcon.classList.contains("far") 
-            };
-            
-            console.log("❤️ Click tim - Food data:", foodData);
-            toggleFavoriteFood(foodData, heartIcon);
-        }
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  initializeFavoriteFoods();
+
+  // Xử lý click vào icon tim
+  document.addEventListener("click", function (e) {
+    const heartIcon = e.target.closest(".fa-heart");
+    if (heartIcon) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const foodItem = heartIcon.closest("li");
+      if (!foodItem) return;
+
+      // Lấy thông tin món ăn từ data attributes
+      const foodData = {
+        id: foodItem.dataset.id,
+        name:
+          foodItem.querySelector(".calories__food-info p")?.textContent ||
+          "Món ăn",
+        image:
+          foodItem.querySelector("img")?.src ||
+          "../assets/images/Calories/placeholder-food.png",
+        weight: parseInt(foodItem.dataset.weight || 100),
+        calories: parseInt(foodItem.dataset.calories || 0),
+        carbs: parseInt(foodItem.dataset.carbs || 0),
+        protein: parseInt(foodItem.dataset.protein || 0),
+        fat: parseInt(foodItem.dataset.fat || 0),
+        fiber: parseInt(foodItem.dataset.fiber || 0),
+        isFavorite: heartIcon.classList.contains("far"),
+      };
+      toggleFavoriteFood(foodData);
+    }
+  });
 });
 
 function initializeFavoriteFoods() {
-    console.log("🔥 initializeFavoriteFoods called");
-    syncAllHeartIcons();
-    updateFavoriteFoodsDisplay();
+  syncFavoriteIcons();
+  updateFavoriteFoodsDisplay();
 }
 
-function syncAllHeartIcons() {
-    const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
-    if (!currentUser) {
-        console.warn("❌ Không có currentUser trong sessionStorage");
-        return;
+function syncFavoriteIcons() {
+  const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+  if (!currentUser) {
+    console.warn("❌ Không có currentUser trong sessionStorage");
+    return;
+  }
+
+  const storageKey = `favoriteFoods_${currentUser.id}`;
+  const favoriteFoods = JSON.parse(localStorage.getItem(storageKey)) || [];
+  const favoriteIds = favoriteFoods.map((food) => food.id.toString());
+
+  document.querySelectorAll(".calories__food-column li").forEach((li) => {
+    const foodId = li.dataset.id;
+    const heartIcon = li.querySelector(".fa-heart");
+
+    if (heartIcon && foodId) {
+      if (favoriteIds.includes(foodId)) {
+        heartIcon.classList.remove("far");
+        heartIcon.classList.add("fas", "favorite");
+      } else {
+        heartIcon.classList.remove("fas", "favorite");
+        heartIcon.classList.add("far");
+      }
     }
-    
-    const storageKey = `favoriteFoods_${currentUser.id}`;
-    const favoriteFoods = JSON.parse(localStorage.getItem(storageKey)) || [];
-    const favoriteIds = favoriteFoods.map(food => food.id.toString());
-    
-    console.log("🔥 Đồng bộ tất cả tim - Favorite IDs:", favoriteIds);
-    
-    document.querySelectorAll(".food-column li").forEach(li => {
-        const foodId = li.dataset.id;
-        const heartIcon = li.querySelector(".fa-heart");
-        
-        if (heartIcon && foodId) {
-            if (favoriteIds.includes(foodId)) {
-                heartIcon.classList.remove("far");
-                heartIcon.classList.add("fas", "favorite");
-            } else {
-                heartIcon.classList.remove("fas", "favorite");
-                heartIcon.classList.add("far");
-            }
-        }
-    });
+  });
 }
 
-function toggleFavoriteFood(foodData, heartIcon) {
-    const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
-    if (!currentUser) {
-        console.error("❌ Không có currentUser");
-        return;
-    }
-    
-    const storageKey = `favoriteFoods_${currentUser.id}`;
-    let favoriteFoods = JSON.parse(localStorage.getItem(storageKey)) || [];
-    
-    
-    if (foodData.isFavorite) {
-        // THÊM vào yêu thích
-        const existingIndex = favoriteFoods.findIndex(food => food.id == foodData.id);
-        if (existingIndex === -1) {
-            const foodToAdd = {
-                id: foodData.id,
-                name: foodData.name,
-                image: foodData.image,
-                weight: foodData.weight || 100,
-                calories: foodData.calories || 0,
-                carbs: foodData.carbs || 0,
-                protein: foodData.protein || 0,
-                fat: foodData.fat || 0,
-                fiber: foodData.fiber || 0,
-                isFavorite: true,
-                addedAt: new Date().toISOString()
-            };
-            
-            favoriteFoods.push(foodToAdd);
-            showSuccessMessage(`Đã thêm "${foodData.name}" vào món yêu thích! ♥`);
-        }
-    } else {
-        // XÓA khỏi yêu thích
-        const initialLength = favoriteFoods.length;
-        favoriteFoods = favoriteFoods.filter(food => food.id != foodData.id);
-        showSuccessMessage(`Đã xóa "${foodData.name}" khỏi món yêu thích! ♡`);
-        console.log("✅ Đã xóa khỏi yêu thích - Trước:", initialLength, "Sau:", favoriteFoods.length);
-    }
-    
-    localStorage.setItem(storageKey, JSON.stringify(favoriteFoods));
+function toggleFavoriteFood(foodData) {
+  const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+  if (!currentUser) {
+    return;
+  }
+  const storageKey = `favoriteFoods_${currentUser.id}`;
+  let favoriteFoods = JSON.parse(localStorage.getItem(storageKey)) || [];
 
-    syncAllHeartIcons();
-    
-    updateFavoriteFoodsDisplay();
+  if (foodData.isFavorite) {
+    // THÊM vào yêu thích
+    const existingIndex = favoriteFoods.findIndex(
+      (food) => food.id == foodData.id
+    );
+    if (existingIndex === -1) {
+      const foodToAdd = {
+        id: foodData.id,
+        name: foodData.name,
+        image: foodData.image,
+        weight: foodData.weight || 100,
+        calories: foodData.calories || 0,
+        carbs: foodData.carbs || 0,
+        protein: foodData.protein || 0,
+        fat: foodData.fat || 0,
+        fiber: foodData.fiber || 0,
+        isFavorite: true,
+        addedAt: new Date().toISOString(),
+      };
+
+      favoriteFoods.push(foodToAdd);
+      showSuccessMessage(`Đã thêm "${foodData.name}" vào món yêu thích! ♥`);
+    }
+  } else {
+    // XÓA khỏi yêu thích
+    favoriteFoods = favoriteFoods.filter((food) => food.id != foodData.id);
+    showSuccessMessage(`Đã xóa "${foodData.name}" khỏi món yêu thích! ♡`);
+  }
+
+  localStorage.setItem(storageKey, JSON.stringify(favoriteFoods));
+
+  syncFavoriteIcons();
+
+  updateFavoriteFoodsDisplay();
 }
 
-//HIỂN THỊ MÓN YÊU THÍCH 
+//HIỂN THỊ MÓN YÊU THÍCH
 function updateFavoriteFoodsDisplay() {
-    const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
-    if (!currentUser) {
-        console.error("❌ Không có currentUser");
-        return;
-    }
-    
-    const storageKey = `favoriteFoods_${currentUser.id}`;
-    const favoriteFoods = JSON.parse(localStorage.getItem(storageKey)) || [];
-    
-    const favoriteColumn = document.querySelector(".food-column:nth-child(2) ul");
-    
-    console.log("📋 updateFavoriteFoodsDisplay - Số món yêu thích:", favoriteFoods.length);
-    
-    favoriteColumn.innerHTML = "";
-    
-    if (favoriteFoods.length === 0) {
-        favoriteColumn.innerHTML = '<li class="no-foods">Chưa có món yêu thích</li>';
-        return;
-    }
-    
-    favoriteFoods.forEach((food, index) => {
-        const li = createFavoriteFoodItem(food);
-        favoriteColumn.appendChild(li);
-    });
-    
-    setTimeout(() => {
-        syncAllHeartIcons();
-    }, 100);
+  const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+  if (!currentUser) {
+    return;
+  }
+
+  const storageKey = `favoriteFoods_${currentUser.id}`;
+  const favoriteFoods = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+  const favoriteColumn = document.querySelector(
+    ".calories__food-column:nth-child(2) ul"
+  );
+  if (!favoriteColumn) {
+    console.warn("⚠️ Không tìm thấy cột món yêu thích");
+    return;
+  }
+
+  favoriteColumn.innerHTML = "";
+
+  if (favoriteFoods.length === 0) {
+    favoriteColumn.innerHTML =
+      '<li class="calories__food-empty">Chưa có món yêu thích</li>';
+    return;
+  }
+
+  favoriteFoods.forEach((food) => {
+    const li = createFavoriteFoodItem(food);
+    favoriteColumn.appendChild(li);
+  });
+
+  setTimeout(() => {
+    syncFavoriteIcons();
+  }, 100);
 }
 
 // TẠO PHẦN TỬ MÓN YÊU THÍCH
 function createFavoriteFoodItem(food) {
-    const li = document.createElement("li");
-    
-    // Thêm data attributes
-    li.setAttribute("data-id", food.id);
-    li.setAttribute("data-calories", food.calories);
-    li.setAttribute("data-carbs", food.carbs || 0);
-    li.setAttribute("data-protein", food.protein || 0);
-    li.setAttribute("data-fat", food.fat || 0);
-    li.setAttribute("data-fiber", food.fiber || 0);
-    li.setAttribute("data-weight", food.weight || 100);
-    
-    li.innerHTML = `
-        <img src="${food.image}" alt="${food.name}" onerror="this.src='../assets/images/Calories/placeholder-food.png'">
-        <div class="food-info">
-            <p>${food.name}</p>
-            <span>${food.weight}g, ${food.calories}kcal</span>
-        </div>
-        <i class="fas fa-heart favorite"></i>
-        <button class="add-btn">+</button>
+  const li = document.createElement("li");
+
+  // Thêm data attributes
+  li.setAttribute("data-id", food.id);
+  li.setAttribute("data-calories", food.calories);
+  li.setAttribute("data-carbs", food.carbs || 0);
+  li.setAttribute("data-protein", food.protein || 0);
+  li.setAttribute("data-fat", food.fat || 0);
+  li.setAttribute("data-fiber", food.fiber || 0);
+  li.setAttribute("data-weight", food.weight || 100);
+
+  li.innerHTML = `
+      <img src="${food.image}" alt="${food.name}" onerror="this.src='../assets/images/Calories/placeholder-food.png'">
+      <div class="calories__food-info">
+        <p>${food.name}</p>
+        <span>${food.weight}g, ${food.calories}kcal</span>
+      </div>
+      <i class="fas fa-heart favorite"></i>
+      <button class="calories__add-btn">+</button>
     `;
-    
-    return li;
+
+  return li;
 }
 
 // ĐỒNG BỘ TIM KHI DATA LOAD XONG
-function syncFavoriteIconsOnLoad() {
-    syncAllHeartIcons();
-}
-
-
 // ===== 3-5: CÁC PHẦN KHÁC GIỮ NGUYÊN 100% =====
 // Chuyển đổi dashboard và theo dõi
 document.addEventListener("DOMContentLoaded", () => {
-  const calendarIcon = document.querySelector(".calendar-box i");
+  const calendarIcon = document.querySelector(".calories__calendar-icon i");
   const dashboardSection = document.getElementById("dashboardSection");
   const followSection = document.getElementById("followSection");
-  const backButton = document.querySelector(".follow-header .back");
+  const backButton = document.querySelector(
+    ".calories__follow-header .calories__follow-back"
+  );
 
   if (!calendarIcon || !dashboardSection || !followSection || !backButton) {
     console.warn("⚠️ Một số dashboard elements không tồn tại");
@@ -652,55 +668,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Chuyển đổi danh sách và hướng dẫn
 document.addEventListener("DOMContentLoaded", () => {
-    const foodSection = document.getElementById("foodSection");
-    const guideSection = document.getElementById("guideSection");
-    const backBtn = document.querySelector(
-        "#guideSection .food-header .back-btn"
-    );
-    const helpBtn = document.querySelector(
-        "#foodSection .food-tools .fa-question-circle"
-    );
+  const foodSection = document.getElementById("foodSection");
+  const guideSection = document.getElementById("guideSection");
+  const backBtn = document.querySelector(
+    "#guideSection .calories__food-header .calories__back-btn"
+  );
+  const helpBtn = document.querySelector(
+    "#foodSection .calories__food-tools .fa-question-circle"
+  );
 
-    if (!foodSection || !guideSection) {
-        console.warn("⚠️ Food/Guide sections không tồn tại");
-        return;
-    }
+  if (!foodSection || !guideSection) {
+    console.warn("⚠️ Food/Guide sections không tồn tại");
+    return;
+  }
 
-    if (helpBtn) {
-        helpBtn.addEventListener("click", () => {
-            foodSection.style.display = "none";
-            guideSection.style.display = "block";
-            window.scrollTo({ top: guideSection.offsetTop, behavior: "smooth" });
+  if (helpBtn) {
+    helpBtn.addEventListener("click", () => {
+      foodSection.style.display = "none";
+      guideSection.style.display = "block";
+      window.scrollTo({ top: guideSection.offsetTop, behavior: "smooth" });
 
-            const input = document.querySelector("#guideSection .food-header input");
-            if (input) input.placeholder = "Tìm kiếm trong hướng dẫn...";
-        });
-    }
+      const input = document.querySelector(
+        "#guideSection .calories__food-header input"
+      );
+      if (input) input.placeholder = "Tìm kiếm trong hướng dẫn...";
+    });
+  }
 
-    if (backBtn) {
-        backBtn.addEventListener("click", () => {
-            guideSection.style.display = "none";
-            foodSection.style.display = "block"; 
-            window.scrollTo({ top: foodSection.offsetTop, behavior: "smooth" });
+  if (backBtn) {
+    backBtn.addEventListener("click", () => {
+      guideSection.style.display = "none";
+      foodSection.style.display = "block";
+      window.scrollTo({ top: foodSection.offsetTop, behavior: "smooth" });
 
-            const input = document.querySelector("#foodSection .food-header input");
-            if (input) input.placeholder = "Tìm kiếm món ăn...";
-        });
-    }
+      const input = document.querySelector(
+        "#foodSection .calories__food-header input"
+      );
+      if (input) input.placeholder = "Tìm kiếm món ăn...";
+    });
+  }
 });
 
 // Modal thêm thực phẩm
 document.addEventListener("DOMContentLoaded", function () {
-  const addFoodBtn = document.querySelector(".add-food");
+  const addFoodBtn = document.querySelector(".calories__add-food");
   const foodModal = document.getElementById("foodModal");
-  const closeModalBtn = document.querySelector(".close-modal");
-  const cancelBtn = document.querySelector(".btn-cancel");
-  const saveBtn = document.querySelector(".btn-save");
-
   if (!addFoodBtn || !foodModal) {
     console.warn("⚠️ Add food elements không tồn tại");
     return;
   }
+
+  const closeModalBtn = foodModal.querySelector(".modal__close");
+  const cancelBtn = foodModal.querySelector(".modal__btn--cancel");
+  const saveBtn = foodModal.querySelector(".modal__btn--save");
 
   addFoodBtn.addEventListener("click", function () {
     foodModal.style.display = "flex";
@@ -745,7 +765,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateWeekCalendar() {
     const now = new Date();
     const currentDay = now.getDay(); // 0: Chủ nhật, 1: Thứ 2, ...
-    const weekDays = document.querySelectorAll(".week-days span");
+    const weekDays = document.querySelectorAll(".calories__week-days span");
 
     // Lấy ngày đầu tuần (Thứ 2)
     const startOfWeek = new Date(now);
@@ -769,8 +789,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "Tháng 12",
     ];
 
-    document.querySelector(".month").textContent = monthNames[now.getMonth()];
-    document.querySelector(".week").textContent = "Tuần này";
+    document.querySelector(".calories__week-month").textContent =
+      monthNames[now.getMonth()];
+    document.querySelector(".calories__week-label").textContent = "Tuần này";
 
     // Cập nhật các ngày trong tuần
     weekDays.forEach((span, index) => {
@@ -789,9 +810,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Highlight ngày hiện tại
       if (day.toDateString() === now.toDateString()) {
-        span.classList.add("active");
+        span.classList.add("calories__week-day--active");
       } else {
-        span.classList.remove("active");
+        span.classList.remove("calories__week-day--active");
       }
     });
   }
@@ -820,7 +841,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     document.querySelector(
-      ".calendar-top span"
+      ".calories__calendar-top span"
     ).textContent = `${monthNames[currentMonth]} ${currentYear}`;
 
     // Tạo lịch tháng
@@ -829,7 +850,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const daysInMonth = lastDay.getDate();
     const startingDay = firstDay.getDay();
 
-    const calendarBody = document.querySelector(".calendar-table tbody");
+    const calendarBody = document.querySelector(
+      ".calories__calendar-table tbody"
+    );
     calendarBody.innerHTML = "";
 
     let date = 1;
@@ -864,7 +887,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentYear = new Date().getFullYear();
 
     document
-      .querySelector(".calendar-arrow .fa-chevron-left")
+      .querySelector(".calories__calendar-arrow .fa-chevron-left")
       .addEventListener("click", function () {
         currentMonth--;
         if (currentMonth < 0) {
@@ -875,7 +898,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
     document
-      .querySelector(".calendar-arrow .fa-chevron-right")
+      .querySelector(".calories__calendar-arrow .fa-chevron-right")
       .addEventListener("click", function () {
         currentMonth++;
         if (currentMonth > 11) {
@@ -903,7 +926,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     document.querySelector(
-      ".calendar-top span"
+      ".calories__calendar-top span"
     ).textContent = `${monthNames[month]} ${year}`;
 
     const firstDay = new Date(year, month, 1);
@@ -911,7 +934,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const daysInMonth = lastDay.getDate();
     const startingDay = firstDay.getDay();
 
-    const calendarBody = document.querySelector(".calendar-table tbody");
+    const calendarBody = document.querySelector(
+      ".calories__calendar-table tbody"
+    );
     calendarBody.innerHTML = "";
 
     let date = 1;
@@ -952,14 +977,14 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentWeekOffset = 0;
 
     document
-      .querySelector(".week-arrows span:first-child")
+      .querySelector(".calories__week-arrows span:first-child")
       .addEventListener("click", function () {
         currentWeekOffset--;
         updateWeekCalendarWithOffset(currentWeekOffset);
       });
 
     document
-      .querySelector(".week-arrows span:last-child")
+      .querySelector(".calories__week-arrows span:last-child")
       .addEventListener("click", function () {
         currentWeekOffset++;
         updateWeekCalendarWithOffset(currentWeekOffset);
@@ -972,7 +997,7 @@ document.addEventListener("DOMContentLoaded", function () {
     targetDate.setDate(now.getDate() + weekOffset * 7);
 
     const currentDay = targetDate.getDay();
-    const weekDays = document.querySelectorAll(".week-days span");
+    const weekDays = document.querySelectorAll(".calories__week-days span");
 
     const startOfWeek = new Date(targetDate);
     startOfWeek.setDate(
@@ -994,9 +1019,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "Tháng 12",
     ];
 
-    document.querySelector(".month").textContent =
+    document.querySelector(".calories__week-month").textContent =
       monthNames[targetDate.getMonth()];
-    document.querySelector(".week").textContent =
+    document.querySelector(".calories__week-label").textContent =
       weekOffset === 0
         ? "Tuần này"
         : weekOffset === -1
@@ -1021,9 +1046,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const now = new Date();
       if (day.toDateString() === now.toDateString() && weekOffset === 0) {
-        span.classList.add("active");
+        span.classList.add("calories__week-day--active");
       } else {
-        span.classList.remove("active");
+        span.classList.remove("calories__week-day--active");
       }
     });
   }
@@ -1046,10 +1071,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Quản lý modal chú thích chế độ ăn
 document.addEventListener("DOMContentLoaded", function () {
-  const helpBtn = document.querySelector(".diet-mode .help");
+  const helpBtn = document.querySelector(
+    ".calories__diet .calories__diet-help"
+  );
   const dietModal = document.getElementById("dietModal");
-  const closeDietModal = document.querySelector(".close-diet-modal");
-  const btnCloseDiet = document.querySelector(".btn-close-diet");
+
+  if (!helpBtn || !dietModal) {
+    console.warn("⚠️ Diet modal elements không tồn tại");
+    return;
+  }
+
+  const closeDietModal = dietModal.querySelector(".modal__close");
 
   // Mở modal khi nhấn vào dấu "?"
   helpBtn.addEventListener("click", function () {
@@ -1078,11 +1110,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Quản lý modal bộ lọc món ăn
 document.addEventListener("DOMContentLoaded", function () {
-  const filterBtn = document.querySelector(".food-tools .fa-filter");
+  const filterBtn = document.querySelector(".calories__food-tools .fa-filter");
   const filterModal = document.getElementById("filterModal");
-  const closeFilterModal = document.querySelector(".close-filter-modal");
-  const btnReset = document.querySelector(".btn-reset");
-  const btnApply = document.querySelector(".btn-apply");
+
+  if (!filterBtn || !filterModal) {
+    console.warn("⚠️ Filter modal elements không tồn tại");
+    return;
+  }
+
+  const closeFilterModal = filterModal.querySelector(".modal__close");
+  const btnReset = filterModal.querySelector(".modal__btn--reset");
+  const btnApply = filterModal.querySelector(".modal__btn--apply");
 
   // Khởi tạo bộ lọc
   initRangeSliders();
@@ -1122,25 +1160,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Khởi tạo thanh trượt với hiển thị giá trị đơn giản
   function initRangeSliders() {
-    const sliders = document.querySelectorAll(".range-slider");
+    const sliders = document.querySelectorAll(".modal__range-slider");
 
     sliders.forEach((slider) => {
       const inputs = slider.querySelectorAll('input[type="range"]');
-      const track = slider.querySelector(".range-track");
-      const valuesContainer = slider.querySelector(".range-values");
+      const track = slider.querySelector(".modal__range-track");
+      const valuesContainer = slider.querySelector(".modal__range-values");
       const max = parseInt(slider.dataset.max);
       const unit = slider.dataset.unit;
 
       // Tạo phần tử hiển thị giá trị nếu chưa có
-      if (!valuesContainer.querySelector(".range-value")) {
+      if (!valuesContainer.querySelector(".modal__range-value")) {
         valuesContainer.innerHTML = `
-                        <div class="range-value min">0 ${unit}</div>
-                        <div class="range-value max">0 ${unit}</div>
+                        <div class="modal__range-value modal__range-value--min">0 ${unit}</div>
+                        <div class="modal__range-value modal__range-value--max">0 ${unit}</div>
                     `;
       }
 
-      const minValue = valuesContainer.querySelector(".range-value.min");
-      const maxValue = valuesContainer.querySelector(".range-value.max");
+      const minValue = valuesContainer.querySelector(
+        ".modal__range-value--min"
+      );
+      const maxValue = valuesContainer.querySelector(
+        ".modal__range-value--max"
+      );
 
       // Cập nhật vị trí thanh track và giá trị hiển thị
       function updateSlider() {
@@ -1178,7 +1220,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Reset bộ lọc về mặc định
   function resetFilters() {
-    const sliders = document.querySelectorAll(".range-slider");
+    const sliders = document.querySelectorAll(".modal__range-slider");
 
     // Reset các thanh trượt
     sliders.forEach((slider) => {
@@ -1201,11 +1243,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const filterData = {};
 
     // Lấy giá trị từ các thanh trượt
-    const sliders = document.querySelectorAll(".range-slider");
+    const sliders = document.querySelectorAll(".modal__range-slider");
     sliders.forEach((slider) => {
       const inputs = slider.querySelectorAll('input[type="range"]');
       const label = slider
-        .closest(".filter-item")
+        .closest(".modal__filter-item")
         .querySelector("label").textContent;
 
       // Xác định loại bộ lọc dựa trên nhãn
@@ -1230,12 +1272,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Lọc danh sách món ăn
   function filterFoodItems(filters) {
-    const foodItems = document.querySelectorAll(".food-column li");
+    const foodItems = document.querySelectorAll(".calories__food-column li");
     let visibleCount = 0;
 
     foodItems.forEach((item) => {
       // Lấy thông tin dinh dưỡng từ item
-      const nutritionText = item.querySelector(".food-info span").textContent;
+      const nutritionNode = item.querySelector(".calories__food-info span");
+      if (!nutritionNode) {
+        // Bỏ qua các phần tử placeholder (ví dụ: thông báo rỗng)
+        item.style.display = "";
+        return;
+      }
+
+      const nutritionText = nutritionNode.textContent;
       const caloriesMatch = nutritionText.match(/(\d+)kcal/);
       const weightMatch = nutritionText.match(/(\d+)g/);
 
@@ -1294,7 +1343,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   // Ví dụ: Gán sự kiện cho các nút "Xóa" trong danh sách món ăn
   document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("btn-remove-food")) {
+    if (e.target.classList.contains("calories__remove-food-btn")) {
       const foodItem = e.target.closest("li");
       if (foodItem) {
         // Xử lý xóa món ăn
@@ -1309,8 +1358,7 @@ document.addEventListener("DOMContentLoaded", function () {
 window.addEventListener("caloriesDataLoaded", () => {
   if (window.currentCaloriesData) {
     updateCaloriesData();
-    syncAllHeartIcons();
+    syncFavoriteIcons();
     updateFavoriteFoodsDisplay();
   }
 });
-

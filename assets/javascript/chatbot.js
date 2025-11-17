@@ -1,8 +1,22 @@
 //  LOAD CHATBOT HTML TỪ FILE
 (function () {
+  var CHATBOT_CACHE_KEY = "chatbot-component-v2";
+
+  // Check cache
+  var cached = sessionStorage.getItem(CHATBOT_CACHE_KEY);
+
+  if (cached) {
+    var container = document.createElement("div");
+    container.innerHTML = cached;
+    document.body.appendChild(container);
+    initChatbot();
+    return;
+  }
+
   fetch("/html/components/chatbot.html")
     .then((res) => res.text())
     .then((html) => {
+      sessionStorage.setItem(CHATBOT_CACHE_KEY, html);
       const container = document.createElement("div");
       container.innerHTML = html;
       document.body.appendChild(container);
@@ -19,8 +33,8 @@ function initChatbot() {
   const chatBox = document.getElementById("chatBox");
   const closeChat = document.getElementById("closeChat");
   const chatBody = document.getElementById("chatBody");
-  const chatInput = document.querySelector(".chat-input input");
-  const sendButton = document.querySelector(".chat-input button");
+  const chatInput = document.querySelector(".chatbot__input-field");
+  const sendButton = document.querySelector(".chatbot__send-btn");
 
   // Nếu không tìm thấy HTML → báo lỗi
   if (!chatToggle || !chatBox || !closeChat || !chatInput || !sendButton) {
@@ -53,14 +67,14 @@ function initChatbot() {
 
     // USER MESSAGE
     const userRow = document.createElement("div");
-    userRow.classList.add("message-row", "user");
+    userRow.classList.add("chatbot__message", "chatbot__message--user");
 
     const userMsg = document.createElement("div");
-    userMsg.classList.add("message");
+    userMsg.classList.add("chatbot__bubble");
     userMsg.textContent = text;
 
     const userAvatar = document.createElement("img");
-    userAvatar.classList.add("avatar");
+    userAvatar.classList.add("chatbot__avatar");
     userAvatar.src = "https://cdn-icons-png.flaticon.com/512/4140/4140048.png";
 
     userRow.appendChild(userMsg);
@@ -73,14 +87,14 @@ function initChatbot() {
     // BOT REPLY
     setTimeout(() => {
       const botRow = document.createElement("div");
-      botRow.classList.add("message-row", "bot");
+      botRow.classList.add("chatbot__message", "chatbot__message--bot");
 
       const botAvatar = document.createElement("img");
-      botAvatar.classList.add("avatar");
+      botAvatar.classList.add("chatbot__avatar");
       botAvatar.src = "https://cdn-icons-png.flaticon.com/512/4712/4712104.png";
 
       const botMsg = document.createElement("div");
-      botMsg.classList.add("message");
+      botMsg.classList.add("chatbot__bubble");
       botMsg.textContent = "Bot: Tôi đã nhận được tin nhắn của bạn!";
 
       botRow.appendChild(botAvatar);
