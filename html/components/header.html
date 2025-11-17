@@ -9,34 +9,36 @@
   <body>
     <!--Phần header của trang web-->
     <header class="header">
-      <div class="left-section">
+      <div class="header__logo-section">
         <img
           src="/assets/images/icons/logoheath.png"
           alt="Logo"
           class="logoheath"
         />
       </div>
-      <div class="center-section">
+      <div class="header__search-section">
         <h1 class="page-title">VHealth - Sống khỏe chủ động</h1>
 
-        <div class="search-wrapper">
+        <div class="search">
           <input
             type="search"
-            class="search-bar"
-            placeholder="Tìm kiếm"
+            class="search__input"
+            placeholder="Tìm kiếm bài viết..."
             aria-label="Tìm kiếm"
+            autocomplete="off"
           />
-          <button class="search-button" aria-label="Thực hiện tìm kiếm">
-            <img src="/assets/images/icons/search.svg" class="search-icon" alt="Tìm kiếm" />
+          <button class="search__button" aria-label="Thực hiện tìm kiếm">
+            <img src="/assets/images/icons/search.svg" class="search__icon" alt="Tìm kiếm" width="22" height="22" decoding="async" />
           </button>
+          <div class="search__results" style="display: none;"></div>
         </div>
       </div>
-      <div class="right-section">
-        <button class="darkmode-button">
-          <img src="/assets/images/icons/moon.svg" class="darkmode-icon" />
+      <div class="header__controls">
+        <button class="header__button header__button--darkmode">
+          <img src="/assets/images/icons/moon.svg" class="header__icon header__icon--darkmode" width="30" height="30" decoding="async" />
         </button>
-        <button class="bell-button">
-          <img src="/assets/images/icons/bell.svg" class="bell-icon" />
+        <button class="header__button header__button--notification">
+          <img src="/assets/images/icons/bell.svg" class="header__icon header__icon--bell" width="30" height="30" decoding="async" />
         </button>
       </div>
     </header>

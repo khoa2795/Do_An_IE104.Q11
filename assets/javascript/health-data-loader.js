@@ -269,13 +269,8 @@
     const currentUser = getCurrentUser();
 
     if (!currentUser) {
-      console.log("❌ Chưa đăng nhập - Không load dữ liệu");
       return;
     }
-
-    console.log(
-      `🔄 Đang load dữ liệu sức khỏe cho user: ${currentUser.username}`
-    );
 
     const healthData = await fetchHealthData(currentUser.id);
 
@@ -283,8 +278,6 @@
       console.warn("⚠️ Không có dữ liệu sức khỏe");
       return;
     }
-
-    console.log("✅ Đã load dữ liệu sức khỏe:", healthData);
 
     // Cập nhật giao diện dựa vào trang hiện tại
     const currentPage = window.location.pathname.split("/").pop();

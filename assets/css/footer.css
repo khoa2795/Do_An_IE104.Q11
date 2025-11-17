@@ -12,7 +12,7 @@
     z-index: 50; 
 }
 
-.footer-container {
+.footer__container {
     max-width: 1600px;
     margin: 0 auto;
     padding: 0 40px;
@@ -21,47 +21,47 @@
     gap: 30px;
 }
 
-.footer-section h3 {
+.footer__title {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 15px;
     color: #fff;
 }
 
-.footer-section p {
+.footer__text {
     line-height: 1.6;
     margin-bottom: 15px;
     color: #e8f5e9;
 }
 
-.footer-section ul {
+.footer__list {
     list-style: none;
     padding: 0;
 }
 
-.footer-section ul li {
+.footer__list-item {
     margin-bottom: 8px;
 }
 
-.footer-section ul li a {
+.footer__link {
     color: #e8f5e9;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.footer-section ul li a:hover {
+.footer__link:hover {
     color: #fff;
     text-decoration: underline;
 }
 
-/* Phần mạng xã hội */
-.social-media {
+/* Social Media Element */
+.footer__social {
     margin-top: 20px;
     padding-left: 40px;
     max-width: 100%;
 }
 
-.social-media h4 {
+.footer__social-title {
     font-size: 16px;
     margin-bottom: 12px;
     color: #fff;
@@ -69,14 +69,14 @@
     text-align: left;
 }
 
-.social-icons {
+.footer__social-icons {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
 
-.social-icon {
+.footer__social-link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,54 +90,55 @@
     border: 2px solid transparent;
 }
 
-.social-icon:hover {
+.footer__social-link:hover {
     transform: translateY(-3px);
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.3);
 }
 
-.social-icon.facebook:hover {
+.footer__social-link--facebook:hover {
     background: #1877f2;
     border-color: #1877f2;
 }
 
-.social-icon.instagram:hover {
+.footer__social-link--instagram:hover {
     background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
     border-color: transparent;
 }
 
-.social-icon.twitter:hover {
+.footer__social-link--twitter:hover {
     background: #1da1f2;
     border-color: #1da1f2;
 }
 
-.social-icon.youtube:hover {
+.footer__social-link--youtube:hover {
     background: #ff0000;
     border-color: #ff0000;
 }
 
-.social-icon.tiktok:hover {
+.footer__social-link--tiktok:hover {
     background: #000000;
     border-color: #000000;
 }
 
-.social-icon.linkedin:hover {
+.footer__social-link--linkedin:hover {
     background: #0077b5;
     border-color: #0077b5;
 }
 
-.social-icon i {
+.footer__social-link i {
     font-size: 16px;
 }
 
-.footer-bottom {
+/* Bottom Element */
+.footer__bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     margin-top: 30px;
     padding-top: 20px;
     text-align: center;
 }
 
-.footer-bottom p {
+.footer__copyright {
     color: #e8f5e9;
     font-size: 14px;
     margin: 0;
@@ -150,49 +151,49 @@
         width: 100%;
     }
     
-    .footer-container {
+    .footer__container {
         grid-template-columns: 1fr;
         gap: 20px;
         padding: 0 20px;
     }
     
-    .footer-section {
+    .footer__section {
         text-align: center;
     }
     
-    .social-media {
+    .footer__social {
         text-align: center;
         padding-left: 0;
     }
     
-    .social-media h4 {
+    .footer__social-title {
         text-align: center;
     }
     
-    .social-icons {
+    .footer__social-icons {
         justify-content: center;
     }
     
-    .social-icon {
+    .footer__social-link {
         width: 35px;
         height: 35px;
     }
     
-    .social-icon i {
+    .footer__social-link i {
         font-size: 14px;
     }
 }
 
 @media (max-width: 480px) {
-    .footer-container {
+    .footer__container {
         padding: 0 15px;
     }
     
-    .social-icons {
+    .footer__social-icons {
         gap: 8px;
     }
     
-    .social-icon {
+    .footer__social-link {
         width: 32px;
         height: 32px;
     }

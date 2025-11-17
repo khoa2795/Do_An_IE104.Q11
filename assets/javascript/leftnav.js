@@ -1,11 +1,13 @@
 // Load left nav component into pages
 (function () {
+  var LEFTNAV_CACHE_KEY = "leftnav-component-v2";
+
   function insertLeftNav() {
     var placeholder = document.getElementById("sidebar-placeholder");
     if (!placeholder) return;
 
     // Check cache first
-    var cached = sessionStorage.getItem("leftnav-component");
+    var cached = sessionStorage.getItem(LEFTNAV_CACHE_KEY);
 
     if (cached) {
       placeholder.innerHTML = cached;
@@ -24,7 +26,7 @@
       })
       .then(function (html) {
         placeholder.innerHTML = html;
-        sessionStorage.setItem("leftnav-component", html);
+        sessionStorage.setItem(LEFTNAV_CACHE_KEY, html);
 
         // Fade in after content is ready
         requestAnimationFrame(function () {
@@ -45,35 +47,35 @@
 
   function setActiveTab(placeholder) {
     try {
-      var items = placeholder.querySelectorAll(".menu-item a");
+      var items = placeholder.querySelectorAll(".leftnav__link");
       var currentPage =
         document.location.pathname.split("/").pop() || "Mainpage.html";
 
       items.forEach(function (a) {
-        a.classList.remove("active");
+        a.classList.remove("leftnav__link--active");
 
         var linkHref = a.getAttribute("href");
 
         if (linkHref === currentPage) {
-          a.classList.add("active");
+          a.classList.add("leftnav__link--active");
         } else if (
           (currentPage.includes("news") ||
             currentPage === "news-detail.html") &&
           linkHref === "news.html"
         ) {
-          a.classList.add("active");
+          a.classList.add("leftnav__link--active");
         } else if (
           currentPage === "Calories.html" &&
           linkHref === "Calories.html"
         ) {
-          a.classList.add("active");
+          a.classList.add("leftnav__link--active");
         } else if (
           (currentPage.includes("CongDong") ||
             currentPage === "CongDong1.html" ||
             currentPage === "CongDong2.html") &&
           linkHref === "CongDong1.html"
         ) {
-          a.classList.add("active");
+          a.classList.add("leftnav__link--active");
         }
       });
     } catch (e) {

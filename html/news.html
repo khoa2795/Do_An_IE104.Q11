@@ -20,68 +20,73 @@
 
       <!-- Main content -->
       <main class="main-content">
-        <section class="news-section">
-          <h2 class="h2-news">Tin tức</h2>
-          <div class="news-layout">
+        <section class="news">
+          <h2 class="news__title">Tin tức</h2>
+          <div class="news__featured-layout">
             <!-- Bài chính (to bên trái) -->
-            <a href="news-detail.html?id=1" class="news-item main-news">
-              <div class="news-img">
+            <a href="news-detail.html?id=1" class="news__featured-item news__featured-item--main">
+              <div class="news__image-wrapper">
                 <img
                   src="/assets/images/news-images/Tin1/Tin1.1.jpg"
                   alt="Chuyên gia quốc tế hội tụ tại Cần Thơ chia sẻ kỹ thuật mới trong phẫu thuật cột sống"
+                  class="news__image"
                 />
               </div>
-              <h3>
+              <h3 class="news__heading">
                 Chuyên gia quốc tế hội tụ tại Cần Thơ chia sẻ kỹ thuật mới trong
                 phẫu thuật cột sống
               </h3>
             </a>
 
             <!-- Nhóm bài nhỏ bên phải -->
-            <div class="side-news">
-              <a href="news-detail.html?id=2" class="news-item small-news">
-                <div class="news-img">
+            <div class="news__side-grid">
+              <a href="news-detail.html?id=2" class="news__featured-item news__featured-item--small">
+                <div class="news__image-wrapper">
                   <img
                     src="/assets/images/news-images/Tin2/Tin2.1.jpg"
                     alt="Đẩy mạnh truyền thông và ứng dụng công nghệ để minh bạch hóa điều phối ghép tạng"
+                    class="news__image"
                   />
                 </div>
-                <h4>
+                <h4 class="news__heading news__heading--small">
                   Đẩy mạnh truyền thông và ứng dụng công nghệ để minh bạch hóa điều
                   phối ghép tạng
                 </h4>
               </a>
 
-              <a href="news-detail.html?id=3" class="news-item small-news">
-                <div class="news-img">
+              <a href="news-detail.html?id=3" class="news__featured-item news__featured-item--small">
+                <div class="news__image-wrapper">
                   <img
                     src="/assets/images/news-images/Tin3/Tin3.1.jpg"
                     alt="Việt Nam triển khai thử nghiệm lâm sàng vaccine sốt xuất huyết mới"
+                    class="news__image"
                   />
                 </div>
-                <h4>
+                <h4 class="news__heading news__heading--small">
                   Việt Nam triển khai thử nghiệm lâm sàng vaccine sốt xuất huyết mới
                 </h4>
               </a>
 
-              <a href="news-detail.html?id=4" class="news-item small-news">
-                <div class="news-img">
+              <a href="news-detail.html?id=4" class="news__featured-item news__featured-item--small">
+                <div class="news__image-wrapper">
                   <img
                     src="/assets/images/news-images/Tin4/Tin4.1.jpg"
                     alt="Hai người hôn mê nghi ngộ độc do uống rượu và ăn lá rừng"
+                    class="news__image"
                   />
                 </div>
-                <h4>Hai người hôn mê nghi ngộ độc do uống rượu và ăn lá rừng</h4>
+                <h4 class="news__heading news__heading--small">Hai người hôn mê nghi ngộ độc do uống rượu và ăn lá rừng</h4>
               </a>
 
-              <a href="news-detail.html?id=5" class="news-item small-news">
-                <div class="news-img">
+              <a href="news-detail.html?id=5" class="news__featured-item news__featured-item--small">
+                <div class="news__image-wrapper">
                   <img
                     src="/assets/images/news-images/Tin5/Tin5.1.jpg"
                     alt="Hơn 1.000 chuyên gia tham dự sự kiện khoa học lớn nhất ngành Răng Hàm Mặt Việt Nam 2025"
+                    class="news__image"
                   />
                 </div>
-                <h4>
+                <h4 class="news__heading news__heading--small">
                   Hơn 1.000 chuyên gia tham dự sự kiện khoa học lớn nhất ngành Răng
                   Hàm Mặt Việt Nam 2025
                 </h4>
@@ -91,15 +96,15 @@
         </section>
 
         <!-- Thanh tab danh mục -->
-        <div class="news-container">
-          <div class="category-tabs">
-            <button class="tab active" data-category="Thực phẩm">Thực phẩm</button>
-            <button class="tab" data-category="Dược phẩm">Dược phẩm</button>
-            <button class="tab" data-category="Y học cổ truyền">Y học cổ truyền</button>
-            <button class="tab" data-category="Giới tính">Giới tính</button>
+        <div class="news__categories">
+          <div class="news__tabs">
+            <button class="news__tab news__tab--active" data-category="Thực phẩm">Thực phẩm</button>
+            <button class="news__tab" data-category="Dược phẩm">Dược phẩm</button>
+            <button class="news__tab" data-category="Y học cổ truyền">Y học cổ truyền</button>
+            <button class="news__tab" data-category="Giới tính">Giới tính</button>
           </div>
 
-          <div id="news-grid" class="news-grid">
+          <div id="news-grid" class="news__grid">
             <!-- Tin tức load từ JSON bằng news-tabs.js -->
           </div>
         </div>
