@@ -1,17 +1,19 @@
-// Slideshow functionality
-const slides = document.querySelectorAll(".slide");
-const indicators = document.querySelectorAll(".slide-indicators span");
+// Hero slideshow functionality
+const slides = document.querySelectorAll(".hero__slide");
+const indicators = document.querySelectorAll(".hero__indicator");
 let currentSlide = 0;
 const slideInterval = 5000; // Change slide every 5 seconds
 
 function showSlide(index) {
   // Remove active class from all slides and indicators
-  slides.forEach((slide) => slide.classList.remove("active"));
-  indicators.forEach((indicator) => indicator.classList.remove("active"));
+  slides.forEach((slide) => slide.classList.remove("hero__slide--active"));
+  indicators.forEach((indicator) =>
+    indicator.classList.remove("hero__indicator--active")
+  );
 
   // Add active class to current slide and indicator
-  slides[index].classList.add("active");
-  indicators[index].classList.add("active");
+  slides[index].classList.add("hero__slide--active");
+  indicators[index].classList.add("hero__indicator--active");
 }
 
 function nextSlide() {
@@ -51,33 +53,34 @@ menuItems.forEach((item) => {
   }
 });
 
-// ===== Slide-box thứ 2 =====
-const slideGroups = document.querySelectorAll(".slide-group");
-const dots2 = document.querySelectorAll(".slide-dots .dot");
-const prev2 = document.querySelector(".prev");
-const next2 = document.querySelector(".next");
+// ===== CAROUSEL =====
+const carouselGroups = document.querySelectorAll(".carousel__group");
+const carouselDots = document.querySelectorAll(".carousel__dot");
+const prevBtn = document.querySelector(".carousel__button--prev");
+const nextBtn = document.querySelector(".carousel__button--next");
 
 let currentGroup = 0;
-const totalGroups = slideGroups.length;
+const totalGroups = carouselGroups.length;
 let autoSlideTimer2;
 
 function showGroup(index) {
   // Ẩn tất cả các nhóm
-  slideGroups.forEach((group) => {
-    group.classList.remove("active");
+  carouselGroups.forEach((group) => {
+    group.classList.remove("carousel__group--active");
   });
 
   // Hiển thị nhóm hiện tại
-  slideGroups[index].classList.add("active");
+  carouselGroups[index].classList.add("carousel__group--active");
 
   // Cập nhật dots
-  dots2.forEach((dot) => dot.classList.remove("active"));
-  if (dots2[index]) dots2[index].classList.add("active");
+  carouselDots.forEach((dot) => dot.classList.remove("carousel__dot--active"));
+  if (carouselDots[index])
+    carouselDots[index].classList.add("carousel__dot--active");
 
   // Cập nhật nút điều hướng
-  if (prev2 && next2) {
-    prev2.disabled = index === 0;
-    next2.disabled = index === totalGroups - 1;
+  if (prevBtn && nextBtn) {
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === totalGroups - 1;
   }
 }
 
@@ -96,19 +99,19 @@ function prevGroup() {
 }
 
 // Gắn sự kiện
-if (next2 && prev2) {
-  next2.addEventListener("click", () => {
+if (nextBtn && prevBtn) {
+  nextBtn.addEventListener("click", () => {
     nextGroup();
     resetAutoSlide2();
   });
-  prev2.addEventListener("click", () => {
+  prevBtn.addEventListener("click", () => {
     prevGroup();
     resetAutoSlide2();
   });
 }
 
-if (dots2.length > 0) {
-  dots2.forEach((dot, i) => {
+if (carouselDots.length > 0) {
+  carouselDots.forEach((dot, i) => {
     dot.addEventListener("click", () => {
       currentGroup = i;
       showGroup(currentGroup);
