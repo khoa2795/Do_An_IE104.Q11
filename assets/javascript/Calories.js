@@ -457,8 +457,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ===== QUẢN LÝ MÓN ĂN YÊU THÍCH  =====
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("🔥 Calories.js loaded - Favorite System");
-
   initializeFavoriteFoods();
 
   // Xử lý click vào icon tim
@@ -488,15 +486,12 @@ document.addEventListener("DOMContentLoaded", function () {
         fiber: parseInt(foodItem.dataset.fiber || 0),
         isFavorite: heartIcon.classList.contains("far"),
       };
-
-      console.log("❤️ Click tim - Food data:", foodData);
-      toggleFavoriteFood(foodData, heartIcon);
+      toggleFavoriteFood(foodData);
     }
   });
 });
 
 function initializeFavoriteFoods() {
-  console.log("🔥 initializeFavoriteFoods called");
   syncFavoriteIcons();
   updateFavoriteFoodsDisplay();
 }
@@ -511,8 +506,6 @@ function syncFavoriteIcons() {
   const storageKey = `favoriteFoods_${currentUser.id}`;
   const favoriteFoods = JSON.parse(localStorage.getItem(storageKey)) || [];
   const favoriteIds = favoriteFoods.map((food) => food.id.toString());
-
-  console.log("🔥 Đồng bộ tất cả tim - Favorite IDs:", favoriteIds);
 
   document.querySelectorAll(".calories__food-column li").forEach((li) => {
     const foodId = li.dataset.id;
@@ -530,13 +523,11 @@ function syncFavoriteIcons() {
   });
 }
 
-function toggleFavoriteFood(foodData, heartIcon) {
+function toggleFavoriteFood(foodData) {
   const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
   if (!currentUser) {
-    console.error("❌ Không có currentUser");
     return;
   }
-
   const storageKey = `favoriteFoods_${currentUser.id}`;
   let favoriteFoods = JSON.parse(localStorage.getItem(storageKey)) || [];
 
@@ -565,15 +556,8 @@ function toggleFavoriteFood(foodData, heartIcon) {
     }
   } else {
     // XÓA khỏi yêu thích
-    const initialLength = favoriteFoods.length;
     favoriteFoods = favoriteFoods.filter((food) => food.id != foodData.id);
     showSuccessMessage(`Đã xóa "${foodData.name}" khỏi món yêu thích! ♡`);
-    console.log(
-      "✅ Đã xóa khỏi yêu thích - Trước:",
-      initialLength,
-      "Sau:",
-      favoriteFoods.length
-    );
   }
 
   localStorage.setItem(storageKey, JSON.stringify(favoriteFoods));
@@ -587,7 +571,6 @@ function toggleFavoriteFood(foodData, heartIcon) {
 function updateFavoriteFoodsDisplay() {
   const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
   if (!currentUser) {
-    console.error("❌ Không có currentUser");
     return;
   }
 
@@ -602,11 +585,6 @@ function updateFavoriteFoodsDisplay() {
     return;
   }
 
-  console.log(
-    "📋 updateFavoriteFoodsDisplay - Số món yêu thích:",
-    favoriteFoods.length
-  );
-
   favoriteColumn.innerHTML = "";
 
   if (favoriteFoods.length === 0) {
@@ -615,7 +593,7 @@ function updateFavoriteFoodsDisplay() {
     return;
   }
 
-  favoriteFoods.forEach((food, index) => {
+  favoriteFoods.forEach((food) => {
     const li = createFavoriteFoodItem(food);
     favoriteColumn.appendChild(li);
   });
@@ -652,10 +630,6 @@ function createFavoriteFoodItem(food) {
 }
 
 // ĐỒNG BỘ TIM KHI DATA LOAD XONG
-function syncFavoriteIconsOnLoad() {
-  syncFavoriteIcons();
-}
-
 // ===== 3-5: CÁC PHẦN KHÁC GIỮ NGUYÊN 100% =====
 // Chuyển đổi dashboard và theo dõi
 document.addEventListener("DOMContentLoaded", () => {
