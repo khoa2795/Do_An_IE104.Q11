@@ -48,29 +48,30 @@
         <div id="sidebar-placeholder"></div>
 
         <main class="main-content">
-            <div class="calories-content">
+            <div class="calories">
                 <!-- ===== THÔNG TIN NGƯỜI DÙNG ===== -->
-                <div class="user-info-container">
-                    <h2>Thông tin người dùng</h2>
-                    <div class="user-info-content">
-                        <div class="user-avatar">
+                <div class="calories__user-info">
+                    <h2 class="calories__section-title">Thông tin người dùng</h2>
+                    <div class="calories__user-content">
+                        <div class="calories__avatar">
                             <img src="../assets/images/Calories/avartar.png" alt="Avatar người dùng">
                         </div>
 
-                        <div class="user-details">
-                            <div class="info-left">
-                                <p>Tuổi: <span class="loading-placeholder">--</span></p>
-                                <p>Chiều cao: <span class="loading-placeholder">--</span></p>
+                        <div class="calories__details">
+                            <div class="calories__info-col calories__info-col--left">
+                                <p>Họ và tên: <span class="calories__info-value calories__info-value--name loading-placeholder">--</span></p>
+                                <p>Tuổi: <span class="calories__info-value calories__info-value--age loading-placeholder">--</span></p>
+                                <p>Chiều cao: <span class="calories__info-value calories__info-value--height loading-placeholder">--</span></p>
                             </div>
 
-                            <div class="info-center">
-                                <p>Cân nặng: <span class="loading-placeholder">--</span></p>
+                            <div class="calories__info-col calories__info-col--center">
+                                <p>Cân nặng: <span class="calories__info-value calories__info-value--weight loading-placeholder">--</span></p>
                                 <p>
                                     Cường độ luyện tập:
                                     <span id="intensityText" style="color:#2f8f46; cursor:pointer;">mức -- ▼</span>
                                 </p>
 
-                                <div id="intensityBox" class="intensity-box" style="display:none;">
+                                <div id="intensityBox" class="calories__intensity-box" style="display:none;">
                                     <h4>Thay đổi cường độ luyện tập <i class="fas fa-dumbbell"></i></h4>
                                     <select id="activityLevel">
                                         <option value="1">Ít vận động</option>
@@ -78,32 +79,32 @@
                                         <option value="3">Vận động trung bình</option>
                                         <option value="4">Vận động cao</option>
                                     </select>
-                                    <p class="description" id="activityDesc">
+                                    <p class="calories__intensity-desc" id="activityDesc">
                                         • Nếu bạn ngồi nhiều, ít hoạt động chân tay, không tập thể dục
                                     </p>
-                                    <div class="buttons">
+                                    <div class="calories__intensity-buttons">
                                         <button id="closeBox">Đóng</button>
                                         <button id="saveBox">Lưu lại</button>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="info-right">
-                                <p>Mục tiêu: <span class="loading-placeholder">--</span></p>
+                            <div class="calories__info-col calories__info-col--right">
+                                <p>Mục tiêu: <span class="calories__info-value calories__info-value--goal loading-placeholder">--</span></p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- ===== TỔNG QUAN HÔM NAY ===== -->
-                <div class="overview-container" id="overviewSection">
-                    <h2>Tổng quan hôm nay</h2>
+                <div class="calories__overview" id="overviewSection">
+                    <h2 class="calories__section-title">Tổng quan hôm nay</h2>
 
-                    <div class="overview-content">
+                    <div class="calories__overview-content">
                         <!-- Biểu đồ calo -->
-                        <div class="calo-chart">
-                            <div class="circle">
-                                <div class="inner-text">
+                        <div class="calories__chart">
+                            <div class="calories__circle">
+                                <div class="calories__circle-inner">
                                     <!-- ✅ ĐỂ TRỐNG -->
                                     <p class="loading-placeholder">--<br><span>/-- calo</span></p>
                                 </div>
@@ -111,43 +112,43 @@
                         </div>
 
                         <!-- Dinh dưỡng -->
-                        <div class="nutrients">
-                            <div class="nutrient">
-                                <div class="label">
+                        <div class="calories__nutrients">
+                            <div class="calories__nutrient">
+                                <div class="calories__nutrient-label">
                                     <span>Tinh bột 🌾</span>
                                 </div>
-                                <div class="progress">
-                                    <div class="bar carbs" style="width: 0%;"></div>
+                                <div class="calories__nutrient-progress">
+                                    <div class="calories__nutrient-bar calories__nutrient-bar--carbs" style="width: 0%;"></div>
                                 </div>
                                 <p class="loading-placeholder">-- / -- g</p>
                             </div>
 
-                            <div class="nutrient">
-                                <div class="label">
+                            <div class="calories__nutrient">
+                                <div class="calories__nutrient-label">
                                     <span>Đạm 🥩</span>
                                 </div>
-                                <div class="progress">
-                                    <div class="bar protein" style="width: 0%;"></div>
+                                <div class="calories__nutrient-progress">
+                                    <div class="calories__nutrient-bar calories__nutrient-bar--protein" style="width: 0%;"></div>
                                 </div>
                                 <p class="loading-placeholder">-- / -- g</p>
                             </div>
 
-                            <div class="nutrient">
-                                <div class="label">
+                            <div class="calories__nutrient">
+                                <div class="calories__nutrient-label">
                                     <span>Béo 🥜</span>
                                 </div>
-                                <div class="progress">
-                                    <div class="bar fat" style="width: 0%;"></div>
+                                <div class="calories__nutrient-progress">
+                                    <div class="calories__nutrient-bar calories__nutrient-bar--fat" style="width: 0%;"></div>
                                 </div>
                                 <p class="loading-placeholder">-- / -- g</p>
                             </div>
 
-                            <div class="nutrient">
-                                <div class="label">
+                            <div class="calories__nutrient">
+                                <div class="calories__nutrient-label">
                                     <span>Xơ 🍎</span>
                                 </div>
-                                <div class="progress">
-                                    <div class="bar fiber" style="width: 0%;"></div>
+                                <div class="calories__nutrient-progress">
+                                    <div class="calories__nutrient-bar calories__nutrient-bar--fiber" style="width: 0%;"></div>
                                 </div>
                                 <p class="loading-placeholder">-- / -- g</p>
                             </div>
@@ -156,23 +157,23 @@
                 </div>
 
                 <!-- ===== DANH SÁCH THỰC PHẨM ===== -->
-                <div class="food-section" id="foodSection" style="display: none;">
-                    <div class="food-header">
-                        <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
-                        <div class="search-bar">
+                <div class="calories__food-section" id="foodSection" style="display: none;">
+                    <div class="calories__food-header">
+                        <button class="calories__back-btn"><i class="fas fa-arrow-left"></i></button>
+                        <div class="calories__search-bar">
                             <i class="fas fa-microphone"></i>
                             <input type="text" placeholder="Tìm kiếm món ăn...">
                             <i class="fas fa-search"></i>
                         </div>
-                        <div class="food-tools">
+                        <div class="calories__food-tools">
                             <i class="fas fa-question-circle"></i>
                             <i class="fas fa-filter"></i>
                         </div>
                     </div>
 
-                    <div class="food-columns">
+                    <div class="calories__food-columns">
                         <!-- Cột Gần đây -->
-                        <div class="food-column">
+                        <div class="calories__food-column">
                             <h3>Gần đây</h3>
                             <ul>
                                 <li class="loading-placeholder" style="text-align: center; padding: 20px;">Đang tải...</li>
@@ -180,7 +181,7 @@
                         </div>
 
                         <!-- Cột Yêu thích -->
-                        <div class="food-column">
+                        <div class="calories__food-column">
                             <h3>Yêu thích</h3>
                             <ul>
                                 <li class="loading-placeholder" style="text-align: center; padding: 20px;">Đang tải...</li>
@@ -188,32 +189,32 @@
                         </div>
 
                         <!-- Cột Của tôi -->
-                        <div class="food-column">
+                        <div class="calories__food-column">
                             <h3>Của tôi</h3>
                             <ul>
                                 <li class="loading-placeholder" style="text-align: center; padding: 20px;">Đang tải...</li>
                             </ul>
-                            <button class="add-food">+ Thêm thực phẩm của bạn</button>
+                            <button class="calories__add-food">+ Thêm thực phẩm của bạn</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- ===== HƯỚNG DẪN SỬ DỤNG THỰC PHẨM ===== -->
-                <div class="food-guide" id="guideSection">
-                    <div class="food-header">
-                    <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
-                    <div class="search-bar">
+                <!-- ===== HƯỚNG DẪN SỖ DỤNG THỰC PHẨM ===== -->
+                <div class="calories__guide" id="guideSection">
+                    <div class="calories__food-header">
+                    <button class="calories__back-btn"><i class="fas fa-arrow-left"></i></button>
+                    <div class="calories__search-bar">
                         <i class="fas fa-microphone"></i>
                         <input type="text" placeholder="Tìm kiếm món ăn...">
                         <i class="fas fa-search"></i>
                     </div>
-                    <div class="food-tools">
+                    <div class="calories__food-tools">
                         <i class="fas fa-question-circle"></i>
                         <i class="fas fa-filter"></i>
                     </div>
                     </div>
-                    <h2>Hướng dẫn sử dụng thực phẩm</h2>
-                    <div class="guide-content">
+                    <h2 class="calories__section-title">Hướng dẫn sử dụng thực phẩm</h2>
+                    <div class="calories__guide-content">
                         <div class="guide-section">
                             <h3>Lưu ý quan trọng khi tính toán thực phẩm</h3>
                             <p>Tất cả các thực phẩm trên app đều chỉ tính trên phần ăn được thôi nên khi cân đo đồ ăn bạn nhớ:</p>
@@ -245,34 +246,34 @@
                 </div>
 
                 <!-- ===== CÁC BUỔI ĂN ===== -->
-                <div class="meal-container">
-                    <div class="meal-title" id="mealTitle" style="display: none;">
+                <div class="calories__meals">
+                    <div class="calories__meals-title" id="mealTitle" style="display: none;">
                         <h2>Thực đơn cho <span id="currentMealName"></span></h2>
                     </div>
 
-                    <div class="meal-section">
-                        <div class="meal">
-                            <div class="plus meal-btn" data-meal="breakfast">+</div>
+                    <div class="calories__meals-grid">
+                        <div class="calories__meal">
+                            <div class="calories__meal-btn" data-meal="breakfast">+</div>
                             <p>Buổi sáng</p>
                         </div>
-                        <div class="meal">
-                            <div class="plus meal-btn" data-meal="lunch">+</div>
+                        <div class="calories__meal">
+                            <div class="calories__meal-btn" data-meal="lunch">+</div>
                             <p>Buổi trưa</p>
                         </div>
-                        <div class="meal">
-                            <div class="plus meal-btn" data-meal="dinner">+</div>
+                        <div class="calories__meal">
+                            <div class="calories__meal-btn" data-meal="dinner">+</div>
                             <p>Buổi tối</p>
                         </div>
-                        <div class="meal">
-                            <div class="plus meal-btn" data-meal="snack">+</div>
+                        <div class="calories__meal">
+                            <div class="calories__meal-btn" data-meal="snack">+</div>
                             <p>Buổi phụ</p>
                         </div>
                     </div>
 
                     <!-- Chế độ ăn -->
-                    <div class="diet-mode">
+                    <div class="calories__diet">
                         <p>Bạn đang ăn theo chế độ:
-                            <select class="diet-select">
+                            <select class="calories__diet-select">
                                 <option>Cân bằng</option>
                                 <option>High Protein</option>
                                 <option>Ketogenic</option>
@@ -281,121 +282,121 @@
                                 <option>Paleo</option>
                                 <option>Dash</option>
                             </select>
-                            <span class="help">?</span>
+                            <span class="calories__diet-help">?</span>
                         </p>
                     </div>
                 </div>
 
                 <!-- ===== DASHBOARD CALO ===== -->
-                <div class="dashboard" id="dashboardSection">
+                <div class="calories__dashboard" id="dashboardSection">
                     <!-- Ô chọn tuần -->
-                    <div class="week-box">
-                        <div class="week-left">
-                            <p class="month">Tháng 11</p>
-                            <p class="week">Tuần này</p>
+                    <div class="calories__week">
+                        <div class="calories__week-left">
+                            <p class="calories__week-month">Tháng 11</p>
+                            <p class="calories__week-label">Tuần này</p>
                         </div>
-                        <div class="week-days">
+                        <div class="calories__week-days">
                             <span>T2<br>--</span>
                             <span>T3<br>--</span>
                             <span>T4<br>--</span>
-                            <span class="active">T5<br>--</span>
+                            <span class="calories__week-day--active">T5<br>--</span>
                             <span>T6<br>--</span>
                             <span>T7<br>--</span>
                             <span>CN<br>--</span>
                         </div>
-                        <div class="week-arrows">
+                        <div class="calories__week-arrows">
                             <span>&lt;</span>
                             <span>&gt;</span>
                         </div>
                     </div>
 
                     <!-- Ô icon lịch -->
-                    <div class="calendar-box">
+                    <div class="calories__calendar-icon">
                         <i class="fas fa-calendar-alt"></i>
                     </div>
 
-                    <div class="calo-box">
+                    <div class="calories__stats">
                         <h3>Lượng calo cần nạp</h3>
 
-                        <div class="calo-circle">
-                            <div class="calo-inner">
+                        <div class="calories__stats-circle">
+                            <div class="calories__stats-circle-inner">
                                 <p class="loading-placeholder">--<br><span>/-- calo</span></p>
                             </div>
                         </div>
 
-                        <div class="calo-bars">
-                            <div class="bar">
-                                <div class="fill" style="height: 0%;"></div>
+                        <div class="calories__stats-bars">
+                            <div class="calories__stats-bar">
+                                <div class="calories__stats-bar-fill" style="height: 0%;"></div>
                                 <span>T2</span>
                             </div>
-                            <div class="bar">
-                                <div class="fill" style="height: 0%;"></div>
+                            <div class="calories__stats-bar">
+                                <div class="calories__stats-bar-fill" style="height: 0%;"></div>
                                 <span>T3</span>
                             </div>
-                            <div class="bar">
-                                <div class="fill" style="height: 0%;"></div>
+                            <div class="calories__stats-bar">
+                                <div class="calories__stats-bar-fill" style="height: 0%;"></div>
                                 <span>T4</span>
                             </div>
-                            <div class="bar">
-                                <div class="fill" style="height: 0%;"></div>
+                            <div class="calories__stats-bar">
+                                <div class="calories__stats-bar-fill" style="height: 0%;"></div>
                                 <span>T5</span>
                             </div>
-                            <div class="bar">
-                                <div class="fill" style="height: 0%;"></div>
+                            <div class="calories__stats-bar">
+                                <div class="calories__stats-bar-fill" style="height: 0%;"></div>
                                 <span>T6</span>
                             </div>
-                            <div class="bar">
-                                <div class="fill" style="height: 0%;"></div>
+                            <div class="calories__stats-bar">
+                                <div class="calories__stats-bar-fill" style="height: 0%;"></div>
                                 <span>T7</span>
                             </div>
-                            <div class="bar">
-                                <div class="fill" style="height: 0%;"></div>
+                            <div class="calories__stats-bar">
+                                <div class="calories__stats-bar-fill" style="height: 0%;"></div>
                                 <span>CN</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Ô dinh dưỡng -->
-                    <div class="nutrition-box">
+                    <div class="calories__nutrition">
                         <h3>Dinh dưỡng</h3>
                         
-                        <div class="nutrition-content">
-                            <div class="nutrient">
-                                <div class="label">
+                        <div class="calories__nutrition-content">
+                            <div class="calories__nutrient">
+                                <div class="calories__nutrient-label">
                                     <span>Tinh bột 🌾</span>
                                 </div>
-                                <div class="progress">
-                                    <div class="bar carbs" style="width: 0%;"></div>
+                                <div class="calories__nutrient-progress">
+                                    <div class="calories__nutrient-bar calories__nutrient-bar--carbs" style="width: 0%;"></div>
                                 </div>
                                 <p class="loading-placeholder">-- / -- g</p>
                             </div>
 
-                            <div class="nutrient">
-                                <div class="label">
+                            <div class="calories__nutrient">
+                                <div class="calories__nutrient-label">
                                     <span>Đạm 🥩</span>
                                 </div>
-                                <div class="progress">
-                                    <div class="bar protein" style="width: 0%;"></div>
+                                <div class="calories__nutrient-progress">
+                                    <div class="calories__nutrient-bar calories__nutrient-bar--protein" style="width: 0%;"></div>
                                 </div>
                                 <p class="loading-placeholder">-- / -- g</p>
                             </div>
 
-                            <div class="nutrient">
-                                <div class="label">
+                            <div class="calories__nutrient">
+                                <div class="calories__nutrient-label">
                                     <span>Béo 🥜</span>
                                 </div>
-                                <div class="progress">
-                                    <div class="bar fat" style="width: 0%;"></div>
+                                <div class="calories__nutrient-progress">
+                                    <div class="calories__nutrient-bar calories__nutrient-bar--fat" style="width: 0%;"></div>
                                 </div>
                                 <p class="loading-placeholder">-- / -- g</p>
                             </div>
 
-                            <div class="nutrient">
-                                <div class="label">
+                            <div class="calories__nutrient">
+                                <div class="calories__nutrient-label">
                                     <span>Xơ 🍎</span>
                                 </div>
-                                <div class="progress">
-                                    <div class="bar fiber" style="width: 0%;"></div>
+                                <div class="calories__nutrient-progress">
+                                    <div class="calories__nutrient-bar calories__nutrient-bar--fiber" style="width: 0%;"></div>
                                 </div>
                                 <p class="loading-placeholder">-- / -- g</p>
                             </div>
@@ -403,27 +404,27 @@
                     </div>
                 </div>
 
-                <div class="follow-container" id="followSection">
-                    <div class="follow-header">
-                        <i class="fas fa-arrow-left back"></i>
-                        <div class="follow-title">
+                <div class="calories__follow" id="followSection">
+                    <div class="calories__follow-header">
+                        <i class="fas fa-arrow-left calories__follow-back"></i>
+                        <div class="calories__follow-title">
                             <i class="fas fa-calendar-alt"></i>
                             <h2>Theo dõi</h2>
                         </div>
                     </div>
 
-                    <div class="follow-content">
+                    <div class="calories__follow-content">
                         <!-- Cột lịch -->
-                        <div class="follow-calendar">
-                            <div class="calendar-top">
+                        <div class="calories__follow-calendar">
+                            <div class="calories__calendar-top">
                                 <span>Tháng 11 2025</span>
-                                <div class="calendar-arrow">
+                                <div class="calories__calendar-arrow">
                                     <i class="fas fa-chevron-left"></i>
                                     <i class="fas fa-chevron-right"></i>
                                 </div>
                             </div>
 
-                            <table class="calendar-table">
+                            <table class="calories__calendar-table">
                                 <thead>
                                     <tr>
                                         <th>CN</th><th>T2</th><th>T3</th><th>T4</th><th>T5</th><th>T6</th><th>T7</th>
@@ -434,35 +435,35 @@
                             </table>
                         </div>
 
-                        <div class="follow-info">
+                        <div class="calories__follow-info">
                             <!-- Ô 1: Thông tin calo -->
-                            <div class="info-box calo-summary">
-                                <p class="loading-placeholder">Tổng calo đã nạp: <span class="highlight">-- kcal</span></p>
-                                <p class="loading-placeholder">Tổng calo cần nạp: <span class="highlight">-- kcal</span></p>
-                                <p class="loading-placeholder">Lượng calo cần thâm hụt: <span class="highlight">-- kcal</span></p>
-                                <p class="loading-placeholder">Lượng calo đã thâm hụt: <span class="highlight">-- kcal</span></p>
+                            <div class="calories__info-box calories__info-box--summary">
+                                <p class="loading-placeholder">Tổng calo đã nạp: <span class="calories__highlight">-- kcal</span></p>
+                                <p class="loading-placeholder">Tổng calo cần nạp: <span class="calories__highlight">-- kcal</span></p>
+                                <p class="loading-placeholder">Lượng calo cần thâm hụt: <span class="calories__highlight">-- kcal</span></p>
+                                <p class="loading-placeholder">Lượng calo đã thâm hụt: <span class="calories__highlight">-- kcal</span></p>
                             </div>
 
                             <!-- Ô 2: Thống kê ngày -->
-                            <div class="info-box day-stats">
-                                <p class="loading-placeholder"><span class="dot green"></span> Số ngày ăn đạt khuyến nghị: <span class="green">-- ngày</span></p>
-                                <p class="loading-placeholder"><span class="dot yellow"></span> Số ngày ăn dưới BMR: <span class="yellow">-- ngày</span></p>
-                                <p class="loading-placeholder"><span class="dot red"></span> Số ngày ăn quá lượng cần nạp: <span class="red">-- ngày</span></p>
+                            <div class="calories__info-box calories__info-box--stats">
+                                <p class="loading-placeholder"><span class="calories__dot calories__dot--green"></span> Số ngày ăn đạt khuyến nghị: <span class="calories__stat-value calories__stat-value--green">-- ngày</span></p>
+                                <p class="loading-placeholder"><span class="calories__dot calories__dot--yellow"></span> Số ngày ăn dưới BMR: <span class="calories__stat-value calories__stat-value--yellow">-- ngày</span></p>
+                                <p class="loading-placeholder"><span class="calories__dot calories__dot--red"></span> Số ngày ăn quá lượng cần nạp: <span class="calories__stat-value calories__stat-value--red">-- ngày</span></p>
                             </div>
                         </div>
                     </div>
 
                     <!-- 3 ô bên dưới -->
-                    <div class="follow-bottom">
-                        <div class="card suggest">
+                    <div class="calories__follow-cards">
+                        <div class="calories__card calories__card--suggest">
                             <h3>Gợi ý bữa ăn</h3>
                             <p>Bạn đang có xu hướng ăn quá nhiều đạm. Hãy bổ sung thêm rau xanh nhé.</p>
                         </div>
-                        <div class="card goal">
+                        <div class="calories__card calories__card--goal">
                             <h3>Mục tiêu</h3>
                             <p>Duy trì dưới 1800 calo / ngày</p>
                         </div>
-                        <div class="card warning">
+                        <div class="calories__card calories__card--warning">
                             <h3>Cảnh báo</h3>
                             <p>
                                 Tác động nếu không vận động đủ:<br>
@@ -475,54 +476,54 @@
                 </div>
 
                <!-- Modal Thêm Thực Phẩm -->
-                <div class="food-modal-overlay" id="foodModal">
-                    <div class="food-modal">
-                        <div class="modal-header">
+                <div class="modal modal--food" id="foodModal">
+                    <div class="modal__content">
+                        <div class="modal__header">
                             <h3>Thêm thực phẩm mới</h3>
-                            <button class="close-modal">&times;</button>
+                            <button class="modal__close">&times;</button>
                         </div>
-                        <div class="modal-body">
-                            <div class="form-group">
+                        <div class="modal__body">
+                            <div class="modal__form-group">
                                 <label for="foodName">Tên thực phẩm hoặc món ăn</label>
                                 <input type="text" id="foodName" placeholder="Nhập tên thực phẩm...">
                             </div>
                             
-                            <div class="form-group">
+                            <div class="modal__form-group">
                                 <label for="foodImage">Hình ảnh </label>
                                 <input type="text" id="foodImage" placeholder="image.jpg">
                             </div>
                             
-                            <div class="form-group">
+                            <div class="modal__form-group">
                                 <label>Giá trị dinh dưỡng </label>
-                                <div class="nutrition-grid">
-                                    <div class="nutrition-item">
+                                <div class="modal__nutrition-grid">
+                                    <div class="modal__nutrition-item">
                                         <label>Năng lượng (kcal)</label>
                                         <input type="number" id="foodCalories" placeholder="0">
                                     </div>
-                                    <div class="nutrition-item">
+                                    <div class="modal__nutrition-item">
                                         <label>Trọng lượng (g)</label>
                                         <input type="number" id="foodWeight" value="0" readonly>
                                     </div>
-                                    <div class="nutrition-item">
+                                    <div class="modal__nutrition-item">
                                         <label>Tinh bột (g)</label>
                                         <input type="number" id="foodCarbs" placeholder="0">
                                     </div>
-                                    <div class="nutrition-item">
+                                    <div class="modal__nutrition-item">
                                         <label>Đạm (g)</label>
                                         <input type="number" id="foodProtein" placeholder="0">
                                     </div>
-                                    <div class="nutrition-item">
+                                    <div class="modal__nutrition-item">
                                         <label>Béo (g)</label>
                                         <input type="number" id="foodFat" placeholder="0">
                                     </div>
-                                    <div class="nutrition-item">
+                                    <div class="modal__nutrition-item">
                                         <label>Xơ (g)</label>
                                         <input type="number" id="foodFiber" placeholder="0">
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="form-group">
+                            <div class="modal__form-group">
                                 <label for="foodCategory">Danh mục</label>
                                 <select id="foodCategory">
                                     <option value="recent">Gần đây</option>
@@ -531,53 +532,53 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="modal-buttons">
-                            <button class="btn-cancel">Đóng</button>
-                            <button class="btn-save">Lưu lại</button>
+                        <div class="modal__buttons">
+                            <button class="modal__btn modal__btn--cancel">Đóng</button>
+                            <button class="modal__btn modal__btn--save">Lưu lại</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Modal chú thích chế độ ăn-->
-                <div class="diet-modal-overlay" id="dietModal">
-                    <div class="diet-modal">
-                        <div class="diet-modal-header">
+                <div class="modal modal--diet" id="dietModal">
+                    <div class="modal__content">
+                        <div class="modal__header modal__header--diet">
                             <h3>Chế độ ăn</h3>
-                            <button class="close-diet-modal">&times;</button>
+                            <button class="modal__close">&times;</button>
                         </div>
                         
-                        <div class="diet-guide-content">
-                            <div class="diet-guide-section">
+                        <div class="modal__diet-content">
+                            <div class="modal__diet-section">
                                 <h4>Cân Bằng</h4>
                                 <p>Ăn uống đầy đủ các nhóm chất (đạm, béo, tinh bột, vitamin, khoáng chất) theo tỷ lệ hợp lý.</p>
                             </div>
 
-                            <div class="diet-guide-section">
+                            <div class="modal__diet-section">
                                 <h4>High Protein</h4>
                                 <p>Tăng cường lượng protein (thịt, cá, trứng...) để hỗ trợ xây cơ và giảm cân.</p>
                             </div>
 
-                            <div class="diet-guide-section">
+                            <div class="modal__diet-section">
                                 <h4>Keto</h4>
                                 <p>Cắt giảm tối đa tinh bột, tăng chất béo và protein để chuyển sang trạng thái "đốt mỡ tạo năng lượng" (ketosis).</p>
                             </div>
 
-                            <div class="diet-guide-section">
+                            <div class="modal__diet-section">
                                 <h4>Low Carb</h4>
                                 <p>Giảm lượng tinh bột nhưng không cắt hoàn toàn; tập trung ăn đạm và rau củ.</p>
                             </div>
 
-                            <div class="diet-guide-section">
+                            <div class="modal__diet-section">
                                 <h4>Atkins</h4>
                                 <p>Là một kiểu Low Carb nghiêm ngặt hơn, được chia theo giai đoạn giảm tinh bột dần.</p>
                             </div>
 
-                            <div class="diet-guide-section">
+                            <div class="modal__diet-section">
                                 <h4>Paleo</h4>
                                 <p>Ăn như người thời tiền sử chỉ dùng thực phẩm tự nhiên (thịt, cá, rau, trái cây); tránh đồ chế biến sẵn, ngũ cốc, đường, sữa.</p>
                             </div>
 
-                            <div class="diet-guide-section">
+                            <div class="modal__diet-section">
                                 <h4>Dash</h4>
                                 <p>Thiết kế để hạ huyết áp: ăn nhiều rau, trái cây, ngũ cốc nguyên hạt; hạn chế muối, chất béo bão hòa và đường.</p>
                             </div>
@@ -587,71 +588,71 @@
 
 
                 <!-- Modal bộ lọc món ăn -->
-                <div class="filter-modal-overlay" id="filterModal">
-                    <div class="filter-modal">
-                        <div class="filter-modal-header">
+                <div class="modal modal--filter" id="filterModal">
+                    <div class="modal__content">
+                        <div class="modal__header modal__header--filter">
                             <h3>Bộ lọc món ăn</h3>
-                            <button class="close-filter-modal">&times;</button>
+                            <button class="modal__close">&times;</button>
                         </div>
                         
-                        <div class="filter-content">
+                        <div class="modal__filter-content">
                             <!-- Calories -->
-                            <div class="filter-section">
-                                <div class="filter-item">
+                            <div class="modal__filter-section">
+                                <div class="modal__filter-item">
                                     <label>Calories</label>
-                                    <div class="range-slider" data-max="600" data-unit="kcal">
+                                    <div class="modal__range-slider" data-max="600" data-unit="kcal">
                                         <input type="range" min="0" max="600" value="100">
                                         <input type="range" min="0" max="600" value="500">
-                                        <div class="range-track"></div>
-                                        <div class="range-values"></div>
+                                        <div class="modal__range-track"></div>
+                                        <div class="modal__range-values"></div>
                                     </div>
                                 </div>
 
-                                <div class="filter-item">
+                                <div class="modal__filter-item">
                                     <label>Tinh bột</label>
-                                    <div class="range-slider" data-max="100" data-unit="g">
+                                    <div class="modal__range-slider" data-max="100" data-unit="g">
                                         <input type="range" min="0" max="100" value="20">
                                         <input type="range" min="0" max="100" value="80">
-                                        <div class="range-track"></div>
-                                        <div class="range-values"></div>
+                                        <div class="modal__range-track"></div>
+                                        <div class="modal__range-values"></div>
                                     </div>
                                 </div>
 
-                                <div class="filter-item">
+                                <div class="modal__filter-item">
                                     <label>Đạm</label>
-                                    <div class="range-slider" data-max="60" data-unit="g">
+                                    <div class="modal__range-slider" data-max="60" data-unit="g">
                                         <input type="range" min="0" max="60" value="20">
                                         <input type="range" min="0" max="60" value="50">
-                                        <div class="range-track"></div>
-                                        <div class="range-values"></div>
+                                        <div class="modal__range-track"></div>
+                                        <div class="modal__range-values"></div>
                                     </div>
                                 </div>
 
-                                <div class="filter-item">
+                                <div class="modal__filter-item">
                                     <label>Béo</label>
-                                    <div class="range-slider" data-max="60" data-unit="g">
+                                    <div class="modal__range-slider" data-max="60" data-unit="g">
                                         <input type="range" min="0" max="60" value="10">
                                         <input type="range" min="0" max="60" value="40">
-                                        <div class="range-track"></div>
-                                        <div class="range-values"></div>
+                                        <div class="modal__range-track"></div>
+                                        <div class="modal__range-values"></div>
                                     </div>
                                 </div>
 
-                                <div class="filter-item">
+                                <div class="modal__filter-item">
                                     <label>Xơ</label>
-                                    <div class="range-slider" data-max="100" data-unit="g">
+                                    <div class="modal__range-slider" data-max="100" data-unit="g">
                                         <input type="range" min="0" max="100" value="30">
                                         <input type="range" min="0" max="100" value="90">
-                                        <div class="range-track"></div>
-                                        <div class="range-values"></div>
+                                        <div class="modal__range-track"></div>
+                                        <div class="modal__range-values"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="filter-modal-footer">
-                            <button class="btn-reset">Đặt lại</button>
-                            <button class="btn-apply">Áp dụng</button>
+                        <div class="modal__footer">
+                            <button class="modal__btn modal__btn--reset">Đặt lại</button>
+                            <button class="modal__btn modal__btn--apply">Áp dụng</button>
                         </div>
                     </div>
                 </div>
