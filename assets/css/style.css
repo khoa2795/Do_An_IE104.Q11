@@ -25,6 +25,17 @@ body {
 html, body {
   overflow-x: hidden;
 }
+/* Prevent content jump during initial load */
+.main-content {
+    opacity: 0;
+    animation: fadeInContent 0.3s ease-in 0.1s forwards;
+}
+
+@keyframes fadeInContent {
+    to {
+        opacity: 1;
+    }
+}
 
 .container {
     display: flex;
