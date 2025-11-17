@@ -608,8 +608,6 @@ body {
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: auto auto;
     gap: 35px;
-    /* ✅ BỎ DÒNG NÀY */
-    /* font-family: "Inter", sans-serif; */
     box-sizing: border-box;
     }
 
@@ -697,20 +695,22 @@ body {
     }
 
     /* Vòng tròn năng lượng */
-    .calo-circle {
-    width: 200px; /* tăng từ 150px lên 200px */
+
+.calo-circle {
+    position: relative;
+    width: 200px;
     height: 200px;
     border-radius: 50%;
-    margin: 0 auto 35px; /* tăng margin-bottom từ 30px lên 35px */
-    background: conic-gradient(#2f8f46 65%, #f2f2f2 0);
+    margin: 0 auto 35px;
+    background: conic-gradient(#e0e0e0 0%, #e0e0e0 100%); /* Mặc định màu xám */
     display: flex;
     justify-content: center;
     align-items: center;
     border: 4px solid #f9faf9;
-    }
+}
 
-    .calo-inner {
-    width: 135px; /* tăng từ 100px lên 135px */
+.calo-inner {
+    width: 135px;
     height: 135px;
     border-radius: 50%;
     background: #fff;
@@ -718,19 +718,20 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    }
+}
 
-    .calo-inner p {
+.calo-inner p {
     font-weight: 700;
-    font-size: 18px; /* tăng từ 16px lên 18px */
+    font-size: 18px;
     margin: 0;
     line-height: 1.4;
-    }
+    text-align: center;
+}
 
-    .calo-inner span {
+.calo-inner span {
     font-size: 13px;
     color: #666;
-    }
+}
 
     /* Biểu đồ cột calo */
     .calo-bars {
@@ -1645,4 +1646,29 @@ body {
     color: white;
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(47, 143, 70, 0.3);
+}
+
+
+/* Hiệu ứng cho icon tim */
+.fa-heart {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+.fa-heart:hover {
+    transform: scale(1.2);
+}
+
+.fa-heart.favorite {
+    color: #e55b4d;
+}
+
+.far.fa-heart {
+    color: #ccc;
+}
+
+.far.fa-heart:hover {
+    color: #e55b4d;
 }
