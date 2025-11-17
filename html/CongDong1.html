@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trang cộng đồng</title>
   
-  <!-- ✅ THÊM style.css VÀ ĐẢM BẢO THỨ TỰ ĐÚNG -->
+  <!-- CSS -->
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/header.css" />
   <link rel="stylesheet" href="../assets/css/leftnav.css" />
@@ -14,138 +14,133 @@
   <link rel="stylesheet" href="../assets/css/chatbot.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
   <div id="header-placeholder"></div>
   
-  <!-- ✅ SỬA LẠI CONTAINER -->
   <div class="container">
     <div id="sidebar-placeholder"></div>
 
-    <!-- ✅ MAIN CONTENT -->
-    <main class="main-content">
-      <div class="page-1700x960">
-        <header class="community-header">
-          <h1 class="ch-title">Cộng đồng</h1>
-          <button class="btn-create">Tạo bài</button>
-        </header>
-
-        <nav class="ch-tabs">
-          <button class="tab active">Mới nhất</button>
-          <button class="tab">Mới hoạt động</button>
-        </nav>
-
-        <main class="ch-content">
-          <section class="posts">
-            <article class="post">
-              <header class="post-hd">
-                <img class="avt" src="https://i.pravatar.cc/48?img=8" alt="avatar"/>
-                <div class="meta">
-                  <div class="name">Văn Thịnh</div>
-                  <div class="time">2 ngày trước</div>
-                </div>
+    <!-- MAIN CONTENT -->
+    <div class="right-panel">
+      <main class="main-content">
+        <div class="page-1700x960">
+          
+          <!-- PHẦN 1: community-header + ch-tabs (cố định) -->
+          <div class="fixed-top">
+            <section class="community-top">
+              <header class="community-header">
+                <h1 class="ch-title">Cộng đồng</h1>
+                <button class="btn-create">Tạo bài</button>
               </header>
-              <h2 class="post-title">Tôi nên thực hiện chương trình/bài tập nào để rèn luyện sức khỏe?</h2>
-              <p class="post-text">
-                Bạn có thể mắc chương trình hoặc video tập luyện nào phù hợp nhất với mục tiêu và sở thích của mình không?
-                Đây là bài đăng được ghim để các thành viên cộng đồng yêu cầu gợi ý về chương trình và video tập luyện.
-              </p>
-              <footer class="post-ft">
-                <button class="act">Phản hồi</button>
-                <button class="act">Lưu</button>
-                <button class="act">Chia sẻ</button>
-              </footer>
-            </article>
-            
-            <article class="post">
-              <header class="post-hd">
-                <img class="avt" src="https://i.pravatar.cc/48?img=9" alt="avatar"/>
-                <div class="meta">
-                  <div class="name">Thu Hương</div>
-                  <div class="time">3 ngày trước</div>
-                </div>
-              </header>
-              <h2 class="post-title">Chế độ ăn uống như thế nào là hợp lý?</h2>
-              <p class="post-text">
-                Mình đang muốn giảm cân nhưng không biết nên ăn gì. Các bạn có thể gợi ý cho mình không?
-              </p>
-              <footer class="post-ft">
-                <button class="act">Phản hồi</button>
-                <button class="act">Lưu</button>
-                <button class="act">Chia sẻ</button>
-              </footer>
-            </article>
 
-            <article class="post">
-              <header class="post-hd">
-                <img class="avt" src="https://i.pravatar.cc/48?img=10" alt="avatar"/>
-                <div class="meta">
-                  <div class="name">Minh Khoa</div>
-                  <div class="time">5 ngày trước</div>
-                </div>
-              </header>
-              <h2 class="post-title">Tập thể dục buổi sáng hay buổi tối tốt hơn?</h2>
-              <p class="post-text">
-                Mình hay tập vào buổi tối nhưng nghe nói tập buổi sáng tốt hơn. Sự thật là như thế nào?
-              </p>
-              <footer class="post-ft">
-                <button class="act">Phản hồi</button>
-                <button class="act">Lưu</button>
-                <button class="act">Chia sẻ</button>
-              </footer>
-            </article>
+              <nav class="ch-tabs">
+                <button class="tab active">Mới nhất</button>
+                <button class="tab">Mới hoạt động</button>
+              </nav>
+            </section>
+          </div>
 
-            <article class="post">
-              <header class="post-hd">
-                <img class="avt" src="https://i.pravatar.cc/48?img=11" alt="avatar"/>
-                <div class="meta">
-                  <div class="name">Quốc Anh</div>
-                  <div class="time">1 tuần trước</div>
-                </div>
-              </header>
-              <h2 class="post-title">Làm sao để duy trì động lực tập luyện?</h2>
-              <p class="post-text">
-                Mình hay bỏ cuộc sau 1-2 tuần tập. Các bạn có mẹo gì để giữ động lực không?
-              </p>
-              <footer class="post-ft">
-                <button class="act">Phản hồi</button>
-                <button class="act">Lưu</button>
-                <button class="act">Chia sẻ</button>
-              </footer>
-            </article>
+          <!-- PHẦN 2: ch-content + footer (pager) -->
+          <section class="community-body">
+            <main class="ch-content">
+              <section class="posts">
+                <article class="post">
+                  <header class="post-hd">
+                    <img class="avt" src="https://i.pravatar.cc/48?img=8" alt="avatar"/>
+                    <div class="meta">
+                      <div class="name">Văn Thịnh</div>
+                      <div class="time">2 ngày trước</div>
+                    </div>
+                  </header>
+                  <h2 class="post-title">Tôi nên thực hiện chương trình/bài tập nào để rèn luyện sức khỏe?</h2>
+                  <p class="post-text">
+                    Bạn có thể mắc chương trình hoặc video tập luyện nào phù hợp nhất với mục tiêu và sở thích của mình không?
+                    Đây là bài đăng được ghim để các thành viên cộng đồng yêu cầu gợi ý về chương trình và video tập luyện.
+                  </p>
+                  <footer class="post-ft">
+                    <button class="btn-action" data-action="reply">Phản hồi</button>
+                    <button class="btn-action" data-action="save">Lưu</button>
+                    <button class="btn-action" data-action="share">Chia sẻ</button>
+                  </footer>
+                </article>
 
-            <article class="post">
-              <header class="post-hd">
-                <img class="avt" src="https://i.pravatar.cc/48?img=12" alt="avatar"/>
-                <div class="meta">
-                  <div class="name">Lan Anh</div>
-                  <div class="time">1 tuần trước</div>
-                </div>
-              </header>
-              <h2 class="post-title">Uống nước như thế nào cho đúng?</h2>
-              <p class="post-text">
-                Mình nghe nói phải uống 2 lít nước mỗi ngày. Có cần thiết không và uống vào thời điểm nào là tốt nhất?
-              </p>
-              <footer class="post-ft">
-                <button class="act">Phản hồi</button>
-                <button class="act">Lưu</button>
-                <button class="act">Chia sẻ</button>
-              </footer>
-            </article>
+                <article class="post">
+                  <header class="post-hd">
+                    <img class="avt" src="https://i.pravatar.cc/48?img=9" alt="avatar"/>
+                    <div class="meta">
+                      <div class="name">Thu Hương</div>
+                      <div class="time">3 ngày trước</div>
+                    </div>
+                  </header>
+                  <h2 class="post-title">Chế độ ăn uống như thế nào là hợp lý?</h2>
+                  <p class="post-text">
+                    Gần đây mình khá bận rộn, hay bỏ bữa và ăn vặt. Mọi người có thể gợi ý cho mình một thực đơn đơn giản
+                    giúp cân bằng dinh dưỡng và phù hợp với người ít thời gian nấu nướng không ạ?
+                  </p>
+                  <footer class="post-ft">
+                    <button class="btn-action" data-action="reply">Phản hồi</button>
+                    <button class="btn-action" data-action="save">Lưu</button>
+                    <button class="btn-action" data-action="share">Chia sẻ</button>
+                  </footer>
+                </article>
+
+                <article class="post">
+                  <header class="post-hd">
+                    <img class="avt" src="https://i.pravatar.cc/48?img=10" alt="avatar"/>
+                    <div class="meta">
+                      <div class="name">Minh Tâm</div>
+                      <div class="time">5 ngày trước</div>
+                    </div>
+                  </header>
+                  <h2 class="post-title">Mọi người duy trì thói quen tập thể dục mỗi ngày như thế nào?</h2>
+                  <p class="post-text">
+                    Mình hay bắt đầu tập nhưng dễ bỏ cuộc giữa chừng. Không biết mọi người có bí quyết gì để duy trì
+                    thói quen tập luyện đều đặn mà không bị nản không ạ?
+                  </p>
+                  <footer class="post-ft">
+                    <button class="btn-action" data-action="reply">Phản hồi</button>
+                    <button class="btn-action" data-action="save">Lưu</button>
+                    <button class="btn-action" data-action="share">Chia sẻ</button>
+                  </footer>
+                </article>
+
+                <article class="post">
+                  <header class="post-hd">
+                    <img class="avt" src="https://i.pravatar.cc/48?img=11" alt="avatar"/>
+                    <div class="meta">
+                      <div class="name">Hoàng Nam</div>
+                      <div class="time">1 tuần trước</div>
+                    </div>
+                  </header>
+                  <h2 class="post-title">Có ai bị mất ngủ khi thay đổi thói quen ăn uống không?</h2>
+                  <p class="post-text">
+                    Sau khi cắt giảm tinh bột và cà phê, mình thấy khó ngủ hơn. Không biết có ai từng gặp trường hợp giống mình
+                    và có gợi ý nào giúp cải thiện giấc ngủ không ạ?
+                  </p>
+                  <footer class="post-ft">
+                    <button class="btn-action" data-action="reply">Phản hồi</button>
+                    <button class="btn-action" data-action="save">Lưu</button>
+                    <button class="btn-action" data-action="share">Chia sẻ</button>
+                  </footer>
+                </article>
+              </section>
+            </main>
+
+            <!-- Chuyển trang -->
+            <nav class="pager" aria-label="Chuyển trang">
+              <button class="page prev" disabled>‹</button>
+              <button class="page">1</button>
+              <button class="page is-active" aria-current="page">2</button>
+              <button class="page">3</button>
+              <span class="dots">…</span>
+              <button class="page">10</button>
+              <button class="page next">›</button>
+            </nav>
           </section>
-        </main>
-
-        <!-- Chuyển trang -->
-        <nav class="pager" aria-label="Chuyển trang">
-          <button class="page prev" disabled>‹</button>
-          <button class="page">1</button>
-          <button class="page is-active" aria-current="page">2</button>
-          <button class="page">3</button>
-          <span class="dots">…</span>
-          <button class="page">10</button>
-          <button class="page next">›</button>
-        </nav>
-      </div>
-    </main>
+        </div>
+      </main>
+    </div>
   </div>
 
   <div id="footer-placeholder"></div>
@@ -155,5 +150,7 @@
   <script src="../assets/javascript/leftnav.js"></script>
   <script src="../assets/javascript/footer.js"></script>
   <script src="../assets/javascript/chatbot.js"></script>
+  <!-- ✅ JS riêng cho trang cộng đồng -->
+  <script src="../assets/javascript/CongDong1.js"></script>
 </body>
 </html>
