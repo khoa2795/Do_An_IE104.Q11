@@ -84,7 +84,7 @@ loginBtn.addEventListener("click", (e) => {
 logoutDropdownBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  // ✅ XÓA TỪ sessionStorage
+  //  XÓA TỪ sessionStorage
   sessionStorage.removeItem("currentUser");
 
   isLoggedIn = false;
@@ -93,12 +93,8 @@ logoutDropdownBtn.addEventListener("click", (e) => {
 
   document.querySelector(".login-form").reset();
 
-  // ✅ KIỂM TRA XEM CÓ ĐANG Ở TRANG YÊU CẦU ĐĂNG NHẬP KHÔNG
-  const currentPage = window.location.pathname.split("/").pop();
-  if (currentPage === "Health.html" || currentPage === "Calories.html") {
-    // RELOAD TRANG để hiển thị overlay yêu cầu đăng nhập
-    location.reload();
-  }
+  // RELOAD TRANG để hiển thị overlay yêu cầu đăng nhập
+  location.reload();
 });
 
 // ===== ĐÓNG DROPDOWN KHI CLICK NGOÀI =====
