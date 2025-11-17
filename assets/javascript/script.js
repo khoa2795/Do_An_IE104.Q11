@@ -40,15 +40,15 @@ function resetInterval() {
 }
 
 // Menu item click handler
-const menuItems = document.querySelectorAll(".menu-item a");
+const menuItems = document.querySelectorAll(".leftnav__link");
 menuItems.forEach((item) => {
   if (item.getAttribute("href") === "#") {
     item.addEventListener("click", (e) => {
       e.preventDefault();
 
       // Cập nhật active class
-      menuItems.forEach((i) => i.classList.remove("active"));
-      item.classList.add("active");
+      menuItems.forEach((i) => i.classList.remove("leftnav__link--active"));
+      item.classList.add("leftnav__link--active");
     });
   }
 });

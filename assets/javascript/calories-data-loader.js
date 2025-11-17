@@ -373,9 +373,7 @@
 
     // Đồng bộ tim SAU KHI đã hiển thị danh sách món ăn
     setTimeout(() => {
-      if (typeof syncFavoriteIcons === "function") {
-        syncFavoriteIcons();
-      }
+      window.syncFavoriteIcons();
       if (typeof updateFavoriteFoodsDisplay === "function") {
         updateFavoriteFoodsDisplay();
       }

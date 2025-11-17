@@ -497,11 +497,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function initializeFavoriteFoods() {
   console.log("🔥 initializeFavoriteFoods called");
-  syncAllHeartIcons();
+  syncFavoriteIcons();
   updateFavoriteFoodsDisplay();
 }
 
-function syncAllHeartIcons() {
+function syncFavoriteIcons() {
   const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
   if (!currentUser) {
     console.warn("❌ Không có currentUser trong sessionStorage");
@@ -578,7 +578,7 @@ function toggleFavoriteFood(foodData, heartIcon) {
 
   localStorage.setItem(storageKey, JSON.stringify(favoriteFoods));
 
-  syncAllHeartIcons();
+  syncFavoriteIcons();
 
   updateFavoriteFoodsDisplay();
 }
@@ -621,7 +621,7 @@ function updateFavoriteFoodsDisplay() {
   });
 
   setTimeout(() => {
-    syncAllHeartIcons();
+    syncFavoriteIcons();
   }, 100);
 }
 
@@ -653,7 +653,7 @@ function createFavoriteFoodItem(food) {
 
 // ĐỒNG BỘ TIM KHI DATA LOAD XONG
 function syncFavoriteIconsOnLoad() {
-  syncAllHeartIcons();
+  syncFavoriteIcons();
 }
 
 // ===== 3-5: CÁC PHẦN KHÁC GIỮ NGUYÊN 100% =====
@@ -1384,7 +1384,7 @@ document.addEventListener("DOMContentLoaded", function () {
 window.addEventListener("caloriesDataLoaded", () => {
   if (window.currentCaloriesData) {
     updateCaloriesData();
-    syncAllHeartIcons();
+    syncFavoriteIcons();
     updateFavoriteFoodsDisplay();
   }
 });
