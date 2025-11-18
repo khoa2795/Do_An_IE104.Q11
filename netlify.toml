@@ -5,3 +5,8 @@
   from = "/"
   to = "/html/Mainpage.html"
   status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/html/:splat"
+  status = 200
