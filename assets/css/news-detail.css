@@ -119,6 +119,74 @@
   border-radius: 8px;
 }
 
+.article__comment-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.article__comment-actions button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #cfe7d4;
+  background: #e8f5ec;
+  color: #1a7b3f;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.article__comment-actions button:hover {
+  background: #d7eedf;
+  border-color: #1a7b3f;
+}
+
+.article__reply-form {
+  display: none;
+  margin-top: 10px;
+  padding: 12px;
+  background: #f5fbf7;
+  border: 1px solid #dcefe1;
+  border-radius: 10px;
+}
+
+.article__reply-form--visible {
+  display: block;
+}
+
+.article__reply-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cfe7d4;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.article__reply-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.article__reply-actions button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #cfe7d4;
+  background: #1a7b3f;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.article__reply-actions button[data-action="cancel-reply"] {
+  background: #eef5f0;
+  color: #1a7b3f;
+}
+
+.article__reply-actions button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
 /* Related News */
 .article__related {
   margin-top: 50px;
@@ -196,6 +264,31 @@ body.page-news-detail[data-critical="pending"] #related-grid {
   color: #777;
 }
 
+.global-toast {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translate(-50%, -20px);
+  background: #1a7b3f;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: all 0.25s ease;
+  z-index: 2000;
+  pointer-events: none;
+  max-width: 420px;
+  width: fit-content;
+  text-align: center;
+  font-weight: 600;
+}
+
+.global-toast--visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
 /* ===== DARK MODE ===== */
 body.dark-mode .article__container {
   background: var(--card-color, #1f2937);
@@ -242,6 +335,32 @@ body.dark-mode .article__comment {
   border: 1px solid var(--border-color, #1f2937);
 }
 
+body.dark-mode .article__comment-actions button {
+  background: #1f2937;
+  border: 1px solid var(--border-color, #1f2937);
+  color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .article__reply-form {
+  background: #0f172a;
+  border: 1px solid var(--border-color, #1f2937);
+}
+
+body.dark-mode .article__reply-input {
+  background: #111827;
+  border: 1px solid var(--border-color, #1f2937);
+  color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .article__reply-actions button {
+  border: 1px solid var(--border-color, #1f2937);
+}
+
+body.dark-mode .article__reply-actions button[data-action="cancel-reply"] {
+  background: #111827;
+  color: var(--text-color, #e2e8f0);
+}
+
 body.dark-mode .article__related {
   border-top: 2px solid var(--border-color, #1f2937);
 }
@@ -259,6 +378,12 @@ body.dark-mode .article__related-meta {
 
 body.dark-mode .article__related-card-title {
   color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .global-toast {
+  background: var(--surface-color, #111827);
+  color: var(--text-color, #e2e8f0);
+  border: 1px solid var(--border-color, #1f2937);
 }
 
 /* Footer Space */
@@ -291,3 +416,4 @@ body.dark-mode .article__related-card-title {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
 }
+

@@ -4,16 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chi tiết tin tức</title>
+
   <link rel="preload" href="../assets/css/style.css" as="style" fetchpriority="high">
   <link rel="stylesheet" href="../assets/css/style.css">
+
   <link rel="preload" href="../assets/css/header.css" as="style">
   <link rel="stylesheet" href="../assets/css/header.css">
+
   <link rel="preload" href="../assets/css/leftnav.css" as="style">
   <link rel="stylesheet" href="../assets/css/leftnav.css">
+
   <link rel="stylesheet" href="../assets/css/footer.css">
+
   <link rel="preload" href="../assets/css/news-detail.css" as="style">
-  <link rel="stylesheet" href="../assets/css/news-detail.css" />
+  <link rel="stylesheet" href="../assets/css/news-detail.css">
+
   <link rel="stylesheet" href="../assets/css/chatbot.css">
+
   <script>
     window.addEventListener('load', function () {
       if (document.body) {
@@ -22,6 +29,7 @@
     });
   </script>
 </head>
+
 <body class="page-news-detail" data-critical="pending">
   <!-- Header placeholder -->
   <div id="header-placeholder"></div>
@@ -46,8 +54,7 @@
           <div class="article__comments">
             <h2 class="article__comments-title">Bình luận</h2>
             <form id="comment-form" class="article__comment-form">
-              <input type="text" id="comment-name" class="article__input" placeholder="Tên của bạn" required />
-              <textarea id="comment-text" rows="3" class="article__textarea" placeholder="Nội dung bình luận..." required></textarea>
+              <textarea id="comment-text" rows="3" class="article__textarea" placeholder="Nhập nội dung bình luận..." required></textarea>
               <button type="submit" class="article__submit-btn">Gửi bình luận</button>
             </form>
             <div id="comment-list" class="article__comment-list">
@@ -55,7 +62,6 @@
             </div>
           </div>
 
-          <!-- Tin khác (đổ từ JSON) -->
           <div class="article__related">
             <h2 class="article__related-title">Các tin khác</h2>
             <div id="related-grid" class="article__related-grid"></div>
@@ -67,7 +73,8 @@
       <div class="footer-space"></div>
     </main>
   </div>
-      <div id="footer-placeholder"></div>
+
+  <div id="footer-placeholder"></div>
 
   <!-- Scripts -->
   <script src="../assets/javascript/chatbot.js"></script>
