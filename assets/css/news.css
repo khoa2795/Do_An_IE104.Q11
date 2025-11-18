@@ -114,6 +114,27 @@
   margin: 0;
 }
 
+/* Critical skeleton states */
+body.page-news[data-critical="pending"] {
+  background: #f5f8f5;
+  color: #182618;
+}
+
+body.page-news[data-critical="pending"] .news__grid,
+body.page-news[data-critical="pending"] .news__featured-layout,
+body.page-news[data-critical="pending"] .news__side-grid {
+  min-height: 120px;
+}
+
+body.page-news[data-critical="pending"] .news__featured-item,
+body.page-news[data-critical="pending"] .news__tab {
+  background: var(--skeleton-gradient, #e8f1e9);
+  background-size: 400% 100%;
+  animation: skeletonPulse 1.4s ease infinite;
+  border-radius: 12px;
+  color: transparent;
+}
+
 .news__tab {
   padding: 10px 20px;
   font-size: 16px;

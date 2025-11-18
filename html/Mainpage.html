@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VHealth - Sống khỏe chủ động</title>
+    <link rel="preload" href="../assets/css/style.css" as="style" fetchpriority="high">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preload" href="../assets/css/header.css" as="style">
     <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="preload" href="../assets/css/leftnav.css" as="style">
     <link rel="stylesheet" href="../assets/css/leftnav.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/chatbot.css">
+    <script>
+        window.addEventListener('load', function () {
+            if (document.body) {
+                document.body.removeAttribute('data-critical');
+            }
+        });
+    </script>
 </head>
-<body>
+<body class="page-main" data-critical="pending">
     <!-- Thêm placeholder cho header (header sẽ được load bởi /assets/javascript/header.js) -->
     <div id="header-placeholder"></div>
 
@@ -119,6 +129,7 @@
     </div>
     <div id="footer-placeholder"></div>
 
+    <script src="../assets/javascript/data-cache.js"></script>
     <script src="../assets/javascript/header.js"></script>
     <script src="../assets/javascript/leftnav.js"></script>
     <script src="../assets/javascript/footer.js"></script>

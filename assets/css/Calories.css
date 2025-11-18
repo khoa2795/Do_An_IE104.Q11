@@ -299,6 +299,32 @@ body {
 }
 
 .calories__search-bar {
+
+/* Critical skeleton states */
+body.page-calories[data-critical="pending"] {
+    background: #f5f9f5;
+    color: #142114;
+}
+
+body.page-calories[data-critical="pending"] .calories,
+body.page-calories[data-critical="pending"] .calories__overview,
+body.page-calories[data-critical="pending"] .calories__meals,
+body.page-calories[data-critical="pending"] .calories__dashboard {
+    min-height: 80px;
+    background: #e6f3e9;
+}
+
+body.page-calories[data-critical="pending"] .calories__section-title,
+body.page-calories[data-critical="pending"] .calories__card,
+body.page-calories[data-critical="pending"] .calories__nutrient,
+body.page-calories[data-critical="pending"] .calories__food-column,
+body.page-calories[data-critical="pending"] .calories__info-box {
+    background: var(--skeleton-gradient, #e8f1e9);
+    background-size: 400% 100%;
+    animation: skeletonPulse 1.4s ease infinite;
+    border-radius: 12px;
+    color: transparent;
+}
     flex: 1;
     margin: 0 20px;
     display: flex;

@@ -5,9 +5,21 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!tabs.length || !newsGrid) return;
 
   // HÀM HIỂN THỊ TIN THEO DANH MỤC
+  function fetchTabsData() {
+    if (window.DataCache && typeof window.DataCache.fetchJSON === "function") {
+      return window.DataCache.fetchJSON("/data/news-tabs.json", {
+        cacheKey: "news-tabs",
+        ttl: 1000 * 60 * 30,
+      });
+    }
+
+    return fetch("/data/news-tabs.json").then(function (res) {
+      return res.json();
+    });
+  }
+
   function showNewsByCategory(category) {
-    fetch("/data/news-tabs.json")
-      .then((res) => res.json())
+    fetchTabsData()
       .then((data) => {
         var filtered = data.filter((item) => item.category === category);
 
@@ -17,6 +29,17 @@ document.addEventListener("DOMContentLoaded", function () {
           newsGrid.innerHTML =
             "<p class='news__no-data'>Không có tin trong mục này</p>";
           return;
+        }
+
+        if (
+          window.DataCache &&
+          typeof window.DataCache.preloadImages === "function"
+        ) {
+          window.DataCache.preloadImages(
+            filtered.map(function (item) {
+              return item.image;
+            })
+          );
         }
 
         filtered.forEach((news) => {

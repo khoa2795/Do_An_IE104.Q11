@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calories - VHealth</title>
     
+    <link rel="preload" href="../assets/css/style.css" as="style" fetchpriority="high">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preload" href="../assets/css/header.css" as="style">
     <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="preload" href="../assets/css/leftnav.css" as="style">
     <link rel="stylesheet" href="../assets/css/leftnav.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="preload" href="../assets/css/Calories.css" as="style">
     <link rel="stylesheet" href="../assets/css/Calories.css">
     <link rel="stylesheet" href="../assets/css/chatbot.css">
     
@@ -25,9 +29,16 @@
             font-style: italic;
         }
     </style>
+    <script>
+        window.addEventListener('load', function () {
+            if (document.body) {
+                document.body.removeAttribute('data-critical');
+            }
+        });
+    </script>
 </head>
 
-<body>
+<body class="page-calories" data-critical="pending">
     <script>
         (function () {
             const currentUser = sessionStorage.getItem('currentUser');
@@ -664,6 +675,7 @@
     <div id="footer-placeholder"></div>
 
     <script src="../assets/javascript/auth-check.js"></script>
+    <script src="../assets/javascript/data-cache.js"></script>
     <script src="../assets/javascript/calories-data-loader.js"></script>
     <script src="../assets/javascript/chatbot.js"></script>
     <script src="../assets/javascript/header.js"></script>

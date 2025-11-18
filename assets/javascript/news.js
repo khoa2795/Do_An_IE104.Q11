@@ -4,11 +4,20 @@ document.addEventListener("DOMContentLoaded", function () {
   var grid = document.getElementById("news-grid");
   if (!grid) return;
 
-  // Lấy dữ liệu từ file JSON
-  fetch("../data/news.json")
-    .then(function (res) {
+  var dataPromise;
+
+  if (window.DataCache && typeof window.DataCache.fetchJSON === "function") {
+    dataPromise = window.DataCache.fetchJSON("../data/news.json", {
+      cacheKey: "news-list",
+      ttl: 1000 * 60 * 30,
+    });
+  } else {
+    dataPromise = fetch("../data/news.json").then(function (res) {
       return res.json();
-    })
+    });
+  }
+
+  dataPromise
     .then(function (data) {
       // Sắp xếp tin theo ngày giảm dần (mới nhất lên đầu)
       data.sort(function (a, b) {
@@ -17,6 +26,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Xóa nội dung cũ
       grid.innerHTML = "";
+
+      if (
+        window.DataCache &&
+        typeof window.DataCache.preloadImages === "function"
+      ) {
+        window.DataCache.preloadImages(
+          data.map(function (item) {
+            return item.image;
+          })
+        );
+      }
 
       // Duyệt từng tin trong danh sách
       for (var i = 0; i < data.length; i++) {

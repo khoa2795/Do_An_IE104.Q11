@@ -11,11 +11,26 @@
   // ===== HÀM FETCH DỮ LIỆU SỨC KHỎE TỪ JSON =====
   async function fetchHealthData(userId) {
     try {
-      const response = await fetch("/data/health-data.json");
-      if (!response.ok) {
-        throw new Error("Không thể tải dữ liệu sức khỏe");
+      let loader;
+
+      if (
+        window.DataCache &&
+        typeof window.DataCache.fetchJSON === "function"
+      ) {
+        loader = window.DataCache.fetchJSON("/data/health-data.json", {
+          cacheKey: "health-data",
+          ttl: 1000 * 60 * 5,
+        });
+      } else {
+        loader = fetch("/data/health-data.json").then(function (response) {
+          if (!response.ok) {
+            throw new Error("Không thể tải dữ liệu sức khỏe");
+          }
+          return response.json();
+        });
       }
-      const allHealthData = await response.json();
+
+      const allHealthData = await loader;
 
       // Tìm dữ liệu của user hiện tại
       const userData = allHealthData.find((data) => data.userId === userId);

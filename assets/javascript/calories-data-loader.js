@@ -9,11 +9,26 @@
   // ===== HÀM FETCH DỮ LIỆU CALORIES TỪ JSON =====
   async function fetchCaloriesData(userId) {
     try {
-      const response = await fetch("/data/calories-data.json");
-      if (!response.ok) {
-        throw new Error("Không thể tải dữ liệu calories");
+      var loader;
+
+      if (
+        window.DataCache &&
+        typeof window.DataCache.fetchJSON === "function"
+      ) {
+        loader = window.DataCache.fetchJSON("/data/calories-data.json", {
+          cacheKey: "calories-data",
+          ttl: 1000 * 60 * 5,
+        });
+      } else {
+        loader = fetch("/data/calories-data.json").then(function (response) {
+          if (!response.ok) {
+            throw new Error("Không thể tải dữ liệu calories");
+          }
+          return response.json();
+        });
       }
-      const allCaloriesData = await response.json();
+
+      const allCaloriesData = await loader;
       const userData = allCaloriesData.find((data) => data.userId === userId);
 
       if (!userData) {
