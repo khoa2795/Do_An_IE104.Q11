@@ -4,14 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VHealth - Sống khoẻ chủ động</title>
+    <link rel="preload" href="../assets/css/style.css" as="style" fetchpriority="high" />
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="preload" href="../assets/css/header.css" as="style" />
     <link rel="stylesheet" href="../assets/css/header.css" />
+    <link rel="preload" href="../assets/css/leftnav.css" as="style" />
     <link rel="stylesheet" href="../assets/css/leftnav.css" />
     <link rel="stylesheet" href="../assets/css/footer.css" />
+    <link rel="preload" href="../assets/css/news.css" as="style" />
     <link rel="stylesheet" href="../assets/css/news.css" />
     <link rel="stylesheet" href="../assets/css/chatbot.css" />
+    <script>
+      window.addEventListener('load', function () {
+        if (document.body) {
+          document.body.removeAttribute('data-critical');
+        }
+      });
+    </script>
   </head>
-  <body>
+  <body class="page-news" data-critical="pending">
     <div id="header-placeholder"></div>
 
     <div class="container">
@@ -118,6 +129,7 @@
     <script src="../assets/javascript/header.js"></script>
     <script src="../assets/javascript/leftnav.js"></script>
     <script src="../assets/javascript/footer.js"></script>
+    <script src="../assets/javascript/data-cache.js"></script>
     <script src="../assets/javascript/news-tabs.js"></script>
   </body>
 </html>

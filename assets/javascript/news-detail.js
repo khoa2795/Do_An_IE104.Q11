@@ -15,14 +15,33 @@ function parseVNDate(dateStr) {
   return new Date(Number(y), Number(m) - 1, Number(d));
 }
 
-// Tải dữ liệu từ 2 file JSON và gộp lại
-Promise.all([fetch("../data/news.json"), fetch("../data/news-tabs.json")])
-  .then(([res1, res2]) => {
-    if (!res1.ok || !res2.ok) {
-      throw new Error("Không thể tải dữ liệu JSON");
-    }
-    return Promise.all([res1.json(), res2.json()]);
-  })
+var dataLoaders;
+
+if (window.DataCache && typeof window.DataCache.fetchJSON === "function") {
+  dataLoaders = [
+    window.DataCache.fetchJSON("../data/news.json", {
+      cacheKey: "news-list",
+      ttl: 1000 * 60 * 30,
+    }),
+    window.DataCache.fetchJSON("../data/news-tabs.json", {
+      cacheKey: "news-tabs-detail",
+      ttl: 1000 * 60 * 30,
+    }),
+  ];
+} else {
+  dataLoaders = [
+    fetch("../data/news.json").then(function (res) {
+      if (!res.ok) throw new Error("Không thể tải dữ liệu JSON");
+      return res.json();
+    }),
+    fetch("../data/news-tabs.json").then(function (res) {
+      if (!res.ok) throw new Error("Không thể tải dữ liệu JSON");
+      return res.json();
+    }),
+  ];
+}
+
+Promise.all(dataLoaders)
   .then(([newsMain, newsTabs]) => {
     // Gộp tất cả bài viết lại thành 1 mảng
     const allArticles = [...newsMain, ...newsTabs];
@@ -69,6 +88,19 @@ Promise.all([fetch("../data/news.json"), fetch("../data/news-tabs.json")])
       relatedDiv.innerHTML =
         "<p class='article__no-related'>Chưa có bài viết nào khác trong chuyên mục này.</p>";
       return;
+    }
+
+    if (
+      window.DataCache &&
+      typeof window.DataCache.preloadImages === "function"
+    ) {
+      window.DataCache.preloadImages(
+        [article.image].concat(
+          relatedArticles.map(function (item) {
+            return item.image;
+          })
+        )
+      );
     }
 
     // Render HTML

@@ -398,6 +398,36 @@
 }
 
 /* Nút Chỉnh */
+
+/* Critical skeleton states */
+body.page-health[data-critical="pending"],
+body.page-health-edit[data-critical="pending"] {
+    background: #f6faf6;
+    color: #142114;
+}
+
+body.page-health[data-critical="pending"] .health-header,
+body.page-health-edit[data-critical="pending"] .health-header,
+body.page-health[data-critical="pending"] .health-grid-container,
+body.page-health-edit[data-critical="pending"] .health-grid-container {
+    min-height: 80px;
+    background: #e6f3e9;
+}
+
+body.page-health[data-critical="pending"] .stat-card-display,
+body.page-health-edit[data-critical="pending"] .stat-card-display,
+body.page-health[data-critical="pending"] .info-card,
+body.page-health-edit[data-critical="pending"] .info-card,
+body.page-health[data-critical="pending"] .tab,
+body.page-health-edit[data-critical="pending"] .tab,
+body.page-health[data-critical="pending"] .tab-content,
+body.page-health-edit[data-critical="pending"] .tab-content {
+    background: var(--skeleton-gradient, #e8f1e9);
+    background-size: 400% 100%;
+    animation: skeletonPulse 1.4s ease infinite;
+    border-radius: 12px;
+    color: transparent;
+}
 .btn-change-container {
     text-align: center;
     margin: 25px 0;

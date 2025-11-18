@@ -6,12 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VHealth - Sống khỏe chủ động</title>
 
+    <link rel="preload" href="../assets/css/style.css" as="style" fetchpriority="high">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preload" href="../assets/css/header.css" as="style">
     <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="preload" href="../assets/css/leftnav.css" as="style">
     <link rel="stylesheet" href="../assets/css/leftnav.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="preload" href="../assets/css/health-info.css" as="style">
     <link rel="stylesheet" href="../assets/css/health-info.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+        window.addEventListener('load', function () {
+            if (document.body) {
+                document.body.removeAttribute('data-critical');
+            }
+        });
+    </script>
 
     <style>
         .main-content {
@@ -24,7 +36,7 @@
     </style>
 </head>
 
-<body>
+<body class="page-health-edit" data-critical="pending">
     <script>
         (function () {
             const currentUser = sessionStorage.getItem('currentUser');
