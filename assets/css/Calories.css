@@ -8,9 +8,11 @@ body {
     padding: 0;
 }
 
-.main-content {
-    margin-left: var(--sidebar-width, 250px);
-    width: calc(100% - var(--sidebar-width, 250px));
+body.page-calories .main-content {
+    /* keep main content clear of the fixed sidebar */
+    --calories-gap: clamp(24px, 4vw, 48px);
+    margin-left: calc(var(--sidebar-width) );
+    width: calc(100% - var(--sidebar-width, 250px) - var(--calories-gap));
     padding-top: calc(var(--header-height, 100px) - 80px);
     box-sizing: border-box;
 }
@@ -19,17 +21,17 @@ body {
 .calories {
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 50px;
+    padding: 0 clamp(16px, 5vw, 50px);
 }
 
 /* ===== USER INFO SECTION ===== */
 .calories__user-info {
     width: 100%;
     max-width: 100%;
-    margin: 20px 0 30px 0;
-    padding: 35px 60px;
+    margin: clamp(18px, 3vw, 30px) 0;
+    padding: clamp(20px, 4vw, 35px) clamp(16px, 6vw, 60px);
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: clamp(14px, 3vw, 20px);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     text-align: center;
     box-sizing: border-box;
@@ -50,8 +52,8 @@ body {
 }
 
 .calories__avatar img {
-    width: 140px;
-    height: 140px;
+    width: clamp(96px, 18vw, 140px);
+    height: clamp(96px, 18vw, 140px);
     border-radius: 50%;
     object-fit: cover;
 }
@@ -61,8 +63,8 @@ body {
     justify-content: space-between;
     flex: 1;
     max-width: 1200px;
-    margin-left: 50px;
-    gap: 40px;
+    margin-left: clamp(16px, 5vw, 50px);
+    gap: clamp(16px, 4vw, 40px);
 }
 
 .calories__info-col {
@@ -149,10 +151,10 @@ body {
 .calories__overview {
     width: 100%;
     max-width: 100%;
-    margin: 30px 0;
-    padding: 45px 60px;
+    margin: clamp(18px, 3vw, 30px) 0;
+    padding: clamp(20px, 4vw, 35px) clamp(16px, 6vw, 60px);
     background: #fff;
-    border-radius: 20px;
+    border-radius: clamp(14px, 3vw, 20px);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     text-align: center;
     box-sizing: border-box;
@@ -161,22 +163,22 @@ body {
 .calories__overview-content {
     justify-content: space-around;
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(18px, 4vw, 40px);
     align-items: center;
 }
 
 /* Chart */
 .calories__chart {
     position: relative;
-    width: 220px;
-    height: 220px;
+    width: clamp(180px, 45vw, 220px);
+    height: clamp(180px, 45vw, 220px);
     margin: 0 auto;
 }
 
 .calories__circle {
-    width: 220px;
-    height: 220px;
+    width: clamp(180px, 45vw, 220px);
+    height: clamp(180px, 45vw, 220px);
     border-radius: 50%;
     background: conic-gradient(var(--primary-color, #22c55e) 67%, rgba(0,0,0,0.12) 0);
     display: flex;
@@ -188,14 +190,13 @@ body {
 .calories__circle-inner {
     background: var(--surface-color, #fff);
     border: 2px solid var(--border-color, #e5e7eb);
-    width: 165px;
-    height: 165px;
+    width: clamp(130px, 34vw, 165px);
+    height: clamp(130px, 34vw, 165px);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .calories__circle-inner p {
     font-size: 24px;
     font-weight: bold;
@@ -211,8 +212,8 @@ body {
 /* Nutrients */
 .calories__nutrients {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 35px 90px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: clamp(16px, 4vw, 35px) clamp(20px, 6vw, 90px);
     text-align: left;
     max-width: 100%;
     width: 100%;
@@ -277,10 +278,10 @@ body {
 .calories__food-section {
     width: 100%;
     max-width: 100%;
-    margin: 30px 0;
-    padding: 30px 50px;
+    margin: clamp(18px, 3vw, 30px) 0;
+    padding: clamp(20px, 4vw, 35px) clamp(16px, 6vw, 60px);
     background: #fff;
-    border-radius: 20px;
+    border-radius: clamp(14px, 3vw, 20px);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     box-sizing: border-box;
 }
@@ -299,9 +300,6 @@ body {
     cursor: pointer;
     color: #333;
 }
-
-.calories__search-bar {
-
 /* Critical skeleton states */
 body.page-calories[data-critical="pending"] {
     background: #f5f9f5;
@@ -327,6 +325,8 @@ body.page-calories[data-critical="pending"] .calories__info-box {
     border-radius: 12px;
     color: transparent;
 }
+
+.calories__search-bar {
     flex: 1;
     margin: 0 20px;
     display: flex;
@@ -360,13 +360,13 @@ body.page-calories[data-critical="pending"] .calories__info-box {
 .calories__food-columns {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: clamp(14px, 4vw, 20px);
     flex-wrap: wrap;
 }
 
 .calories__food-column {
     flex: 1;
-    min-width: 300px;
+    min-width: clamp(220px, 45%, 300px);
     border-right: 1px solid #ddd;
     padding: 0 20px;
 }
@@ -453,10 +453,10 @@ body.page-calories[data-critical="pending"] .calories__info-box {
 .calories__guide {
     width: 100%;
     max-width: 100%;
-    margin: 30px 0;
-    padding: 30px 50px;
+    margin: clamp(18px, 3vw, 30px) 0;
+    padding: clamp(20px, 4vw, 32px) clamp(16px, 5.5vw, 50px);
     background: #fff;
-    border-radius: 20px;
+    border-radius: clamp(14px, 3vw, 20px);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     box-sizing: border-box;
 }
@@ -515,10 +515,10 @@ body.page-calories[data-critical="pending"] .calories__info-box {
 .calories__meals {
     width: 100%;
     max-width: 100%;
-    margin: 30px 0;
-    padding: 35px 60px;
+    margin: clamp(18px, 3vw, 30px) 0;
+    padding: clamp(20px, 4vw, 35px) clamp(16px, 6vw, 60px);
     background: #fff;
-    border-radius: 20px;
+    border-radius: clamp(14px, 3vw, 20px);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     box-sizing: border-box;
 }
@@ -540,9 +540,9 @@ body.page-calories[data-critical="pending"] .calories__info-box {
 .calories__meals-grid {
     display: flex;
     justify-content: space-around;
-    margin-top: 40px;
+    margin-top: clamp(20px, 5vw, 40px);
     flex-wrap: wrap;
-    gap: 30px;
+    gap: clamp(16px, 5vw, 30px);
 }
 
 .calories__meal {
@@ -553,12 +553,12 @@ body.page-calories[data-critical="pending"] .calories__info-box {
 }
 
 .calories__meal-btn {
-    width: 70px;
-    height: 70px;
+    width: clamp(56px, 15vw, 70px);
+    height: clamp(56px, 15vw, 70px);
     border-radius: 50%;
     background-color: #dff5e0;
     color: #2f8f46;
-    font-size: 40px;
+    font-size: clamp(28px, 8vw, 40px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -577,21 +577,6 @@ body.page-calories[data-critical="pending"] .calories__info-box {
     box-shadow: 0 4px 8px rgba(47, 143, 70, 0.3);
 }
 
-body.dark-mode .calories__meal-btn {
-    background-color: rgba(74, 222, 128, 0.18);
-    color: var(--primary-color, #4ade80);
-    box-shadow: 0 4px 10px var(--shadow-color, rgba(0,0,0,0.45));
-}
-
-body.dark-mode .calories__meal-btn:hover {
-    background-color: rgba(74, 222, 128, 0.32);
-}
-
-body.dark-mode .calories__meal-btn--active {
-    background-color: var(--primary-color, #4ade80);
-    color: #0f172a;
-    box-shadow: 0 6px 14px var(--shadow-color, rgba(0,0,0,0.45));
-}
 
 /* Diet */
 .calories__diet {
@@ -617,11 +602,11 @@ body.dark-mode .calories__meal-btn--active {
 .calories__dashboard {
     width: 100%;
     max-width: 100%;
-    margin: 30px 0;
+    margin: clamp(18px, 3vw, 30px) 0;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: auto auto;
-    gap: 35px;
+    gap: clamp(18px, 4vw, 35px);
     box-sizing: border-box;
 }
 
@@ -633,7 +618,7 @@ body.dark-mode .calories__meal-btn--active {
     justify-content: space-between;
     border: 1px solid #d6ead6;
     border-radius: 15px;
-    padding: 15px 30px;
+    padding: clamp(14px, 3vw, 20px) clamp(16px, 4vw, 30px);
     background: #fff;
 }
 
@@ -686,10 +671,11 @@ body.dark-mode .calories__meal-btn--active {
     justify-content: center;
     align-items: center;
     background: #fff;
+    padding: clamp(12px, 3vw, 20px);
 }
 
 .calories__calendar-icon i {
-    font-size: 60px;
+    font-size: clamp(42px, 7vw, 60px);
     color: #2f8f46;
 }
 
@@ -698,7 +684,7 @@ body.dark-mode .calories__meal-btn--active {
     border: 1px solid #d6ead6;
     border-radius: 15px;
     background: #fff;
-    padding: 35px 30px 40px;
+    padding: clamp(22px, 4vw, 35px) clamp(18px, 4vw, 30px) clamp(24px, 5vw, 40px);
     text-align: center;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
 }
@@ -711,8 +697,8 @@ body.dark-mode .calories__meal-btn--active {
 
 .calories__stats-circle {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: clamp(150px, 48vw, 200px);
+    height: clamp(150px, 48vw, 200px);
     border-radius: 50%;
     margin: 0 auto 35px;
     background: conic-gradient(var(--primary-color, #22c55e) 55%, rgba(0,0,0,0.12) 0);
@@ -724,8 +710,8 @@ body.dark-mode .calories__meal-btn--active {
 }
 
 .calories__stats-circle-inner {
-    width: 135px;
-    height: 135px;
+    width: clamp(100px, 32vw, 135px);
+    height: clamp(100px, 32vw, 135px);
     border-radius: 50%;
     background: var(--surface-color, #fff);
     border: 2px solid var(--border-color, #e5e7eb);
@@ -753,8 +739,8 @@ body.dark-mode .calories__meal-btn--active {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    height: 200px;
-    padding: 0 20px;
+    height: clamp(160px, 48vw, 200px);
+    padding: 0 clamp(12px, 3vw, 20px);
 }
 
 .calories__stats-bar {
@@ -766,7 +752,7 @@ body.dark-mode .calories__meal-btn--active {
 }
 
 .calories__stats-bar-fill {
-    width: 28px;
+    width: clamp(20px, 6vw, 28px);
     background: linear-gradient(to top, #2f8f46, #a8d3a9);
     border-radius: 8px 8px 0 0;
     border: 1px solid rgba(0, 0, 0, 0.08);
@@ -787,7 +773,7 @@ body.dark-mode .calories__meal-btn--active {
     border: 1px solid #d6ead6;
     border-radius: 15px;
     background: #fff;
-    padding: 30px;
+    padding: clamp(20px, 4vw, 30px);
 }
 
 .calories__nutrition h3 {
@@ -800,18 +786,18 @@ body.dark-mode .calories__meal-btn--active {
 .calories__nutrition-content {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: clamp(18px, 4vw, 25px);
 }
 
 /* ===== FOLLOW SECTION ===== */
 .calories__follow {
     width: 100%;
     max-width: 100%;
-    margin: 30px 0;
+    margin: clamp(18px, 3vw, 30px) 0;
     background: #fff;
     border: 1px solid #d6ead6;
-    border-radius: 20px;
-    padding: 35px 50px;
+    border-radius: clamp(14px, 3vw, 20px);
+    padding: clamp(20px, 4vw, 32px) clamp(16px, 5.5vw, 50px);
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     box-sizing: border-box;
 }
@@ -853,18 +839,18 @@ body.dark-mode .calories__meal-btn--active {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 25px;
-    margin-bottom: 30px;
+    gap: clamp(16px, 4vw, 25px);
+    margin-bottom: clamp(20px, 4vw, 30px);
 }
 
 /* Calendar */
 .calories__follow-calendar {
     flex: 1;
-    min-width: 340px;
+    min-width: clamp(240px, 70vw, 340px);
     background: #fff;
     border: 1px solid #d6ead6;
     border-radius: 15px;
-    padding: 20px 25px;
+    padding: clamp(18px, 4vw, 20px) clamp(16px, 4vw, 25px);
     box-shadow: 0 1px 5px rgba(0,0,0,0.05);
 }
 
@@ -910,17 +896,17 @@ body.dark-mode .calories__meal-btn--active {
 /* Follow Info */
 .calories__follow-info {
     flex: 1.6;
-    min-width: 500px;
+    min-width: clamp(260px, 90vw, 500px);
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: clamp(12px, 4vw, 18px);
 }
 
 .calories__info-box {
     background: #fff;
     border: 1px solid #d6ead6;
     border-radius: 15px;
-    padding: 20px 25px;
+    padding: clamp(16px, 4vw, 20px) clamp(16px, 4vw, 25px);
     box-shadow: 0 1px 5px rgba(0,0,0,0.05);
 }
 
@@ -999,6 +985,90 @@ body.dark-mode .calories__meal-btn--active {
 .calories__card--warning {
     background: #ffeaea;
     border-top: 4px solid #e55b4d;
+}
+
+@media (max-width: 768px) {
+    .calories {
+        padding: 0 16px;
+    }
+
+    .calories__user-info,
+    .calories__overview,
+    .calories__food-section,
+    .calories__guide,
+    .calories__meals,
+    .calories__follow {
+        padding: 20px;
+    }
+
+    .calories__overview-content,
+    .calories__dashboard,
+    .calories__follow-content {
+        gap: 16px;
+    }
+
+    .calories__week {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .calories__week-days {
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: flex-start;
+    }
+
+    .calories__meals-grid {
+        justify-content: center;
+    }
+
+    .calories__follow-cards {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    .calories {
+        padding: 0 12px;
+    }
+
+    .calories__user-info,
+    .calories__overview,
+    .calories__food-section,
+    .calories__guide,
+    .calories__meals,
+    .calories__follow {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .calories__section-title {
+        font-size: 22px;
+    }
+
+    .calories__details,
+    .calories__overview-content,
+    .calories__food-columns {
+        gap: 16px;
+    }
+
+    .calories__nutrient {
+        padding: 10px 0;
+    }
+
+    .calories__food-column {
+        padding: 8px 0 16px;
+    }
+
+    .calories__dashboard,
+    .calories__follow-content {
+        gap: 14px;
+    }
+
+    .calories__week {
+        padding: 14px 18px;
+    }
 }
 
 /* ===== MODALS ===== */
@@ -1474,7 +1544,7 @@ body.dark-mode .calories__meal-btn--active {
 }
 
 /* ===== DARK MODE ===== */
-body.dark-mode .main-content {
+body.page-calories.dark-mode .main-content {
     background: var(--background-color);
     color: var(--text-color);
 }
@@ -1495,12 +1565,47 @@ body.dark-mode .calories__dashboard,
 body.dark-mode .calories__daily-log,
 body.dark-mode .calories__meal,
 body.dark-mode .calories__tip,
-body.dark-mode .calories__food-card,
-body.dark-mode .calories__nutrient {
+body.dark-mode .calories__food-card {
     background: var(--card-color, #1f2937);
     color: var(--text-color, #e2e8f0);
     border-color: var(--border-color, #1f2937);
     box-shadow: 0 6px 20px var(--shadow-color, rgba(0,0,0,0.45));
+}
+
+body.dark-mode .calories__dashboard {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+body.dark-mode .calories__meal {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+body.dark-mode .calories__meal-btn {
+    background: rgba(31, 41, 55, 0.92);
+    color: var(--primary-color, #4ade80);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    box-shadow: none;
+}
+
+body.dark-mode .calories__meal-btn:hover {
+    background: rgba(51, 65, 85, 0.95);
+}
+
+body.dark-mode .calories__meal-btn--active {
+    background: rgba(74, 222, 128, 0.2);
+    color: #ffffff;
+    border-color: var(--primary-color, #4ade80);
+    box-shadow: inset 0 0 12px rgba(74, 222, 128, 0.32);
+}
+
+body.dark-mode .calories__nutrient {
+    background: transparent;
+    box-shadow: none;
+    border-color: transparent;
 }
 
 body.dark-mode .calories__section-title,
@@ -1711,23 +1816,6 @@ body.dark-mode .calories__food-column li {
 }
 
 /* Dark mode for add controls */
-body.dark-mode .calories__meal {
-    background: transparent;
-    border-radius: 12px;
-    padding: 0;
-}
-
-body.dark-mode .calories__meal-btn {
-    background-color: rgba(74, 222, 128, 0.22);
-    color: var(--primary-color, #4ade80);
-    box-shadow: 0 4px 12px var(--shadow-color, rgba(0,0,0,0.45));
-    border: 1px solid rgba(74, 222, 128, 0.35);
-}
-
-body.dark-mode .calories__meal-btn:hover {
-    background-color: rgba(74, 222, 128, 0.32);
-}
-
 body.dark-mode .calories__add-btn {
     background-color: rgba(74, 222, 128, 0.22);
     color: var(--primary-color, #4ade80);
@@ -1748,32 +1836,94 @@ body.dark-mode .calories__add-food:hover {
     background: rgba(74, 222, 128, 0.12);
 }
 
+@media (max-width: 1024px) {
+    .calories {
+        padding: 0 32px;
+    }
+
+    .calories__details {
+        margin-left: 0;
+        gap: 28px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .calories__overview-content {
+        gap: 32px;
+    }
+
+    .calories__nutrients {
+        flex: 1;
+    }
+}
+
 @media (max-width: 900px) {
-    .main-content {
+    body.page-calories .main-content {
         margin-left: 0;
         width: 100%;
         padding-top: calc(var(--header-height, 100px) + 10px);
     }
-    
+
     .calories {
         padding: 0 20px;
     }
-    
+
     .calories__user-info,
     .calories__overview,
     .calories__food-section,
     .calories__guide,
     .calories__meals,
     .calories__follow {
-        padding: 25px;
-        margin: 20px 0;
+        padding: clamp(16px, 3vw, 24px);
+        margin: 16px 0;
     }
-    
+
+    .calories__details {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .calories__info-col {
+        text-align: center;
+    }
+
+    .calories__overview-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .calories__chart {
+        margin: 0 auto;
+    }
+
+    .calories__nutrients {
+        width: 100%;
+    }
+
+    .calories__food-columns {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .calories__food-column {
+        min-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+        padding: 12px 0 20px;
+    }
+
+    .calories__food-column:last-child {
+        border-bottom: none;
+    }
+
     .calories__dashboard {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 18px;
     }
-    
+
     .calories__overview-content {
         grid-template-columns: 1fr;
     }

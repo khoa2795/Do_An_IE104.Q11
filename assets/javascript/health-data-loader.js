@@ -1,6 +1,72 @@
 // health-data-loader.js - Load dữ liệu sức khỏe theo user
 
 (function () {
+  let sharedProfilesPromise = null;
+
+  function fetchSharedProfiles() {
+    if (sharedProfilesPromise) return sharedProfilesPromise;
+
+    let loader;
+    if (window.DataCache && typeof window.DataCache.fetchJSON === "function") {
+      loader = window.DataCache.fetchJSON("/data/user-profiles.json", {
+        cacheKey: "user-profiles",
+        ttl: 1000 * 60 * 5,
+      });
+    } else {
+      loader = fetch("/data/user-profiles.json").then((response) => {
+        if (!response.ok) {
+          throw new Error("Không thể tải user profiles");
+        }
+        return response.json();
+      });
+    }
+
+    sharedProfilesPromise = loader
+      .then((data) => (Array.isArray(data) ? data : []))
+      .catch((error) => {
+        console.warn("Không thể tải user profiles:", error);
+        return [];
+      });
+
+    return sharedProfilesPromise;
+  }
+
+  function findSharedProfileEntry(userData, profiles) {
+    if (!userData || !Array.isArray(profiles)) return null;
+    const byId = profiles.find((profile) => profile.userId === userData.userId);
+    if (byId) return byId;
+    if (!userData.username) return null;
+    const normalized = userData.username.toLowerCase();
+    return (
+      profiles.find(
+        (profile) =>
+          profile.username && profile.username.toLowerCase() === normalized
+      ) || null
+    );
+  }
+
+  function enrichHealthProfile(userData, profiles) {
+    if (!userData) return null;
+    const profile = findSharedProfileEntry(userData, profiles);
+    const basePersonal =
+      profile && profile.personalInfo ? profile.personalInfo : {};
+    const inlinePersonal = userData.personalInfo || {};
+
+    userData.personalInfo = {
+      ...basePersonal,
+      ...inlinePersonal,
+    };
+
+    if (!userData.fullname && profile && profile.fullname) {
+      userData.fullname = profile.fullname;
+    }
+    if (!userData.username && profile && profile.username) {
+      userData.username = profile.username;
+    }
+
+    return userData;
+  }
+
   // ===== HÀM LẤY THÔNG TIN USER HIỆN TẠI =====
   function getCurrentUser() {
     const userSession = sessionStorage.getItem("currentUser");
@@ -55,7 +121,9 @@
         return null;
       }
 
-      return userData;
+      const sharedProfiles = await fetchSharedProfiles();
+      const enriched = enrichHealthProfile({ ...userData }, sharedProfiles);
+      return enriched || userData;
     } catch (error) {
       console.error("Lỗi khi load dữ liệu sức khỏe:", error);
       return null;

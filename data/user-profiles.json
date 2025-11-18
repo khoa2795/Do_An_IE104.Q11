@@ -1,0 +1,41 @@
+[
+  {
+    "userId": 1,
+    "username": "admin",
+    "fullname": "Quản Trị Viên",
+    "personalInfo": {
+      "age": 30,
+      "gender": "Nam",
+      "bloodGroup": "A",
+      "diet": "Cân bằng",
+      "height": 170,
+      "weight": 65
+    }
+  },
+  {
+    "userId": 2,
+    "username": "user1",
+    "fullname": "Nguyễn Văn A",
+    "personalInfo": {
+      "age": 25,
+      "gender": "Nam",
+      "bloodGroup": "B",
+      "diet": "Giảm cân",
+      "height": 175,
+      "weight": 70
+    }
+  },
+  {
+    "userId": 3,
+    "username": "test",
+    "fullname": "Người Dùng Test",
+    "personalInfo": {
+      "age": 18,
+      "gender": "Nữ",
+      "bloodGroup": "O",
+      "diet": "Cân bằng",
+      "height": 158,
+      "weight": 50
+    }
+  }
+]

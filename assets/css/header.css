@@ -4,8 +4,8 @@
 
 .search {
   position: relative;
-  width: 700px;
-  max-width: 70%;
+  width: 100%;
+  max-width: 100%;
   display: flex;
   align-items: center;
 }
@@ -17,12 +17,15 @@
   right: 0;
   height: var(--header-height);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   z-index: 1000; /* đảm bảo nằm trên nội dung */
   box-shadow: 0 1px 6px rgba(0,0,0,0.08);
   padding: 0 20px;
   background: #d9f2df;
   box-sizing: border-box;
+  gap: 16px;
 }
 
 /* Logo: giới hạn bằng chiều cao header, giữ tỉ lệ */
@@ -56,6 +59,65 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .page-title {
+    font-size: 28px;
+  }
+
+  .header__controls {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: auto;
+    padding-bottom: 12px;
+  }
+
+  .header__search-section {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .page-title {
+    order: 2;
+    width: 100%;
+    text-align: left;
+  }
+
+  .header__controls {
+    order: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    display: none;
+  }
+
+  .header__controls {
+    width: auto;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .header__button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .search__input {
+    height: 48px;
+    font-size: 15px;
+  }
+}
+
 /* nếu có rule khác chồng lên (ghi đè cuối file), dùng !important khi cần */
 /* .header .menu-logo img { height: calc(var(--header-height) - 20px) !important; } */
 
@@ -67,25 +129,28 @@
   border-radius: 40px;
   margin-left: 10px;
   padding: 6px 10px;
+  flex: 0 0 auto;
 }
 
 
 .header__search-section {
-  flex: 1;
+  flex: 1 1 320px;
   display: flex;
   align-items: center;
-  margin-left: 30px;
+  margin-left: 16px;
   gap: 16px;
+  min-width: 240px;
 }
 
 .page-title{
-  max-width: 46%;
+  flex: 1 1 auto;
   font-family: Arial, sans-serif;
   color: darkgreen;
-  font-size: 35px;
+  font-size: 32px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 160px;
 }
 
 /* Tinh chỉnh kích thước các control để phù hợp header cao hơn */
@@ -141,13 +206,14 @@
 
 /* Right controls giữ khoảng cách hợp lý */
 .header__controls {
-  width: 110px;
+  width: auto;
   margin-left: 8px;
   margin-right: 18px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-shrink: 0;
+  gap: 12px;
 }
 
 .header__button {

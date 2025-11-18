@@ -13,6 +13,7 @@
       placeholder.innerHTML = cached;
       requestAnimationFrame(function () {
         placeholder.classList.add("loaded");
+        pinSidebarIfNeeded(placeholder);
       });
       setActiveTab(placeholder);
       loadLoginScript();
@@ -31,6 +32,7 @@
         // Fade in after content is ready
         requestAnimationFrame(function () {
           placeholder.classList.add("loaded");
+          pinSidebarIfNeeded(placeholder);
         });
 
         setActiveTab(placeholder);
@@ -43,6 +45,102 @@
         console.error("Load leftnav failed:", err);
         placeholder.classList.add("loaded"); // Show anyway
       });
+  }
+
+  function pinSidebarIfNeeded(placeholder) {
+    var sidebar = placeholder.querySelector(".leftnav");
+    if (!sidebar) return;
+
+    var mediaQuery = window.matchMedia("(max-width: 768px)");
+    var resizeObserver;
+
+    function getHeaderHeight() {
+      var value = getComputedStyle(document.documentElement).getPropertyValue(
+        "--header-height"
+      );
+      var parsed = parseInt(value, 10);
+      return Number.isNaN(parsed) ? 100 : parsed;
+    }
+
+    function getSidebarBaseWidth(rectWidth) {
+      var widthToken = getComputedStyle(
+        document.documentElement
+      ).getPropertyValue("--sidebar-width");
+      var cssWidth = parseInt(widthToken, 10);
+      if (!Number.isNaN(cssWidth)) {
+        return cssWidth;
+      }
+      var naturalWidth = sidebar.offsetWidth || rectWidth;
+      return Math.max(200, Math.min(rectWidth, naturalWidth));
+    }
+
+    function applyFixedPosition() {
+      var rect = placeholder.getBoundingClientRect();
+      var headerHeight = getHeaderHeight();
+      var topOffset = headerHeight + 16;
+      var heightValue = "calc(100vh - " + (headerHeight + 32) + "px)";
+      var baseWidth = getSidebarBaseWidth(rect.width);
+
+      sidebar.dataset.fixed = "true";
+      sidebar.style.position = "fixed";
+      sidebar.style.top = topOffset + "px";
+      sidebar.style.left = rect.left + window.scrollX + "px";
+      sidebar.style.width = baseWidth + "px";
+      sidebar.style.height = heightValue;
+      sidebar.style.minHeight = heightValue;
+      sidebar.style.maxHeight = heightValue;
+      sidebar.style.overflow = "auto";
+
+      placeholder.style.minHeight = heightValue;
+      placeholder.style.width = baseWidth + "px";
+    }
+
+    function clearFixedPosition() {
+      if (!sidebar.dataset.fixed) return;
+      delete sidebar.dataset.fixed;
+      sidebar.style.position = "";
+      sidebar.style.top = "";
+      sidebar.style.left = "";
+      sidebar.style.width = "";
+      sidebar.style.height = "";
+      sidebar.style.minHeight = "";
+      sidebar.style.maxHeight = "";
+      sidebar.style.overflow = "";
+
+      placeholder.style.minHeight = "";
+      placeholder.style.width = "";
+    }
+
+    function updateSidebarPosition() {
+      if (mediaQuery.matches) {
+        clearFixedPosition();
+        return;
+      }
+      applyFixedPosition();
+    }
+
+    updateSidebarPosition();
+
+    function handleResize() {
+      updateSidebarPosition();
+    }
+
+    window.addEventListener("resize", handleResize);
+    mediaQuery.addEventListener("change", handleResize);
+
+    resizeObserver = new ResizeObserver(function () {
+      updateSidebarPosition();
+    });
+    resizeObserver.observe(placeholder);
+
+    placeholder.addEventListener("leftnav:destroy", function () {
+      window.removeEventListener("resize", handleResize);
+      mediaQuery.removeEventListener("change", handleResize);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
+      clearFixedPosition();
+    });
   }
 
   function setActiveTab(placeholder) {

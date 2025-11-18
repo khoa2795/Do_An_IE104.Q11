@@ -704,17 +704,23 @@ function storeCaloriesProfile(profile) {
 function buildCaloriesProfile(user, personal, health) {
   const activityLevel = determineActivityLevel(health.goal);
   const dailyTarget = calculateDailyTargets(personal, health, activityLevel);
+  const nutritionProfile = {
+    activityLevel,
+    goal: formatFallback(health.goal, "Duy trì cân nặng"),
+    diet: formatFallback(personal.diet, "Cân bằng"),
+  };
   return {
     userId: user.id,
     username: user.username,
     fullname: personal.fullname,
+    nutritionProfile,
     userInfo: {
       age: personal.age,
       height: personal.height,
       weight: personal.weight,
-      activityLevel,
-      goal: formatFallback(health.goal, "Duy trì cân nặng"),
-      diet: formatFallback(personal.diet, "Cân bằng"),
+      activityLevel: nutritionProfile.activityLevel,
+      goal: nutritionProfile.goal,
+      diet: nutritionProfile.diet,
     },
     dailyTarget,
     todayIntake: {
