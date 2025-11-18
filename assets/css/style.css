@@ -39,6 +39,11 @@ body > .container > .main-content {
     animation: fadeInContent 0.3s ease-in 0.1s forwards;
 }
 
+body > .container > .main-content {
+    opacity: 0;
+    animation: fadeInContent 0.3s ease-in 0.1s forwards;
+}
+
 @keyframes fadeInContent {
     to {
         opacity: 1;
