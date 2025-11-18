@@ -231,6 +231,89 @@ body {
   color: #57606a;
 }
 
+/* ===== DARK MODE ===== */
+body.dark-mode .page-1700x960 {
+  background: var(--background-color, #0f172a);
+  color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .community-header,
+body.dark-mode .ch-tabs {
+  background: var(--surface-color, #111827);
+}
+
+body.dark-mode .ch-title {
+  color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .tab {
+  background: var(--card-color, #1f2937);
+  color: var(--text-color, #e2e8f0);
+  border: 1px solid var(--border-color, #1f2937);
+}
+
+body.dark-mode .tab:hover {
+  background: rgba(74, 222, 128, 0.12);
+}
+
+body.dark-mode .tab.active {
+  background: rgba(74, 222, 128, 0.16);
+  color: var(--primary-color, #4ade80);
+  border-color: var(--primary-color, #4ade80);
+}
+
+body.dark-mode .btn-create {
+  background: var(--primary-color, #4ade80);
+  border-color: var(--primary-color, #4ade80);
+  color: #0f172a;
+  box-shadow: 0 6px 16px var(--shadow-color, rgba(0,0,0,0.45));
+}
+
+body.dark-mode .btn-create:hover {
+  background: #22c55e;
+}
+
+body.dark-mode .post {
+  background: var(--card-color, #1f2937);
+  border-color: var(--border-color, #1f2937);
+  box-shadow: 0 6px 18px var(--shadow-color, rgba(0,0,0,0.45));
+  color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .post-text,
+body.dark-mode .meta .time,
+body.dark-mode .pager .dots {
+  color: var(--muted-text-color, #cbd5e1);
+}
+
+body.dark-mode .btn-action {
+  background: var(--surface-color, #111827);
+  border-color: var(--border-color, #1f2937);
+  color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .btn-action:hover {
+  background: rgba(74, 222, 128, 0.12);
+  border-color: var(--primary-color, #4ade80);
+}
+
+body.dark-mode .pager .page {
+  background: var(--surface-color, #111827);
+  border-color: var(--border-color, #1f2937);
+  color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .pager .page:hover:not(.is-active):not(:disabled) {
+  background: rgba(74, 222, 128, 0.12);
+  border-color: var(--primary-color, #4ade80);
+}
+
+body.dark-mode .pager .is-active {
+  background: var(--primary-color, #4ade80);
+  color: #0f172a;
+  border-color: var(--primary-color, #4ade80);
+}
+
 /* RESPONSIVE CƠ BẢN */
 @media (max-width: 1024px) {
   .page-1700x960 {

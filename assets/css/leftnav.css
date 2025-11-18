@@ -111,6 +111,30 @@
     }
 }
 
+/* ===== DARK MODE ===== */
+body.dark-mode .leftnav {
+    background-color: var(--surface-color);
+    box-shadow: 2px 0 10px var(--shadow-color);
+    border-right: 1px solid var(--border-color);
+}
+
+body.dark-mode .leftnav__link {
+    color: var(--text-color);
+}
+
+body.dark-mode .leftnav__link:hover {
+    background-color: rgba(74, 222, 128, 0.12);
+}
+
+body.dark-mode .leftnav__link--active {
+    background-color: rgba(74, 222, 128, 0.18);
+    color: var(--primary-color);
+}
+
+body.dark-mode .leftnav__icon {
+    filter: invert(1) brightness(1.05);
+}
+
 @media (max-width: 768px) {
     .leftnav {
         transform: translateX(-100%);

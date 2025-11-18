@@ -527,3 +527,101 @@ textarea:focus {
 .login-btn.logged-in {
     background: linear-gradient(135deg, #4f9b50, #2f8f46);
 }
+
+/* Close button in form */
+.close-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+.close-button .close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+}
+
+.close-button .close:hover {
+    color: #000;
+}
+
+/* ===== DARK MODE ===== */
+body.dark-mode .modal {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+body.dark-mode .modal-content {
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+body.dark-mode .modal-header {
+    background: var(--surface-color);
+    color: var(--text-color);
+}
+
+body.dark-mode .underline {
+    border-bottom-color: var(--border-color);
+}
+
+body.dark-mode .close {
+    color: var(--muted-text-color);
+}
+
+body.dark-mode .close:hover {
+    color: #f87171;
+}
+
+body.dark-mode .form-group label {
+    color: var(--text-color);
+}
+
+body.dark-mode .form-group input {
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+body.dark-mode .form-group input::placeholder {
+    color: var(--muted-text-color);
+}
+
+body.dark-mode .form-group input:focus {
+    background: var(--surface-color);
+    border-color: var(--primary-color);
+}
+
+body.dark-mode .form-options,
+body.dark-mode .checkbox-group label {
+    color: var(--muted-text-color);
+}
+
+body.dark-mode .login-help p {
+    color: var(--muted-text-color);
+}
+
+body.dark-mode .user-dropdown {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 -4px 12px var(--shadow-color);
+}
+
+body.dark-mode .logout-dropdown-btn {
+    background: transparent;
+    color: #fda4af;
+}
+
+body.dark-mode .logout-dropdown-btn:hover {
+    background: rgba(239, 68, 68, 0.12);
+}
