@@ -14,23 +14,27 @@ body {
 }
 
 /* Container chính */
-.container {
-  display: flex;
+.page-community-create .container {
+  display: grid;
+  grid-template-columns: minmax(220px, var(--sidebar-width, 250px)) 1fr;
+  grid-template-areas: "sidebar main";
   min-height: 100vh;
   padding-top: var(--header-height);
+  gap: 16px;
 }
 
 /* Main content */
-.main-content {
+.page-community-create .main-content {
   flex: 1;
-  margin-left: var(--sidebar-width);
-  width: calc(100% - var(--sidebar-width));
+  margin-left: 0;
+  width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--header-height, 100px));
   box-sizing: border-box;
-  padding: 20px 40px;
+  padding: clamp(24px, 4vw, 48px);
+  margin-top: clamp(16px, 4vw, 36px);
 }
 
 /* ===== PAGE CHÍNH ===== */
@@ -184,7 +188,7 @@ body.dark-mode .btn-submit {
 
 /* Responsive */
 @media (max-width: 900px) {
-  .main-content {
+  .page-community-create .main-content {
     margin-left: 0;
     width: 100%;
     padding: 20px 15px;
@@ -204,6 +208,20 @@ body.dark-mode .btn-submit {
 }
 
 @media (max-width: 768px) {
+  .page-community-create .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "main"
+      "sidebar";
+    padding: calc(var(--header-height) + 10px) 16px 40px;
+  }
+
+  .page-community-create .main-content {
+    padding: 20px 15px 110px;
+    min-height: calc(100vh - var(--header-height, 100px));
+    margin-top: clamp(12px, 3vw, 20px);
+  }
+
   .create-card-footer {
     flex-direction: column;
   }

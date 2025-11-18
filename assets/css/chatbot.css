@@ -25,6 +25,8 @@
   justify-content: space-between;
   align-items: center;
   font-weight: 600;
+  cursor: move;
+  user-select: none;
 }
 
 .chatbot__close {
@@ -133,10 +135,17 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s;
   z-index: 9999;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
 }
 
 .chatbot__toggle:hover {
   transform: scale(1.1);
+}
+
+.chatbot__toggle:active {
+  cursor: grabbing;
 }
 
 /* ===== DARK MODE ADAPTATION ===== */

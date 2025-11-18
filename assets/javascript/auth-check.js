@@ -51,6 +51,7 @@
         align-items: center;
         justify-content: center;
         z-index: 999;
+        padding: 24px;
       }
 
       .auth-message {
@@ -135,7 +136,13 @@
       @media (max-width: 900px) {
         #auth-overlay {
           left: 0;
-          top: 60px;
+          top: calc(var(--header-height, 80px) + 10px);
+        }
+      }
+
+      @media (max-width: 768px) {
+        #auth-overlay {
+          bottom: 90px; /* leave space for bottom nav */
         }
       }
     `;

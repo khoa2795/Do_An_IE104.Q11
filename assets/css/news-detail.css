@@ -1,8 +1,9 @@
 /* ===== NEWS DETAIL PAGE - BEM ===== */
 
-.main-content {
-  margin-left: var(--sidebar-width, 250px);
-  width: calc(100% - var(--sidebar-width, 250px));
+body.page-news-detail .main-content {
+  --news-detail-margin: clamp(100px, 8vw, 120px);
+  margin-left: var(--news-detail-margin);
+  width: calc(100% - var(--news-detail-margin));
   padding-top: calc(var(--header-height, 100px) - 80px);
   box-sizing: border-box;
 }
@@ -268,7 +269,7 @@ body.dark-mode .article__related-card-title {
 
 /* Responsive */
 @media (max-width: 900px) {
-  .main-content {
+  body.page-news-detail .main-content {
     margin-left: 0;
     width: 100%;
     padding-top: calc(var(--header-height, 100px) + 10px);

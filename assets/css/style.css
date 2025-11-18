@@ -78,21 +78,104 @@ body[data-critical="pending"] .skeleton-block {
 }
 
 .container {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(220px, var(--sidebar-width, 250px)) 1fr;
+    grid-template-areas: "sidebar main";
     min-height: 100vh;
     padding-top: var(--header-height);
+    gap: 16px;
 }
 
 /* Main Content Styles */
 .main-content {
+    grid-area: main;
     flex: 1;
-    margin-left: var(--sidebar-width);
-    width: calc(100% - var(--sidebar-width));
+    margin-left: 0;
+    width: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--header-height));
     box-sizing: border-box;
+    padding-right: 12px;
+}
+
+body.page-main .main-content {
+    --mainpage-margin: clamp(10px, 2vw, 20px);
+    margin-left: var(--mainpage-margin);
+    width: calc(100% - var(--mainpage-margin));
+}
+
+#sidebar-placeholder {
+    grid-area: sidebar;
+    position: relative;
+    width: 100%;
+    align-self: stretch;
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+    min-height: calc(100vh - var(--header-height, 100px));
+}
+
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: minmax(180px, 220px) 1fr;
+        gap: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "main"
+            "sidebar";
+        padding: calc(var(--header-height) + 10px) 16px 40px;
+    }
+
+    #sidebar-placeholder {
+        width: 100%;
+        height: 0;
+        min-height: 0;
+    }
+
+    .main-content {
+        padding-right: 0;
+        padding-bottom: 110px; /* leave room for bottom nav */
+    }
+
+    body.page-main .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: calc(var(--header-height) + 10px) 12px 32px;
+        gap: 16px;
+    }
+
+    .main-content {
+        padding: 0;
+    }
+
+    .main-content section,
+    .main-content article,
+    .main-content .card,
+    .main-content .news__featured-layout,
+    .main-content .news__list,
+    .main-content .calories__dashboard,
+    .main-content .calories__meals-grid {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .main-content img {
+        width: 100%;
+        height: auto;
+    }
 }
 
 
@@ -107,11 +190,11 @@ body[data-critical="pending"] .skeleton-block {
 }
 
 .hero__slideshow {
-  position: relative;
-  width: calc(100vw - var(--sidebar-width));
-  height: calc(100vh - var(--header-height));
-  overflow: hidden;
-  margin: 0;
+    position: relative;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    overflow: hidden;
+    margin: 0;
 }
 
 .hero__slide {
