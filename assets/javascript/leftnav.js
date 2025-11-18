@@ -1,6 +1,6 @@
 // Load left nav component into pages
 (function () {
-  var LEFTNAV_CACHE_KEY = "leftnav-component-v2";
+  var LEFTNAV_CACHE_KEY = "leftnav-component-v3";
 
   function insertLeftNav() {
     var placeholder = document.getElementById("sidebar-placeholder");

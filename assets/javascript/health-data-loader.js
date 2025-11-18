@@ -9,7 +9,7 @@
   }
 
   // ===== HÀM FETCH DỮ LIỆU SỨC KHỎE TỪ JSON =====
-  async function fetchHealthData(userId) {
+  async function fetchHealthData(user) {
     try {
       let loader;
 
@@ -30,10 +30,25 @@
         });
       }
 
-      const allHealthData = await loader;
+      const seedHealthData = (await loader) || [];
+      const customHealthData = getCustomHealthProfiles();
+      const mergedHealthData = mergeHealthProfiles(
+        seedHealthData,
+        customHealthData
+      );
 
-      // Tìm dữ liệu của user hiện tại
-      const userData = allHealthData.find((data) => data.userId === userId);
+      const userId = user ? user.id : null;
+      const username =
+        user && user.username ? user.username.toLowerCase() : null;
+
+      const userData = mergedHealthData.find((data) => {
+        if (!data) return false;
+        if (userId && data.userId === userId) return true;
+        if (username && (data.username || "").toLowerCase() === username) {
+          return true;
+        }
+        return false;
+      });
 
       if (!userData) {
         console.warn(`Không tìm thấy dữ liệu sức khỏe cho userId: ${userId}`);
@@ -45,6 +60,62 @@
       console.error("Lỗi khi load dữ liệu sức khỏe:", error);
       return null;
     }
+  }
+
+  function getCustomHealthProfiles() {
+    try {
+      const stored = localStorage.getItem("customHealthProfiles");
+      return stored ? JSON.parse(stored) : [];
+    } catch (error) {
+      console.warn("Không thể đọc customHealthProfiles", error);
+      return [];
+    }
+  }
+
+  function mergeHealthProfiles(baseProfiles, customProfiles) {
+    const result = Array.isArray(baseProfiles) ? [...baseProfiles] : [];
+    if (!Array.isArray(customProfiles) || customProfiles.length === 0) {
+      return result;
+    }
+
+    customProfiles.forEach((profile) => {
+      if (!profile) return;
+      const idx = result.findIndex((item) => {
+        if (!item) return false;
+        if (profile.userId && item.userId === profile.userId) return true;
+        if (
+          profile.username &&
+          item.username &&
+          profile.username.toLowerCase() === item.username.toLowerCase()
+        ) {
+          return true;
+        }
+        return false;
+      });
+
+      if (idx >= 0) {
+        result[idx] = {
+          ...result[idx],
+          ...profile,
+          personalInfo: {
+            ...(result[idx].personalInfo || {}),
+            ...(profile.personalInfo || {}),
+          },
+          medicalHistory: {
+            ...(result[idx].medicalHistory || {}),
+            ...(profile.medicalHistory || {}),
+          },
+          notes: {
+            ...(result[idx].notes || {}),
+            ...(profile.notes || {}),
+          },
+        };
+      } else {
+        result.push(profile);
+      }
+    });
+
+    return result;
   }
 
   // ===== HÀM TÍNH BMI =====
@@ -287,7 +358,7 @@
       return;
     }
 
-    const healthData = await fetchHealthData(currentUser.id);
+    const healthData = await fetchHealthData(currentUser);
 
     if (!healthData) {
       console.warn("⚠️ Không có dữ liệu sức khỏe");
@@ -313,6 +384,12 @@
   } else {
     init();
   }
+
+  document.addEventListener("auth:state-changed", (event) => {
+    if (event && event.detail && event.detail.status === "logged-in") {
+      init();
+    }
+  });
 
   // Export functions để có thể sử dụng ở nơi khác
   window.HealthDataLoader = {
