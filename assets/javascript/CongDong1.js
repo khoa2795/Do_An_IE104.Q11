@@ -7,6 +7,10 @@
     const postsContainer = document.querySelector(".posts");
     if (!postsContainer) return;
 
+    adjustCommunityOffset();
+    window.addEventListener("resize", adjustCommunityOffset);
+    window.addEventListener("load", adjustCommunityOffset, { once: true });
+
     // 1. Render bài viết theo trang hiện tại
     renderPostsByPage(currentPage);
 
@@ -58,12 +62,13 @@
     if (!postsContainer) return;
 
     const pageData = CommunityData.getPostsByPage(page, postsPerPage);
-    
+
     // Xóa nội dung cũ
-    postsContainer.innerHTML = '';
+    postsContainer.innerHTML = "";
 
     if (!pageData.posts.length) {
-      postsContainer.innerHTML = '<div class="no-posts">Chưa có bài viết nào. Hãy là người đầu tiên đăng bài!</div>';
+      postsContainer.innerHTML =
+        '<div class="no-posts">Chưa có bài viết nào. Hãy là người đầu tiên đăng bài!</div>';
       updatePagerUI(pageData);
       return;
     }
@@ -71,7 +76,8 @@
     // Render bài viết
     pageData.posts.forEach((post) => {
       const article = document.createElement("article");
-      article.className = "post" + (post.id.startsWith("user-") ? " post--user" : "");
+      article.className =
+        "post" + (post.id.startsWith("user-") ? " post--user" : "");
       article.dataset.postId = post.id;
 
       const safeTitle = CommunityData.escapeHtml(post.title || "");
@@ -98,6 +104,8 @@
       postsContainer.appendChild(article);
     });
 
+    restoreSavedState(postsContainer);
+
     // Cập nhật UI phân trang
     updatePagerUI(pageData);
     currentPage = page;
@@ -111,49 +119,57 @@
     // Xóa nút trang cũ (giữ lại nút prev/next)
     const prevBtn = pager.querySelector(".page.prev");
     const nextBtn = pager.querySelector(".page.next");
-    const oldPageButtons = pager.querySelectorAll(".page:not(.prev):not(.next)");
-    oldPageButtons.forEach(btn => btn.remove());
+    const oldPageButtons = pager.querySelectorAll(
+      ".page:not(.prev):not(.next)"
+    );
+    oldPageButtons.forEach((btn) => btn.remove());
 
     // Tạo nút trang mới
-    const pageButtonsContainer = pager.querySelector(".page-buttons") || document.createElement("div");
+    const pageButtonsContainer =
+      pager.querySelector(".page-buttons") || document.createElement("div");
     if (!pager.querySelector(".page-buttons")) {
       pageButtonsContainer.className = "page-buttons";
       prevBtn.after(pageButtonsContainer);
     }
-    pageButtonsContainer.innerHTML = '';
+    pageButtonsContainer.innerHTML = "";
 
     // Tạo nút cho mỗi trang
     for (let i = 1; i <= pageData.totalPages; i++) {
       const pageBtn = document.createElement("button");
-      pageBtn.className = "page" + (i === pageData.currentPage ? " is-active" : "");
+      pageBtn.className =
+        "page" + (i === pageData.currentPage ? " is-active" : "");
       pageBtn.textContent = i;
       if (i === pageData.currentPage) {
         pageBtn.setAttribute("aria-current", "page");
       }
-      
+
       pageBtn.addEventListener("click", function () {
         renderPostsByPage(i);
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        scrollToPostsSection();
       });
-      
+
       pageButtonsContainer.appendChild(pageBtn);
     }
 
     // Cập nhật trạng thái nút prev/next
     if (prevBtn) {
       prevBtn.disabled = !pageData.hasPrev;
-      prevBtn.onclick = pageData.hasPrev ? function () {
-        renderPostsByPage(pageData.currentPage - 1);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } : null;
+      prevBtn.onclick = pageData.hasPrev
+        ? function () {
+            renderPostsByPage(pageData.currentPage - 1);
+            scrollToPostsSection();
+          }
+        : null;
     }
 
     if (nextBtn) {
       nextBtn.disabled = !pageData.hasNext;
-      nextBtn.onclick = pageData.hasNext ? function () {
-        renderPostsByPage(pageData.currentPage + 1);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } : null;
+      nextBtn.onclick = pageData.hasNext
+        ? function () {
+            renderPostsByPage(pageData.currentPage + 1);
+            scrollToPostsSection();
+          }
+        : null;
     }
   }
 
@@ -162,8 +178,10 @@
     const savedIds = CommunityData.getSavedPosts();
     if (!savedIds.length) return;
 
-    savedIds.forEach(savedId => {
-      const postEl = postsContainer.querySelector(`[data-post-id="${savedId}"]`);
+    savedIds.forEach((savedId) => {
+      const postEl = postsContainer.querySelector(
+        `[data-post-id="${savedId}"]`
+      );
       if (postEl) {
         const btnSave = postEl.querySelector('.btn-action[data-action="save"]');
         if (btnSave) {
@@ -177,7 +195,7 @@
   function handleSave(postEl, btn) {
     const postId = postEl.dataset.postId;
     const isNowSaved = CommunityData.toggleSavePost(postId);
-    
+
     if (isNowSaved) {
       btn.classList.add("saved");
     } else {
@@ -194,7 +212,7 @@
       tab.addEventListener("click", function () {
         tabs.forEach((t) => t.classList.remove("active"));
         tab.classList.add("active");
-        
+
         // Có thể thêm logic sort/filter ở đây
         if (tab.textContent.includes("Mới hoạt động")) {
           // Logic cho tab "Mới hoạt động"
@@ -203,7 +221,7 @@
           // Logic cho tab "Mới nhất"
           console.log("Chuyển sang tab Mới nhất");
         }
-        
+
         // Render lại trang đầu tiên khi chuyển tab
         renderPostsByPage(1);
       });
@@ -221,7 +239,7 @@
       const nextBtn = pager.querySelector(".page.next");
       const pageButtons = document.createElement("div");
       pageButtons.className = "page-buttons";
-      
+
       // Chèn container giữa prev và next
       if (prevBtn && nextBtn) {
         prevBtn.after(pageButtons);
@@ -309,10 +327,40 @@
           alert("Đã sao chép nội dung bài đăng vào clipboard.");
         })
         .catch(() => {
-          alert("Không thể sao chép tự động. Bạn có thể copy nội dung thủ công.");
+          alert(
+            "Không thể sao chép tự động. Bạn có thể copy nội dung thủ công."
+          );
         });
     } else {
       alert("Chia sẻ bài:\n\n" + shareText);
     }
+  }
+
+  function adjustCommunityOffset() {
+    const fixedTop = document.querySelector(".fixed-top");
+    if (!fixedTop) return;
+
+    const root = document.documentElement;
+    const height = fixedTop.offsetHeight;
+    if (root && height > 0) {
+      root.style.setProperty("--community-top-height", `${height}px`);
+    }
+  }
+
+  function scrollToPostsSection() {
+    const bodySection = document.querySelector(".community-body");
+    if (!bodySection) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    const fixedTop = document.querySelector(".fixed-top");
+    const offset = fixedTop ? fixedTop.offsetHeight : 0;
+    const target =
+      bodySection.getBoundingClientRect().top +
+      window.pageYOffset -
+      offset -
+      12;
+    window.scrollTo({ top: Math.max(target, 0), behavior: "smooth" });
   }
 })();

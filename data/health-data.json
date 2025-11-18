@@ -2,14 +2,7 @@
   {
     "userId": 1,
     "username": "admin",
-    "fullname": "Quản Trị Viên",
     "personalInfo": {
-      "age": 30,
-      "gender": "Nam",
-      "bloodGroup": "A",
-      "diet": "Cân bằng",
-      "height": 170,
-      "weight": 65,
       "bloodPressure": "120/80",
       "heartRate": 75,
       "glucose": 100,
@@ -34,14 +27,7 @@
   {
     "userId": 2,
     "username": "user1",
-    "fullname": "Nguyễn Văn A",
     "personalInfo": {
-      "age": 25,
-      "gender": "Nam",
-      "bloodGroup": "B",
-      "diet": "Giảm cân",
-      "height": 175,
-      "weight": 70,
       "bloodPressure": "118/78",
       "heartRate": 70,
       "glucose": 95,
@@ -74,14 +60,7 @@
   {
     "userId": 3,
     "username": "test",
-    "fullname": "Người Dùng Test",
     "personalInfo": {
-      "age": 18,
-      "gender": "Nữ",
-      "bloodGroup": "O",
-      "diet": "Cân bằng",
-      "height": 158,
-      "weight": 50,
       "bloodPressure": "120/80",
       "heartRate": 72,
       "glucose": 135,

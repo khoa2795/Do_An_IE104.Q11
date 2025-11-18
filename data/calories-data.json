@@ -2,11 +2,7 @@
   {
     "userId": 1,
     "username": "admin",
-    "fullname": "Quản Trị Viên",
-    "userInfo": {
-      "age": 25,
-      "height": 170,
-      "weight": 65,
+    "nutritionProfile": {
       "activityLevel": 2,
       "goal": "Duy trì cân nặng",
       "diet": "Cân bằng"
@@ -33,48 +29,13 @@
       "snack": []
     },
     "weeklyData": [
-      {
-        "date": "2025-11-09",
-        "calories": 1650,
-        "target": 1800,
-        "status": "ok"
-      },
-      {
-        "date": "2025-11-10",
-        "calories": 1750,
-        "target": 1800,
-        "status": "ok"
-      },
-      {
-        "date": "2025-11-11",
-        "calories": 1600,
-        "target": 1800,
-        "status": "ok"
-      },
-      {
-        "date": "2025-11-12",
-        "calories": 1900,
-        "target": 1800,
-        "status": "over"
-      },
-      {
-        "date": "2025-11-13",
-        "calories": 1400,
-        "target": 1800,
-        "status": "under"
-      },
-      {
-        "date": "2025-11-14",
-        "calories": 1550,
-        "target": 1800,
-        "status": "ok"
-      },
-      {
-        "date": "2025-11-15",
-        "calories": 0,
-        "target": 1800,
-        "status": "ongoing"
-      }
+      { "date": "2025-11-09", "calories": 1650, "target": 1800, "status": "ok" },
+      { "date": "2025-11-10", "calories": 1750, "target": 1800, "status": "ok" },
+      { "date": "2025-11-11", "calories": 1600, "target": 1800, "status": "ok" },
+      { "date": "2025-11-12", "calories": 1900, "target": 1800, "status": "over" },
+      { "date": "2025-11-13", "calories": 1400, "target": 1800, "status": "under" },
+      { "date": "2025-11-14", "calories": 1550, "target": 1800, "status": "ok" },
+      { "date": "2025-11-15", "calories": 0, "target": 1800, "status": "ongoing" }
     ],
     "monthlyStats": {
       "month": "2025-11",
@@ -168,11 +129,7 @@
   {
     "userId": 2,
     "username": "user1",
-    "fullname": "Nguyễn Văn A",
-    "userInfo": {
-      "age": 28,
-      "height": 175,
-      "weight": 70,
+    "nutritionProfile": {
       "activityLevel": 3,
       "goal": "Giảm 3 cân",
       "diet": "High Protein"
@@ -199,48 +156,13 @@
       "snack": []
     },
     "weeklyData": [
-      {
-        "date": "2025-11-09",
-        "calories": 1800,
-        "target": 2000,
-        "status": "ok"
-      },
-      {
-        "date": "2025-11-10",
-        "calories": 1900,
-        "target": 2000,
-        "status": "ok"
-      },
-      {
-        "date": "2025-11-11",
-        "calories": 1700,
-        "target": 2000,
-        "status": "under"
-      },
-      {
-        "date": "2025-11-12",
-        "calories": 2100,
-        "target": 2000,
-        "status": "over"
-      },
-      {
-        "date": "2025-11-13",
-        "calories": 1850,
-        "target": 2000,
-        "status": "ok"
-      },
-      {
-        "date": "2025-11-14",
-        "calories": 1950,
-        "target": 2000,
-        "status": "ok"
-      },
-      {
-        "date": "2025-11-15",
-        "calories": 0,
-        "target": 2000,
-        "status": "ongoing"
-      }
+      { "date": "2025-11-09", "calories": 1800, "target": 2000, "status": "ok" },
+      { "date": "2025-11-10", "calories": 1900, "target": 2000, "status": "ok" },
+      { "date": "2025-11-11", "calories": 1700, "target": 2000, "status": "under" },
+      { "date": "2025-11-12", "calories": 2100, "target": 2000, "status": "over" },
+      { "date": "2025-11-13", "calories": 1850, "target": 2000, "status": "ok" },
+      { "date": "2025-11-14", "calories": 1950, "target": 2000, "status": "ok" },
+      { "date": "2025-11-15", "calories": 0, "target": 2000, "status": "ongoing" }
     ],
     "monthlyStats": {
       "month": "2025-11",
@@ -334,11 +256,7 @@
   {
     "userId": 3,
     "username": "test",
-    "fullname": "Người Dùng Test",
-    "userInfo": {
-      "age": 22,
-      "height": 158,
-      "weight": 50,
+    "nutritionProfile": {
       "activityLevel": 1,
       "goal": "Tăng 5 cân",
       "diet": "Cân bằng"
@@ -365,48 +283,13 @@
       "snack": []
     },
     "weeklyData": [
-      {
-        "date": "2025-11-09",
-        "calories": 2000,
-        "target": 2200,
-        "status": "under"
-      },
-      {
-        "date": "2025-11-10",
-        "calories": 2150,
-        "target": 2200,
-        "status": "ok"
-      },
-      {
-        "date": "2025-11-11",
-        "calories": 1900,
-        "target": 2200,
-        "status": "under"
-      },
-      {
-        "date": "2025-11-12",
-        "calories": 2300,
-        "target": 2200,
-        "status": "over"
-      },
-      {
-        "date": "2025-11-13",
-        "calories": 2100,
-        "target": 2200,
-        "status": "ok"
-      },
-      {
-        "date": "2025-11-14",
-        "calories": 2050,
-        "target": 2200,
-        "status": "under"
-      },
-      {
-        "date": "2025-11-15",
-        "calories": 0,
-        "target": 2200,
-        "status": "ongoing"
-      }
+      { "date": "2025-11-09", "calories": 2000, "target": 2200, "status": "under" },
+      { "date": "2025-11-10", "calories": 2150, "target": 2200, "status": "ok" },
+      { "date": "2025-11-11", "calories": 1900, "target": 2200, "status": "under" },
+      { "date": "2025-11-12", "calories": 2300, "target": 2200, "status": "over" },
+      { "date": "2025-11-13", "calories": 2100, "target": 2200, "status": "ok" },
+      { "date": "2025-11-14", "calories": 2050, "target": 2200, "status": "under" },
+      { "date": "2025-11-15", "calories": 0, "target": 2200, "status": "ongoing" }
     ],
     "monthlyStats": {
       "month": "2025-11",

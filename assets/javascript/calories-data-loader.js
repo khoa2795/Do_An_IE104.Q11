@@ -1,4 +1,90 @@
 (function () {
+  let sharedProfilesPromise = null;
+
+  function fetchSharedProfiles() {
+    if (sharedProfilesPromise) return sharedProfilesPromise;
+
+    let loader;
+    if (window.DataCache && typeof window.DataCache.fetchJSON === "function") {
+      loader = window.DataCache.fetchJSON("/data/user-profiles.json", {
+        cacheKey: "user-profiles",
+        ttl: 1000 * 60 * 5,
+      });
+    } else {
+      loader = fetch("/data/user-profiles.json").then((response) => {
+        if (!response.ok) {
+          throw new Error("Không thể tải user profiles");
+        }
+        return response.json();
+      });
+    }
+
+    sharedProfilesPromise = loader
+      .then((data) => (Array.isArray(data) ? data : []))
+      .catch((error) => {
+        console.warn("Không thể tải user profiles:", error);
+        return [];
+      });
+
+    return sharedProfilesPromise;
+  }
+
+  function findSharedProfileEntry(userData, profiles) {
+    if (!userData || !Array.isArray(profiles)) return null;
+    const byId = profiles.find((profile) => profile.userId === userData.userId);
+    if (byId) return byId;
+    if (!userData.username) return null;
+    const normalized = userData.username.toLowerCase();
+    return (
+      profiles.find(
+        (profile) =>
+          profile.username && profile.username.toLowerCase() === normalized
+      ) || null
+    );
+  }
+
+  function enrichCaloriesProfile(userData, profiles) {
+    if (!userData) return null;
+    const profile = findSharedProfileEntry(userData, profiles);
+    const baseInfo =
+      profile && profile.personalInfo ? profile.personalInfo : {};
+    const inlineInfo = userData.userInfo || {};
+    const nutritionProfile = userData.nutritionProfile || {};
+
+    const mergedUserInfo = {
+      ...baseInfo,
+      ...inlineInfo,
+    };
+
+    if (nutritionProfile.diet) {
+      mergedUserInfo.diet = nutritionProfile.diet;
+    }
+    if (
+      typeof nutritionProfile.activityLevel !== "undefined" &&
+      nutritionProfile.activityLevel !== null
+    ) {
+      mergedUserInfo.activityLevel = nutritionProfile.activityLevel;
+    }
+    if (nutritionProfile.goal) {
+      mergedUserInfo.goal = nutritionProfile.goal;
+    }
+
+    if (!mergedUserInfo.diet && baseInfo.diet) {
+      mergedUserInfo.diet = baseInfo.diet;
+    }
+
+    userData.userInfo = mergedUserInfo;
+
+    if (!userData.fullname && profile && profile.fullname) {
+      userData.fullname = profile.fullname;
+    }
+    if (!userData.username && profile && profile.username) {
+      userData.username = profile.username;
+    }
+
+    return userData;
+  }
+
   function getCustomCaloriesProfiles() {
     try {
       const stored = localStorage.getItem("customCaloriesProfiles");
@@ -90,7 +176,9 @@
         return null;
       }
 
-      return userData;
+      const sharedProfiles = await fetchSharedProfiles();
+      const enriched = enrichCaloriesProfile({ ...userData }, sharedProfiles);
+      return enriched || userData;
     } catch (error) {
       console.error("Lỗi khi load dữ liệu calories:", error);
       return null;
@@ -100,6 +188,15 @@
   // ===== CẬP NHẬT THÔNG TIN NGƯỜI DÙNG =====
   function displayUserInfo(data) {
     const { userInfo, fullname } = data;
+    const safeInfo = userInfo || {};
+    const displayName = fullname || data.username || "Người dùng";
+
+    const formatValue = (value, suffix = "") => {
+      if (value === null || value === undefined || value === "") {
+        return "--";
+      }
+      return suffix ? `${value}${suffix}` : `${value}`;
+    };
 
     // Cập nhật thông tin cơ bản
     const updateField = (selector, value) => {
@@ -109,22 +206,32 @@
       element.classList.remove("loading-placeholder");
     };
 
-    updateField(".calories__info-value--name", fullname);
-    updateField(".calories__info-value--age", userInfo.age);
-    updateField(".calories__info-value--height", `${userInfo.height}cm`);
-    updateField(".calories__info-value--weight", `${userInfo.weight}kg`);
-    updateField(".calories__info-value--goal", userInfo.goal);
+    updateField(".calories__info-value--name", displayName);
+    updateField(".calories__info-value--age", formatValue(safeInfo.age));
+    updateField(
+      ".calories__info-value--height",
+      formatValue(safeInfo.height, "cm")
+    );
+    updateField(
+      ".calories__info-value--weight",
+      formatValue(safeInfo.weight, "kg")
+    );
+    updateField(
+      ".calories__info-value--goal",
+      safeInfo.goal || "Đang cập nhật"
+    );
 
     // Cập nhật cường độ luyện tập
     const intensityText = document.getElementById("intensityText");
     if (intensityText) {
-      intensityText.textContent = `mức ${userInfo.activityLevel} ▼`;
+      const level = safeInfo.activityLevel || "--";
+      intensityText.textContent = `mức ${level} ▼`;
     }
 
     // Cập nhật chế độ ăn
     const dietSelect = document.querySelector(".calories__diet-select");
     if (dietSelect) {
-      dietSelect.value = userInfo.diet;
+      dietSelect.value = safeInfo.diet || dietSelect.value;
     }
   }
 

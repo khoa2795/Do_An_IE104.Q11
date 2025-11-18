@@ -1495,12 +1495,17 @@ body.dark-mode .calories__dashboard,
 body.dark-mode .calories__daily-log,
 body.dark-mode .calories__meal,
 body.dark-mode .calories__tip,
-body.dark-mode .calories__food-card,
-body.dark-mode .calories__nutrient {
+body.dark-mode .calories__food-card {
     background: var(--card-color, #1f2937);
     color: var(--text-color, #e2e8f0);
     border-color: var(--border-color, #1f2937);
     box-shadow: 0 6px 20px var(--shadow-color, rgba(0,0,0,0.45));
+}
+
+body.dark-mode .calories__nutrient {
+    background: transparent;
+    box-shadow: none;
+    border-color: transparent;
 }
 
 body.dark-mode .calories__section-title,

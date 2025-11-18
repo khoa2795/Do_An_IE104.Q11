@@ -138,3 +138,58 @@
 .chatbot__toggle:hover {
   transform: scale(1.1);
 }
+
+/* ===== DARK MODE ADAPTATION ===== */
+body.dark-mode .chatbot {
+  background: var(--card-color, #1f2937);
+  color: var(--text-color, #e2e8f0);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
+  border: 1px solid var(--border-color, #273549);
+}
+
+body.dark-mode .chatbot__header {
+  background: var(--surface-color, #0f172a);
+  color: var(--text-color, #f1f5f9);
+  border-bottom: 1px solid var(--border-color, #273549);
+}
+
+body.dark-mode .chatbot__body {
+  background: var(--background-color, #111827);
+}
+
+body.dark-mode .chatbot__bubble {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text-color, #e2e8f0);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+body.dark-mode .chatbot__message--user .chatbot__bubble {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  color: #052e16;
+  border: none;
+}
+
+body.dark-mode .chatbot__input {
+  background: var(--card-color, #1f2937);
+  border-top: 1px solid var(--border-color, #273549);
+}
+
+body.dark-mode .chatbot__input-field {
+  background: rgba(15, 23, 42, 0.8);
+  color: var(--text-color, #e2e8f0);
+  border: 1px solid var(--border-color, #273549);
+}
+
+body.dark-mode .chatbot__input-field::placeholder {
+  color: var(--muted-text-color, #94a3b8);
+}
+
+body.dark-mode .chatbot__send-btn {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #041b0f;
+}
+
+body.dark-mode .chatbot__toggle {
+  background-color: #22c55e;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+}
