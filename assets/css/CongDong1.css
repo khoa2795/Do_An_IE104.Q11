@@ -489,3 +489,69 @@ body.dark-mode .pager .is-active {
   color: #2f855a;
 }
 
+
+
+
+/* ====== CẬP NHẬT PHÂN TRANG ====== */
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 20px 24px 16px;
+  flex-wrap: wrap;
+}
+
+.page-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.pager .page {
+  min-width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  border: 1px solid #d0d7de;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  transition: all 0.2s ease;
+}
+
+.pager .page:hover:not(.is-active):not(:disabled) {
+  border-color: #1f883d;
+  background: #f0f8f4;
+}
+
+.pager .is-active {
+  background: #1f883d;
+  color: #fff;
+  border-color: #1f883d;
+  cursor: default;
+}
+
+.pager .page:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pager .dots {
+  padding: 0 4px;
+  color: #57606a;
+}
+
+/* No posts message */
+.no-posts {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+  font-size: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
