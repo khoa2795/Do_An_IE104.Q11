@@ -4,8 +4,28 @@
     return currentUser !== null;
   }
 
+  function markProtectedContent() {
+    const blocks = document.querySelectorAll(".main-content");
+    blocks.forEach((block) => block.classList.add("auth-verified"));
+  }
+
+  function removeLoginOverlay() {
+    const overlay = document.getElementById("auth-overlay");
+    if (overlay) {
+      overlay.remove();
+    }
+    const style = document.getElementById("auth-overlay-style");
+    if (style) {
+      style.remove();
+    }
+  }
+
   // ===== HIỂN THỊ THÔNG BÁO YÊU CẦU ĐĂNG NHẬP =====
   function showLoginRequired() {
+    if (document.getElementById("auth-overlay")) {
+      return;
+    }
+
     const overlay = document.createElement("div");
     overlay.id = "auth-overlay";
     overlay.innerHTML = `
@@ -18,6 +38,7 @@
     `;
 
     const style = document.createElement("style");
+    style.id = "auth-overlay-style";
     style.textContent = `
       #auth-overlay {
         position: fixed;
@@ -104,13 +125,15 @@
     attachLoginEvent();
   }
 
-  // Khoi Tao kiem tra 
+  // Khoi Tao kiem tra
   function init() {
     const isLoggedIn = checkAuthentication();
 
     if (!isLoggedIn) {
       showLoginRequired();
     } else {
+      removeLoginOverlay();
+      markProtectedContent();
     }
   }
 
@@ -123,10 +146,25 @@
     }
   }
 
-  // Lắng nghe sự kiện đăng nhập
+  function handleAuthStateChange(status) {
+    if (status === "logged-in") {
+      removeLoginOverlay();
+      markProtectedContent();
+    }
+    if (status === "logged-out") {
+      showLoginRequired();
+    }
+  }
+
+  document.addEventListener("auth:state-changed", (event) => {
+    if (!event || !event.detail) return;
+    handleAuthStateChange(event.detail.status);
+  });
+
+  // Lắng nghe sự kiện đăng nhập từ tab khác
   window.addEventListener("storage", (e) => {
-    if (e.key === "currentUser" && e.newValue) {
-      location.reload();
+    if (e.key === "currentUser") {
+      handleAuthStateChange(e.newValue ? "logged-in" : "logged-out");
     }
   });
 

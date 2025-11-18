@@ -1,4 +1,56 @@
 (function () {
+  function getCustomCaloriesProfiles() {
+    try {
+      const stored = localStorage.getItem("customCaloriesProfiles");
+      return stored ? JSON.parse(stored) : [];
+    } catch (error) {
+      console.warn("Không thể đọc customCaloriesProfiles", error);
+      return [];
+    }
+  }
+
+  function mergeCaloriesProfiles(seedProfiles, customProfiles) {
+    const base = Array.isArray(seedProfiles) ? [...seedProfiles] : [];
+    if (!Array.isArray(customProfiles) || customProfiles.length === 0) {
+      return base;
+    }
+
+    customProfiles.forEach((profile) => {
+      if (!profile) return;
+      const idx = base.findIndex((item) => {
+        if (!item) return false;
+        if (profile.userId && item.userId === profile.userId) return true;
+        if (
+          profile.username &&
+          item.username &&
+          profile.username.toLowerCase() === item.username.toLowerCase()
+        ) {
+          return true;
+        }
+        return false;
+      });
+
+      if (idx >= 0) {
+        base[idx] = {
+          ...base[idx],
+          ...profile,
+          userInfo: {
+            ...(base[idx].userInfo || {}),
+            ...(profile.userInfo || {}),
+          },
+          dailyTarget: {
+            ...(base[idx].dailyTarget || {}),
+            ...(profile.dailyTarget || {}),
+          },
+        };
+      } else {
+        base.push(profile);
+      }
+    });
+
+    return base;
+  }
+
   // ===== HÀM LẤY THÔNG TIN USER HIỆN TẠI =====
   function getCurrentUser() {
     const userSession = sessionStorage.getItem("currentUser");
@@ -28,7 +80,9 @@
         });
       }
 
-      const allCaloriesData = await loader;
+      const seedData = (await loader) || [];
+      const customProfiles = getCustomCaloriesProfiles();
+      const allCaloriesData = mergeCaloriesProfiles(seedData, customProfiles);
       const userData = allCaloriesData.find((data) => data.userId === userId);
 
       if (!userData) {
@@ -377,6 +431,11 @@
 
     const caloriesData = await fetchCaloriesData(currentUser.id);
 
+    if (!caloriesData) {
+      console.warn("⚠️ Không có dữ liệu calories cho người dùng hiện tại");
+      return;
+    }
+
     // Lưu data vào window
     window.currentCaloriesData = caloriesData;
 
@@ -438,6 +497,12 @@
   } else {
     init();
   }
+
+  document.addEventListener("auth:state-changed", (event) => {
+    if (event && event.detail && event.detail.status === "logged-in") {
+      init();
+    }
+  });
 
   // EXPORT FUNCTIONS
   window.CaloriesDataLoader = {
