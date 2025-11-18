@@ -34,7 +34,7 @@ html, body {
   overflow-x: hidden;
 }
 /* Prevent content jump during initial load */
-.main-content {
+body > .container > .main-content {
     opacity: 0;
     animation: fadeInContent 0.3s ease-in 0.1s forwards;
 }
