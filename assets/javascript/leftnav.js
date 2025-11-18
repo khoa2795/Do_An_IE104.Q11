@@ -16,6 +16,7 @@
         pinSidebarIfNeeded(placeholder);
       });
       setActiveTab(placeholder);
+      ensureLoginStyles();
       loadLoginScript();
       document.dispatchEvent(new CustomEvent("leftnav:loaded"));
       return;
@@ -36,6 +37,7 @@
         });
 
         setActiveTab(placeholder);
+        ensureLoginStyles();
         loadLoginScript();
 
         // Dispatch event
@@ -43,6 +45,7 @@
       })
       .catch(function (err) {
         console.error("Load leftnav failed:", err);
+        ensureLoginStyles();
         placeholder.classList.add("loaded"); // Show anyway
       });
   }
@@ -179,6 +182,18 @@
     } catch (e) {
       console.error("Error setting active tab:", e);
     }
+  }
+
+  function ensureLoginStyles() {
+    if (document.querySelector('link[data-login-styles="true"]')) {
+      return;
+    }
+
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "/assets/css/login.css";
+    link.dataset.loginStyles = "true";
+    document.head.appendChild(link);
   }
 
   function loadLoginScript() {
