@@ -323,3 +323,110 @@
 .search__results::-webkit-scrollbar-thumb:hover {
   background: #a0a0a0;
 }
+
+/* =====================
+   DARK MODE OVERRIDES
+   ===================== */
+body.dark-mode .header {
+  background: var(--surface-color);
+  box-shadow: 0 1px 12px var(--shadow-color);
+}
+
+body.dark-mode .header__logo-section {
+  background: var(--card-color);
+  border: 1px solid var(--border-color);
+}
+
+body.dark-mode .page-title {
+  color: var(--primary-color);
+}
+
+body.dark-mode .search__input {
+  background: var(--card-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+body.dark-mode .search__input::placeholder {
+  color: var(--muted-text-color);
+}
+
+body.dark-mode .search__button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .header__button {
+  background: var(--card-color);
+  border: 1px solid var(--border-color);
+}
+
+body.dark-mode .header__button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .header__button--darkmode {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.2);
+}
+
+body.dark-mode .header__icon,
+body.dark-mode .search__icon {
+  filter: invert(1) brightness(1.1);
+}
+
+body.dark-mode .search__results {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 24px var(--shadow-color);
+}
+
+body.dark-mode .search__results-header {
+  background: var(--card-color);
+  color: var(--muted-text-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+body.dark-mode .search__result-item {
+  border-bottom: 1px solid var(--border-color);
+}
+
+body.dark-mode .search__result-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .search__result-title {
+  color: var(--text-color);
+}
+
+body.dark-mode .search__result-title mark {
+  background: rgba(74, 222, 128, 0.2);
+  color: var(--text-color);
+}
+
+body.dark-mode .search__result-meta {
+  color: var(--muted-text-color);
+}
+
+body.dark-mode .search__result-category {
+  color: var(--primary-color);
+}
+
+body.dark-mode .search__result-date {
+  color: var(--muted-text-color);
+}
+
+body.dark-mode .search__no-results {
+  color: var(--muted-text-color);
+}
+
+body.dark-mode .search__results::-webkit-scrollbar-track {
+  background: var(--card-color);
+}
+
+body.dark-mode .search__results::-webkit-scrollbar-thumb {
+  background: #3b4254;
+}
+
+body.dark-mode .search__results::-webkit-scrollbar-thumb:hover {
+  background: #4b5468;
+}

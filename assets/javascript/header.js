@@ -1,5 +1,9 @@
 (function () {
   var HEADER_CACHE_KEY = "header-component-v2";
+  var THEME_STORAGE_KEY = "preferred-theme";
+
+  applySavedTheme();
+
   var placeholder = document.getElementById("header-placeholder");
   if (!placeholder) return;
 
@@ -50,6 +54,8 @@
     if (searchInput && searchResults) {
       initSearchFunction(searchInput, searchResults, searchBtn);
     }
+
+    setupDarkModeToggle();
   }
 
   // search function
@@ -297,5 +303,67 @@
       div.textContent = text;
       return div.innerHTML;
     }
+  }
+
+  function setupDarkModeToggle() {
+    var toggleBtn = document.querySelector(
+      "#header-placeholder .header__button--darkmode"
+    );
+
+    if (!toggleBtn) return;
+
+    syncDarkModeButton(toggleBtn);
+
+    toggleBtn.addEventListener("click", function () {
+      var enableDark = !document.body.classList.contains("dark-mode");
+      setDarkMode(enableDark);
+      syncDarkModeButton(toggleBtn);
+    });
+  }
+
+  function syncDarkModeButton(button) {
+    var isDark = document.body.classList.contains("dark-mode");
+    button.setAttribute("aria-pressed", isDark);
+    button.title = isDark ? "Tắt chế độ tối" : "Bật chế độ tối";
+  }
+
+  function setDarkMode(enable) {
+    toggleThemeClass(enable);
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, enable ? "dark" : "light");
+    } catch (e) {
+      console.warn("Không thể lưu trạng thái dark mode:", e);
+    }
+
+    document.dispatchEvent(
+      new CustomEvent("theme:changed", {
+        detail: { mode: enable ? "dark" : "light" },
+      })
+    );
+  }
+
+  function toggleThemeClass(enable) {
+    var method = enable ? "add" : "remove";
+    document.documentElement.classList[method]("dark-mode");
+    if (document.body) {
+      document.body.classList[method]("dark-mode");
+    }
+  }
+
+  function applySavedTheme() {
+    var savedTheme = null;
+    try {
+      savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    } catch (e) {
+      console.warn("Không thể đọc trạng thái dark mode:", e);
+    }
+
+    var prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    var enableDark = savedTheme ? savedTheme === "dark" : prefersDark;
+
+    toggleThemeClass(enableDark);
   }
 })();

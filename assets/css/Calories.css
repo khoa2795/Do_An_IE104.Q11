@@ -178,14 +178,16 @@ body {
     width: 220px;
     height: 220px;
     border-radius: 50%;
-    background: conic-gradient(#2f8f46 67%, #e5e5e5 0);
+    background: conic-gradient(var(--primary-color, #22c55e) 67%, rgba(0,0,0,0.12) 0);
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
 .calories__circle-inner {
-    background: #fff;
+    background: var(--surface-color, #fff);
+    border: 2px solid var(--border-color, #e5e7eb);
     width: 165px;
     height: 165px;
     border-radius: 50%;
@@ -575,6 +577,22 @@ body.page-calories[data-critical="pending"] .calories__info-box {
     box-shadow: 0 4px 8px rgba(47, 143, 70, 0.3);
 }
 
+body.dark-mode .calories__meal-btn {
+    background-color: rgba(74, 222, 128, 0.18);
+    color: var(--primary-color, #4ade80);
+    box-shadow: 0 4px 10px var(--shadow-color, rgba(0,0,0,0.45));
+}
+
+body.dark-mode .calories__meal-btn:hover {
+    background-color: rgba(74, 222, 128, 0.32);
+}
+
+body.dark-mode .calories__meal-btn--active {
+    background-color: var(--primary-color, #4ade80);
+    color: #0f172a;
+    box-shadow: 0 6px 14px var(--shadow-color, rgba(0,0,0,0.45));
+}
+
 /* Diet */
 .calories__diet {
     text-align: center;
@@ -697,18 +715,20 @@ body.page-calories[data-critical="pending"] .calories__info-box {
     height: 200px;
     border-radius: 50%;
     margin: 0 auto 35px;
-    background: conic-gradient(#e0e0e0 0%, #e0e0e0 100%);
+    background: conic-gradient(var(--primary-color, #22c55e) 55%, rgba(0,0,0,0.12) 0);
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 4px solid #f9faf9;
+    border: 4px solid var(--surface-color, #f9faf9);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
 .calories__stats-circle-inner {
     width: 135px;
     height: 135px;
     border-radius: 50%;
-    background: #fff;
+    background: var(--surface-color, #fff);
+    border: 2px solid var(--border-color, #e5e7eb);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -749,6 +769,8 @@ body.page-calories[data-critical="pending"] .calories__info-box {
     width: 28px;
     background: linear-gradient(to top, #2f8f46, #a8d3a9);
     border-radius: 8px 8px 0 0;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     transition: height 0.3s ease;
 }
 
@@ -1449,6 +1471,281 @@ body.page-calories[data-critical="pending"] .calories__info-box {
 
 .far.fa-heart:hover {
     color: #e55b4d;
+}
+
+/* ===== DARK MODE ===== */
+body.dark-mode .main-content {
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+body.dark-mode .calories__section-title,
+body.dark-mode .calories__nutrient-label,
+body.dark-mode .calories__nutrient p {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__user-info,
+body.dark-mode .calories__overview,
+body.dark-mode .calories__food-section,
+body.dark-mode .calories__guide,
+body.dark-mode .calories__meals,
+body.dark-mode .calories__follow,
+body.dark-mode .calories__dashboard,
+body.dark-mode .calories__daily-log,
+body.dark-mode .calories__meal,
+body.dark-mode .calories__tip,
+body.dark-mode .calories__food-card,
+body.dark-mode .calories__nutrient {
+    background: var(--card-color, #1f2937);
+    color: var(--text-color, #e2e8f0);
+    border-color: var(--border-color, #1f2937);
+    box-shadow: 0 6px 20px var(--shadow-color, rgba(0,0,0,0.45));
+}
+
+body.dark-mode .calories__section-title,
+body.dark-mode .calories__info-value,
+body.dark-mode .calories__info-col p,
+body.dark-mode .calories__intensity-desc {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__intensity-box {
+    background: var(--surface-color, #111827);
+    border-color: var(--border-color, #1f2937);
+    box-shadow: 0 8px 24px var(--shadow-color, rgba(0,0,0,0.5));
+}
+
+body.dark-mode .calories__nutrient-progress,
+body.dark-mode .calories__meal-info {
+    color: var(--muted-text-color, #cbd5e1);
+}
+
+body.dark-mode .calories__dashboard-title,
+body.dark-mode .calories__tip-title {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__nutrient-progress {
+    background-color: #0f172a;
+}
+
+body.dark-mode .calories__follow-calendar,
+body.dark-mode .calories__info-box,
+body.dark-mode .calories__card,
+body.dark-mode .calories__calendar-table,
+body.dark-mode .calories__stats,
+body.dark-mode .calories__nutrition,
+body.dark-mode .calories__week,
+body.dark-mode .calories__calendar-icon {
+    background: var(--card-color, #1f2937);
+    color: var(--text-color, #e2e8f0);
+    border-color: var(--border-color, #1f2937);
+    box-shadow: 0 6px 16px var(--shadow-color, rgba(0,0,0,0.45));
+}
+
+body.dark-mode .calories__info-box--summary p,
+body.dark-mode .calories__info-box--stats p,
+body.dark-mode .calories__calendar-table th,
+body.dark-mode .calories__calendar-table td {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__calendar-arrow i {
+    color: var(--primary-color, #4ade80);
+}
+
+body.dark-mode .calories__week-day {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__week-day--active {
+    color: var(--primary-color, #4ade80);
+}
+
+body.dark-mode .calories__week-arrows span {
+    color: var(--primary-color, #4ade80);
+}
+
+body.dark-mode .calories__week-title,
+body.dark-mode .calories__week-row {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__week-month,
+body.dark-mode .calories__week-label,
+body.dark-mode .calories__week-days span {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__meal-foods {
+    background: var(--card-color, #1f2937);
+    border-color: var(--border-color, #1f2937);
+    box-shadow: 0 6px 16px var(--shadow-color, rgba(0,0,0,0.45));
+}
+
+body.dark-mode .calories__meal-food-item {
+    background: var(--surface-color, #111827);
+    border: 1px solid var(--border-color, #1f2937);
+}
+
+body.dark-mode .calories__meal-food-name {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__meal-food-details {
+    color: var(--muted-text-color, #cbd5e1);
+}
+
+body.dark-mode .calories__meal-food-calories {
+    color: var(--primary-color, #4ade80);
+}
+
+body.dark-mode .calories__remove-food-btn {
+    background: #ef4444;
+    color: #0f172a;
+}
+
+body.dark-mode .calories__calendar-table td.calories__day--active {
+    color: #0f172a;
+    font-weight: 700;
+}
+
+body.dark-mode .calories__calendar-table td.dot-green {
+    background: rgba(74, 222, 128, 0.18);
+    color: var(--text-color, #e2e8f0);
+    border: 1px solid var(--primary-color, #4ade80);
+    box-shadow: 0 2px 8px var(--shadow-color, rgba(0,0,0,0.45));
+}
+
+body.dark-mode .calories__card--suggest {
+    background: rgba(34, 197, 94, 0.08);
+}
+
+body.dark-mode .calories__card--goal {
+    background: rgba(245, 179, 1, 0.12);
+}
+
+body.dark-mode .calories__card--warning {
+    background: rgba(229, 91, 77, 0.12);
+}
+
+body.dark-mode .calories__stats-circle,
+body.dark-mode .calories__circle-inner {
+    background: var(--card-color, #1f2937);
+    border-color: var(--border-color, #1f2937);
+}
+
+body.dark-mode .calories__circle {
+    background: conic-gradient(var(--primary-color, #22c55e) 67%, rgba(255,255,255,0.12) 0);
+}
+
+body.dark-mode .calories__stats-circle {
+    background: conic-gradient(var(--primary-color, #22c55e) 55%, rgba(255,255,255,0.12) 0);
+    border-color: var(--border-color, #1f2937);
+}
+
+body.dark-mode .calories__stats-bar-fill {
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 2px 8px var(--shadow-color, rgba(0,0,0,0.45));
+}
+
+body.dark-mode .calories__circle-inner p,
+body.dark-mode .calories__circle-inner span,
+body.dark-mode .calories__stats-circle-inner p,
+body.dark-mode .calories__stats-circle-inner span,
+body.dark-mode .calories__nutrition h3,
+body.dark-mode .calories__follow-title h2,
+body.dark-mode .calories__stats h3 {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__stats-bar span,
+body.dark-mode .calories__stats-circle-inner span {
+    color: var(--text-color, #e2e8f0);
+}
+
+/* Food section controls */
+body.dark-mode .calories__food-section {
+    background: var(--card-color, #1f2937);
+    border-color: var(--border-color, #1f2937);
+    box-shadow: 0 6px 16px var(--shadow-color, rgba(0,0,0,0.45));
+}
+
+body.dark-mode .calories__search-bar {
+    background: var(--surface-color, #111827);
+    border: 1px solid var(--border-color, #1f2937);
+}
+
+body.dark-mode .calories__search-bar input {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__search-bar input::placeholder {
+    color: var(--muted-text-color, #cbd5e1);
+}
+
+body.dark-mode .calories__search-bar i {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__food-tools i {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__food-column {
+    border-color: var(--border-color, #1f2937);
+}
+
+body.dark-mode .calories__food-column h3 {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__food-info p,
+body.dark-mode .calories__food-info span {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__food-column li {
+    color: var(--text-color, #e2e8f0);
+}
+
+/* Dark mode for add controls */
+body.dark-mode .calories__meal {
+    background: transparent;
+    border-radius: 12px;
+    padding: 0;
+}
+
+body.dark-mode .calories__meal-btn {
+    background-color: rgba(74, 222, 128, 0.22);
+    color: var(--primary-color, #4ade80);
+    box-shadow: 0 4px 12px var(--shadow-color, rgba(0,0,0,0.45));
+    border: 1px solid rgba(74, 222, 128, 0.35);
+}
+
+body.dark-mode .calories__meal-btn:hover {
+    background-color: rgba(74, 222, 128, 0.32);
+}
+
+body.dark-mode .calories__add-btn {
+    background-color: rgba(74, 222, 128, 0.22);
+    color: var(--primary-color, #4ade80);
+    box-shadow: 0 3px 10px var(--shadow-color, rgba(0,0,0,0.45));
+}
+
+body.dark-mode .calories__add-btn:hover {
+    background-color: rgba(74, 222, 128, 0.32);
+}
+
+body.dark-mode .calories__add-food {
+    border: 1px dashed var(--border-color, #1f2937);
+    background: var(--surface-color, #111827);
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .calories__add-food:hover {
+    background: rgba(74, 222, 128, 0.12);
 }
 
 @media (max-width: 900px) {

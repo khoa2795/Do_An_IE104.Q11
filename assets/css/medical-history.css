@@ -115,25 +115,30 @@
     font-weight: 600;
 }
 
-/* Critical skeleton states */
-body.page-medical-history[data-critical="pending"] {
-    background: #f6faf6;
-    color: #142114;
+/* ===== DARK MODE ===== */
+body.dark-mode .history-card {
+    background-color: var(--card-color, #1f2937);
+    border: 1px solid var(--border-color, #1f2937);
+    box-shadow: 0 4px 12px var(--shadow-color, rgba(0,0,0,0.45));
+    color: var(--text-color, #e2e8f0);
 }
 
-body.page-medical-history[data-critical="pending"] .health-header,
-body.page-medical-history[data-critical="pending"] .health-grid-container {
-    min-height: 80px;
-    background: #e6f3e9;
+body.dark-mode .history-card-header {
+    border-bottom: 1px solid var(--border-color, #1f2937);
 }
 
-body.page-medical-history[data-critical="pending"] .history-card,
-body.page-medical-history[data-critical="pending"] .info-card,
-body.page-medical-history[data-critical="pending"] .tab,
-body.page-medical-history[data-critical="pending"] .no-data {
-    background: var(--skeleton-gradient, #e8f1e9);
-    background-size: 400% 100%;
-    animation: skeletonPulse 1.4s ease infinite;
-    border-radius: 12px;
-    color: transparent;
+body.dark-mode .history-card-header .card-title,
+body.dark-mode .history-item .item-header strong,
+body.dark-mode .history-item .item-field strong {
+    color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .history-item {
+    background-color: var(--surface-color, #111827);
+    border: 1px solid var(--border-color, #1f2937);
+}
+
+body.dark-mode .history-item .item-field,
+body.dark-mode .history-item .item-field span {
+    color: var(--muted-text-color, #cbd5e1);
 }

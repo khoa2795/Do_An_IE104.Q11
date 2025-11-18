@@ -98,6 +98,40 @@
         box-shadow: 0 5px 15px rgba(47, 143, 70, 0.3);
       }
 
+      body.dark-mode #auth-overlay {
+        background: radial-gradient(circle at 20% 20%, rgba(74, 222, 128, 0.06), transparent 30%),
+                    radial-gradient(circle at 80% 0%, rgba(34, 197, 94, 0.1), transparent 26%),
+                    linear-gradient(135deg, #0b1220 0%, #111827 100%);
+      }
+
+      body.dark-mode .auth-message {
+        background: var(--surface-color, #111827);
+        border: 1px solid var(--border-color, #1f2937);
+        box-shadow: 0 12px 32px var(--shadow-color, rgba(0,0,0,0.5));
+        color: var(--text-color, #e2e8f0);
+      }
+
+      body.dark-mode .auth-message h2 {
+        color: var(--text-color, #e2e8f0);
+      }
+
+      body.dark-mode .auth-message p {
+        color: var(--muted-text-color, #cbd5e1);
+      }
+
+      body.dark-mode .auth-message i {
+        color: var(--primary-color, #4ade80);
+      }
+
+      body.dark-mode .btn-open-login {
+        background: linear-gradient(135deg, var(--primary-color, #4ade80), #16a34a);
+        box-shadow: 0 5px 15px var(--shadow-color, rgba(0,0,0,0.45));
+      }
+
+      body.dark-mode .btn-open-login:hover {
+        box-shadow: 0 8px 20px var(--shadow-color, rgba(0,0,0,0.55));
+      }
+
       @media (max-width: 900px) {
         #auth-overlay {
           left: 0;

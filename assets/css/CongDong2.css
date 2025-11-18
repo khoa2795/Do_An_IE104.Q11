@@ -144,6 +144,44 @@ body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
+/* ===== DARK MODE ===== */
+body.dark-mode .page-1700x960 {
+  background: var(--background-color, #0f172a);
+  color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .ch-content,
+body.dark-mode .create-area {
+  background: var(--surface-color, #111827);
+}
+
+body.dark-mode .field-label {
+  color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .field-input,
+body.dark-mode .field-textarea {
+  background: var(--card-color, #1f2937);
+  border-color: var(--border-color, #1f2937);
+  color: var(--text-color, #e2e8f0);
+}
+
+body.dark-mode .create-card-footer {
+  border-top: 1px solid var(--border-color, #1f2937);
+}
+
+body.dark-mode .btn-cancel {
+  background: var(--card-color, #1f2937);
+  color: var(--muted-text-color, #cbd5e1);
+  border: 1px solid var(--border-color, #1f2937);
+}
+
+body.dark-mode .btn-submit {
+  background: var(--primary-color, #4ade80);
+  color: #0f172a;
+  box-shadow: 0 6px 16px var(--shadow-color, rgba(0,0,0,0.45));
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .main-content {
