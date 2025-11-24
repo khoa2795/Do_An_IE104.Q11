@@ -16,6 +16,10 @@
   font-family: "Segoe UI", sans-serif;
 }
 
+.chatbot.chatbot--visible {
+  display: flex;
+}
+
 /* Header Element */
 .chatbot__header {
   background: #dff3e6;
@@ -138,6 +142,10 @@
   cursor: grab;
   user-select: none;
   touch-action: none;
+}
+
+.chatbot__toggle.chatbot__toggle--hidden {
+  display: none !important;
 }
 
 .chatbot__toggle:hover {

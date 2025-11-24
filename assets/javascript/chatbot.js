@@ -44,26 +44,79 @@ function initChatbot() {
     return;
   }
 
-  const isChatVisible = () => chatBox.style.display === "flex";
+  if (chatBox.dataset.chatbotInitialized === "true") {
+    return;
+  }
+  chatBox.dataset.chatbotInitialized = "true";
 
-  //  SỰ KIỆN MỞ / ĐÓNG CHATBOT
-  chatToggle.addEventListener("click", () => {
-    const willShow = !isChatVisible();
-    if (willShow) {
-      chatBox.style.display = "flex";
-      // Force layout to ensure width/height available before positioning
-      void chatBox.offsetWidth;
-      positionChatBoxRelativeToToggle();
-    } else {
-      chatBox.style.display = "none";
+  const isChatVisible = () => chatBox.classList.contains("chatbot--visible");
+  let lastToggleRect = null;
+
+  chatToggle.setAttribute("role", "button");
+  chatToggle.setAttribute("tabindex", "0");
+  chatToggle.setAttribute("aria-controls", chatBox.id);
+
+  function cacheToggleRect() {
+    const rect = chatToggle.getBoundingClientRect();
+    if (rect.width || rect.height) {
+      lastToggleRect = rect;
+    }
+  }
+
+  function openChatbot() {
+    if (isChatVisible()) return;
+
+    cacheToggleRect();
+
+    chatBox.classList.add("chatbot--visible");
+    chatToggle.setAttribute("aria-expanded", "true");
+
+    chatBox.style.position = "fixed";
+    chatBox.style.right = "auto";
+    chatBox.style.bottom = "auto";
+
+    void chatBox.offsetWidth;
+    positionChatBoxRelativeToToggle();
+
+    chatToggle.classList.add("chatbot__toggle--hidden");
+  }
+
+  function closeChatbot() {
+    chatBox.classList.remove("chatbot--visible");
+    chatToggle.classList.remove("chatbot__toggle--hidden");
+    chatToggle.setAttribute("aria-expanded", "false");
+    window.requestAnimationFrame(cacheToggleRect);
+  }
+
+  cacheToggleRect();
+  closeChatbot();
+
+  chatToggle.addEventListener("click", openChatbot);
+  chatToggle.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openChatbot();
     }
   });
+  closeChat.setAttribute("role", "button");
+  closeChat.setAttribute("tabindex", "0");
+  closeChat.setAttribute("data-draggable-ignore", "true");
 
-  closeChat.addEventListener("click", () => {
-    chatBox.style.display =
-      chatBox.style.display === "flex" || chatBox.style.display === "block"
-        ? "none"
-        : "flex";
+  closeChat.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    closeChatbot();
+  });
+  closeChat.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      closeChatbot();
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && isChatVisible()) {
+      closeChatbot();
+    }
   });
 
   //  SỰ KIỆN GỬI TIN NHẮN
@@ -76,6 +129,7 @@ function initChatbot() {
   makeDraggable(chatToggle, {
     boundary: dragBoundary,
     onDrag: () => {
+      cacheToggleRect();
       if (isChatVisible()) {
         positionChatBoxRelativeToToggle();
       }
@@ -90,6 +144,7 @@ function initChatbot() {
   }
 
   window.addEventListener("resize", () => {
+    cacheToggleRect();
     if (isChatVisible()) {
       positionChatBoxRelativeToToggle();
     }
@@ -143,7 +198,10 @@ function initChatbot() {
   function positionChatBoxRelativeToToggle() {
     if (!chatToggle || !chatBox) return;
 
-    const toggleRect = chatToggle.getBoundingClientRect();
+    const toggleRect = lastToggleRect || chatToggle.getBoundingClientRect();
+    if (!toggleRect || (!toggleRect.width && !toggleRect.height)) {
+      return;
+    }
     const boxStyles = window.getComputedStyle(chatBox);
     const boxWidth = chatBox.offsetWidth || parseFloat(boxStyles.width) || 360;
     const boxHeight =
@@ -194,6 +252,9 @@ function initChatbot() {
     handle.style.userSelect = "none";
 
     handle.addEventListener("pointerdown", (event) => {
+      if (event.target.closest('[data-draggable-ignore="true"]')) {
+        return;
+      }
       const isPrimary = event.pointerType === "touch" || event.button === 0;
       if (!isPrimary) return;
 
@@ -207,6 +268,8 @@ function initChatbot() {
       element.style.position = "fixed";
       element.style.right = "auto";
       element.style.bottom = "auto";
+      element.style.left = `${rect.left}px`;
+      element.style.top = `${rect.top}px`;
 
       if (onDragStart) {
         onDragStart({ event, element });
