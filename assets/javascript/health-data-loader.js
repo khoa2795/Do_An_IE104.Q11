@@ -195,31 +195,50 @@
   }
 
   // ===== HÀM CẬP NHẬT GIAO DIỆN - THÔNG TIN CÁ NHÂN =====
+  function removeLoadingClass(element) {
+    if (element && element.classList) {
+      element.classList.remove("loading-placeholder");
+    }
+  }
+
+  function safeText(value, fallback = "--") {
+    if (value === null || value === undefined || value === "") {
+      return fallback;
+    }
+    return value;
+  }
+
   function updatePersonalInfo(data) {
-    const { personalInfo, fullname, notes } = data;
+    if (!data) return;
+    const personalInfo = data.personalInfo || {};
+    const notes = data.notes || {};
+    const displayName = data.fullname || data.username || "Chưa cập nhật";
 
     // Cập nhật header
     const titleEl = document.querySelector(".header-left .title h2");
-    if (titleEl) titleEl.textContent = fullname;
+    if (titleEl) {
+      titleEl.textContent = displayName;
+      removeLoadingClass(titleEl);
+    }
 
     const headerRightEl = document.querySelector(".header-right");
     if (headerRightEl) {
       const bmi = calculateBMI(personalInfo.weight, personalInfo.height);
       headerRightEl.innerHTML = `
-        <p>Tuổi: <b>${
+        <p>Tuổi: <b>${safeText(
           personalInfo.age
-        }</b> &nbsp; Giới tính: <b class="highlight">${
+        )}</b> &nbsp; Giới tính: <b class="highlight">${safeText(
         personalInfo.gender
-      }</b> &nbsp; Chỉ số BMI: <b class="highlight">${bmi || "N/A"}</b></p>
-        <p>Chế độ ăn uống: <b class="highlight">${
+      )}</b> &nbsp; Chỉ số BMI: <b class="highlight">${bmi || "N/A"}</b></p>
+        <p>Chế độ ăn uống: <b class="highlight">${safeText(
           personalInfo.diet
-        }</b> &nbsp; Nhóm máu: <b class="highlight">${
+        )}</b> &nbsp; Nhóm máu: <b class="highlight">${safeText(
         personalInfo.bloodGroup
-      }</b></p>
+      )}</b></p>
       `;
     }
 
-    // Cập nhật các chỉ số sức khỏe
+    // Cập nhật các chỉ số sức khỏe - chỉ những phần tử tồn tại
     const updates = {
       "display-height": personalInfo.height,
       "display-weight": personalInfo.weight,
@@ -238,7 +257,11 @@
 
     Object.entries(updates).forEach(([id, value]) => {
       const el = document.getElementById(id);
-      if (el && value) el.textContent = value;
+      if (!el) return;
+      if (value !== undefined && value !== null && value !== "") {
+        el.textContent = value;
+      }
+      removeLoadingClass(el);
     });
 
     // Cập nhật phần "Lưu ý"
@@ -247,14 +270,20 @@
 
   // ===== HÀM CẬP NHẬT PHẦN LƯU Ý =====
   function updateNotes(notes) {
+    const safeNotes = notes || {};
     const notesData = [
-      { title: "Dị ứng thuốc", value: notes.drugAllergy },
-      { title: "Thói quen sống", value: `Giấc ngủ: ${notes.sleepHours}` },
-      { title: "Mục tiêu", value: notes.goal },
-      { title: "Chế độ dinh dưỡng", value: notes.nutrition },
-      { title: "Tình trạng tâm lý", value: notes.mentalHealth },
-      { title: "Bệnh di truyền", value: notes.geneticDiseases },
-      { title: "Đang điều trị bệnh lý", value: notes.currentTreatment },
+      { title: "Dị ứng thuốc", value: safeNotes.drugAllergy },
+      {
+        title: "Thói quen sống",
+        value: safeNotes.sleepHours
+          ? `Giấc ngủ: ${safeNotes.sleepHours}`
+          : undefined,
+      },
+      { title: "Mục tiêu", value: safeNotes.goal },
+      { title: "Chế độ dinh dưỡng", value: safeNotes.nutrition },
+      { title: "Tình trạng tâm lý", value: safeNotes.mentalHealth },
+      { title: "Bệnh di truyền", value: safeNotes.geneticDiseases },
+      { title: "Đang điều trị bệnh lý", value: safeNotes.currentTreatment },
     ];
 
     const notesColumn = document.querySelector(".notes-column");
@@ -264,11 +293,49 @@
       ".info-card:not(.info-card-add)"
     );
     notesData.forEach((note, index) => {
-      if (infoCards[index]) {
-        const titleEl = infoCards[index].querySelector(".info-card-title");
-        const contentEl = infoCards[index].querySelector(".info-card-content");
-        if (titleEl) titleEl.textContent = note.title;
-        if (contentEl) contentEl.textContent = note.value;
+      if (!infoCards[index]) return;
+      const titleEl = infoCards[index].querySelector(".info-card-title");
+      const contentEl = infoCards[index].querySelector(".info-card-content");
+      if (titleEl) {
+        titleEl.textContent = note.title;
+        removeLoadingClass(titleEl);
+      }
+      if (contentEl) {
+        contentEl.textContent = safeText(note.value);
+        removeLoadingClass(contentEl);
+      }
+    });
+  }
+
+  function populateEditForm(data) {
+    if (!data) return;
+    const personalInfo = data.personalInfo || {};
+
+    let localOverrides = {};
+    try {
+      localOverrides = {
+        height: localStorage.getItem("health_height"),
+        weight: localStorage.getItem("health_weight"),
+        bloodPressure: localStorage.getItem("health_bp"),
+        heartRate: localStorage.getItem("health_heart"),
+        glucose: localStorage.getItem("health_glucose"),
+      };
+    } catch (storageError) {
+      localOverrides = {};
+    }
+
+    const inputMap = {
+      "input-height": localOverrides.height || personalInfo.height,
+      "input-weight": localOverrides.weight || personalInfo.weight,
+      "input-bp": localOverrides.bloodPressure || personalInfo.bloodPressure,
+      "input-heart": localOverrides.heartRate || personalInfo.heartRate,
+      "input-glucose": localOverrides.glucose || personalInfo.glucose,
+    };
+
+    Object.entries(inputMap).forEach(([id, value]) => {
+      const inputEl = document.getElementById(id);
+      if (inputEl && value !== undefined && value !== null) {
+        inputEl.value = value;
       }
     });
   }
@@ -434,14 +501,23 @@
     }
 
     // Cập nhật giao diện dựa vào trang hiện tại
-    const currentPage = window.location.pathname.split("/").pop();
+    const body = document.body;
+    if (!body) return;
 
-    if (currentPage === "suc-khoe.html" || currentPage === "Health.html") {
+    const classList = body.classList;
+    const isHealthView = classList.contains("page-health");
+    const isHealthEdit = classList.contains("page-health-edit");
+    const isMedicalHistory = classList.contains("page-medical-history");
+
+    if (isHealthView || isHealthEdit || isMedicalHistory) {
       updatePersonalInfo(healthData);
     }
 
-    if (currentPage === "tien-su-benh.html") {
-      updatePersonalInfo(healthData); // Vẫn cần update header
+    if (isHealthEdit) {
+      populateEditForm(healthData);
+    }
+
+    if (isMedicalHistory) {
       updateMedicalHistory(healthData.medicalHistory);
     }
   }
@@ -464,5 +540,6 @@
     fetchHealthData,
     getCurrentUser,
     calculateBMI,
+    populateEditForm,
   };
 })();

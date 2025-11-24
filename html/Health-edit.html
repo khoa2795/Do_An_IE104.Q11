@@ -34,6 +34,11 @@
         .main-content.auth-verified {
             display: block;
         }
+
+        .loading-placeholder {
+            color: #999;
+            font-style: italic;
+        }
     </style>
 </head>
 
@@ -69,16 +74,14 @@
                         <div class="header-left">
                             <img src="/assets/images/Health/avatar.png" alt="Avatar" class="avatar">
                             <div class="title">
-                                <h2>Thiết kế giao diện</h2>
+                                <h2 class="loading-placeholder">Đang tải...</h2>
                             </div>
                         </div>
                     </div>
 
                     <div class="right-box">
                         <div class="header-right">
-                            <p>Tuổi: <b>18</b> &nbsp; Giới tính: <b class="highlight">Nữ</b></p>
-                            <p>Chế độ ăn uống: <b class="highlight">Cân bằng</b> &nbsp; Nhóm máu: <b class="highlight">O</b>
-                            </p>
+                            <p class="loading-placeholder">Đang tải thông tin...</p>
                         </div>
                     </div>
                 </div>
@@ -166,31 +169,31 @@
                             <h3 class="col-title">Lưu ý</h3>
                             <div class="info-card">
                                 <span class="info-card-title">Dị ứng thuốc</span>
-                                <span class="info-card-content">Không</span>
+                                <span class="info-card-content loading-placeholder">--</span>
                             </div>
                             <div class="info-card">
                                 <span class="info-card-title">Thói quen sống</span>
-                                <span class="info-card-content">Giấc ngủ: 7.5h</span>
+                                <span class="info-card-content loading-placeholder">--</span>
                             </div>
                             <div class="info-card">
                                 <span class="info-card-title">Mục tiêu</span>
-                                <span class="info-card-content">Tăng 5 cân</span>
+                                <span class="info-card-content loading-placeholder">--</span>
                             </div>
                             <div class="info-card">
                                 <span class="info-card-title">Chế độ dinh dưỡng</span>
-                                <span class="info-card-content">Dành cho người...</span>
+                                <span class="info-card-content loading-placeholder">--</span>
                             </div>
                             <div class="info-card">
                                 <span class="info-card-title">Tình trạng tâm lý</span>
-                                <span class="info-card-content">Stress, trầm cảm</span>
+                                <span class="info-card-content loading-placeholder">--</span>
                             </div>
                             <div class="info-card">
                                 <span class="info-card-title">Bệnh di truyền</span>
-                                <span class="info-card-content">Không</span>
+                                <span class="info-card-content loading-placeholder">--</span>
                             </div>
                             <div class="info-card">
                                 <span class="info-card-title">Đang điều trị bệnh lý</span>
-                                <span class="info-card-content">Không</span>
+                                <span class="info-card-content loading-placeholder">--</span>
                             </div>
                             <div class="info-card info-card-add">
                                 <span>+</span>
@@ -243,6 +246,7 @@
     <script src="/assets/javascript/leftnav.js"></script>
     <script src="/assets/javascript/footer.js"></script>
     <script src="/assets/javascript/script.js"></script>
+    <script src="/assets/javascript/health-data-loader.js"></script>
     <script src="/assets/javascript/Health.js"></script>
 </body>
 
