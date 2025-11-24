@@ -149,32 +149,27 @@
   function setActiveTab(placeholder) {
     try {
       var items = placeholder.querySelectorAll(".leftnav__link");
-      var currentPage =
-        document.location.pathname.split("/").pop() || "Mainpage.html";
+      var currentPage = normalizeCurrentPage();
 
       items.forEach(function (a) {
         a.classList.remove("leftnav__link--active");
 
-        var linkHref = a.getAttribute("href");
+        var linkHref = normalizeLinkTarget(a.getAttribute("href"));
+
+        if (!linkHref) {
+          return;
+        }
 
         if (linkHref === currentPage) {
           a.classList.add("leftnav__link--active");
         } else if (
-          (currentPage.includes("news") ||
-            currentPage === "news-detail.html") &&
+          currentPage.indexOf("news") === 0 &&
           linkHref === "news.html"
         ) {
           a.classList.add("leftnav__link--active");
         } else if (
-          currentPage === "Calories.html" &&
-          linkHref === "Calories.html"
-        ) {
-          a.classList.add("leftnav__link--active");
-        } else if (
-          (currentPage.includes("CongDong") ||
-            currentPage === "CongDong1.html" ||
-            currentPage === "CongDong2.html") &&
-          linkHref === "CongDong1.html"
+          currentPage.indexOf("congdong") === 0 &&
+          linkHref === "congdong1.html"
         ) {
           a.classList.add("leftnav__link--active");
         }
@@ -182,6 +177,36 @@
     } catch (e) {
       console.error("Error setting active tab:", e);
     }
+  }
+
+  function normalizeCurrentPage() {
+    var path = document.location.pathname || "";
+    var cleanPath = path.split(/[?#]/)[0].toLowerCase();
+    var segments = cleanPath.split("/").filter(Boolean);
+    var page = segments.pop() || "mainpage.html";
+
+    if (page.indexOf(".") === -1) {
+      page += ".html";
+    }
+
+    return page;
+  }
+
+  function normalizeLinkTarget(href) {
+    if (!href) return "";
+
+    var cleanHref = href.split(/[?#]/)[0].trim().toLowerCase();
+    if (!cleanHref) return "";
+
+    var segments = cleanHref.split("/").filter(Boolean);
+    var target = segments.pop() || "";
+
+    if (!target) return "";
+    if (target.indexOf(".") === -1) {
+      target += ".html";
+    }
+
+    return target;
   }
 
   function ensureLoginStyles() {
