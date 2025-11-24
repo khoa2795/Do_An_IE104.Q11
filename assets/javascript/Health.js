@@ -2,6 +2,16 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tabs = document.querySelectorAll(".tab");
 
+  function navigateToPage(pageName) {
+    if (!pageName) return;
+    try {
+      const targetUrl = new URL(pageName, window.location.href);
+      window.location.href = targetUrl.href;
+    } catch (navigationError) {
+      window.location.href = pageName;
+    }
+  }
+
   tabs.forEach((tab) => {
     tab.addEventListener("click", (event) => {
       event.preventDefault(); // Ngăn hành vi mặc định
@@ -9,10 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (targetTab === "info") {
         // Khi nhấn tab "Thông tin sức khỏe", luôn đi đến trang hiển thị
-        window.location.href = "Health.html";
+        navigateToPage("Health.html");
       } else if (targetTab === "disease") {
         // Khi nhấn tab "Tiền sử bệnh", luôn đi đến trang bệnh án
-        window.location.href = "tien-su-benh.html";
+        navigateToPage("tien-su-benh.html");
       }
     });
   });
@@ -54,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (glucose) localStorage.setItem("health_glucose", glucose);
 
       // Luôn chuyển hướng về trang SỨC KHỎE (hiển thị) sau khi lưu
-      window.location.href = "Health.html";
+      navigateToPage("Health.html");
     });
   }
 
@@ -64,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (changeButton) {
     changeButton.addEventListener("click", (event) => {
       event.preventDefault();
-      window.location.href = "Health-edit.html"; // Chuyển đến trang chỉnh sửa
+      navigateToPage("Health-edit.html"); // Chuyển đến trang chỉnh sửa
     });
   }
 
