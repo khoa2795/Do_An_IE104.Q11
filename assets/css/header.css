@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.header{
+.header {
   position: fixed;
   top: 0;
   left: 0;
@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: space-between;
   z-index: 1000; /* đảm bảo nằm trên nội dung */
-  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
   padding: 0 20px;
   background: #d9f2df;
   box-sizing: border-box;
@@ -29,7 +29,7 @@
 }
 
 /* Logo: giới hạn bằng chiều cao header, giữ tỉ lệ */
-.logoheath{
+.logoheath {
   max-height: calc(var(--header-height) - 20px);
   height: auto;
   width: auto;
@@ -132,7 +132,6 @@
   flex: 0 0 auto;
 }
 
-
 .header__search-section {
   flex: 1 1 320px;
   display: flex;
@@ -142,15 +141,22 @@
   min-width: 240px;
 }
 
-.page-title{
+.page-title {
+  /* Cho phép tiêu đề dài hiển thị đầy đủ thay vì ... */
   flex: 1 1 auto;
   font-family: Arial, sans-serif;
   color: darkgreen;
   font-size: 32px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 160px;
+
+  /* Thay đổi: cho phép xuống dòng, không ẩn bằng ellipsis */
+  white-space: normal; /* cho phép xuống dòng */
+  overflow: visible; /* hiển thị toàn bộ nội dung */
+  text-overflow: clip; /* bỏ ellipsis */
+  line-height: 1.1;
+  /* đảm bảo chiều ngang nhỏ vẫn hiển thị tốt */
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 /* Tinh chỉnh kích thước các control để phù hợp header cao hơn */
@@ -197,7 +203,7 @@
   height: 54px;
   padding: 8px 44px 8px 18px; /* chừa chỗ bên phải cho nút */
   border-radius: 24px;
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   background: #fff;
   font-size: 16px;
   outline: none;
@@ -221,7 +227,7 @@
   height: 44px;
   padding: 6px;
   border-radius: 50%;
-  border: 1px solid rgba(0,0,0,0.12);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   background: #ffffff;
   display: inline-flex;
   align-items: center;
@@ -363,7 +369,7 @@
 }
 
 .search__result-category {
-  color: #4CAF50;
+  color: #4caf50;
   font-weight: 500;
 }
 
