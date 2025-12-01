@@ -9,7 +9,6 @@ body {
 }
 
 body.page-calories .main-content {
-    /* keep main content clear of the fixed sidebar */
     --calories-gap: clamp(24px, 4vw, 48px);
     margin-left: calc(var(--sidebar-width) );
     width: calc(100% - var(--sidebar-width, 250px) - var(--calories-gap));
@@ -177,36 +176,40 @@ body.page-calories .main-content {
 }
 
 .calories__circle {
-    width: clamp(180px, 45vw, 220px);
-    height: clamp(180px, 45vw, 220px);
+    width: clamp(150px, 40vw, 200px);
+    height: clamp(150px, 40vw, 200px);
     border-radius: 50%;
-    background: conic-gradient(var(--primary-color, #22c55e) 67%, rgba(0,0,0,0.12) 0);
+    background: conic-gradient(var(--primary-color, #22c55e) 55%, rgba(0,0,0,0.12) 0);
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 4px solid var(--surface-color, #f9faf9);
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
 .calories__circle-inner {
     background: var(--surface-color, #fff);
     border: 2px solid var(--border-color, #e5e7eb);
-    width: clamp(130px, 34vw, 165px);
-    height: clamp(130px, 34vw, 165px);
+    width: clamp(100px, 32vw, 135px);
+    height: clamp(100px, 32vw, 135px);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .calories__circle-inner p {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 700;
     color: #333;
-    line-height: 1.3;
+    margin: 0;
+    line-height: 1.4;
+    text-align: center;
 }
 
 .calories__circle-inner span {
     color: #666;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 /* Nutrients */
@@ -697,8 +700,8 @@ body.page-calories[data-critical="pending"] .calories__info-box {
 
 .calories__stats-circle {
     position: relative;
-    width: clamp(150px, 48vw, 200px);
-    height: clamp(150px, 48vw, 200px);
+    width: clamp(150px, 40vw, 200px);
+    height: clamp(150px, 40vw, 200px);
     border-radius: 50%;
     margin: 0 auto 35px;
     background: conic-gradient(var(--primary-color, #22c55e) 55%, rgba(0,0,0,0.12) 0);
@@ -887,6 +890,29 @@ body.page-calories[data-critical="pending"] .calories__info-box {
     border-radius: 6px;
     font-size: 14px;
     cursor: default;
+}
+
+.calories__calendar-day {
+    padding: 8px;
+    text-align: center;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.calories__calendar-day.ok {
+    background-color: #dff5e0;
+    color: #2f8f46;
+}
+
+.calories__calendar-day.over {
+    background-color: #ffe1e1;
+    color: #e55b4d;
+}
+
+.calories__calendar-day.under {
+    background-color: #fff4cc;
+    color: #f2c13d;
 }
 
 .dot-green { background-color: #dff5e0; color: #2f8f46; font-weight: 600; }

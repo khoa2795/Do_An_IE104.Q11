@@ -1,4 +1,4 @@
-// ===== 1. QUẢN LÝ HỘP CHỌN CƯỜNG ĐỘ LUYỆN TẬP =====
+// =====  QUẢN LÝ HỘP CHỌN CƯỜNG ĐỘ LUYỆN TẬP =====
 document.addEventListener("DOMContentLoaded", () => {
   const text = document.getElementById("intensityText");
   const box = document.getElementById("intensityBox");
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const desc = document.getElementById("activityDesc");
 
   if (!text || !box || !closeBtn || !saveBtn || !select || !desc) {
-    console.warn("⚠️ Một số elements cường độ luyện tập không tồn tại");
+    console.warn("Một số elements cường độ luyện tập không tồn tại");
     return;
   }
 
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ===== 2. QUẢN LÝ MÓN ĂN - GLOBAL VARIABLES & FUNCTIONS =====
+// =====  QUẢN LÝ MÓN ĂN =====
 
 //BIẾN GLOBAL - PHẢI Ở NGOÀI DOMContentLoaded
 let currentMealType = null;
@@ -62,7 +62,7 @@ function loadMealFoodsFromStorage() {
   return { breakfast: [], lunch: [], dinner: [], snack: [] };
 }
 
-//LƯU DỮ LIỆU VÀO LOCALSTORAGE N
+// LƯU DỮ LIỆU VÀO LOCALSTORAGE 
 function saveMealFoodsToStorage() {
   const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
   if (!currentUser) return;
@@ -71,13 +71,13 @@ function saveMealFoodsToStorage() {
   localStorage.setItem(storageKey, JSON.stringify(mealFoods));
 }
 
-//TRÍCH XUẤT CALORIES
+// TRÍCH XUẤT CALORIES
 function extractCalories(text) {
   const match = text.match(/(\d+)kcal/);
   return match ? match[1] : "0";
 }
 
-//LẤY TÊN BUỔI ĂN
+// LẤY TÊN BUỔI ĂN
 function getMealName(mealType) {
   const names = {
     breakfast: "buổi sáng",
@@ -88,7 +88,7 @@ function getMealName(mealType) {
   return names[mealType] || "bữa ăn";
 }
 
-//CẬP NHẬT BIỂU ĐỒ TRÒN
+// CẬP NHẬT BIỂU ĐỒ TRÒN
 function updateCircleProgress(current, target) {
   const circle = document.querySelector(
     ".calories__overview-content .calories__circle"
@@ -112,7 +112,7 @@ function updateCircleProgress(current, target) {
   circle.style.background = `conic-gradient(${gradientColor} ${percentage}%, #e0e0e0 ${percentage}%)`;
 }
 
-//CẬP NHẬT BIỂU ĐỒ TRÒN TRONG DASHBOARD
+// CẬP NHẬT BIỂU ĐỒ TRÒN TRONG DASHBOARD
 function updateDashboardCircleProgress(current, target) {
   const circle = document.querySelector(".calories__stats-circle");
   if (!circle) return;
@@ -134,7 +134,7 @@ function updateDashboardCircleProgress(current, target) {
   circle.style.background = `conic-gradient(${gradientColor} ${percentage}%, #e0e0e0 ${percentage}%)`;
 }
 
-//CẬP NHẬT DỮ LIỆU CALORIES
+// CẬP NHẬT DỮ LIỆU CALORIES
 function updateCaloriesData() {
   let totalIntake = {
     calories: 0,
@@ -144,7 +144,8 @@ function updateCaloriesData() {
     fiber: 0,
   };
 
-  Object.keys(mealFoods).forEach((mealType) => {
+    const mealTypes = Object.keys(mealFoods);
+    mealTypes.forEach((mealType) => {
     mealFoods[mealType].forEach((food) => {
       totalIntake.calories += parseInt(food.calories || 0);
       totalIntake.carbs += parseInt(food.carbs || 0);
@@ -183,7 +184,7 @@ function updateCaloriesData() {
   }
 }
 
-// ✅ HIỂN THỊ THÔNG BÁO - GLOBAL FUNCTIONS
+// HIỂN THỊ THÔNG BÁO
 function showSuccessMessage(message) {
   const toast = document.createElement("div");
   toast.style.cssText = `
@@ -216,7 +217,7 @@ function showErrorMessage(message) {
   }, 3000);
 }
 
-// ===== DOM EVENT LISTENERS - CHỈ XỬ LÝ UI =====
+// HIỂN THỊ MÓN ĂN THEO BUỔI
 document.addEventListener("DOMContentLoaded", () => {
   const mealTitle = document.getElementById("mealTitle");
   const currentMealName = document.getElementById("currentMealName");
@@ -229,7 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mealButtons = document.querySelectorAll(".calories__meal-btn");
 
   if (!mealTitle || !currentMealName || !foodSection) {
-    console.warn("⚠️ Một số meal elements không tồn tại");
+    console.warn("Một số meal elements không tồn tại");
     return;
   }
 
@@ -421,7 +422,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  //KIỂM TRA MÓN ĂN ĐÃ TỒN TẠI TRONG BUỔI ĂN
+  // KIỂM TRA MÓN ĂN ĐÃ TỒN TẠI TRONG BUỔI ĂN
   function isFoodAlreadyInMeal(mealType, foodId) {
     if (!mealFoods[mealType]) return false;
 
@@ -470,23 +471,23 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!foodItem) return;
 
       // Lấy thông tin món ăn từ data attributes
-      const foodData = {
-        id: foodItem.dataset.id,
-        name:
-          foodItem.querySelector(".calories__food-info p")?.textContent ||
-          "Món ăn",
-        image:
-          foodItem.querySelector("img")?.src ||
-          "../assets/images/Calories/placeholder-food.png",
-        weight: parseInt(foodItem.dataset.weight || 100),
-        calories: parseInt(foodItem.dataset.calories || 0),
-        carbs: parseInt(foodItem.dataset.carbs || 0),
-        protein: parseInt(foodItem.dataset.protein || 0),
-        fat: parseInt(foodItem.dataset.fat || 0),
-        fiber: parseInt(foodItem.dataset.fiber || 0),
-        isFavorite: heartIcon.classList.contains("far"),
-      };
-      toggleFavoriteFood(foodData);
+      const foodId = foodItem.dataset.id;
+      const foodName = foodItem.querySelector(".calories__food-info p")?.textContent || "Món ăn";
+      const foodImage = foodItem.querySelector("img")?.src || "../assets/images/Calories/placeholder-food.png";
+      const weight = parseInt(foodItem.dataset.weight || 100);
+      const calories = parseInt(foodItem.dataset.calories || 0);
+      const carbs = parseInt(foodItem.dataset.carbs || 0);
+      const protein = parseInt(foodItem.dataset.protein || 0);
+      const fat = parseInt(foodItem.dataset.fat || 0);
+      const fiber = parseInt(foodItem.dataset.fiber || 0);
+
+      const isCurrentlyFavorite = heartIcon.classList.contains("fas");
+
+      if (!isCurrentlyFavorite) {
+        addToFavorites(foodId, foodName, foodImage, weight, calories, carbs, protein, fat, fiber);
+      } else {
+        removeFromFavorites(foodId);
+      }
     }
   });
 });
@@ -499,12 +500,19 @@ function initializeFavoriteFoods() {
 function syncFavoriteIcons() {
   const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
   if (!currentUser) {
-    console.warn("❌ Không có currentUser trong sessionStorage");
+    console.warn("Không có currentUser trong sessionStorage");
     return;
   }
 
-  const storageKey = `favoriteFoods_${currentUser.id}`;
-  const favoriteFoods = JSON.parse(localStorage.getItem(storageKey)) || [];
+  // LẤY DỮ LIỆU TỪ WINDOW DATA)
+  const userProfile = window.currentCaloriesData;
+  if (!userProfile) {
+    console.warn("Không có userProfile trong window");
+    return;
+  }
+
+  // LẤY DANH SÁCH YÊU THÍCH
+  const favoriteFoods = userProfile.favoriteFoods || [];
   const favoriteIds = favoriteFoods.map((food) => food.id.toString());
 
   document.querySelectorAll(".calories__food-column li").forEach((li) => {
@@ -512,7 +520,7 @@ function syncFavoriteIcons() {
     const heartIcon = li.querySelector(".fa-heart");
 
     if (heartIcon && foodId) {
-      if (favoriteIds.includes(foodId)) {
+      if (favoriteIds.includes(foodId.toString())) {
         heartIcon.classList.remove("far");
         heartIcon.classList.add("fas", "favorite");
       } else {
@@ -523,17 +531,130 @@ function syncFavoriteIcons() {
   });
 }
 
+function addToFavorites(foodId, foodName, foodImage, weight, calories, carbs, protein, fat, fiber) {
+  const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+  if (!currentUser) {
+    return;
+  }
+
+  // LẤY DỮ LIỆU TỪ WINDOW 
+  let userProfile = window.currentCaloriesData;
+  if (!userProfile) {
+    showErrorMessage("Không thể tải dữ liệu!");
+    return;
+  }
+
+  // KHỞI TẠO DANH SÁCH YÊU THÍCH NẾU CHƯA CÓ
+  if (!userProfile.favoriteFoods) {
+    userProfile.favoriteFoods = [];
+  }
+
+  // KIỂM TRA ĐÃ CÓ TRONG YÊU THÍCH CHƯA
+  const alreadyExists = userProfile.favoriteFoods.some(food => food.id == foodId);
+  if (alreadyExists) {
+    return;
+  }
+
+  // THÊM VÀO YÊU THÍCH
+  userProfile.favoriteFoods.push({
+    id: foodId,
+    name: foodName,
+    image: foodImage,
+    weight: weight,
+    calories: calories,
+    carbs: carbs,
+    protein: protein,
+    fat: fat,
+    fiber: fiber,
+  });
+
+  // ===== LƯU LẠI VÀO LOCALSTORAGE =====
+  const customProfilesKey = "customCaloriesProfiles";
+  let customProfiles = JSON.parse(localStorage.getItem(customProfilesKey)) || [];
+
+  const profileIndex = customProfiles.findIndex(p => p.userId === currentUser.id);
+  if (profileIndex >= 0) {
+    customProfiles[profileIndex] = userProfile;
+  } else {
+    customProfiles.push(userProfile);
+  }
+
+  localStorage.setItem(customProfilesKey, JSON.stringify(customProfiles));
+
+  // CẬP NHẬT WINDOW DATA
+  window.currentCaloriesData = userProfile;
+
+  // HIỂN THỊ THÔNG BÁO VÀ ĐỒNG BỘ
+  showSuccessMessage(`Đã thêm "${foodName}" vào yêu thích! ♥`);
+  syncFavoriteIcons();
+  updateFavoriteFoodsDisplay();
+}
+
+function removeFromFavorites(foodId) {
+  const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+  if (!currentUser) {
+    return;
+  }
+
+  // LẤY DỮ LIỆU TỪ WINDOW 
+  let userProfile = window.currentCaloriesData;
+  if (!userProfile) {
+    showErrorMessage("Không thể tải dữ liệu!");
+    return;
+  }
+
+  // TÌM THỰC PHẨM
+  const foodToRemove = userProfile.favoriteFoods?.find(food => food.id == foodId);
+  const foodName = foodToRemove?.name || "Món ăn";
+
+  // XÓA KHỎI YÊU THÍCH
+  if (userProfile.favoriteFoods) {
+    userProfile.favoriteFoods = userProfile.favoriteFoods.filter(food => food.id != foodId);
+  }
+
+  // ===== LƯU LẠI VÀO LOCALSTORAGE =====
+  const customProfilesKey = "customCaloriesProfiles";
+  let customProfiles = JSON.parse(localStorage.getItem(customProfilesKey)) || [];
+
+  const profileIndex = customProfiles.findIndex(p => p.userId === currentUser.id);
+  if (profileIndex >= 0) {
+    customProfiles[profileIndex] = userProfile;
+  } else {
+    customProfiles.push(userProfile);
+  }
+
+  localStorage.setItem(customProfilesKey, JSON.stringify(customProfiles));
+
+  // CẬP NHẬT WINDOW DATA
+  window.currentCaloriesData = userProfile;
+
+  // HIỂN THỊ THÔNG BÁO VÀ ĐỒNG BỘ
+  showSuccessMessage(`Đã xóa "${foodName}" khỏi yêu thích! ♡`);
+  syncFavoriteIcons();
+  updateFavoriteFoodsDisplay();
+}
+
 function toggleFavoriteFood(foodData) {
   const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
   if (!currentUser) {
     return;
   }
-  const storageKey = `favoriteFoods_${currentUser.id}`;
-  let favoriteFoods = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+  // LẤY DỮ LIỆU TỪ WINDOW 
+  let userProfile = window.currentCaloriesData;
+  if (!userProfile) {
+    showErrorMessage("Không thể tải dữ liệu!");
+    return;
+  }
+
+  // KHỞI TẠO DANH SÁCH YÊU THÍCH NẾU CHƯA CÓ
+  if (!userProfile.favoriteFoods) {
+    userProfile.favoriteFoods = [];
+  }
 
   if (foodData.isFavorite) {
-    // THÊM vào yêu thích
-    const existingIndex = favoriteFoods.findIndex(
+    // Thêm vào yêu thích
+    const existingIndex = userProfile.favoriteFoods.findIndex(
       (food) => food.id == foodData.id
     );
     if (existingIndex === -1) {
@@ -547,41 +668,59 @@ function toggleFavoriteFood(foodData) {
         protein: foodData.protein || 0,
         fat: foodData.fat || 0,
         fiber: foodData.fiber || 0,
-        isFavorite: true,
-        addedAt: new Date().toISOString(),
       };
 
-      favoriteFoods.push(foodToAdd);
+      userProfile.favoriteFoods.push(foodToAdd);
       showSuccessMessage(`Đã thêm "${foodData.name}" vào món yêu thích! ♥`);
     }
   } else {
-    // XÓA khỏi yêu thích
-    favoriteFoods = favoriteFoods.filter((food) => food.id != foodData.id);
+    // Xóa khỏi yêu thích
+    userProfile.favoriteFoods = userProfile.favoriteFoods.filter(
+      (food) => food.id != foodData.id
+    );
     showSuccessMessage(`Đã xóa "${foodData.name}" khỏi món yêu thích! ♡`);
   }
 
-  localStorage.setItem(storageKey, JSON.stringify(favoriteFoods));
+  // LƯU LẠI VÀO LOCALSTORAGE 
+  const customProfilesKey = "customCaloriesProfiles";
+  let customProfiles = JSON.parse(localStorage.getItem(customProfilesKey)) || [];
+
+  const profileIndex = customProfiles.findIndex(p => p.userId === currentUser.id);
+  if (profileIndex >= 0) {
+    customProfiles[profileIndex] = userProfile;
+  } else {
+    customProfiles.push(userProfile);
+  }
+
+  localStorage.setItem(customProfilesKey, JSON.stringify(customProfiles));
+
+  // CẬP NHẬT WINDOW DATA
+  window.currentCaloriesData = userProfile;
 
   syncFavoriteIcons();
-
   updateFavoriteFoodsDisplay();
 }
 
-//HIỂN THỊ MÓN YÊU THÍCH
+// HIỂN THỊ MÓN YÊU THÍCH
 function updateFavoriteFoodsDisplay() {
   const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
   if (!currentUser) {
     return;
   }
 
-  const storageKey = `favoriteFoods_${currentUser.id}`;
-  const favoriteFoods = JSON.parse(localStorage.getItem(storageKey)) || [];
+  // LẤY DỮ LIỆU TỪ WINDOW DATA (ĐÃ MERGE TỪ JSON + CUSTOM)
+  const userProfile = window.currentCaloriesData;
+  if (!userProfile) {
+    return;
+  }
+
+  const favoriteFoods = userProfile.favoriteFoods || [];
 
   const favoriteColumn = document.querySelector(
     ".calories__food-column:nth-child(2) ul"
   );
   if (!favoriteColumn) {
-    console.warn("⚠️ Không tìm thấy cột món yêu thích");
+    console.warn("Không tìm thấy cột món yêu thích");
     return;
   }
 
@@ -629,8 +768,7 @@ function createFavoriteFoodItem(food) {
   return li;
 }
 
-// ĐỒNG BỘ TIM KHI DATA LOAD XONG
-// ===== 3-5: CÁC PHẦN KHÁC GIỮ NGUYÊN 100% =====
+
 // Chuyển đổi dashboard và theo dõi
 document.addEventListener("DOMContentLoaded", () => {
   const calendarIcon = document.querySelector(".calories__calendar-icon i");
@@ -641,28 +779,41 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   if (!calendarIcon || !dashboardSection || !followSection || !backButton) {
-    console.warn("⚠️ Một số dashboard elements không tồn tại");
+    console.warn("Một số dashboard elements không tồn tại");
     return;
   }
 
   calendarIcon.addEventListener("click", () => {
+    if (window.updateMonthCalendar && typeof window.updateMonthCalendar === "function") {
+      try {
+        window.updateMonthCalendar();
+      } catch (e) {
+        console.warn("updateMonthCalendar() failed:", e);
+      }
+    }
+
+    const weekBar = document.querySelector(".calories__week");
+    if (weekBar) weekBar.style.display = "none";
+
+    displayFollowingData();
     dashboardSection.classList.add("hidden");
-    setTimeout(() => {
-      dashboardSection.style.display = "none";
-      followSection.style.display = "block";
-      followSection.classList.remove("hidden");
-      window.scrollTo({ top: followSection.offsetTop, behavior: "smooth" });
-    }, 300);
+    followSection.classList.remove("section-hidden");
+    followSection.style.display = "block";
+    dashboardSection.style.display = "none";
+
+    window.scrollTo({ top: followSection.offsetTop, behavior: "smooth" });
   });
 
   backButton.addEventListener("click", () => {
-    followSection.classList.add("hidden");
-    setTimeout(() => {
-      followSection.style.display = "none";
-      dashboardSection.style.display = "grid";
-      dashboardSection.classList.remove("hidden");
-      window.scrollTo({ top: dashboardSection.offsetTop, behavior: "smooth" });
-    }, 300);
+    followSection.classList.add("section-hidden");
+    followSection.style.display = "none";
+    dashboardSection.style.display = "grid";
+    dashboardSection.classList.remove("hidden");
+
+    const weekBar = document.querySelector(".calories__week");
+    if (weekBar) weekBar.style.display = "flex";
+
+    window.scrollTo({ top: dashboardSection.offsetTop, behavior: "smooth" });
   });
 });
 
@@ -684,6 +835,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (helpBtn) {
     helpBtn.addEventListener("click", () => {
+      foodSection.classList.add("section-hidden");
+      guideSection.classList.remove("section-hidden");
       foodSection.style.display = "none";
       guideSection.style.display = "block";
       window.scrollTo({ top: guideSection.offsetTop, behavior: "smooth" });
@@ -697,7 +850,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (backBtn) {
     backBtn.addEventListener("click", () => {
+      guideSection.classList.add("section-hidden");
       guideSection.style.display = "none";
+      foodSection.classList.remove("section-hidden");
       foodSection.style.display = "block";
       window.scrollTo({ top: foodSection.offsetTop, behavior: "smooth" });
 
@@ -746,16 +901,241 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // XỬ LÝ UPLOAD VÀ PREVIEW HÌNH ẢNH THỰC PHẨM
+  const imageInput = document.getElementById("foodImage");
+  const imagePreview = document.getElementById("imagePreview");
+  const imagePathInput = document.getElementById("foodImagePath");
+
+  if (imagePreview) {
+    imagePreview.addEventListener("click", function () {
+      imageInput.click();
+    });
+  }
+
+  if (imageInput) {
+    imageInput.addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          const imageSrc = event.target.result;
+          imagePathInput.value = imageSrc;
+          
+          // HIỂN THỊ PREVIEW
+          imagePreview.innerHTML = `
+            <img src="${imageSrc}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
+          `;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+
   if (saveBtn) {
     saveBtn.addEventListener("click", function () {
-      // TODO: Implement save logic
+      // LẤY DỮ LIỆU TỪ FORM 
+      const foodName = document.getElementById("foodName").value.trim();
+      const foodImage = document.getElementById("foodImagePath").value || "../assets/images/Calories/placeholder-food.png";
+      const foodCalories = parseInt(document.getElementById("foodCalories").value) || 0;
+      const foodCarbs = parseInt(document.getElementById("foodCarbs").value) || 0;
+      const foodProtein = parseInt(document.getElementById("foodProtein").value) || 0;
+      const foodFat = parseInt(document.getElementById("foodFat").value) || 0;
+      const foodFiber = parseInt(document.getElementById("foodFiber").value) || 0;
+      const foodCategory = document.getElementById("foodCategory").value;
+      const foodWeight = parseInt(document.getElementById("foodWeight").value) || 100;
+
+      // KIỂM TRA DỮ LIỆU
+      if (!foodName) {
+        showErrorMessage("Vui lòng nhập tên thực phẩm!");
+        return;
+      }
+
+      // TẠO OBJECT THỰC PHẨM MỚI
+      const newFood = {
+        id: Date.now().toString(),
+        name: foodName,
+        image: foodImage || "../assets/images/Calories/placeholder-food.png",
+        weight: foodWeight,
+        calories: foodCalories,
+        carbs: foodCarbs,
+        protein: foodProtein,
+        fat: foodFat,
+        fiber: foodFiber,
+      };
+
+      // LƯU VÀO LOCALSTORAGE THEO DANH MỤC
+      const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+      if (!currentUser) {
+        showErrorMessage("Bạn cần đăng nhập để thêm thực phẩm!");
+        return;
+      }
+
+      // CHUYỂN ĐỔI DANH MỤC 
+      const categoryMap = {
+        recent: "recentFoods",
+        favorite: "favoriteFoods",
+        myfoods: "myFoods",
+      };
+
+      const categoryKey = categoryMap[foodCategory] || "myFoods";
+
+      // LẤY DỮ LIỆU CALORIES TỪ WINDOW 
+      let userProfile = window.currentCaloriesData ? JSON.parse(JSON.stringify(window.currentCaloriesData)) : null;
+
+      if (!userProfile) {
+        showErrorMessage("Không thể tải dữ liệu người dùng!");
+        return;
+      }
+
+      // KHỞI TẠO DANH MỤC NẾU CHƯA CÓ
+      if (!userProfile[categoryKey]) {
+        userProfile[categoryKey] = [];
+      }
+
+      // KIỂM TRA THỰC PHẨM TRÙNG
+      const isDuplicate = userProfile[categoryKey].some(food => food.name.toLowerCase() === foodName.toLowerCase());
+      if (isDuplicate) {
+        showErrorMessage(`"${foodName}" đã tồn tại trong danh sách!`);
+        return;
+      }
+
+      // THÊM THỰC PHẨM MỚI
+      userProfile[categoryKey].push(newFood);
+
+      // Lưu toàn bộ profile vào customCaloriesProfiles
+      const customProfilesKey = "customCaloriesProfiles";
+      let customProfiles = JSON.parse(localStorage.getItem(customProfilesKey)) || [];
+
+      // TÌM VÀ CẬP NHẬT PROFILE CỦA NGƯỜI DÙNG
+      const profileIndex = customProfiles.findIndex(p => p.userId === currentUser.id);
+      if (profileIndex >= 0) {
+        customProfiles[profileIndex] = userProfile;
+      } else {
+        customProfiles.push(userProfile);
+      }
+
+      localStorage.setItem(customProfilesKey, JSON.stringify(customProfiles));
+
+      // CẬP NHẬT WINDOW DATA 
+      window.currentCaloriesData = userProfile;
+
+      // CẬP NHẬT DANH SÁCH THỰC PHẨM TRÊN GIAO DIỆN
+      const columnMap = {
+        recent: ".calories__food-column:nth-child(1) ul",
+        favorite: ".calories__food-column:nth-child(2) ul",
+        myfoods: ".calories__food-column:nth-child(3) ul",
+      };
+
+      const columnSelector = columnMap[foodCategory];
+      const column = document.querySelector(columnSelector);
+
+      if (column) {
+        // XÓA THÔNG BÁO "CHƯA CÓ DỮ LIỆU" NẾU CÓ
+        const emptyMsg = column.querySelector(".calories__food-empty");
+        if (emptyMsg) {
+          emptyMsg.remove();
+        }
+
+        // TẠO PHẦN TỬ THỰC PHẨM MỚI
+        const li = document.createElement("li");
+        li.setAttribute("data-id", newFood.id);
+        li.setAttribute("data-calories", newFood.calories);
+        li.setAttribute("data-carbs", newFood.carbs);
+        li.setAttribute("data-protein", newFood.protein);
+        li.setAttribute("data-fat", newFood.fat);
+        li.setAttribute("data-fiber", newFood.fiber);
+        li.setAttribute("data-weight", newFood.weight);
+
+        li.innerHTML = `
+          <img src="${newFood.image}" alt="${newFood.name}" onerror="this.src='../assets/images/Calories/placeholder-food.png'">
+          <div class="calories__food-info">
+            <p>${newFood.name}</p>
+            <span>${newFood.weight}g, ${newFood.calories}kcal</span>
+          </div>
+          <i class="far fa-heart"></i>
+          <button class="calories__add-btn">+</button>
+        `;
+
+        column.appendChild(li);
+
+        // GẮN SỰ KIỆN CHO NÚT THÊM
+        const addBtn = li.querySelector(".calories__add-btn");
+        if (addBtn) {
+          addBtn.addEventListener("click", function () {
+            if (!currentMealType) {
+              showErrorMessage("Vui lòng chọn một buổi ăn trước!");
+              return;
+            }
+
+            const foodId = li.getAttribute("data-id");
+            const foodName = li.querySelector(".calories__food-info p").textContent;
+            const foodImage = li.querySelector("img").src;
+            const foodWeight = parseInt(li.getAttribute("data-weight")) || 100;
+            const foodCalories = parseInt(li.getAttribute("data-calories")) || 0;
+            const foodCarbs = parseInt(li.getAttribute("data-carbs")) || 0;
+            const foodProtein = parseInt(li.getAttribute("data-protein")) || 0;
+            const foodFat = parseInt(li.getAttribute("data-fat")) || 0;
+            const foodFiber = parseInt(li.getAttribute("data-fiber")) || 0;
+
+            // Kiểm tra món ăn đã tồn tại
+            if (isFoodAlreadyInMeal(currentMealType, foodId)) {
+              showErrorMessage(`"${foodName}" đã có trong buổi ${getMealName(currentMealType)}!`);
+              return;
+            }
+
+            // Thêm vào mealFoods và lưu
+            mealFoods[currentMealType].push({
+              id: foodId,
+              name: foodName,
+              image: foodImage,
+              weight: foodWeight,
+              calories: foodCalories,
+              carbs: foodCarbs,
+              protein: foodProtein,
+              fat: foodFat,
+              fiber: foodFiber,
+            });
+
+            saveMealFoodsToStorage();
+            displayMealFoodsInContainer(currentMealType);
+            updateCaloriesData();
+            showSuccessMessage(`Đã thêm "${foodName}" vào buổi ${getMealName(currentMealType)}!`);
+          });
+        }
+
+        // ĐỒNG BỘ BIỂU TƯỢNG TIM VỚI THỰC PHẨM MỚI
+        setTimeout(() => {
+          syncFavoriteIcons();
+        }, 100);
+      }
+
+      // HIỂN THỊ THÔNG BÁO THÀNH CÔNG
+      showSuccessMessage(`Đã thêm "${foodName}" vào danh sách!`);
+
+      // ĐÓNG MODAL VÀ CLEAR FORM
       closeModal();
     });
   }
 
   function clearForm() {
-    const form = foodModal.querySelector("form");
-    if (form) form.reset();
+    document.getElementById("foodName").value = "";
+    document.getElementById("foodImage").value = "";
+    document.getElementById("foodImagePath").value = "";
+    document.getElementById("foodCalories").value = "0";
+    document.getElementById("foodWeight").value = "100";
+    document.getElementById("foodCarbs").value = "0";
+    document.getElementById("foodProtein").value = "0";
+    document.getElementById("foodFat").value = "0";
+    document.getElementById("foodFiber").value = "0";
+    document.getElementById("foodCategory").value = "myfoods";
+    
+    // RESET PREVIEW ẢNH
+    document.getElementById("imagePreview").innerHTML = `
+      <div style="text-align: center;">
+        <i class="fas fa-image" style="font-size: 32px; color: #ccc; margin-bottom: 8px; display: block;"></i>
+        <p style="margin: 0; color: #999; font-size: 14px;">Click để chọn ảnh</p>
+      </div>
+    `;
   }
 });
 
@@ -767,7 +1147,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentDay = now.getDay(); // 0: Chủ nhật, 1: Thứ 2, ...
     const weekDays = document.querySelectorAll(".calories__week-days span");
 
-    // Lấy ngày đầu tuần (Thứ 2)
+    // Lấy ngày đầu tuần
     const startOfWeek = new Date(now);
     startOfWeek.setDate(
       now.getDate() - (currentDay === 0 ? 6 : currentDay - 1)
@@ -800,7 +1180,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const dayNumber = day.getDate();
 
-      // ✅ LOGIC ĐÚNG
       if (index === 6) {
         // Chủ nhật là ngày cuối tuần (index = 6)
         span.innerHTML = `CN<br>${dayNumber}`;
@@ -1036,7 +1415,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const dayNumber = day.getDate();
 
-      // ✅ LOGIC ĐÚNG
       if (index === 6) {
         // Chủ nhật
         span.innerHTML = `CN<br>${dayNumber}`;
@@ -1067,6 +1445,17 @@ document.addEventListener("DOMContentLoaded", function () {
       updateMonthCalendar();
     }
   }, 60000); // Kiểm tra mỗi phút
+
+  try {
+    if (typeof window !== "undefined") {
+      window.updateMonthCalendar = updateMonthCalendar;
+      window.updateMonthCalendarWithParams = updateMonthCalendarWithParams;
+      window.updateWeekCalendar = updateWeekCalendar;
+      window.updateWeekCalendarWithOffset = updateWeekCalendarWithOffset;
+    }
+  } catch (e) {
+    console.warn("Không thể export calendar helpers:", e);
+  }
 });
 
 // Quản lý modal chú thích chế độ ăn
@@ -1075,11 +1464,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ".calories__diet .calories__diet-help"
   );
   const dietModal = document.getElementById("dietModal");
-
-  if (!helpBtn || !dietModal) {
-    console.warn("⚠️ Diet modal elements không tồn tại");
-    return;
-  }
 
   const closeDietModal = dietModal.querySelector(".modal__close");
 
@@ -1112,11 +1496,6 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const filterBtn = document.querySelector(".calories__food-tools .fa-filter");
   const filterModal = document.getElementById("filterModal");
-
-  if (!filterBtn || !filterModal) {
-    console.warn("⚠️ Filter modal elements không tồn tại");
-    return;
-  }
 
   const closeFilterModal = filterModal.querySelector(".modal__close");
   const btnReset = filterModal.querySelector(".modal__btn--reset");
@@ -1203,7 +1582,7 @@ document.addEventListener("DOMContentLoaded", function () {
         track.style.left = `${minPercent}%`;
         track.style.width = `${maxPercent - minPercent}%`;
 
-        // Cập nhật giá trị hiển thị - CHỈ HIỂN THỊ SỐ VÀ CHỮ
+        // Cập nhật giá trị hiển thị
         minValue.textContent = `${minVal} ${unit}`;
         maxValue.textContent = `${maxVal} ${unit}`;
       }
@@ -1279,7 +1658,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Lấy thông tin dinh dưỡng từ item
       const nutritionNode = item.querySelector(".calories__food-info span");
       if (!nutritionNode) {
-        // Bỏ qua các phần tử placeholder (ví dụ: thông báo rỗng)
+        // Bỏ qua các phần tử placeholder hoặc không có thông tin dinh dưỡng
         item.style.display = "";
         return;
       }
@@ -1302,9 +1681,7 @@ document.addEventListener("DOMContentLoaded", function () {
       ) {
         showItem = false;
       }
-
-      // Trong thực tế, bạn sẽ cần lấy thông tin carbs, protein, fat, fiber từ data attributes
-
+      // Lọc theo carbs
       if (showItem) {
         item.style.display = "flex";
         visibleCount++;
@@ -1341,7 +1718,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Quản lý sự kiện cho các phần tử động
 document.addEventListener("DOMContentLoaded", function () {
-  // Ví dụ: Gán sự kiện cho các nút "Xóa" trong danh sách món ăn
+
   document.addEventListener("click", function (e) {
     if (e.target.classList.contains("calories__remove-food-btn")) {
       const foodItem = e.target.closest("li");
@@ -1354,11 +1731,100 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// ✅ SAU KHI LOAD DATA - CẬP NHẬT CALORIES
+// HIỂN THỊ DỮ LIỆU THEO DÕI (forwarder) 
+function displayFollowingData() {
+  if (window.CaloriesDataLoader && typeof window.CaloriesDataLoader.displayFollowingData === 'function') {
+    try {
+      window.CaloriesDataLoader.displayFollowingData();
+    } catch (e) {
+      console.warn('CaloriesDataLoader.displayFollowingData threw an error:', e);
+    }
+  } else {
+    console.warn('CaloriesDataLoader.displayFollowingData is not available');
+  }
+}
+
+// SAU KHI LOAD DATA - CẬP NHẬT CALORIES & BIỂU ĐỒ
 window.addEventListener("caloriesDataLoaded", () => {
-  if (window.currentCaloriesData) {
+  if (!window.currentCaloriesData) return;
+
+  try {
     updateCaloriesData();
+  } catch (e) {
+    console.warn("updateCaloriesData failed:", e);
+  }
+
+  try {
     syncFavoriteIcons();
-    updateFavoriteFoodsDisplay();
+  } catch (e) {
+    console.warn("syncFavoriteIcons failed:", e);
+  }
+
+  try {
+    if (typeof updateFavoriteFoodsDisplay === "function") {
+      updateFavoriteFoodsDisplay();
+    }
+  } catch (e) {
+    console.warn("updateFavoriteFoodsDisplay failed:", e);
+  }
+
+  try {
+    displayFollowingData();
+  } catch (e) {
+    console.warn("displayFollowingData failed:", e);
+  }
+
+  // Vẽ lại biểu đồ với dữ liệu hiện tại
+  try {
+    const data = window.currentCaloriesData;
+    const target = data.dailyTarget || {
+      calories: 0,
+      carbs: 0,
+      protein: 0,
+      fat: 0,
+      fiber: 0,
+    };
+
+    let currentIntake = { calories: 0, carbs: 0, protein: 0, fat: 0, fiber: 0 };
+
+    // Lấy intake từ localStorage
+    if (window.CaloriesDataLoader && typeof window.CaloriesDataLoader.calculateCurrentIntake === "function") {
+      currentIntake = window.CaloriesDataLoader.calculateCurrentIntake();
+    }
+
+    if (currentIntake.calories === 0 && data.todayIntake && data.todayIntake.calories > 0) {
+      currentIntake = { ...data.todayIntake };
+    }
+
+    // Cập nhật vòng tròn
+    const mainCircleP = document.querySelector(
+      ".calories__overview-content .calories__circle .calories__circle-inner p"
+    );
+    if (mainCircleP) {
+      mainCircleP.innerHTML = `${currentIntake.calories}<br><span>/${target.calories} calo</span>`;
+    }
+
+    const dashboardCircleP = document.querySelector(
+      ".calories__stats .calories__stats-circle-inner p"
+    );
+    if (dashboardCircleP) {
+      dashboardCircleP.innerHTML = `${currentIntake.calories}<br><span>/${target.calories} calo</span>`;
+    }
+
+    // Vẽ biểu đồ
+    updateCircleProgress(currentIntake.calories, target.calories);
+    updateDashboardCircleProgress(currentIntake.calories, target.calories);
+
+    // Cập nhật thanh dinh dưỡng
+    if (window.CaloriesDataLoader) {
+      if (typeof window.CaloriesDataLoader.updateNutrientBars === "function") {
+        window.CaloriesDataLoader.updateNutrientBars(target, currentIntake);
+      }
+      if (typeof window.CaloriesDataLoader.updateDashboardNutrition === "function") {
+        window.CaloriesDataLoader.updateDashboardNutrition(target, currentIntake);
+      }
+    }
+  } catch (e) {
+    console.warn("Chart redraw after load failed:", e);
   }
 });

@@ -35,7 +35,7 @@
       { "date": "2025-11-12", "calories": 1900, "target": 1800, "status": "over" },
       { "date": "2025-11-13", "calories": 1400, "target": 1800, "status": "under" },
       { "date": "2025-11-14", "calories": 1550, "target": 1800, "status": "ok" },
-      { "date": "2025-11-15", "calories": 0, "target": 1800, "status": "ongoing" }
+      { "date": "2025-11-15", "calories": 1000, "target": 1800, "status": "ongoing" }
     ],
     "monthlyStats": {
       "month": "2025-11",
@@ -45,6 +45,24 @@
       "daysOnTrack": 15,
       "daysUnder": 8,
       "daysOver": 7
+    },
+    "trackingData": {
+      "daysOnRecommendation": 15,
+      "daysExceedBMR": 7,
+      "daysUnderRequirement": 8,
+      "bmiStatus": "Bình thường",
+      "currentBMI": 22.5,
+      "lastWeightUpdate": "2025-11-15",
+      "weightHistory": [
+        { "date": "2025-11-08", "weight": 65 },
+        { "date": "2025-11-09", "weight": 64.8 },
+        { "date": "2025-11-10", "weight": 64.9 },
+        { "date": "2025-11-11", "weight": 65.1 },
+        { "date": "2025-11-12", "weight": 65.3 },
+        { "date": "2025-11-13", "weight": 65.0 },
+        { "date": "2025-11-14", "weight": 64.7 },
+        { "date": "2025-11-15", "weight": 64.5 }
+      ]
     },
     "recentFoods": [
       {
@@ -162,7 +180,7 @@
       { "date": "2025-11-12", "calories": 2100, "target": 2000, "status": "over" },
       { "date": "2025-11-13", "calories": 1850, "target": 2000, "status": "ok" },
       { "date": "2025-11-14", "calories": 1950, "target": 2000, "status": "ok" },
-      { "date": "2025-11-15", "calories": 0, "target": 2000, "status": "ongoing" }
+      { "date": "2025-11-15", "calories": 1000, "target": 2000, "status": "ongoing" }
     ],
     "monthlyStats": {
       "month": "2025-11",
@@ -172,6 +190,24 @@
       "daysOnTrack": 18,
       "daysUnder": 5,
       "daysOver": 2
+    },
+    "trackingData": {
+      "daysOnRecommendation": 18,
+      "daysExceedBMR": 2,
+      "daysUnderRequirement": 5,
+      "bmiStatus": "Tốt",
+      "currentBMI": 21.8,
+      "lastWeightUpdate": "2025-11-15",
+      "weightHistory": [
+        { "date": "2025-11-08", "weight": 72 },
+        { "date": "2025-11-09", "weight": 71.8 },
+        { "date": "2025-11-10", "weight": 71.5 },
+        { "date": "2025-11-11", "weight": 71.9 },
+        { "date": "2025-11-12", "weight": 71.6 },
+        { "date": "2025-11-13", "weight": 71.4 },
+        { "date": "2025-11-14", "weight": 71.2 },
+        { "date": "2025-11-15", "weight": 71.0 }
+      ]
     },
     "recentFoods": [
       {
@@ -289,7 +325,7 @@
       { "date": "2025-11-12", "calories": 2300, "target": 2200, "status": "over" },
       { "date": "2025-11-13", "calories": 2100, "target": 2200, "status": "ok" },
       { "date": "2025-11-14", "calories": 2050, "target": 2200, "status": "under" },
-      { "date": "2025-11-15", "calories": 0, "target": 2200, "status": "ongoing" }
+      { "date": "2025-11-15", "calories": 1000, "target": 2200, "status": "ongoing" }
     ],
     "monthlyStats": {
       "month": "2025-11",
@@ -299,6 +335,24 @@
       "daysOnTrack": 12,
       "daysUnder": 10,
       "daysOver": 3
+    },
+    "trackingData": {
+      "daysOnRecommendation": 12,
+      "daysExceedBMR": 3,
+      "daysUnderRequirement": 10,
+      "bmiStatus": "Dưới mức",
+      "currentBMI": 19.5,
+      "lastWeightUpdate": "2025-11-15",
+      "weightHistory": [
+        { "date": "2025-11-08", "weight": 58 },
+        { "date": "2025-11-09", "weight": 58.2 },
+        { "date": "2025-11-10", "weight": 57.9 },
+        { "date": "2025-11-11", "weight": 58.5 },
+        { "date": "2025-11-12", "weight": 58.1 },
+        { "date": "2025-11-13", "weight": 57.8 },
+        { "date": "2025-11-14", "weight": 57.5 },
+        { "date": "2025-11-15", "weight": 57.3 }
+      ]
     },
     "recentFoods": [
       {

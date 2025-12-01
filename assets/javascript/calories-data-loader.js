@@ -128,6 +128,10 @@
             ...(base[idx].dailyTarget || {}),
             ...(profile.dailyTarget || {}),
           },
+
+          recentFoods: (profile.recentFoods && profile.recentFoods.length > 0) ? profile.recentFoods : (base[idx].recentFoods || []),
+          favoriteFoods: (profile.favoriteFoods && profile.favoriteFoods.length > 0) ? profile.favoriteFoods : (base[idx].favoriteFoods || []),
+          myFoods: (profile.myFoods && profile.myFoods.length > 0) ? profile.myFoods : (base[idx].myFoods || []),
         };
       } else {
         base.push(profile);
@@ -235,25 +239,20 @@
     }
   }
 
-  // ===== CẬP NHẬT BIỂU ĐỒ TỔNG QUAN - PHIÊN BẢN ĐẦY ĐỦ =====
+  // ===== CẬP NHẬT BIỂU ĐỒ TỔNG QUAN =====
   function updateOverviewCalories(data) {
+    // Tính toán intake 1 lần duy nhất
+    const currentIntake = calculateCurrentIntake();
+    const target = data.dailyTarget;
+    const totalCalories = currentIntake.calories;
+
+    // Cập nhật overview circle
     const circleText = document.querySelector(
       ".calories__overview-content .calories__circle .calories__circle-inner p"
     );
 
     if (circleText) {
-      const currentIntake = calculateCurrentIntake();
-      const target = data.dailyTarget;
-
-      const totalCalories = currentIntake.calories;
-      if (totalCalories > 0) {
-        circleText.innerHTML = `${totalCalories}<br><span>/${target.calories} calo</span>`;
-        updateCircleProgress(totalCalories, target.calories);
-      } else {
-        circleText.innerHTML = `0<br><span>/${target.calories} calo</span>`;
-        updateCircleProgress(0, target.calories);
-      }
-
+      circleText.innerHTML = `${totalCalories}<br><span>/${target.calories} calo</span>`;
       circleText.classList.remove("loading-placeholder");
     }
 
@@ -262,22 +261,13 @@
       ".calories__stats .calories__stats-circle-inner p"
     );
     if (dashboardCircleText) {
-      const currentIntake = calculateCurrentIntake();
-      const target = data.dailyTarget;
-      const totalCalories = currentIntake.calories;
-
       dashboardCircleText.innerHTML = `${totalCalories}<br><span>/${target.calories} calo</span>`;
       dashboardCircleText.classList.remove("loading-placeholder");
-
-      // Gọi hàm update dashboard circle
-      if (typeof updateDashboardCircleProgress === "function") {
-        updateDashboardCircleProgress(totalCalories, target.calories);
-      }
     }
 
     // CẬP NHẬT CÁC CHỈ SỐ DINH DƯỠNG
-    updateNutrientBars(data.dailyTarget, calculateCurrentIntake());
-    updateDashboardNutrition(data.dailyTarget, calculateCurrentIntake());
+    updateNutrientBars(target, currentIntake);
+    updateDashboardNutrition(target, currentIntake);
   }
 
   //  HÀM TÍNH TOÁN INTAKE HIỆN TẠI
@@ -318,7 +308,7 @@
     }
   }
 
-  //  CẬP NHẬT THANH TIẾN ĐỘ DINH DƯỠNG (OVERVIEW)
+  //  CẬP NHẬT THANH TIẾN ĐỘ DINH DƯỠNG 
   function updateNutrientBars(target, current) {
     const nutrients = [
       {
@@ -347,16 +337,16 @@
       const element = document.querySelector(nutrient.selector);
       if (!element) return;
 
-      const currentValue = current[nutrient.name];
-      const targetValue = target[nutrient.name];
+      const currentValue = current[nutrient.name] || 0;
+      const targetValue = target[nutrient.name] || 0;
       const percentage =
         targetValue > 0 ? Math.min((currentValue / targetValue) * 100, 100) : 0;
 
       const bar = element.querySelector(".calories__nutrient-bar");
       if (bar) {
         bar.style.width = `${percentage}%`;
-
         bar.classList.remove("low", "medium", "high", "over");
+
         if (percentage >= 100) {
           bar.classList.add("over");
         } else if (percentage >= 80) {
@@ -393,8 +383,8 @@
       const element = dashboardNutrients[nutrient.index];
       if (!element) return;
 
-      const currentValue = current[nutrient.name];
-      const targetValue = target[nutrient.name];
+      const currentValue = current[nutrient.name] || 0;
+      const targetValue = target[nutrient.name] || 0;
       const percentage =
         targetValue > 0 ? Math.min((currentValue / targetValue) * 100, 100) : 0;
 
@@ -411,28 +401,6 @@
     });
   }
 
-  //  CẬP NHẬT CIRCLE PROGRESS
-  function updateCircleProgress(current, target) {
-    const circle = document.querySelector(
-      ".calories__overview-content .calories__circle"
-    );
-    if (!circle) return;
-
-    const percentage = Math.min((current / target) * 100, 100);
-
-    let gradientColor;
-    if (current === 0) {
-      gradientColor = "#e0e0e0";
-    } else if (percentage >= 100) {
-      gradientColor = "#4CAF50";
-    } else if (percentage >= 80) {
-      gradientColor = "#FFA500";
-    } else {
-      gradientColor = "#FF6B6B";
-    }
-
-    circle.style.background = `conic-gradient(${gradientColor} ${percentage}%, #e0e0e0 ${percentage}%)`;
-  }
   // ===== HIỂN THỊ WEEKLY DATA =====
   function displayWeeklyData(weeklyData) {
     const bars = document.querySelectorAll(
@@ -470,6 +438,42 @@
       favoriteFoods || []
     );
     displayFoodColumn(".calories__food-column:nth-child(3) ul", myFoods || []);
+  }
+
+  // ===== HIỂN THỊ DỮ LIỆU PHẦN "THEO DÕI" =====
+  function displayFollowingData() {
+    const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+    if (!currentUser || !window.currentCaloriesData) return;
+
+    const userProfile = window.currentCaloriesData;
+    const trackingData = userProfile.trackingData || {};
+    const monthlyStats = userProfile.monthlyStats || {};
+    const weeklyData = userProfile.weeklyData || [];
+
+    // Điền dữ liệu vào ô 1: Thông tin calo
+    const summaryBoxes = document.querySelectorAll(
+      ".calories__info-box--summary .loading-placeholder"
+    );
+    if (summaryBoxes[0])
+      summaryBoxes[0].innerHTML = `Tổng calo đã nạp: <span class="calories__highlight">${monthlyStats.totalCalories || 0} kcal</span>`;
+    if (summaryBoxes[1])
+      summaryBoxes[1].innerHTML = `Tổng calo cần nạp: <span class="calories__highlight">${monthlyStats.targetCalories || 0} kcal</span>`;
+    if (summaryBoxes[2])
+      summaryBoxes[2].innerHTML = `Lượng calo cần thâm hụt: <span class="calories__highlight">${monthlyStats.deficit || 0} kcal</span>`;
+    if (summaryBoxes[3])
+      summaryBoxes[3].innerHTML = `Lượng calo đã thâm hụt: <span class="calories__highlight">${monthlyStats.deficit || 0} kcal</span>`;
+
+    // Điền dữ liệu vào ô 2: Thống kê ngày
+    const statsBoxes = document.querySelectorAll(
+      ".calories__info-box--stats .loading-placeholder"
+    );
+    if (statsBoxes[0])
+      statsBoxes[0].innerHTML = `<span class="calories__dot calories__dot--green"></span> Số ngày ăn đạt khuyến nghị: <span class="calories__stat-value calories__stat-value--green">${trackingData.daysOnRecommendation || 0} ngày</span>`;
+    if (statsBoxes[1])
+      statsBoxes[1].innerHTML = `<span class="calories__dot calories__dot--yellow"></span> Số ngày ăn dưới BMR: <span class="calories__stat-value calories__stat-value--yellow">${trackingData.daysUnderRequirement || 0} ngày</span>`;
+    if (statsBoxes[2])
+      statsBoxes[2].innerHTML = `<span class="calories__dot calories__dot--red"></span> Số ngày ăn quá lượng cần nạp: <span class="calories__stat-value calories__stat-value--red">${trackingData.daysExceedBMR || 0} ngày</span>`;
+    // Lịch tháng chỉ hiển thị dấu ngày hiện tại (không gắn trạng thái)
   }
 
   // ===== HIỂN THỊ CỘT THỰC PHẨM =====
@@ -559,6 +563,15 @@
         updateFavoriteFoodsDisplay();
       }
     }, 500);
+
+    // Phát sự kiện để các module khác biết dữ liệu đã sẵn sàng
+    try {
+      if (typeof window !== "undefined" && window.dispatchEvent) {
+        window.dispatchEvent(new Event("caloriesDataLoaded"));
+      }
+    } catch (e) {
+      // console.warn("Không thể phát sự kiện caloriesDataLoaded:", e);
+    }
   }
 
   // ===== HIỂN THỊ DANH SÁCH MÓN ĂN THEO BUỔI =====
@@ -611,16 +624,17 @@
     }
   });
 
-  // EXPORT FUNCTIONS
+
+// ===== EXPORT CÁC HÀM RA NGOÀI =====
   window.CaloriesDataLoader = {
     displayUserInfo,
     displayMealFoods,
     displayWeeklyData,
     displayFoodCategories,
+    displayFollowingData,
     updateOverviewCalories,
     calculateCurrentIntake,
     updateNutrientBars,
     updateDashboardNutrition,
-    updateCircleProgress,
   };
 })();
