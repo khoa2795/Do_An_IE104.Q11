@@ -29,6 +29,10 @@
             color: #999;
             font-style: italic;
         }
+
+        .section-hidden {
+            display: none !important;
+        }
     </style>
     <script>
         window.addEventListener('load', function () {
@@ -212,7 +216,7 @@
                 </div>
 
                 <!-- ===== HƯỚNG DẪN SỖ DỤNG THỰC PHẨM ===== -->
-                <div class="calories__guide" id="guideSection">
+                <div class="calories__guide section-hidden" id="guideSection">
                     <div class="calories__food-header">
                     <button class="calories__back-btn"><i class="fas fa-arrow-left"></i></button>
                     <div class="calories__search-bar">
@@ -416,7 +420,7 @@
                     </div>
                 </div>
 
-                <div class="calories__follow" id="followSection">
+                <div class="calories__follow section-hidden" id="followSection">
                     <div class="calories__follow-header">
                         <i class="fas fa-arrow-left calories__follow-back"></i>
                         <div class="calories__follow-title">
@@ -501,8 +505,17 @@
                             </div>
                             
                             <div class="modal__form-group">
-                                <label for="foodImage">Hình ảnh </label>
-                                <input type="text" id="foodImage" placeholder="image.jpg">
+                                <label for="foodImage">Hình ảnh</label>
+                                <div class="modal__image-upload">
+                                    <input type="file" id="foodImage" accept="image/*" style="display: none;">
+                                    <div class="modal__image-preview" id="imagePreview" style="width: 100%; height: 120px; border: 2px dashed #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: #f9f9f9; margin-bottom: 10px;">
+                                        <div style="text-align: center;">
+                                            <i class="fas fa-image" style="font-size: 32px; color: #ccc; margin-bottom: 8px; display: block;"></i>
+                                            <p style="margin: 0; color: #999; font-size: 14px;">Click để chọn ảnh</p>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="foodImagePath" placeholder="Đường dẫn ảnh">
+                                </div>
                             </div>
                             
                             <div class="modal__form-group">
@@ -514,7 +527,7 @@
                                     </div>
                                     <div class="modal__nutrition-item">
                                         <label>Trọng lượng (g)</label>
-                                        <input type="number" id="foodWeight" value="0" readonly>
+                                        <input type="number" id="foodWeight" value="100">
                                     </div>
                                     <div class="modal__nutrition-item">
                                         <label>Tinh bột (g)</label>
