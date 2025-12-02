@@ -2,6 +2,7 @@
 <html lang="vi">
 
 <head>
+    <!-- Phần head: preload, favicon, stylesheet và script preload -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VHealth - Thông tin sức khỏe</title>
@@ -19,6 +20,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script>
+        // Khi load xong, bỏ thuộc tính 'data-critical' để hiển thị nội dung
+        // (Sử dụng để hiện trạng thái skeleton/loading trước khi dữ liệu sẵn sàng)
         window.addEventListener('load', function () {
             if (document.body) {
                 document.body.removeAttribute('data-critical');
@@ -44,6 +47,11 @@
 </head>
 
 <body class="page-health" data-critical="pending">
+        <!--
+            Body của trang Health
+            - Nếu người dùng đã xác thực, phần tử .main-content sẽ có class .auth-verified
+            - data-critical dùng để hiển thị trạng thái skeleton trong khi chờ dữ liệu
+        -->
     <script>
         (function () {
             const currentUser = sessionStorage.getItem('currentUser');
@@ -58,13 +66,16 @@
         })();
     </script>
 
+    <!-- Header sẽ được load động vào thẻ này (header.js) -->
     <div id="header-placeholder"></div>
 
     <div class="container">
         <div id="sidebar-placeholder"></div>
 
+        <!-- Nội dung chính: chỉ hiển thị khi user đã xác thực -->
         <main class="main-content">
 
+            <!-- Header thông tin sức khỏe: avatar, tiêu đề và tab điều hướng -->
             <section class="health-header">
                 <div class="row">
                     <div class="left-box">
@@ -92,6 +103,7 @@
 
                 <div class="tab-pane active" id="info">
 
+                    <!-- Lưới chính chứa 3 cột: thông số (cột 1), thông số (cột 2), và Lưu ý (cột 3) -->
                     <div class="health-grid-container">
                         <div class="health-col">
                             <div class="stat-card-display">
@@ -195,10 +207,12 @@
                         </div>
                     </div>
 
+                    <!-- Nút chuyển sang trang chỉnh sửa thông tin sức khỏe -->
                     <div class="btn-change-container">
                         <a href="Health-edit.html" class="btn-change">Chỉnh sửa</a>
                     </div>
 
+                    <!-- Phần gợi ý bài viết liên quan đến sức khỏe -->
                     <section class="recommend-section">
                         <h3>Gợi ý bài viết</h3>
                         <div class="article-grid">
@@ -236,8 +250,10 @@
         </main>
     </div>
 
+    <!-- Footer sẽ được load động vào thẻ này (footer.js) -->
     <div id="footer-placeholder"></div>
 
+    <!-- Scripts: xác thực, cache dữ liệu, loader dữ liệu health, và các module UI -->
     <script src="/assets/javascript/auth-check.js"></script>
     <script src="/assets/javascript/data-cache.js"></script>
     <script src="/assets/javascript/health-data-loader.js"></script>

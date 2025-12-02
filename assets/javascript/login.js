@@ -521,6 +521,18 @@ function validateRegisterStep(stepIndex) {
       return false;
     }
 
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (!hasUpperCase || !hasLowerCase || !hasNumber || !hasSpecialChar) {
+      alert(
+        "Mật khẩu phải chứa ít nhất một chữ hoa, một chữ thường, một số và một ký tự đặc biệt."
+      );
+      return false;
+    }
+
     if (password !== confirmPassword) {
       alert("Mật khẩu xác nhận không khớp");
       return false;
